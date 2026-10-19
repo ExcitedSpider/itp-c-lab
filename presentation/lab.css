@@ -48,6 +48,10 @@ main{max-width:1640px;padding:1.4rem 2rem 3rem}
 .proof-state-grid pre{font-size:13px}
 .proof-context{position:relative}
 .proof-context mark{white-space:pre-wrap}
+pre.numbered-source{position:relative;padding-left:calc(var(--gutter-width) + 1rem);white-space:pre;overflow-wrap:normal}
+pre.numbered-source mark{white-space:pre}
+.line-gutter{position:absolute;top:.8rem;left:0;width:var(--gutter-width);padding-right:1ch;border-right:1px solid var(--line);color:var(--muted);text-align:right;user-select:none;pointer-events:none;font:inherit;white-space:pre}
+.line-gutter::before{content:attr(data-lines)}
 #reference{border-top:1px solid var(--line);margin-top:3rem;padding-top:2rem;scroll-margin-top:1rem}
 #reference>h1{font-size:1.7rem}
 .reference-section{border:1px solid var(--line);border-radius:4px;margin:.7rem 0;padding:.9rem 1rem}

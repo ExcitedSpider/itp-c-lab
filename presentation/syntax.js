@@ -95,6 +95,19 @@ const LabSyntax=(()=>{
   return result;
  }
  function render(element,source,language){element.replaceChildren(fragment(scan(source,language)));}
- return {scan,fragment,render,display};
+ function lineNumbers(pre,source){
+  pre.querySelector('.line-gutter')?.remove();
+  pre.classList.add('numbered-source');
+  const gutter=document.createElement('span');gutter.className='line-gutter';gutter.setAttribute('aria-hidden','true');
+  const count=source.split('\n').length-(source.endsWith('\n')?1:0);
+  gutter.dataset.lines=Array.from({length:count},(_,i)=>i+1).join('\n');
+  pre.style.setProperty('--gutter-width',Math.max(3,String(count).length)+2+'ch');
+  pre.prepend(gutter);
+ }
+ return {scan,fragment,render,display,lineNumbers};
 })();
-document.querySelectorAll('[data-language]').forEach(element=>LabSyntax.render(element,element.textContent,element.dataset.language));
+document.querySelectorAll('[data-language]').forEach(element=>{
+ const source=element.textContent,language=element.dataset.language;
+ LabSyntax.render(element,source,language);
+ if(['rocq','isabelle'].includes(language)&&element.closest('pre'))LabSyntax.lineNumbers(element.closest('pre'),source);
+});

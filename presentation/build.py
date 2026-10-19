@@ -124,7 +124,7 @@ notes={
 for n,p in enumerate(programs,1):
     plain=re.sub(r'/\*@[\s\S]*?\*/','',read('programs/'+p+'.c'))
     plain=re.sub(r'\n\s*\n','\n',plain)
-    shared=f'<p>{notes[p]}</p><details class="shared-source"><summary>C source · shared across provers</summary><div class="file">programs/{p}.c — ACSL comments omitted in this view</div><pre tabindex="0"><code>{highlight(plain,"c")}</code></pre></details>'
+    shared=f'<p>{notes[p]}</p><details class="shared-source" open><summary>C source · shared across provers</summary><div class="file">programs/{p}.c — ACSL comments omitted in this view</div><pre tabindex="0"><code>{highlight(plain,"c")}</code></pre></details>'
     body='<div class="proof-panes">'
     for i,t in enumerate(tools):
         r=next(r for r in rows if r['tool']==t and r['program']==p)
@@ -292,7 +292,7 @@ document.querySelectorAll('.proof-player').forEach(player=>{
   const before=document.createElement('span');before.className='executed';before.append(LabSyntax.fragment(sourceTokens,0,s.start));
   const current=document.createElement('mark');current.append(LabSyntax.fragment(sourceTokens,s.start,s.end));
   const after=document.createElement('span');after.append(LabSyntax.fragment(sourceTokens,s.end));
-  context.append(before,current,after);context.scrollTop=Math.max(0,current.getBoundingClientRect().top-context.getBoundingClientRect().top+context.scrollTop-context.clientHeight/3);
+  context.append(before,current,after);LabSyntax.lineNumbers(context,rec.source_text);context.scrollTop=Math.max(0,current.getBoundingClientRect().top-context.getBoundingClientRect().top+context.scrollTop-context.clientHeight/3);
   player.querySelector('[data-proof=previous]').disabled=index===0;
   player.querySelector('[data-proof=next]').disabled=index===steps.length-1;
  }

@@ -17,6 +17,7 @@ for(const pane of document.querySelectorAll('.pane[data-tool=VST],.pane[data-too
  check(pane.firstElementChild.classList.contains('replay'),'replay is first under case title');
 }
 check(document.querySelectorAll('.work-split').length===20,'authorship labels');
+check([...document.querySelectorAll('.shared-source')].every(p=>p.open),'C sources expanded by default');
 check(document.querySelectorAll('.proof-player').length===17,'recorded proof players');
 const records=JSON.parse(document.querySelector('#proof-recordings').textContent);
 const samples=[
@@ -39,6 +40,11 @@ check(LabSyntax.scan(samples[3][1],'isabelle').some(t=>t.text==='\\<forall>'&&t.
 for(const rec of Object.values(records)){
  const element=[...document.querySelectorAll('.proof-player')].find(p=>p.dataset.recording===rec.source);
  check(element.querySelector('.proof-context').textContent===LabSyntax.display(rec.source_text,rec.language),'highlighted proof text with Isabelle Unicode rendering: '+rec.source);
+ const gutter=element.querySelector('.proof-context .line-gutter');
+ check(gutter&&gutter.getAttribute('aria-hidden')==='true','proof line numbers separate from source');
+ const count=rec.source_text.split('\n').length-(rec.source_text.endsWith('\n')?1:0);
+ check(gutter.dataset.lines.split('\n').length===count,'proof line count');
+ check(getComputedStyle(gutter,'::before').content!=='none','visible proof line numbers');
 }
 for(const rec of Object.values(records)){
  check(rec.exit_code===0,'successful recording');
