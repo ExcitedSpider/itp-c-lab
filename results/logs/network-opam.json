@@ -1,0 +1,19 @@
+{
+  "label": "network-opam",
+  "timestamp": "2026-10-19T01:56:31.584Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "curl",
+    "-I",
+    "--max-time",
+    "15",
+    "https://opam.ocaml.org"
+  ],
+  "env": {},
+  "exit_code": 6,
+  "signal": null,
+  "error": "spawnSync curl EPERM",
+  "wall_seconds": 0.009507147999999993,
+  "stdout": "",
+  "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: opam.ocaml.org\n"
+}

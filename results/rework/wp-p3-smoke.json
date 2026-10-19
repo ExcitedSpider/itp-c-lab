@@ -1,0 +1,24 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "frama-c",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-timeout",
+    "10",
+    "-wp-par",
+    "1",
+    "programs/p3_sum.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:28:54.305717+00:00",
+  "exit_code": 0,
+  "wall_seconds": 1.7782502002082765,
+  "output": "[kernel] Parsing programs/p3_sum.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function sum_array\n[wp] 14 goals scheduled\n[wp] Proved goals:   16 / 16\n  Terminating:       1\n  Unreachable:       1\n  Qed:               9 (3ms-2ms-7ms)\n  Alt-Ergo 2.5.4:    5 (6ms-17ms)\n"
+}

@@ -1,0 +1,37 @@
+{
+  "label": "p2_swap-export-all-7f9910ec647a",
+  "timestamp": "2026-10-19T02:06:28.763Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "/tmp/framac/4.14.1/bin/frama-c",
+    "-wp-why3-extra-config",
+    "wp/why3.conf",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-timeout",
+    "1",
+    "-wp-par",
+    "64",
+    "-wp-msg-key",
+    "prover",
+    "-wp-out",
+    "results/generated/p2_swap-7f9910ec647a",
+    "-wp-report-json",
+    "results/p2_swap-export-report.json",
+    "programs/p2_swap.c"
+  ],
+  "env": {
+    "OCAMLPATH": "/tmp/framac/4.14.1/lib",
+    "DUNE_DIR_LOCATIONS": "frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"
+  },
+  "exit_code": 0,
+  "signal": null,
+  "error": "spawnSync /tmp/framac/4.14.1/bin/frama-c EPERM",
+  "wall_seconds": 102.76386100100001,
+  "stdout": "[kernel] Parsing programs/p2_swap.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function swap\n[wp] 8 goals scheduled\n[wp] [Qed] Goal typed_swap_ensures preprocessing\n[wp] [Qed] Goal typed_swap_ensures_2 preprocessing\n[wp] [Qed] Goal typed_swap_assert_rte_mem_access preprocessing\n[wp] [Qed] Goal typed_swap_assert_rte_mem_access_2 preprocessing\n[wp] [Qed] Goal typed_swap_assert_rte_mem_access_3 preprocessing\n[wp] [Qed] Goal typed_swap_assert_rte_mem_access_4 preprocessing\n[wp] [Qed] Goal typed_swap_assigns_part1 preprocessing\n[wp] [Qed] Goal typed_swap_assigns_part2 preprocessing\n[wp:prover] \n  Prover command \"/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f\"\n[wp:prover] \n  Prover command \"/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f\"\n[wp:prover] \n  Prover command \"/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f\"\n[wp] [Failure] typed_swap_assert_rte_mem_access_3 (Qed 1ms) (Alt-Ergo)\n[wp] [Failure] typed_swap_assert_rte_mem_access (Qed 0.92ms) (Alt-Ergo)\n[wp] [Failure] typed_swap_ensures (Qed 2ms) (Alt-Ergo)\n[wp] Proved goals:    7 / 10\n  Terminating:     1\n  Unreachable:     1\n  Qed:             5 (0.92ms-0.55ms-2ms)\n  Failed:          3\n",
+  "stderr": "/tmp/ppannotaf9211.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined\n    1 | #define __STDC_EMBED_NOT_FOUND__ 0\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannotaf9211.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined\n    2 | #define __STDC_EMBED_FOUND__ 1\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannotaf9211.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined\n    3 | #define __STDC_EMBED_EMPTY__ 2\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\ncc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics\n"
+}

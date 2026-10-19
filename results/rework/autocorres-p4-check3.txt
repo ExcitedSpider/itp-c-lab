@@ -1,0 +1,48 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres", "C_ITP_P4"]
+Running C_ITP_P4 ...
+C_ITP_P4 FAILED (see also "isabelle build_log -H Error C_ITP_P4")
+...
+***              (a +⇩p (b + (aa - b) sdiv 2)))
+***  7. ⋀aa b.
+***        ⟦b < aa; 0 ≤ b; b ≤ aa; aa ≤ n; ∀i<nat b. xs ! i < key;
+***         ∀i. nat aa ≤ i ∧ i < length xs ⟶ key < xs ! i;
+***         heap_w32 s
+***          (PTR_COERCE(32 signed word → 32 word)
+***            (a +⇩p (b + (aa - b) sdiv 2))) =
+***         word_of_int key⟧
+***        ⟹ 0 ≤ b + (aa - b) sdiv 2
+***  8. ⋀aa b.
+***        ⟦b < aa; 0 ≤ b; b ≤ aa; aa ≤ n; ∀i<nat b. xs ! i < key;
+***         ∀i. nat aa ≤ i ∧ i < length xs ⟶ key < xs ! i;
+***         heap_w32 s
+***          (PTR_COERCE(32 signed word → 32 word)
+***            (a +⇩p (b + (aa - b) sdiv 2))) =
+***         word_of_int key⟧
+***        ⟹ b + (aa - b) sdiv 2 < n
+***  9. ⋀aa b.
+***        ⟦b < aa; 0 ≤ b; b ≤ aa; aa ≤ n; ∀i<nat b. xs ! i < key;
+***         ∀i. nat aa ≤ i ∧ i < length xs ⟶ key < xs ! i;
+***         heap_w32 s
+***          (PTR_COERCE(32 signed word → 32 word)
+***            (a +⇩p (b + (aa - b) sdiv 2))) =
+***         word_of_int key⟧
+***        ⟹ xs ! nat (b + (aa - b) sdiv 2) = key
+***  10. ⋀aa b.
+***         ⟦b < aa; 0 ≤ b; b ≤ aa; aa ≤ n; ∀i<nat b. xs ! i < key;
+***          ∀i. nat aa ≤ i ∧ i < length xs ⟶ key < xs ! i;
+***          heap_w32 s
+***           (PTR_COERCE(32 signed word → 32 word)
+***             (a +⇩p (b + (aa - b) sdiv 2))) ≠
+***          word_of_int key;
+***          sint
+***           (heap_w32 s
+***             (PTR_COERCE(32 signed word → 32 word)
+***               (a +⇩p (b + (aa - b) sdiv 2))))
+***          < key⟧
+***         ⟹ 0 ≤ 2147483649 + (b + (aa - b) sdiv 2)
+*** A total of 25 subgoals...
+*** At command "done" (line 28 of "/work/autocorres/p4/P4.thy")
+Unfinished session(s): C_ITP_P4
+0:00:15 elapsed time, 0:00:09 cpu time, factor 0.57
+
+Exit: 1

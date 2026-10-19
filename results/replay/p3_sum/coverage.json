@@ -1,0 +1,255 @@
+{
+  "source": "programs/p3_sum.c",
+  "source_sha256": "b8c9aa3fd916e3d4344a6c159e203661e2012aefd13e0a2fedd34058889777b4",
+  "inventory_exit": 0,
+  "goals": [
+    {
+      "goal": "typed_sum_array_ensures",
+      "property": "sum_array_ensures",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 11,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": true,
+      "verdict": "valid",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 1
+        }
+      ],
+      "proved": 1,
+      "method": "Qed"
+    },
+    {
+      "goal": "typed_sum_array_loop_invariant_preserved",
+      "property": "sum_array_loop_invariant",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 16,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": true,
+      "verdict": "valid",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 1
+        }
+      ],
+      "proved": 1,
+      "method": "Qed"
+    },
+    {
+      "goal": "typed_sum_array_loop_invariant_established",
+      "property": "sum_array_loop_invariant",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 16,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": true,
+      "verdict": "valid",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 1
+        }
+      ],
+      "proved": 1,
+      "method": "Qed"
+    },
+    {
+      "goal": "typed_sum_array_loop_invariant_2_preserved",
+      "property": "sum_array_loop_invariant_2",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 17,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": false,
+      "verdict": "none",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 0
+        }
+      ],
+      "method": "missing export",
+      "candidates": []
+    },
+    {
+      "goal": "typed_sum_array_loop_invariant_2_established",
+      "property": "sum_array_loop_invariant_2",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 17,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": false,
+      "verdict": "none",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 0
+        }
+      ],
+      "method": "missing export",
+      "candidates": []
+    },
+    {
+      "goal": "typed_sum_array_assert_rte_mem_access",
+      "property": "sum_array_assert_rte_mem_access",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 22,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": false,
+      "verdict": "none",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 0
+        }
+      ],
+      "method": "missing export",
+      "candidates": []
+    },
+    {
+      "goal": "typed_sum_array_assert_rte_signed_overflow",
+      "property": "sum_array_assert_rte_signed_overflow",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 22,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": false,
+      "verdict": "none",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 0
+        }
+      ],
+      "method": "missing export",
+      "candidates": []
+    },
+    {
+      "goal": "typed_sum_array_assert_rte_signed_overflow_2",
+      "property": "sum_array_assert_rte_signed_overflow_2",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 22,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": false,
+      "verdict": "none",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 0
+        }
+      ],
+      "method": "missing export",
+      "candidates": []
+    },
+    {
+      "goal": "typed_sum_array_assert_rte_signed_overflow_3",
+      "property": "sum_array_assert_rte_signed_overflow_3",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 23,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": true,
+      "verdict": "valid",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 1
+        }
+      ],
+      "proved": 1,
+      "method": "Qed"
+    },
+    {
+      "goal": "typed_sum_array_loop_assigns",
+      "property": "sum_array_loop_assigns",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 18,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": true,
+      "verdict": "valid",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 1
+        }
+      ],
+      "proved": 1,
+      "method": "Qed"
+    },
+    {
+      "goal": "typed_sum_array_assigns",
+      "property": "sum_array_assigns",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 13,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": true,
+      "verdict": "valid",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 1
+        }
+      ],
+      "proved": 1,
+      "method": "Qed"
+    },
+    {
+      "goal": "typed_sum_array_loop_variant_decrease",
+      "property": "sum_array_loop_variant",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 19,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": true,
+      "verdict": "valid",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 1
+        }
+      ],
+      "proved": 1,
+      "method": "Qed"
+    },
+    {
+      "goal": "typed_sum_array_loop_variant_positive",
+      "property": "sum_array_loop_variant",
+      "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+      "line": 19,
+      "function": "sum_array",
+      "smoke": false,
+      "passed": true,
+      "verdict": "valid",
+      "provers": [
+        {
+          "prover": "qed",
+          "time": 0,
+          "success": 1
+        }
+      ],
+      "proved": 1,
+      "method": "Qed"
+    }
+  ],
+  "complete": false
+}

@@ -1,0 +1,5 @@
+$ ["isabelle","version"]
+Environment overrides: {}
+
+Runner error: spawnSync isabelle ENOENT
+Exit: null; signal: null; wall_seconds: 0.0019426559999999994

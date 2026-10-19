@@ -1,0 +1,354 @@
+$ ["opam", "install", "-y", "-j", "4", "refinedc"]
+
+<><> Synchronising pinned packages ><><><><><><><><><><><><><><><><><><><><><><>
+[refinedc.dev.2026-09-11.0.2e89846b] synchronised (no changes)
+
+The following actions will be performed:
+=== recompile 60 packages
+  - recompile alt-ergo             2.5.4                              [uses dune]
+  - recompile alt-ergo-lib         2.5.4                              [uses dune]
+  - recompile alt-ergo-parsers     2.5.4                              [uses dune]
+  - recompile base                 v0.16.4                            [uses dune]
+  - recompile cairo2               0.6.5                              [uses dune]
+  - recompile camlp-streams        5.0.1                              [uses dune]
+  - recompile cppo                 1.8.0                              [uses dune]
+  - recompile csexp                1.5.2                              [uses dune]
+  - recompile ctypes               0.24.0                             [uses dune]
+  - recompile dolmen               0.9                                [uses dune]
+  - recompile dolmen_loop          0.9                                [uses dune]
+  - recompile dolmen_type          0.9                                [uses dune]
+  - recompile dune-build-info      3.19.1                             [uses dune]
+  - recompile dune-configurator    3.19.1                             [uses dune]
+  - recompile dune-private-libs    3.19.1                             [uses dune]
+  - recompile dune-site            3.19.1                             [uses dune]
+  - recompile dyn                  3.19.1                             [uses dune]
+  - recompile gen                  1.1                                [uses dune]
+  - recompile integers             0.7.0                              [uses dune]
+  - recompile jane-street-headers  v0.16.0                            [uses dune]
+  - recompile jst-config           v0.16.0                            [uses dune]
+  - recompile lablgtk3             3.1.5                              [uses dune]
+  - recompile lablgtk3-sourceview3 3.1.5                              [uses dune]
+  - recompile menhir               20240715                           [uses dune]
+  - recompile menhirCST            20240715                           [uses dune]
+  - recompile menhirLib            20240715                           [uses dune]
+  - recompile menhirSdk            20240715                           [uses dune]
+  - recompile ocaml-compiler-libs  v0.12.4                            [uses dune]
+  - recompile ocamlgraph           2.2.0                              [uses dune]
+  - recompile ocplib-simplex       0.5.1                              [uses dune]
+  - recompile ordering             3.19.1                             [uses dune]
+  - recompile pp                   2.0.0                              [uses dune]
+  - recompile pp_loc               2.1.0                              [uses dune]
+  - recompile ppx_assert           v0.16.0                            [uses dune]
+  - recompile ppx_base             v0.16.0                            [uses dune]
+  - recompile ppx_blob             0.9.0                              [uses dune]
+  - recompile ppx_cold             v0.16.0                            [uses dune]
+  - recompile ppx_compare          v0.16.0                            [uses dune]
+  - recompile ppx_derivers         1.2.1                              [uses dune]
+  - recompile ppx_deriving         6.0.3                              [uses dune]
+  - recompile ppx_deriving_yaml    0.3.0                              [uses dune]
+  - recompile ppx_deriving_yojson  3.9.0                              [uses dune]
+  - recompile ppx_enumerate        v0.16.0                            [uses dune]
+  - recompile ppx_globalize        v0.16.0                            [uses dune]
+  - recompile ppx_hash             v0.16.0                            [uses dune]
+  - recompile ppx_here             v0.16.0                            [uses dune]
+  - recompile ppx_inline_test      v0.16.1                            [uses dune]
+  - recompile ppx_optcomp          v0.16.0                            [uses dune]
+  - recompile ppx_sexp_conv        v0.16.0                            [uses dune]
+  - recompile ppxlib               0.35.0                             [uses dune]
+  - recompile psmt2-frontend       0.4.0                              [uses dune]
+  - recompile sexplib0             v0.16.0                            [uses dune]
+  - recompile spelll               0.4                                [uses dune]
+  - recompile stdio                v0.16.0                            [uses dune]
+  - recompile stdlib-shims         0.3.0                              [uses dune]
+  - recompile stdune               3.19.1                             [uses dune]
+  - recompile time_now             v0.16.0                            [uses dune]
+  - recompile unionFind            20220122                           [uses dune]
+  - recompile why3                 1.8.2                              [uses menhir, ocamlgraph]
+  - recompile yaml                 3.2.0                              [uses dune]
+=== upgrade 2 packages
+  - upgrade   dune                 3.19.1 to 3.23.1                   [required by toml, coq-lithium, cerberus-lib, etc.]
+  - upgrade   yojson               2.2.2 to 3.0.0                     [required by cerberus-lib]
+=== install 37 packages
+  - install   atd                  4.2.0                              [required by atdgen, atdts]
+  - install   atdgen               4.2.0                              [required by elpi]
+  - install   atdgen-runtime       4.2.0                              [required by atdgen]
+  - install   atdts                4.2.0                              [required by elpi]
+  - install   biniou               1.2.2                              [required by atdgen]
+  - install   cerberus-lib         dev (pinned)                       [required by refinedc]
+  - install   conf-findutils       1                                  [required by lem]
+  - install   conf-linux-libc-dev  0                                  [required by rocq-runtime]
+  - install   coq                  9.1.0                              [required by coq-lithium]
+  - install   coq-core             9.1.0                              [required by coq, coq-record-update]
+  - install   coq-lithium          dev.2026-09-11.0.2e89846b (pinned) [required by refinedc]
+  - install   coq-record-update    0.3.6                              [required by coq-lithium]
+  - install   coq-stdlib           9.0.0                              [required by coq]
+  - install   coqide-server        9.1.0                              [required by coq]
+  - install   earley               3.0.0                              [required by refinedc]
+  - install   easy-format          1.3.4                              [required by atd]
+  - install   elpi                 3.7.3                              [required by rocq-elpi]
+  - install   ISO8601              0.2.6                              [required by toml]
+  - install   lem                  2026-05-01                         [required by cerberus-lib]
+  - install   num                  1.6                                [required by lem]
+  - install   parsexp              v0.16.0                            [required by sexplib]
+  - install   pprint               20230830                           [required by cerberus-lib]
+  - install   re                   1.14.0                             [required by elpi]
+  - install   refinedc             dev.2026-09-11.0.2e89846b (pinned)                                                     with default configuration
+  - install   result               1.5                                [required by cerberus-lib]
+  - install   rocq-core            9.1.0                              [required by rocq-iris]
+  - install   rocq-elpi            3.5.1                              [required by rocq-iris]
+  - install   rocq-iris            dev.2026-09-10.3.b3495ef9          [required by coq-lithium]
+  - install   rocq-runtime         9.1.0                              [required by coq-core, coqide-server]
+  - install   rocq-stdlib          9.0.0                              [required by coq-record-update, rocq-iris]
+  - install   rocq-stdpp           dev.2026-09-09.1.c3186aad          [required by rocq-iris, rocq-stdpp-unstable]
+  - install   rocq-stdpp-bitvector dev.2026-09-09.1.c3186aad          [required by rocq-stdpp-unstable]
+  - install   rocq-stdpp-unstable  dev.2026-09-09.1.c3186aad          [required by coq-lithium]
+  - install   sexplib              v0.16.0                            [required by cerberus-lib]
+  - install   sha                  1.15.4                             [required by cerberus-lib]
+  - install   toml                 7.1.0                              [required by refinedc]
+  - install   ubase                0.20                               [required by refinedc]
+
+<><> Processing actions <><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+-> retrieved alt-ergo.2.5.4, alt-ergo-lib.2.5.4, alt-ergo-parsers.2.5.4  (cached)
+-> retrieved base.v0.16.4  (cached)
+-> retrieved cairo2.0.6.5  (cached)
+-> retrieved camlp-streams.5.0.1  (cached)
+-> retrieved cerberus-lib.dev  (no changes)
+-> installed conf-findutils.1
+-> installed conf-linux-libc-dev.0
+-> retrieved biniou.1.2.2  (https://opam.ocaml.org/cache)
+-> retrieved coq-lithium.dev.2026-09-11.0.2e89846b  (no changes)
+-> retrieved atd.4.2.0, atdgen.4.2.0, atdgen-runtime.4.2.0, atdts.4.2.0  (https://opam.ocaml.org/cache)
+-> retrieved cppo.1.8.0  (cached)
+-> retrieved csexp.1.5.2  (cached)
+-> retrieved ctypes.0.24.0  (cached)
+-> retrieved dolmen.0.9, dolmen_loop.0.9, dolmen_type.0.9  (cached)
+-> retrieved coq-record-update.0.3.6  (https://github.com/tchajed/coq-record-update/archive/v0.3.6.tar.gz)
+-> retrieved dune-build-info.3.19.1, dune-configurator.3.19.1, dune-private-libs.3.19.1, dune-site.3.19.1, dyn.3.19.1, ordering.3.19.1, stdune.3.19.1  (cached)
+-> retrieved coq-core.9.1.0, coqide-server.9.1.0, rocq-core.9.1.0, rocq-runtime.9.1.0  (https://opam.ocaml.org/cache)
+-> retrieved dune.3.23.1  (https://opam.ocaml.org/cache)
+-> retrieved earley.3.0.0  (https://opam.ocaml.org/cache)
+-> retrieved easy-format.1.3.4  (https://opam.ocaml.org/cache)
+-> retrieved gen.1.1  (cached)
+-> retrieved integers.0.7.0  (cached)
+-> retrieved jane-street-headers.v0.16.0  (cached)
+-> retrieved jst-config.v0.16.0  (cached)
+-> retrieved lablgtk3.3.1.5, lablgtk3-sourceview3.3.1.5  (cached)
+-> retrieved ISO8601.0.2.6  (https://opam.ocaml.org/cache)
+-> retrieved menhir.20240715, menhirCST.20240715, menhirLib.20240715, menhirSdk.20240715  (cached)
+-> retrieved num.1.6  (https://opam.ocaml.org/cache)
+-> retrieved ocaml-compiler-libs.v0.12.4  (cached)
+-> retrieved ocamlgraph.2.2.0  (cached)
+-> retrieved elpi.3.7.3  (https://opam.ocaml.org/cache)
+-> retrieved lem.2026-05-01  (https://opam.ocaml.org/cache)
+-> retrieved ocplib-simplex.0.5.1  (cached)
+-> retrieved pp.2.0.0  (cached)
+-> retrieved pp_loc.2.1.0  (cached)
+-> retrieved ppx_assert.v0.16.0  (cached)
+-> retrieved ppx_base.v0.16.0  (cached)
+-> retrieved ppx_blob.0.9.0  (cached)
+-> retrieved ppx_cold.v0.16.0  (cached)
+-> retrieved ppx_compare.v0.16.0  (cached)
+-> retrieved ppx_derivers.1.2.1  (cached)
+-> retrieved ppx_deriving.6.0.3  (cached)
+-> retrieved ppx_deriving_yaml.0.3.0  (cached)
+-> retrieved ppx_deriving_yojson.3.9.0  (cached)
+-> retrieved ppx_enumerate.v0.16.0  (cached)
+-> retrieved ppx_globalize.v0.16.0  (cached)
+-> retrieved ppx_hash.v0.16.0  (cached)
+-> retrieved ppx_here.v0.16.0  (cached)
+-> retrieved ppx_inline_test.v0.16.1  (cached)
+-> retrieved ppx_optcomp.v0.16.0  (cached)
+-> retrieved ppx_sexp_conv.v0.16.0  (cached)
+-> installed num.1.6
+-> retrieved ppxlib.0.35.0  (cached)
+-> retrieved psmt2-frontend.0.4.0  (cached)
+-> retrieved parsexp.v0.16.0  (https://opam.ocaml.org/cache)
+-> retrieved refinedc.dev.2026-09-11.0.2e89846b  (no changes)
+-> retrieved pprint.20230830  (https://opam.ocaml.org/cache)
+-> retrieved re.1.14.0  (https://opam.ocaml.org/cache)
+-> retrieved result.1.5  (https://opam.ocaml.org/cache)
+-> retrieved rocq-elpi.3.5.1  (https://github.com/LPCIC/coq-elpi/releases/download/v3.5.1/rocq-elpi-3.5.1.tar.gz)
+-> retrieved rocq-stdlib.9.0.0  (https://opam.ocaml.org/cache)
+-> retrieved rocq-stdpp.dev.2026-09-09.1.c3186aad  (git+https://github.com/rocq-iris/stdpp.git#c3186aad493872e3a9774ac0b42ca2f591b05835)
+-> retrieved rocq-iris.dev.2026-09-10.3.b3495ef9  (git+https://github.com/rocq-iris/iris.git#b3495ef9f0805b0dc7c1b1abbdc8cf473ede121b)
+-> retrieved rocq-stdpp-unstable.dev.2026-09-09.1.c3186aad  (git+https://github.com/rocq-iris/stdpp.git#c3186aad493872e3a9774ac0b42ca2f591b05835)
+-> retrieved sexplib0.v0.16.0  (cached)
+-> retrieved rocq-stdpp-bitvector.dev.2026-09-09.1.c3186aad  (git+https://github.com/rocq-iris/stdpp.git#c3186aad493872e3a9774ac0b42ca2f591b05835)
+-> retrieved spelll.0.4  (cached)
+-> retrieved stdio.v0.16.0  (cached)
+-> retrieved stdlib-shims.0.3.0  (cached)
+-> retrieved time_now.v0.16.0  (cached)
+-> retrieved sexplib.v0.16.0  (https://opam.ocaml.org/cache)
+-> retrieved sha.1.15.4  (https://opam.ocaml.org/cache)
+-> retrieved unionFind.20220122  (cached)
+-> retrieved why3.1.8.2  (cached)
+-> retrieved ubase.0.20  (https://opam.ocaml.org/cache)
+-> retrieved yaml.3.2.0  (cached)
+-> retrieved toml.7.1.0  (https://opam.ocaml.org/cache)
+-> retrieved yojson.3.0.0  (https://opam.ocaml.org/cache)
+-> removed   alt-ergo.2.5.4
+-> removed   alt-ergo-parsers.2.5.4
+-> removed   alt-ergo-lib.2.5.4
+-> removed   dolmen_loop.0.9
+-> removed   dolmen_type.0.9
+-> removed   dolmen.0.9
+-> removed   dune-build-info.3.19.1
+-> removed   dune-site.3.19.1
+-> removed   dune-private-libs.3.19.1
+-> removed   gen.1.1
+-> removed   lablgtk3-sourceview3.3.1.5
+-> removed   lablgtk3.3.1.5
+-> removed   cairo2.0.6.5
+-> removed   camlp-streams.5.0.1
+-> removed   ocplib-simplex.0.5.1
+-> removed   pp_loc.2.1.0
+-> removed   ppx_blob.0.9.0
+-> removed   ppx_deriving_yaml.0.3.0
+-> removed   ppx_deriving_yojson.3.9.0
+-> removed   ppx_inline_test.v0.16.1
+-> removed   psmt2-frontend.0.4.0
+-> removed   spelll.0.4
+-> removed   stdune.3.19.1
+-> removed   dyn.3.19.1
+-> removed   ordering.3.19.1
+-> removed   pp.2.0.0
+-> removed   time_now.v0.16.0
+-> removed   jane-street-headers.v0.16.0
+-> removed   jst-config.v0.16.0
+-> removed   ppx_assert.v0.16.0
+-> removed   ppx_base.v0.16.0
+-> removed   ppx_cold.v0.16.0
+-> removed   ppx_enumerate.v0.16.0
+-> removed   ppx_globalize.v0.16.0
+-> removed   ppx_hash.v0.16.0
+-> removed   ppx_compare.v0.16.0
+-> removed   ppx_here.v0.16.0
+-> removed   ppx_optcomp.v0.16.0
+-> removed   stdio.v0.16.0
+-> removed   unionFind.20220122
+-> removed   why3.1.8.2
+-> removed   menhir.20240715
+-> removed   menhirCST.20240715
+-> removed   menhirLib.20240715
+-> removed   menhirSdk.20240715
+-> removed   ocamlgraph.2.2.0
+-> removed   ppx_deriving.6.0.3
+-> removed   cppo.1.8.0
+-> removed   ppx_sexp_conv.v0.16.0
+-> removed   base.v0.16.4
+-> removed   ppxlib.0.35.0
+-> removed   ocaml-compiler-libs.v0.12.4
+-> removed   ppx_derivers.1.2.1
+-> removed   sexplib0.v0.16.0
+-> removed   yaml.3.2.0
+-> removed   ctypes.0.24.0
+-> removed   dune-configurator.3.19.1
+-> removed   csexp.1.5.2
+-> removed   integers.0.7.0
+-> removed   stdlib-shims.0.3.0
+-> removed   yojson.2.2.2
+-> removed   dune.3.19.1
+-> installed dune.3.23.1
+-> installed csexp.1.5.2
+-> installed camlp-streams.5.0.1
+-> installed cppo.1.8.0
+-> installed easy-format.1.3.4
+-> installed dune-build-info.3.19.1
+-> installed gen.1.1
+-> installed biniou.1.2.2
+-> installed jane-street-headers.v0.16.0
+-> installed ISO8601.0.2.6
+-> installed dune-configurator.3.19.1
+-> installed menhirCST.20240715
+-> installed menhirSdk.20240715
+-> installed menhirLib.20240715
+-> installed ocaml-compiler-libs.v0.12.4
+-> installed cairo2.0.6.5
+-> installed ocplib-simplex.0.5.1
+-> installed ocamlgraph.2.2.0
+-> installed ordering.3.19.1
+-> installed pp.2.0.0
+-> installed pp_loc.2.1.0
+-> installed dyn.3.19.1
+-> installed pprint.20230830
+-> installed ppx_derivers.1.2.1
+-> installed re.1.14.0
+-> installed lablgtk3.3.1.5
+-> installed lem.2026-05-01
+-> installed lablgtk3-sourceview3.3.1.5
+-> installed menhir.20240715
+-> installed result.1.5
+-> installed sexplib0.v0.16.0
+-> installed stdlib-shims.0.3.0
+-> installed stdune.3.19.1
+-> installed base.v0.16.4
+-> installed dune-private-libs.3.19.1
+-> installed integers.0.7.0
+-> installed dolmen.0.9
+-> installed dune-site.3.19.1
+-> installed parsexp.v0.16.0
+-> installed earley.3.0.0
+-> installed ctypes.0.24.0
+-> installed psmt2-frontend.0.4.0
+-> installed sexplib.v0.16.0
+-> installed spelll.0.4
+-> installed sha.1.15.4
+-> installed stdio.v0.16.0
+-> installed toml.7.1.0
+-> installed ubase.0.20
+-> installed unionFind.20220122
+-> installed dolmen_type.0.9
+-> installed yojson.3.0.0
+-> installed yaml.3.2.0
+-> installed dolmen_loop.0.9
+-> installed atd.4.2.0
+-> installed atdgen-runtime.4.2.0
+-> installed atdts.4.2.0
+-> installed atdgen.4.2.0
+-> installed ppxlib.0.35.0
+-> installed ppx_compare.v0.16.0
+-> installed ppx_blob.0.9.0
+-> installed ppx_cold.v0.16.0
+-> installed ppx_enumerate.v0.16.0
+-> installed ppx_globalize.v0.16.0
+-> installed ppx_deriving.6.0.3
+-> installed ppx_here.v0.16.0
+-> installed ppx_optcomp.v0.16.0
+-> installed ppx_deriving_yaml.0.3.0
+-> installed ppx_deriving_yojson.3.9.0
+-> installed alt-ergo-lib.2.5.4
+-> installed ppx_sexp_conv.v0.16.0
+-> installed alt-ergo-parsers.2.5.4
+-> installed ppx_assert.v0.16.0
+-> installed elpi.3.7.3
+-> installed rocq-runtime.9.1.0
+-> installed jst-config.v0.16.0
+-> installed ppx_hash.v0.16.0
+-> installed alt-ergo.2.5.4
+-> installed coq-core.9.1.0
+-> installed coqide-server.9.1.0
+-> installed ppx_base.v0.16.0
+-> installed time_now.v0.16.0
+-> installed ppx_inline_test.v0.16.1
+-> installed rocq-core.9.1.0
+-> installed rocq-elpi.3.5.1
+-> installed cerberus-lib.dev
+-> installed why3.1.8.2
+-> installed rocq-stdlib.9.0.0
+-> installed coq-stdlib.9.0.0
+-> installed coq.9.1.0
+-> installed coq-record-update.0.3.6
+-> installed rocq-stdpp.dev.2026-09-09.1.c3186aad
+-> installed rocq-stdpp-bitvector.dev.2026-09-09.1.c3186aad
+-> installed rocq-stdpp-unstable.dev.2026-09-09.1.c3186aad
+-> installed rocq-iris.dev.2026-09-10.3.b3495ef9
+-> installed coq-lithium.dev.2026-09-11.0.2e89846b
+-> installed refinedc.dev.2026-09-11.0.2e89846b
+Done.
+
+<><> coq-core.9.1.0 installed successfully ><><><><><><><><><><><><><><><><><><>
+=> Coq has been renamed to The Rocq Prover, see https://rocq-prover.org/refman/changes.html#porting-to-the-rocq-prover for details.
+      This package provides compatibility binaries to ease the transition to the new rocq binary.
+# To update the current shell environment, run: eval $(opam env)
+
+Exit: 0

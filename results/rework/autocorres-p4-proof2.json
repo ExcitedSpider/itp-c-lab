@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P4"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:02:36.382354+00:00",
+  "exit_code": 1,
+  "wall_seconds": 22.779071332886815,
+  "output": "Running C_ITP_P4 ...\nC_ITP_P4 FAILED (see also \"isabelle build_log -H Error C_ITP_P4\")\n*** Failed to apply initial proof method (line 61 of \"/work/autocorres/p4/P4.thy\"):\n*** using this:\n***     lo < hi\n***     0 \u2264 lo\n***     hi \u2264 int (length xs)\n***     \u2200i<nat lo. xs ! i < key\n***     \u2200i. nat hi \u2264 i \u2227 i < length xs \u27f6 key < xs ! i\n***     heap_w32 s\n***      (PTR_COERCE(32 signed word \u2192 32 word) (a +\u21e9p (lo + (hi - lo) div 2))) \u2260\n***     word_of_int key\n***     xs ! nat (lo + (hi - lo) div 2) < key\n***     i < nat (lo + (hi - lo) div 2 + 1)\n***     n = int (length xs)\n***     length xs \u2264 2147483647\n***     - 2147483648 \u2264 key\n***     key \u2264 2147483647\n***     \u2200i j. i \u2264 j \u2227 j < length xs \u27f6 xs ! i \u2264 xs ! j\n***     \u27e60 \u2264 ?i; ?i < int (length xs)\u27e7\n***     \u27f9 IS_VALID(32 word) s\n***         (PTR_COERCE(32 signed word \u2192 32 word) (a +\u21e9p ?i)) \u2227\n***        sint (heap_w32 s (PTR_COERCE(32 signed word \u2192 32 word) (a +\u21e9p ?i))) =\n***        xs ! nat ?i\n*** goal (1 subgoal):\n***  1. nat (lo + (hi - lo) div 2) < length xs &&&\n***     i \u2264 nat (lo +\n***              (hi - lo) div\n***              2)\n*** At command \"by\" (line 61 of \"/work/autocorres/p4/P4.thy\")\nUnfinished session(s): C_ITP_P4\n0:00:21 elapsed time, 0:00:16 cpu time, factor 0.78\n"
+}

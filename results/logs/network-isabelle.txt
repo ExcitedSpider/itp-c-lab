@@ -1,0 +1,7 @@
+$ ["curl","-I","--max-time","15","https://isabelle.in.tum.de"]
+Environment overrides: {}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: isabelle.in.tum.de
+
+Exit: 6; signal: null; wall_seconds: 0.0063738910000000005

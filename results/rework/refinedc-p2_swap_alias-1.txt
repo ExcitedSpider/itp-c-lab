@@ -1,0 +1,11 @@
+$ ["/usr/bin/time", "-f", "PEAK_RSS_KB=%M", "opam", "exec", "--", "refinedc", "check", "refinedc/p2_swap_alias.c"]
+Entering directory '/work/refinedc'
+        rocq proofs/p2_swap_alias/.c_itp_refinedc.theory.d
+        rocq proofs/p2_swap_alias/generated_code.{glob,vo}
+        rocq proofs/p2_swap_alias/generated_spec.{glob,vo}
+        rocq proofs/p2_swap_alias/generated_proof_swap.{glob,vo}
+Leaving directory '/work/refinedc'
+File "refinedc/p2_swap_alias.c" successfully checked.
+PEAK_RSS_KB=603072
+
+Exit: 0

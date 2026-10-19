@@ -1,0 +1,4 @@
+$ ["sh", "-c", "cd refinedc && opam exec -- refinedc init"]
+[31mA RefinedC project already exists here.
+[0m
+Exit: 1

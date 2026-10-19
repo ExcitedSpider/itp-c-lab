@@ -1,0 +1,53 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p4.v"]
+2 goals
+  
+  Espec : OracleKind
+  a : val
+  xs : list Z
+  n, key : Z
+  Delta_specs : Maps.PTree.t funspec
+  Delta := abbreviate : tycontext
+  H : 0 <= n <= Int.max_signed
+  H0 : Zlength xs = n
+  H1 : Int.min_signed <= key <= Int.max_signed
+  H2 : Forall (fun x : Z => Int.min_signed <= x <= Int.max_signed) xs
+  H3 : forall i j : Z, 0 <= i /\ i <= j < n -> Znth i xs <= Znth j xs
+  lo, hi : Z
+  HRE : lo < hi
+  H4 : 0 <= lo /\ lo <= hi <= n
+  H5 : forall i : Z, 0 <= i < lo -> Znth i xs < key
+  H6 : forall i : Z, hi <= i < n -> key < Znth i xs
+  Hm : lo <= lo + (hi - lo) / 2 < hi
+  ============================
+  ENTAIL Delta,
+  PROP ( )
+  LOCAL (temp _a a; temp _n (Vint (Int.repr n));
+  temp _key (Vint (Int.repr key)); temp _lo (Vint (Int.repr lo));
+  temp _hi (Vint (Int.repr hi)))
+  SEP (data_at Tsh (tarray tint n) (map (fun x : Z => Vint (Int.repr x)) xs)
+         a)
+  |-- tc_expr Delta (_lo + (_hi - _lo) / (2))%expr
+
+goal 2 is:
+ semax Delta
+   (PROP ( )
+    LOCAL (temp _mid
+             (Vint
+                (Int.add (Int.repr lo)
+                   (Int.divs (Int.sub (Int.repr hi) (Int.repr lo))
+                      (Int.repr 2))));
+    temp _a a; temp _n (Vint (Int.repr n)); temp _key (Vint (Int.repr key));
+    temp _lo (Vint (Int.repr lo)); temp _hi (Vint (Int.repr hi)))
+    SEP (data_at Tsh (tarray tint n)
+           (map (fun x : Z => Vint (Int.repr x)) xs) a))
+   ((_t'2 = _a[_mid];
+     if (_t'2 == _key) {
+       return _mid;
+     })
+    MORE_COMMANDS)
+   POSTCONDITION
+File "./vst/verif_p4.v", line 39, characters 19-26:
+Error: No matching clauses for match.
+
+
+Exit: 1

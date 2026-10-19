@@ -1,0 +1,10 @@
+{
+  "status": "partial experiment",
+  "environment": "Fedora 43, x86_64, restricted filesystem/network; Podman unavailable in sandbox",
+  "wp": {"frama_c":"30.0 (Zinc)","alt_ergo":"2.6.0","why3":"1.7.2 (opam switch-state; library linked into WP)","ocaml":"4.14.1 (switch-state)","model":"Typed, x86_64 (32-bit signed int)","environment":"Read-only existing opam environment accessed via /tmp/framac symlink and DUNE_DIR_LOCATIONS / OCAMLPATH overrides"},
+  "vst": {"status":"blocked before installation","version":null,"reason":"No coqc/clightgen found; Podman user-namespace setup prohibited; package download DNS unavailable"},
+  "refinedc": {"status":"blocked before installation","version":null,"supported_rocq":"unconfirmed: upstream manifest retrieval failed; no version guessed","reason":"No local installation; package download DNS unavailable; upstream web manifest inaccessible"},
+  "autocorres": {"status":"blocked before installation","version":null,"reason":"No Isabelle executable found; container creation prohibited; distribution download DNS unavailable"},
+  "escalation":"Execution policy rejected sandbox escalation; not a verifier build failure",
+  "publication":"Repository-local self-contained HTML; no hosted service required"
+}

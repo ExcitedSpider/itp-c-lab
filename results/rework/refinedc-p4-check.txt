@@ -1,0 +1,186 @@
+$ ["opam", "exec", "--", "refinedc", "check", "refinedc/p4_binary_search.c"]
+Entering directory '/work/refinedc'
+        rocq proofs/p4_binary_search/.c_itp_refinedc.theory.d
+        rocq proofs/p4_binary_search/generated_code.{glob,vo}
+        rocq proofs/p4_binary_search/generated_spec.{glob,vo}
+File "proofs/p4_binary_search/dune", lines 2-5, characters 0-248:
+2 | (rocq.theory
+3 |  (flags :standard -w -notation-incompatible-prefix -w -redundant-canonical-projection)
+4 |  (name c_itp_refinedc.p4_binary_search)
+5 |  (theories Ltac2 RecordUpdate Stdlib caesium iris lithium refinedc.typing refinedc.typing.automation stdpp))
+        rocq proofs/p4_binary_search/generated_proof_binary_search.{glob,vo} (exit 1)
+Cannot solve side condition in function "binary_search" !
+Location: "p4_binary_search.c" [ 116 : 23 - 116 : 34 ]
+up to date: true
+Case distinction (if bool_decide (vl < vh)) -> true
+at "p4_binary_search.c" [ 114 : 9 - 114 : 16 ]
+Case distinction (if bool_decide (key = key)) -> true
+at "p4_binary_search.c" [ 116 : 8 - 116 : 21 ]
+Goal:
+xs : (list Z)
+key : Z
+H :
+(∀ (i j : nat) (x y : Z),
+   (i <= j)%nat → xs !! i = Some x → xs !! j = Some y → x ≤ y)
+vl : nat
+vh : nat
+H0 : (vl <= vh)%nat
+H1 : (vh <= length xs)%nat
+H2 : (∀ (i : nat) (x : Z), (i < vl)%nat → xs !! i = Some x → x < key)
+H3 : (∀ (i : nat) (x : Z), (vh <= i)%nat → xs !! i = Some x → key < x)
+H4 : (min_int i32 ≤ vl)
+H5 : (vl ≤ max_int i32)
+H6 : (min_int i32 ≤ vh)
+H7 : (vh ≤ max_int i32)
+H8 : (vl < vh)
+H9 : (min_int i32 ≤ vh - vl)
+H10 : (vh - vl ≤ max_int i32)
+H11 : (min_int i32 ≤ 2)
+H12 : (min_int i32 ≤ (vh - vl) `quot` 2)
+H13 : ((vh - vl) `quot` 2 ≤ max_int i32)
+H14 : (xs !! Z.to_nat (vl + (vh - vl) `quot` 2) = Some key)
+H15 : (Z.to_nat (vl + (vh - vl) `quot` 2) < length xs)%nat
+H17 : (key ≤ max_int i32)
+H16 : (min_int i32 ≤ key)
+H18 : (min_int i32 ≤ key)
+H19 : (key ≤ max_int i32)
+---------------------------------------
+(vl + (vh - vl) `quot` 2 = -1 ↔ ∀ i : nat, xs !! i ≠ Some key)
+
+
+Cannot solve side condition in function "binary_search" !
+Location: "p4_binary_search.c" [ 114 : 2 - 119 : 3 ]
+up to date: true
+Case distinction (if bool_decide (vl < vh)) -> true
+at "p4_binary_search.c" [ 114 : 9 - 114 : 16 ]
+Case distinction (if bool_decide (y = key)) -> false
+at "p4_binary_search.c" [ 116 : 8 - 116 : 21 ]
+Case distinction (if bool_decide (y < key)) -> true
+at "p4_binary_search.c" [ 117 : 8 - 117 : 20 ]
+Goal:
+xs : (list Z)
+key : Z
+H :
+(∀ (i j : nat) (x y : Z),
+   (i <= j)%nat → xs !! i = Some x → xs !! j = Some y → x ≤ y)
+vl : nat
+vh : nat
+H0 : (vl <= vh)%nat
+H1 : (vh <= length xs)%nat
+H2 : (∀ (i : nat) (x : Z), (i < vl)%nat → xs !! i = Some x → x < key)
+H3 : (∀ (i : nat) (x : Z), (vh <= i)%nat → xs !! i = Some x → key < x)
+H4 : (min_int i32 ≤ vl)
+H5 : (vl ≤ max_int i32)
+H6 : (min_int i32 ≤ vh)
+H7 : (vh ≤ max_int i32)
+H8 : (vl < vh)
+H9 : (min_int i32 ≤ vh - vl)
+H10 : (vh - vl ≤ max_int i32)
+H11 : (min_int i32 ≤ 2)
+H12 : (min_int i32 ≤ (vh - vl) `quot` 2)
+H13 : ((vh - vl) `quot` 2 ≤ max_int i32)
+y : Z
+H14 : (xs !! Z.to_nat (vl + (vh - vl) `quot` 2) = Some y)
+H15 : (Z.to_nat (vl + (vh - vl) `quot` 2) < length xs)%nat
+H16 : (min_int i32 ≤ y)
+H17 : (y ≤ max_int i32)
+H18 : (min_int i32 ≤ key)
+H19 : (key ≤ max_int i32)
+H20 : (y ≠ key)
+H21 : (y < key)
+H22 : (min_int i32 ≤ vl + (vh - vl) `quot` 2)
+H23 : (vl + (vh - vl) `quot` 2 ≤ max_int i32)
+i : nat
+x : Z
+H24 : (i < Z.to_nat (vl + (vh - vl) `quot` 2 + 1))%nat
+H25 : (xs !! i = Some x)
+H26 : (i < length xs)%nat
+---------------------------------------
+(x < key)
+
+
+Cannot solve side condition in function "binary_search" !
+Location: "p4_binary_search.c" [ 114 : 2 - 119 : 3 ]
+up to date: true
+Case distinction (if bool_decide (vl < vh)) -> true
+at "p4_binary_search.c" [ 114 : 9 - 114 : 16 ]
+Case distinction (if bool_decide (y = key)) -> false
+at "p4_binary_search.c" [ 116 : 8 - 116 : 21 ]
+Case distinction (if bool_decide (y < key)) -> false
+at "p4_binary_search.c" [ 117 : 8 - 117 : 20 ]
+Goal:
+xs : (list Z)
+key : Z
+H :
+(∀ (i j : nat) (x y : Z),
+   (i <= j)%nat → xs !! i = Some x → xs !! j = Some y → x ≤ y)
+vl : nat
+vh : nat
+H0 : (vl <= vh)%nat
+H1 : (vh <= length xs)%nat
+H2 : (∀ (i : nat) (x : Z), (i < vl)%nat → xs !! i = Some x → x < key)
+H3 : (∀ (i : nat) (x : Z), (vh <= i)%nat → xs !! i = Some x → key < x)
+H4 : (min_int i32 ≤ vl)
+H5 : (vl ≤ max_int i32)
+H6 : (min_int i32 ≤ vh)
+H7 : (vh ≤ max_int i32)
+H8 : (vl < vh)
+H9 : (min_int i32 ≤ vh - vl)
+H10 : (vh - vl ≤ max_int i32)
+H11 : (min_int i32 ≤ 2)
+H12 : (min_int i32 ≤ (vh - vl) `quot` 2)
+H13 : ((vh - vl) `quot` 2 ≤ max_int i32)
+y : Z
+H14 : (xs !! Z.to_nat (vl + (vh - vl) `quot` 2) = Some y)
+H15 : (Z.to_nat (vl + (vh - vl) `quot` 2) < length xs)%nat
+H16 : (min_int i32 ≤ y)
+H17 : (y ≤ max_int i32)
+H18 : (min_int i32 ≤ key)
+H19 : (key ≤ max_int i32)
+H20 : (y ≠ key)
+H21 : (¬ y < key)
+i : nat
+x : Z
+H22 : (Z.to_nat (vl + (vh - vl) `quot` 2) <= i)%nat
+H23 : (xs !! i = Some x)
+H24 : (i < length xs)%nat
+---------------------------------------
+(key < x)
+
+
+Cannot solve side condition in function "binary_search" !
+Location: "p4_binary_search.c" [ 120 : 2 - 120 : 12 ]
+up to date: true
+Case distinction (if bool_decide (vl < vh)) -> false
+at "p4_binary_search.c" [ 114 : 9 - 114 : 16 ]
+Goal:
+xs : (list Z)
+key : Z
+H :
+(∀ (i j : nat) (x y : Z),
+   (i <= j)%nat → xs !! i = Some x → xs !! j = Some y → x ≤ y)
+vl : nat
+vh : nat
+H0 : (vl <= vh)%nat
+H1 : (vh <= length xs)%nat
+H2 : (∀ (i : nat) (x : Z), (i < vl)%nat → xs !! i = Some x → x < key)
+H3 : (∀ (i : nat) (x : Z), (vh <= i)%nat → xs !! i = Some x → key < x)
+H4 : (min_int i32 ≤ vl)
+H5 : (vl ≤ max_int i32)
+H6 : (min_int i32 ≤ vh)
+H7 : (vh ≤ max_int i32)
+H8 : (¬ vl < vh)
+H9 : (min_int i32 ≤ 1)
+---------------------------------------
+(- (1) = -1 ↔ ∀ i : nat, xs !! i ≠ Some key)
+
+
+File "./proofs/p4_binary_search/generated_proof_binary_search.v", line 43, characters 2-6:
+Error:  (in proof type_binary_search): Attempt to save an incomplete proof
+(the proof term is not complete because of given up (admitted) goals).
+If this is really what you want to do, use Admitted in place of Qed.
+
+Leaving directory '/work/refinedc'
+[31mThe call to [dune] returned with error code 1.
+[0m
+Exit: 1

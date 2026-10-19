@@ -1,0 +1,12 @@
+From c_itp_refinedc.p1_abs Require Import generated_proof_abs_val.
+From c_itp_refinedc.p2_swap Require Import generated_proof_swap.
+From c_itp_refinedc.p2_swap_alias Require Import generated_proof_swap.
+From c_itp_refinedc.p3_sum Require Import generated_proof_sum_array.
+From c_itp_refinedc.p4_binary_search Require Import generated_proof_binary_search.
+From c_itp_refinedc.p5_reverse Require Import generated_proof_reverse.
+Print Assumptions c_itp_refinedc.p1_abs.generated_proof_abs_val.type_abs_val.
+Print Assumptions c_itp_refinedc.p2_swap.generated_proof_swap.type_swap.
+Print Assumptions c_itp_refinedc.p2_swap_alias.generated_proof_swap.type_swap.
+Print Assumptions c_itp_refinedc.p3_sum.generated_proof_sum_array.type_sum_array.
+Print Assumptions c_itp_refinedc.p4_binary_search.generated_proof_binary_search.type_binary_search.
+Print Assumptions c_itp_refinedc.p5_reverse.generated_proof_reverse.type_reverse.

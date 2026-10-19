@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "refinedc",
+    "check",
+    "refinedc/p1_abs.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:11:08.514329+00:00",
+  "exit_code": 0,
+  "wall_seconds": 2.7422797018662095,
+  "output": "Entering directory '/work/refinedc'\n        rocq proofs/p1_abs/.c_itp_refinedc.theory.d\n        rocq proofs/p1_abs/generated_code.{glob,vo}\n        rocq proofs/p1_abs/generated_spec.{glob,vo}\n        rocq proofs/p1_abs/generated_proof_abs_val.{glob,vo}\nLeaving directory '/work/refinedc'\nFile \"refinedc/p1_abs.c\" successfully checked.\nPEAK_RSS_KB=604076\n"
+}

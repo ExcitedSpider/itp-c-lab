@@ -1,0 +1,25 @@
+{
+  "label": "c-syntax",
+  "timestamp": "2026-10-19T02:13:57.463Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "gcc",
+    "-std=c11",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-fsyntax-only",
+    "programs/p1_abs.c",
+    "programs/p2_swap.c",
+    "programs/p3_sum.c",
+    "programs/p4_binary_search.c",
+    "programs/p5_reverse.c"
+  ],
+  "env": {},
+  "exit_code": 0,
+  "signal": null,
+  "error": "spawnSync gcc EPERM",
+  "wall_seconds": 0.030774372000000005,
+  "stdout": "",
+  "stderr": ""
+}

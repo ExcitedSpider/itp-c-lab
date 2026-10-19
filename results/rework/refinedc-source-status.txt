@@ -1,0 +1,8 @@
+$ ["sh", "-c", "git -C /home/opam/refinedc status --short && git -C /home/opam/refinedc diff --stat && git -C /home/opam/refinedc rev-parse HEAD && opam pin list"]
+2e89846baeaa7f65cbe17e3ae7297a8ed5b4feca
+cerberus-lib.dev                         git      git+https://github.com/rems-project/cerberus.git#f11e6b335a687c1b77539f7e5695607d09dfc3ea  (at f11e6b335a687c1b77539f7e5695607d09dfc3ea)
+coq-lithium.dev.2026-09-11.0.2e89846b    git      git+file:///home/opam/refinedc#master                                                      (at 2e89846baeaa7f65cbe17e3ae7297a8ed5b4feca)
+ocaml-base-compiler.4.14.2               version  4.14.2
+refinedc.dev.2026-09-11.0.2e89846b       git      git+file:///home/opam/refinedc#master                                                      (at 2e89846baeaa7f65cbe17e3ae7297a8ed5b4feca)
+
+Exit: 0

@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-v",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P1"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:53:18.251284+00:00",
+  "exit_code": 1,
+  "wall_seconds": 13.262933684047312,
+  "output": "Started at Mon Oct 19 02:53:05 GMT 2026 (polyml-5.9.2_x86_64_32-linux on d9ebc079028b)\nISABELLE_TOOL_JAVA_OPTIONS=\"-Djava.awt.headless=true -Xms512m -Xmx4g -Xss16m\"\nISABELLE_BUILD_OPTIONS=\"\"\n\nML_PLATFORM=\"x86_64_32-linux\"\nML_HOME=\"/home/isabelle/Isabelle/contrib/polyml-5.9.2-2/x86_64_32-linux\"\nML_SYSTEM=\"polyml-5.9.2\"\nML_OPTIONS=\"--minheap 500\"\n\nSession Pure/Pure\nSession FOL/FOL\nSession Misc/Tools\nSession HOL/HOL (main)\nSession HOL/HOL-Cardinals (timing)\nSession HOL/HOL-Library (main timing)\nSession HOL/HOL-Combinatorics (main timing)\nSession HOL/HOL-Computational_Algebra (main timing)\nSession HOL/HOL-Algebra (main timing)\nSession HOL/HOL-Decision_Procs (timing)\nSession HOL/HOL-Number_Theory (main timing)\nSession HOL/HOL-ex (timing)\nSession HOL/HOL-Real_Asymp\nSession HOL/HOL-Analysis (main timing)\nSession HOL/HOL-Eisbach\nSession HOL/HOL-Statespace\nSession AFP/Simpl (AFP)\nSession AFP/Word_Lib (AFP)\nSession AFP/AutoCorres2 (AFP)\nSession Unsorted/C_ITP_P1\nRunning C_ITP_P1 ...\nC_ITP_P1: theory C_ITP_P1.P1\nC_ITP_P1: theory C_ITP_P1.P1 100% (3.085s cumulated time)\nC_ITP_P1 FAILED (see also \"isabelle build_log -H Error C_ITP_P1\")\n*** Failed to finish proof:\n*** goal (2 subgoals):\n***  1. x < 0 \u27f9 - x \u2264 INT_MAX\n***  2. x < 0 \u27f9 - x = \u00a6x\u00a6\n*** variables:\n***     s :: lifted_globals\n***     x :: int\n*** At command \"done\" (line 17 of \"/work/autocorres/p1/P1.thy\")\nUnfinished session(s): C_ITP_P1\n\nFinished at Mon Oct 19 02:53:17 GMT 2026\n0:00:12 elapsed time, 0:00:05 cpu time, factor 0.44\n"
+}

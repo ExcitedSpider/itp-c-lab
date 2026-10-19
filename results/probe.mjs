@@ -1,0 +1,14 @@
+import {run} from './runner.mjs';
+import fs from 'node:fs';
+fs.mkdirSync('/tmp/c-itp-runtime',{recursive:true});
+run('podman-default','podman',['ps','-a']);
+run('podman-isolated','podman',['--root','/tmp/c-itp-podman-storage','--runroot','/tmp/c-itp-runtime/run','--storage-driver','vfs','info'],{XDG_RUNTIME_DIR:'/tmp/c-itp-runtime'});
+run('network-opam','curl',['-I','--max-time','15','https://opam.ocaml.org']);
+run('network-refinedc','curl',['-I','--max-time','15','https://gitlab.mpi-sws.org/iris/refinedc']);
+run('network-isabelle','curl',['-I','--max-time','15','https://isabelle.in.tum.de']);
+run('opam-version','opam',['--version']);
+run('host','uname',['-a']);
+run('gcc-version','gcc',['--version']);
+run('coqc-version','coqc',['--version']);
+run('rocq-version','rocq',['--version']);
+run('isabelle-version','isabelle',['version']);

@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "clightgen",
+    "-normalize",
+    "-o",
+    "vst/generated/p1_abs.v",
+    "programs/p1_abs.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:46:35.358661+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.028500279877334833,
+  "output": ""
+}

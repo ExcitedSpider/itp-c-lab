@@ -1,0 +1,129 @@
+<recording theory="Draft.P2"><step name="theory" start_symbol="1" end_symbol="49" line="1" proof_open="false"><command>theory P2
+imports AutoCorres2.AutoCorres
+begin</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="49" end_symbol="50" line="3" proof_open="false"><command>
+</command><output></output></step><step name="install_C_file" start_symbol="50" end_symbol="91" line="4" proof_open="false"><command>install_C_file ../../programs/p2_swap.c</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="91" end_symbol="92" line="4" proof_open="false"><command>
+</command><output></output></step><step name="autocorres" start_symbol="92" end_symbol="151" line="5" proof_open="false"><command>autocorres [heap_abs_syntax, ts_rules = nondet] p2_swap.c</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="151" end_symbol="152" line="5" proof_open="false"><command>
+</command><output></output></step><step name="context" start_symbol="152" end_symbol="190" line="6" proof_open="false"><command>context p2_swap_global_addresses begin</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="190" end_symbol="191" line="6" proof_open="false"><command>
+</command><output></output></step><step name="thm" start_symbol="191" end_symbol="204" line="7" proof_open="false"><command>thm swap&apos;_def</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="204" end_symbol="205" line="7" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="205" end_symbol="469" line="8" proof_open="true"><command>lemma swap_correct:
+  \&lt;lbrakk&gt;IS_VALID(32 word) s (ptr_coerce a); heap_w32 s (ptr_coerce a) = x;
+    IS_VALID(32 word) s (ptr_coerce b); heap_w32 s (ptr_coerce b) = y\&lt;rbrakk&gt; \&lt;Longrightarrow&gt;
+    swap&apos; a b \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res _ s. heap_w32 s (ptr_coerce a) = y \&lt;and&gt;
+      heap_w32 s (ptr_coerce b) = x \&lt;rbrace&gt;</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;IS_VALID(32 word) s
+              (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) a);
+     s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) a] = x;
+     IS_VALID(32 word) s
+      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) b);
+     s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) b] = y\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; swap&apos; a b
+                      \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res _ s.
+         s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) a] = y \&lt;and&gt;
+         s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) b] = x \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="469" end_symbol="472" line="12" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;IS_VALID(32 word) s
+              (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) a);
+     s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) a] = x;
+     IS_VALID(32 word) s
+      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) b);
+     s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) b] = y\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; swap&apos; a b
+                      \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res _ s.
+         s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) a] = y \&lt;and&gt;
+         s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) b] = x \&lt;rbrace&gt;</output></step><step name="unfolding" start_symbol="472" end_symbol="491" line="13" proof_open="true"><command>unfolding swap&apos;_def</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;IS_VALID(32 word) s
+              (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) a);
+     s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) a] = x;
+     IS_VALID(32 word) s
+      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) b);
+     s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) b] = y\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; do {
+                        guard
+                         (\&lt;lambda&gt;s.
+                             IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                a));
+                        guard
+                         (\&lt;lambda&gt;s.
+                             IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                b));
+                        t \&lt;leftarrow&gt;
+                          gets
+                           (\&lt;lambda&gt;s.
+                               sint
+                                s[PTR_COERCE
+                                   (32 signed word \&lt;rightarrow&gt; 32 word)
+                                   a]);
+                        modify
+                         (\&lt;lambda&gt;s.
+                             s[PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                a := s[PTR_COERCE
+  (32 signed word \&lt;rightarrow&gt; 32 word)
+  b]]);
+                        modify
+                         (\&lt;lambda&gt;s.
+                             s[PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                b := UCAST(32 signed \&lt;rightarrow&gt; 32)
+(word_of_int t)])
+                      } \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res _ s.
+           s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) a] = y \&lt;and&gt;
+           s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) b] =
+           x \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="491" end_symbol="494" line="13" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;IS_VALID(32 word) s
+              (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) a);
+     s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) a] = x;
+     IS_VALID(32 word) s
+      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) b);
+     s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) b] = y\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; do {
+                        guard
+                         (\&lt;lambda&gt;s.
+                             IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                a));
+                        guard
+                         (\&lt;lambda&gt;s.
+                             IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                b));
+                        t \&lt;leftarrow&gt;
+                          gets
+                           (\&lt;lambda&gt;s.
+                               sint
+                                s[PTR_COERCE
+                                   (32 signed word \&lt;rightarrow&gt; 32 word)
+                                   a]);
+                        modify
+                         (\&lt;lambda&gt;s.
+                             s[PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                a := s[PTR_COERCE
+  (32 signed word \&lt;rightarrow&gt; 32 word)
+  b]]);
+                        modify
+                         (\&lt;lambda&gt;s.
+                             s[PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                b := UCAST(32 signed \&lt;rightarrow&gt; 32)
+(word_of_int t)])
+                      } \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res _ s.
+           s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) a] = y \&lt;and&gt;
+           s[PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) b] =
+           x \&lt;rbrace&gt;</output></step><step name="by" start_symbol="494" end_symbol="540" line="14" proof_open="false"><command>by (runs_to_vcg; clarsimp simp: fun_upd_apply)</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="540" end_symbol="541" line="14" proof_open="false"><command>
+</command><output></output></step><step name="ML" start_symbol="541" end_symbol="710" line="15" proof_open="false"><command>ML val _ = if null (Thm_Deps.all_oracles [@{thm swap_correct}]) then
+  writeln &quot;AUDIT: swap_correct has no oracle dependencies&quot; else error &quot;Oracle dependency detected&quot;</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="710" end_symbol="711" line="16" proof_open="false"><command>
+</command><output></output></step><step name="end" start_symbol="711" end_symbol="714" line="17" proof_open="false"><command>end</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="714" end_symbol="715" line="17" proof_open="false"><command>
+</command><output></output></step><step name="end" start_symbol="715" end_symbol="718" line="18" proof_open="false"><command>end</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="718" end_symbol="719" line="18" proof_open="false"><command>
+</command><output></output></step></recording>

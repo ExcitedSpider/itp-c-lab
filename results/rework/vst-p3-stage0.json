@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "clightgen",
+    "-normalize",
+    "-o",
+    "vst/generated/p3_sum.v",
+    "programs/p3_sum.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:46:55.122128+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.028562576044350863,
+  "output": ""
+}

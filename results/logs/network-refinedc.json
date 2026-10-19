@@ -1,0 +1,19 @@
+{
+  "label": "network-refinedc",
+  "timestamp": "2026-10-19T01:56:31.591Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "curl",
+    "-I",
+    "--max-time",
+    "15",
+    "https://gitlab.mpi-sws.org/iris/refinedc"
+  ],
+  "env": {},
+  "exit_code": 6,
+  "signal": null,
+  "error": "spawnSync curl EPERM",
+  "wall_seconds": 0.006736097000000001,
+  "stdout": "",
+  "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: gitlab.mpi-sws.org\n"
+}

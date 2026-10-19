@@ -1,0 +1,4 @@
+$ ["git", "clone", "--depth", "1", "https://gitlab.mpi-sws.org/iris/refinedc.git", "/home/opam/refinedc"]
+Cloning into '/home/opam/refinedc'...
+
+Exit: 0

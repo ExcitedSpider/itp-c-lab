@@ -1,0 +1,6 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p4.v"]
+File "./vst/verif_p4.v", line 64, characters 8-19:
+Error: No product even after head-reduction.
+
+
+Exit: 1

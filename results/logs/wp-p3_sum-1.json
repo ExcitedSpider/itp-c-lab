@@ -1,0 +1,41 @@
+{
+  "label": "wp-p3_sum-1",
+  "timestamp": "2026-10-19T01:57:37.840Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "/tmp/framac/4.14.1/bin/frama-c",
+    "-wp-why3-extra-config",
+    "wp/why3.conf",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-par",
+    "1",
+    "-wp-timeout",
+    "10",
+    "-wp-cache",
+    "none",
+    "programs/p3_sum.c"
+  ],
+  "env": {
+    "OCAMLPATH": "/tmp/framac/4.14.1/lib",
+    "DUNE_DIR_LOCATIONS": "frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"
+  },
+  "exit_code": 1,
+  "signal": null,
+  "error": "spawnSync /usr/bin/time EPERM",
+  "wall_seconds": 0.145896201,
+  "stdout": "[kernel] Parsing programs/p3_sum.c (with preprocessing)\n[kernel:annot-error] programs/p3_sum.c:3: Warning: unexpected token 'const'\n[kernel] User Error: warning annot-error treated as fatal error.\n[kernel] Frama-C aborted: invalid user input.\n",
+  "stderr": "/tmp/ppannot719e0c.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined\n    1 | #define __STDC_EMBED_NOT_FOUND__ 0\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot719e0c.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined\n    2 | #define __STDC_EMBED_FOUND__ 1\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot719e0c.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined\n    3 | #define __STDC_EMBED_EMPTY__ 2\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\ncc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics\nCommand exited with non-zero status 1\nPEAK_RSS_KB=87384\n",
+  "source_sha256": "d671fde1d959260d7ab7f2be3fdb59d395a9564786a404dde68990f4f12287a8",
+  "proved": null,
+  "total": null,
+  "all_generated_goals_closed": false,
+  "peak_rss_kb": 87384
+}

@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p4.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:49:20.128379+00:00",
+  "exit_code": 1,
+  "wall_seconds": 2.295804969035089,
+  "output": "2 goals\n  \n  Espec : OracleKind\n  a : val\n  xs : list Z\n  n, key : Z\n  Delta_specs : Maps.PTree.t funspec\n  Delta := abbreviate : tycontext\n  H : 0 <= n <= Int.max_signed\n  H0 : Zlength xs = n\n  H1 : Int.min_signed <= key <= Int.max_signed\n  H2 : Forall (fun x : Z => Int.min_signed <= x <= Int.max_signed) xs\n  H3 : forall i j : Z, 0 <= i /\\ i <= j < n -> Znth i xs <= Znth j xs\n  lo, hi : Z\n  HRE : lo < hi\n  H4 : 0 <= lo /\\ lo <= hi <= n\n  H5 : forall i : Z, 0 <= i < lo -> Znth i xs < key\n  H6 : forall i : Z, hi <= i < n -> key < Znth i xs\n  Hm : lo <= lo + (hi - lo) / 2 < hi\n  ============================\n  ENTAIL Delta,\n  PROP ( )\n  LOCAL (temp _a a; temp _n (Vint (Int.repr n));\n  temp _key (Vint (Int.repr key)); temp _lo (Vint (Int.repr lo));\n  temp _hi (Vint (Int.repr hi)))\n  SEP (data_at Tsh (tarray tint n) (map (fun x : Z => Vint (Int.repr x)) xs)\n         a)\n  |-- tc_expr Delta (_lo + (_hi - _lo) / (2))%expr\n\ngoal 2 is:\n semax Delta\n   (PROP ( )\n    LOCAL (temp _mid\n             (Vint\n                (Int.add (Int.repr lo)\n                   (Int.divs (Int.sub (Int.repr hi) (Int.repr lo))\n                      (Int.repr 2))));\n    temp _a a; temp _n (Vint (Int.repr n)); temp _key (Vint (Int.repr key));\n    temp _lo (Vint (Int.repr lo)); temp _hi (Vint (Int.repr hi)))\n    SEP (data_at Tsh (tarray tint n)\n           (map (fun x : Z => Vint (Int.repr x)) xs) a))\n   ((_t'2 = _a[_mid];\n     if (_t'2 == _key) {\n       return _mid;\n     })\n    MORE_COMMANDS)\n   POSTCONDITION\nFile \"./vst/verif_p4.v\", line 39, characters 19-26:\nError: No matching clauses for match.\n\n"
+}

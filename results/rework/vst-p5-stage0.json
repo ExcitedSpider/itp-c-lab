@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "clightgen",
+    "-normalize",
+    "-o",
+    "vst/generated/p5_reverse.v",
+    "programs/p5_reverse.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:47:49.578356+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.019606057088822126,
+  "output": ""
+}

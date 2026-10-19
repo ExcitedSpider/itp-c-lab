@@ -1,0 +1,4 @@
+$ ["isabelle","version"]
+Environment overrides: {}
+
+Exit: null; signal: null; wall_seconds: 0.0010627119999999906

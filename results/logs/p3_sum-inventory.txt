@@ -1,0 +1,30 @@
+$ ["/tmp/framac/4.14.1/bin/frama-c","-wp-why3-extra-config","wp/why3.conf","-machdep","x86_64","-wp","-wp-rte","-wp-prover","alt-ergo","-wp-cache","none","-wp-gen","-wp-report-json","results/replay/p3_sum/goals.json","programs/p3_sum.c"]
+Environment overrides: {"OCAMLPATH":"/tmp/framac/4.14.1/lib","DUNE_DIR_LOCATIONS":"frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"}
+[kernel] Parsing programs/p3_sum.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function sum_array
+[wp] 13 goals scheduled
+[wp] [Generated] Goal typed_sum_array_loop_variant_positive (Qed)
+[wp] [Generated] Goal typed_sum_array_loop_variant_decrease (Qed)
+[wp] [Generated] Goal typed_sum_array_assigns (Qed)
+[wp] [Generated] Goal typed_sum_array_loop_assigns (Qed)
+[wp] [Generated] Goal typed_sum_array_assert_rte_signed_overflow_3 (Qed)
+[wp] [Generated] Goal typed_sum_array_loop_invariant_established (Qed)
+[wp] [Generated] Goal typed_sum_array_loop_invariant_preserved (Qed)
+[wp] [Generated] Goal typed_sum_array_ensures (Qed)
+[wp] 13 goals generated
+/tmp/ppannot5c658d.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined
+    1 | #define __STDC_EMBED_NOT_FOUND__ 0
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+/tmp/ppannot5c658d.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined
+    2 | #define __STDC_EMBED_FOUND__ 1
+      |         ^~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+/tmp/ppannot5c658d.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined
+    3 | #define __STDC_EMBED_EMPTY__ 2
+      |         ^~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+cc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics
+
+Exit: 0; signal: null; wall_seconds: 0.3212874549999999

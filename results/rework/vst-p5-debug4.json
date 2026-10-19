@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p5.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:51:38.114531+00:00",
+  "exit_code": 1,
+  "wall_seconds": 2.6878186371177435,
+  "output": "1 goal\n  \n  Espec : OracleKind\n  xs : list int\n  p : val\n  Delta_specs : Maps.PTree.t funspec\n  Delta := abbreviate : tycontext\n  POSTCONDITION := abbreviate : ret_assert\n  ys, zs : list int\n  r, l : val\n  HRE : l = nullval\n  H : xs = rev ys ++ zs\n  ============================\n  semax Delta\n    (PROP ( )  LOCAL (temp _r r; temp _l l)  SEP (listrep ys r; listrep zs l))\n    (return _r;) POSTCONDITION\nFile \"./vst/verif_p5.v\", line 53, characters 10-45:\nError: Tactic failure: Cannot solve this goal.\n\n"
+}

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "refinedc",
+    "check",
+    "refinedc/p5_reverse.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:42:37.026481+00:00",
+  "exit_code": 0,
+  "wall_seconds": 5.470955906901509,
+  "output": "Entering directory '/work/refinedc'\n        rocq proofs/p5_reverse/.c_itp_refinedc.theory.d\n        rocq proofs/p5_reverse/generated_code.{glob,vo}\n        rocq proofs/p5_reverse/generated_spec.{glob,vo}\n        rocq proofs/p5_reverse/generated_proof_reverse.{glob,vo}\nLeaving directory '/work/refinedc'\nFile \"refinedc/p5_reverse.c\" successfully checked.\n"
+}

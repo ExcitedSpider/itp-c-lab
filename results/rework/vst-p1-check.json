@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p1.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:47:26.475233+00:00",
+  "exit_code": 1,
+  "wall_seconds": 2.623512438032776,
+  "output": "File \"./vst/verif_p1.v\", line 21, characters 49-58:\nError:\nTactic failure: The entailer tactic works only on entailments  _ |-- _ .\n\n"
+}

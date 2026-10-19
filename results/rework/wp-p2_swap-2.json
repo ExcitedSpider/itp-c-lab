@@ -1,0 +1,29 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "frama-c",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-timeout",
+    "10",
+    "-wp-par",
+    "1",
+    "-wp-report-json",
+    "/work/results/rework/wp-p2_swap-2-goals.json",
+    "/work/programs/p2_swap.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:06:24.635609+00:00",
+  "exit_code": 0,
+  "wall_seconds": 1.1231430601328611,
+  "output": "[kernel] Parsing programs/p2_swap.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function swap\n[wp] 8 goals scheduled\n[wp] Proved goals:   10 / 10\n  Terminating:       1\n  Unreachable:       1\n  Qed:               5 (2ms-1ms-4ms)\n  Alt-Ergo 2.5.4:    3 (7ms-9ms)\nPEAK_RSS_KB=115608\n"
+}

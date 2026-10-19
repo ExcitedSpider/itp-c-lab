@@ -1,0 +1,14 @@
+{
+  "command": [
+    "curl",
+    "-IL",
+    "--max-time",
+    "20",
+    "https://www.isa-afp.org/release/afp-2026-10-16.tar.gz"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:06:25.710320+00:00",
+  "exit_code": 0,
+  "wall_seconds": 3.1474479981698096,
+  "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0\n\n  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0\n  0  101M    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0\nHTTP/2 302 \nalt-svc: h3=\":443\"; ma=2592000\nlocation: https://isa-afp.org/release/afp-2026-10-16.tar.gz\nserver: Caddy\ndate: Mon, 19 Oct 2026 03:06:24 GMT\n\nHTTP/2 200 \naccept-ranges: bytes\naccess-control-allow-origin: https://afp-submit.proof.cit.tum.de\nalt-svc: h3=\":443\"; ma=2592000\ncontent-type: application/gzip\netag: \"dm6bd2mic7bs1rgk7x\"\nlast-modified: Fri, 16 Oct 2026 13:57:32 GMT\nserver: Caddy\nvary: Accept-Encoding\ncontent-length: 106588509\ndate: Mon, 19 Oct 2026 03:06:25 GMT\n\n"
+}

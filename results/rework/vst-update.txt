@@ -1,0 +1,6 @@
+$ ["opam", "update", "default"]
+
+<><> Updating package repositories ><><><><><><><><><><><><><><><><><><><><><><>
+[ERROR] Could not update repository "default": "/usr/bin/git fetch -q" exited with code 128
+
+Exit: 40

@@ -1,0 +1,24 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p3_broken.v"]
+1 goal
+  
+  Espec : OracleKind
+  a : val
+  xs : list Z
+  Delta_specs : Maps.PTree.t funspec
+  H : 0 <= Zlength xs <= Int.max_signed
+  H1 : Forall (fun x : Z => Int.min_signed <= x <= Int.max_signed) xs
+  H2 :
+    forall k : Z,
+    0 <= k <= Zlength xs ->
+    Int.min_signed <= sumZ (sublist 0 k xs) <= Int.max_signed
+  PNa : is_pointer_or_null a
+  H4 : Zlength (map (fun x : Z => Vint (Int.repr x)) xs) = Zlength xs
+  H3 : field_compatible (Tarray tint (Zlength xs) noattr) [] a
+  H0 : Forall (value_fits tint) (map (fun x : Z => Vint (Int.repr x)) xs)
+  ============================
+  Vint (Int.repr 1) = Vint (Int.repr 0)
+File "./vst/verif_p3_broken.v", line 40, characters 2-3:
+Error: [Focus] Wrong bullet -: Current bullet - is not finished.
+
+
+Exit: 1

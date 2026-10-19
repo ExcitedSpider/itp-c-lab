@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P5"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:54:45.056984+00:00",
+  "exit_code": 0,
+  "wall_seconds": 16.691281191073358,
+  "output": "Running C_ITP_P5 ...\nFinished C_ITP_P5 (0:00:08 elapsed time, 0:00:09 cpu time, factor 1.09)\n0:00:15 elapsed time, 0:00:09 cpu time, factor 0.59\n"
+}

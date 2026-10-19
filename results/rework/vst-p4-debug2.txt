@@ -1,0 +1,33 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p4.v"]
+1 goal
+  
+  Espec : OracleKind
+  a : val
+  xs : list Z
+  key : Z
+  Delta_specs : Maps.PTree.t funspec
+  H : 0 <= Zlength xs <= Int.max_signed
+  H1 : Int.min_signed <= key <= Int.max_signed
+  H2 : Forall (fun x : Z => Int.min_signed <= x <= Int.max_signed) xs
+  H3 :
+    forall i j : Z, 0 <= i /\ i <= j < Zlength xs -> Znth i xs <= Znth j xs
+  lo, hi : Z
+  HRE : lo < hi
+  H4 : 0 <= lo /\ lo <= hi <= Zlength xs
+  H5 : forall i : Z, 0 <= i < lo -> Znth i xs < key
+  H6 : forall i : Z, hi <= i < Zlength xs -> key < Znth i xs
+  Hm : lo <= lo + (hi - lo) / 2 < hi
+  PNa : is_pointer_or_null a
+  H8 : Zlength (map (fun x : Z => Vint (Int.repr x)) xs) = Zlength xs
+  H7 : field_compatible (Tarray tint (Zlength xs) noattr) [] a
+  H0 : Forall (value_fits tint) (map (fun x : Z => Vint (Int.repr x)) xs)
+  ============================
+  Int.min_signed <=
+  lo + Int.signed (Int.divs (Int.repr (hi - lo)) (Int.repr 2)) <=
+  Int.max_signed /\
+  ~ (Int.repr (hi - lo) = Int.repr Int.min_signed /\ Int.repr 2 = Int.mone)
+File "./vst/verif_p4.v", line 39, characters 32-33:
+Error: This proof is focused, but cannot be unfocused this way
+
+
+Exit: 1

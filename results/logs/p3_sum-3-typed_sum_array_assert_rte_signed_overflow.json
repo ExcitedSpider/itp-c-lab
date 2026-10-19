@@ -1,0 +1,23 @@
+{
+  "label": "p3_sum-3-typed_sum_array_assert_rte_signed_overflow",
+  "timestamp": "2026-10-19T02:12:33.625Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "/tmp/framac/4.14.1/bin/alt-ergo",
+    "--frontend",
+    "dolmen",
+    "--timelimit",
+    "3",
+    "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_signed_overflow_AltmnErgo_2dt6dt0-wp_goal.psmt2"
+  ],
+  "env": {},
+  "exit_code": 0,
+  "signal": null,
+  "error": "spawnSync /usr/bin/time EPERM",
+  "wall_seconds": 0.021676692999999886,
+  "stdout": "\nunsat\n",
+  "stderr": "alt-ergo: option '--frontend': this option is deprecated and will be ignored in the next version\n\n; File \"results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_signed_overflow_AltmnErgo_2dt6dt0-wp_goal.psmt2\", line 912, characters 1-12: Valid (0.0082) (44 steps) (goal g_1)\nPEAK_RSS_KB=24000\n"
+}

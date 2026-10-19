@@ -1,0 +1,35 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres", "C_ITP_P4"]
+Running C_ITP_P4 ...
+C_ITP_P4 FAILED (see also "isabelle build_log -H Error C_ITP_P4")
+*** Failed to apply initial proof method (line 61 of "/work/autocorres/p4/P4.thy"):
+*** using this:
+***     lo < hi
+***     0 ≤ lo
+***     hi ≤ int (length xs)
+***     ∀i<nat lo. xs ! i < key
+***     ∀i. nat hi ≤ i ∧ i < length xs ⟶ key < xs ! i
+***     heap_w32 s
+***      (PTR_COERCE(32 signed word → 32 word) (a +⇩p (lo + (hi - lo) div 2))) ≠
+***     word_of_int key
+***     xs ! nat (lo + (hi - lo) div 2) < key
+***     i < nat (lo + (hi - lo) div 2 + 1)
+***     n = int (length xs)
+***     length xs ≤ 2147483647
+***     - 2147483648 ≤ key
+***     key ≤ 2147483647
+***     ∀i j. i ≤ j ∧ j < length xs ⟶ xs ! i ≤ xs ! j
+***     ⟦0 ≤ ?i; ?i < int (length xs)⟧
+***     ⟹ IS_VALID(32 word) s
+***         (PTR_COERCE(32 signed word → 32 word) (a +⇩p ?i)) ∧
+***        sint (heap_w32 s (PTR_COERCE(32 signed word → 32 word) (a +⇩p ?i))) =
+***        xs ! nat ?i
+*** goal (1 subgoal):
+***  1. nat (lo + (hi - lo) div 2) < length xs &&&
+***     i ≤ nat (lo +
+***              (hi - lo) div
+***              2)
+*** At command "by" (line 61 of "/work/autocorres/p4/P4.thy")
+Unfinished session(s): C_ITP_P4
+0:00:21 elapsed time, 0:00:16 cpu time, factor 0.78
+
+Exit: 1

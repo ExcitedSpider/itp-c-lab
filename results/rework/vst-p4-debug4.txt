@@ -1,0 +1,6 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p4.v"]
+File "./vst/verif_p4.v", line 60, characters 17-44:
+Error: No applicable tactic.
+
+
+Exit: 1

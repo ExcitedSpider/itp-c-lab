@@ -1,0 +1,12 @@
+{
+  "command": [
+    "sh",
+    "-c",
+    "tar -xzf /home/isabelle/afp-current.tar.gz -C /home/isabelle && sha256sum /home/isabelle/afp-current.tar.gz && ls /home/isabelle"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:32:15.995730+00:00",
+  "exit_code": 0,
+  "wall_seconds": 3.6085651009343565,
+  "output": "f3360294ca6e42855b954d438799080be810e06fa663dc4cbfe0a36096e1d7c6  /home/isabelle/afp-current.tar.gz\nIsabelle\nafp-2026-10-16\nafp-current.tar.gz\n"
+}

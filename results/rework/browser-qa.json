@@ -1,0 +1,68 @@
+[
+  {
+    "viewport": "1920,1080",
+    "layout": "desktop",
+    "program_prover_combinations": 20,
+    "no_slide_controls": true,
+    "selection_persistence": true,
+    "deep_links": true,
+    "reference_sections": 9,
+    "theme": true,
+    "overflow": false,
+    "proof_players": 17,
+    "recorded_goals": true,
+    "proof_navigation": true,
+    "proof_arrow_keys": true,
+    "syntax_languages": [
+      "c",
+      "acsl",
+      "rocq",
+      "isabelle"
+    ],
+    "lossless_highlighting": true
+  },
+  {
+    "viewport": "1440,1100",
+    "layout": "laptop",
+    "program_prover_combinations": 20,
+    "no_slide_controls": true,
+    "selection_persistence": true,
+    "deep_links": true,
+    "reference_sections": 9,
+    "theme": true,
+    "overflow": false,
+    "proof_players": 17,
+    "recorded_goals": true,
+    "proof_navigation": true,
+    "proof_arrow_keys": true,
+    "syntax_languages": [
+      "c",
+      "acsl",
+      "rocq",
+      "isabelle"
+    ],
+    "lossless_highlighting": true
+  },
+  {
+    "viewport": "390,844",
+    "layout": "mobile",
+    "program_prover_combinations": 20,
+    "no_slide_controls": true,
+    "selection_persistence": true,
+    "deep_links": true,
+    "reference_sections": 9,
+    "theme": true,
+    "overflow": false,
+    "proof_players": 17,
+    "recorded_goals": true,
+    "proof_navigation": true,
+    "proof_arrow_keys": true,
+    "syntax_languages": [
+      "c",
+      "acsl",
+      "rocq",
+      "isabelle"
+    ],
+    "lossless_highlighting": true
+  }
+]

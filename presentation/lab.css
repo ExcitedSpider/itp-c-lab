@@ -1,0 +1,89 @@
+/* Lab layout: independent program/prover selection; navigation is not sequential. */
+:root{--syn-keyword:#c8a7ff;--syn-tactic:#79c8ff;--syn-type:#75dbcb;--syn-function:#efcc88;--syn-string:#a6d99b;--syn-number:#ffb38a;--syn-comment:#a4afbd;--syn-operator:#d7bafc;--syn-spec:#f3a8d0;--syn-constant:#ffb38a;--syn-punctuation:#b9c4d0;--step-bg:#293b50}
+body.light{--syn-keyword:#7226a0;--syn-tactic:#005ca8;--syn-type:#006b61;--syn-function:#795000;--syn-string:#267020;--syn-number:#a13e0b;--syn-comment:#596777;--syn-operator:#703a8c;--syn-spec:#a22362;--syn-constant:#94400d;--syn-punctuation:#536170;--step-bg:#dceafa}
+.tok-keyword{color:var(--syn-keyword);font-weight:600}
+.tok-tactic{color:var(--syn-tactic)}
+.tok-type,.tok-builtin{color:var(--syn-type)}
+.tok-function{color:var(--syn-function)}
+.tok-string{color:var(--syn-string)}
+.tok-number{color:var(--syn-number)}
+.tok-comment{color:var(--syn-comment);font-style:italic}
+.tok-operator{color:var(--syn-operator)}
+.tok-annotation,.tok-preprocessor{color:var(--syn-spec);font-weight:600}
+.tok-constant{color:var(--syn-constant)}
+.tok-punctuation{color:var(--syn-punctuation)}
+.tok-goal{color:var(--accent);font-weight:600}
+.proof-context .executed{color:var(--fg)}
+.proof-context mark{background:var(--step-bg);color:var(--fg);outline:1px solid var(--line);border-radius:2px}
+[hidden]{display:none!important}
+html{scroll-behavior:auto}
+header{flex-wrap:wrap}
+header a{font-size:.9rem;text-decoration:none}
+main{max-width:1640px;padding:1.4rem 2rem 3rem}
+.lab-intro p{margin:.2rem 0 .5rem}
+.lab-note{color:var(--muted);font-size:.85rem}
+.lab-layout{display:grid;grid-template-columns:225px minmax(0,1fr);gap:2rem;margin-top:1.5rem;align-items:start}
+.lab-sidebar{position:sticky;top:1rem;max-height:calc(100vh - 2rem);overflow:auto;padding:0 .4rem .5rem 0}
+.lab-sidebar nav+nav{margin-top:1.5rem}
+.lab-sidebar h2{font-size:.85rem;color:var(--muted);margin:0 0 .6rem}
+.lab-sidebar button{display:block;text-align:left;width:100%;margin:.4rem 0;padding:.6rem .75rem;border-left:3px solid transparent}
+.lab-sidebar strong{font-size:.9rem;font-weight:600}
+.lab-sidebar small{display:block;color:var(--muted);font-size:.75rem;margin-top:.15rem}
+.lab-sidebar [aria-pressed=true]{border-color:var(--accent);border-left-width:3px;background:var(--panel)}
+.lab-sidebar [aria-pressed=true] strong{color:var(--accent)}
+.reference-link{display:block;margin-top:1.3rem;font-size:.8rem}
+.lab-workspace{min-width:0}
+.selection-status{font-size:.8rem;color:var(--muted);margin-bottom:.7rem}
+.program-case>h1{font-size:1.8rem;margin-bottom:.6rem}
+.program-case>p{margin:.5rem 0 .8rem}
+.pane{border-top:0}
+.pane>h2{font-size:1.35rem;margin-bottom:.2rem}
+.pane>p{margin-top:.2rem}
+.metrics{margin:.7rem 0;font-size:.85rem!important}
+.work-split{margin:1rem 0}
+.work-split p{font-size:.85rem!important}
+.shared-source,.authored-source,.pipeline{padding:.65rem 0}
+.replay{padding:.85rem;margin:1rem 0}
+.replay>p{font-size:.8rem!important;color:var(--muted)}
+.proof-state-grid pre{font-size:13px}
+.proof-context{position:relative}
+.proof-context mark{white-space:pre-wrap}
+#reference{border-top:1px solid var(--line);margin-top:3rem;padding-top:2rem;scroll-margin-top:1rem}
+#reference>h1{font-size:1.7rem}
+.reference-section{border:1px solid var(--line);border-radius:4px;margin:.7rem 0;padding:.9rem 1rem}
+.reference-section>summary{font-size:1rem;font-weight:600}
+.reference-body{padding-top:.6rem}
+.reference-body .lead{font-size:1.35rem}
+.reference-body .panes{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media screen and (min-width:1100px) and (min-height:700px){
+ .replay:first-child .proof-player{display:flex;flex-direction:column;height:var(--player-height,500px);min-height:0}
+ .replay:first-child .proof-controls{flex:none}
+ .replay:first-child .proof-state-grid{flex:1;min-height:0;display:grid}
+ .replay:first-child .proof-state-grid>div{display:flex;flex-direction:column;min-height:0}
+ .replay:first-child .proof-state-grid h3{flex:none}
+ .replay:first-child .proof-state-grid pre{flex:1;min-height:0;max-height:none;margin-bottom:0;overflow:auto}
+}
+@media(max-width:1000px){
+ main{padding:1rem}
+ .lab-layout{grid-template-columns:190px minmax(0,1fr);gap:1rem}
+ .proof-state-grid{display:block}
+}
+@media(max-width:700px){
+ header{padding:.65rem 1rem;gap:.7rem}header strong{width:auto;font-size:.95rem}
+ .lab-layout{display:block;margin-top:1rem}
+ .lab-sidebar{position:static;max-height:none;padding:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.8rem}
+ .lab-sidebar nav+nav{margin-top:0}
+ .lab-sidebar button{padding:.45rem .5rem;min-height:3.5rem}
+ .lab-sidebar strong{font-size:.8rem}.lab-sidebar small{font-size:.7rem}
+ .reference-link{grid-column:1/-1;margin:0 0 1rem}
+ .program-case>h1{font-size:1.5rem}.lab-note{font-size:.8rem}
+ .reference-body .panes{display:block}
+ .replay{padding:.6rem}.proof-controls{gap:.35rem}
+ .proof-controls button{font-size:.8rem;padding:.35rem .5rem}
+ .reference-section{padding:.7rem}
+}
+@media print{
+ header,.lab-sidebar,.lab-intro,.selection-status{display:none}
+ .lab-layout{display:block}main{padding:0}
+ .program-case:not([hidden]) .pane:not(.active){display:none}
+}

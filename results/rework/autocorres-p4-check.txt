@@ -1,0 +1,48 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres", "C_ITP_P4"]
+Running C_ITP_P4 ...
+C_ITP_P4 FAILED (see also "isabelle build_log -H Error C_ITP_P4")
+...
+***                    return (hi, mid + 1)
+***                  })
+***                 (return (mid, lo)))
+***           })
+***      (n, 0)
+***     ∙ s ⦃ λr t. (∀v. r = Result v ⟶
+***                      throw (- 1)
+***                      ∙ t ⦃ λr t. (∀v va.
+***                                      Result v = Result va ⟶
+***                                      r = Result v ⟶
+***                                      - 1 ≤ va ∧
+***                                      va < n ∧
+***                                      (0 ≤ va ⟶ xs ! nat va = key) ∧
+***                                      (va = - 1) = (key ∉ set xs) ∧ t = s) ∧
+***                                  (∀v va.
+***                                      Result v = Result va ⟶
+***                                      r = Exn v ⟶
+***                                      - 1 ≤ va ∧
+***                                      va < n ∧
+***                                      (0 ≤ va ⟶ xs ! nat va = key) ∧
+***                                      (va = - 1) = (key ∉ set xs) ∧
+***                                      t = s) ⦄) ∧
+***                 (∀e. r = Exn e ⟶
+***                      (∀v va.
+***                          Result v = Result va ⟶
+***                          Exn e = Result v ⟶
+***                          - 1 ≤ va ∧
+***                          va < n ∧
+***                          (0 ≤ va ⟶ xs ! nat va = key) ∧
+***                          (va = - 1) = (key ∉ set xs) ∧ t = s) ∧
+***                      (∀v va.
+***                          Result v = Result va ⟶
+***                          Exn e = Exn v ⟶
+***                          - 1 ≤ va ∧
+***                          va < n ∧
+***                          (0 ≤ va ⟶ xs ! nat va = key) ∧
+***                          (va = - 1) = (key ∉ set xs) ∧
+***                          t =
+***                          s)) ⦄
+*** At command "done" (line 26 of "/work/autocorres/p4/P4.thy")
+Unfinished session(s): C_ITP_P4
+0:00:14 elapsed time, 0:00:08 cpu time, factor 0.56
+
+Exit: 1

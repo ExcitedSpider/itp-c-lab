@@ -1,0 +1,15 @@
+{
+  "command": [
+    "opam",
+    "repository",
+    "set-url",
+    "default",
+    "https://opam.ocaml.org",
+    "-y"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:29:11.972733+00:00",
+  "exit_code": 0,
+  "wall_seconds": 20.775597370695323,
+  "output": "[default] Initialised\ndefault (at https://opam.ocaml.org): \n    [WARNING] opam >= 2.5.2 includes important security fixes; please consider upgrading (https://opam.ocaml.org/doc/Install.html)\n\n"
+}

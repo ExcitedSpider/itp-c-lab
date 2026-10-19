@@ -1,0 +1,3 @@
+$ ["opam", "exec", "--", "dune", "clean", "--root", "refinedc"]
+
+Exit: 0

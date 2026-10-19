@@ -1,0 +1,4 @@
+$ ["/usr/bin/time", "-f", "PEAK_RSS_KB=%M", "opam", "exec", "--", "clightgen", "-normalize", "-o", "vst/generated/p5_reverse.v", "programs/p5_reverse.c"]
+PEAK_RSS_KB=19276
+
+Exit: 0

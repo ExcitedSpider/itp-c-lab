@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p4.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:57:20.604619+00:00",
+  "exit_code": 1,
+  "wall_seconds": 5.793187505565584,
+  "output": "1 goal\n  \n  Espec : OracleKind\n  a : val\n  xs : list Z\n  key : Z\n  Delta_specs : Maps.PTree.t funspec\n  H : 0 <= Zlength xs <= Int.max_signed\n  H1 : Int.min_signed <= key <= Int.max_signed\n  H2 : Forall (fun x : Z => Int.min_signed <= x <= Int.max_signed) xs\n  H3 :\n    forall i j : Z, 0 <= i /\\ i <= j < Zlength xs -> Znth i xs <= Znth j xs\n  lo, hi : Z\n  HRE : lo >= hi\n  H4 : 0 <= lo /\\ lo <= hi <= Zlength xs\n  H5 : forall i : Z, 0 <= i < lo -> Znth i xs < key\n  H6 : forall i : Z, hi <= i < Zlength xs -> key < Znth i xs\n  PNa : is_pointer_or_null a\n  H8 : Zlength (map (fun x : Z => Vint (Int.repr x)) xs) = Zlength xs\n  H7 : field_compatible (Tarray tint (Zlength xs) noattr) [] a\n  H0 : Forall (value_fits tint) (map (fun x : Z => Vint (Int.repr x)) xs)\n  ============================\n  -1 = -1 <-> (forall i : Z, 0 <= i < Zlength xs -> Znth i xs <> key)\nFile \"./vst/verif_p4.v\", line 80, characters 0-4:\nError:  (in proof body_search): Attempt to save an incomplete proof\n(there are remaining open goals).\n\n"
+}

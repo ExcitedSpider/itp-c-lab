@@ -1,0 +1,39 @@
+{
+  "label": "p5_reverse-export-reverse_assert_rte_mem_access",
+  "timestamp": "2026-10-19T02:02:17.516Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "timeout",
+    "-k",
+    "1",
+    "1",
+    "/tmp/framac/4.14.1/bin/frama-c",
+    "-wp-why3-extra-config",
+    "wp/why3.conf",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-cache",
+    "none",
+    "-wp-prop",
+    "reverse_assert_rte_mem_access",
+    "-wp-par",
+    "1",
+    "-wp-out",
+    "results/replay/p5_reverse/reverse_assert_rte_mem_access",
+    "programs/p5_reverse.c"
+  ],
+  "env": {
+    "OCAMLPATH": "/tmp/framac/4.14.1/lib",
+    "DUNE_DIR_LOCATIONS": "frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"
+  },
+  "exit_code": 0,
+  "signal": null,
+  "error": "spawnSync timeout EPERM",
+  "wall_seconds": 0.147530573,
+  "stdout": "[kernel] Parsing programs/p5_reverse.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function reverse\n[wp] Warning: No goal generated\n",
+  "stderr": "/tmp/ppannot57455f.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined\n    1 | #define __STDC_EMBED_NOT_FOUND__ 0\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot57455f.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined\n    2 | #define __STDC_EMBED_FOUND__ 1\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot57455f.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined\n    3 | #define __STDC_EMBED_EMPTY__ 2\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\ncc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics\n"
+}

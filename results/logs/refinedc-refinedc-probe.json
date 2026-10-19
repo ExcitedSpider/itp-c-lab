@@ -1,0 +1,16 @@
+{
+  "label": "refinedc-refinedc-probe",
+  "timestamp": "2026-10-19T02:04:03.604Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "refinedc",
+    "--help"
+  ],
+  "env": {},
+  "exit_code": null,
+  "signal": null,
+  "error": "spawnSync refinedc ENOENT",
+  "wall_seconds": 0.0011957580000000014,
+  "stdout": "",
+  "stderr": ""
+}

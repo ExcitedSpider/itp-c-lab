@@ -1,0 +1,4 @@
+$ ["coqc","--version"]
+Environment overrides: {}
+
+Exit: null; signal: null; wall_seconds: 0.0009242519999999956

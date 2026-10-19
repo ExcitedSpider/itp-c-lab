@@ -1,0 +1,41 @@
+{
+  "label": "wp-p4_binary_search-1",
+  "timestamp": "2026-10-19T01:59:37.888Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "/tmp/framac/4.14.1/bin/frama-c",
+    "-wp-why3-extra-config",
+    "wp/why3.conf",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-par",
+    "1",
+    "-wp-timeout",
+    "10",
+    "-wp-cache",
+    "none",
+    "programs/p4_binary_search.c"
+  ],
+  "env": {
+    "OCAMLPATH": "/tmp/framac/4.14.1/lib",
+    "DUNE_DIR_LOCATIONS": "frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"
+  },
+  "exit_code": null,
+  "signal": "SIGTERM",
+  "error": "spawnSync /usr/bin/time ETIMEDOUT",
+  "wall_seconds": 120.012294934,
+  "stdout": "[kernel] Parsing programs/p4_binary_search.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function binary_search\n[wp] 22 goals scheduled\n[wp] [Failure] typed_binary_search_ensures (Qed 18ms) (Alt-Ergo)\n[wp] [Failure] typed_binary_search_ensures_3 (Qed 19ms) (Alt-Ergo)\n[wp] [Failure] typed_binary_search_loop_invariant_preserved (Qed 25ms) (Alt-Ergo)\n",
+  "stderr": "/tmp/ppannot077fab.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined\n    1 | #define __STDC_EMBED_NOT_FOUND__ 0\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot077fab.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined\n    2 | #define __STDC_EMBED_FOUND__ 1\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot077fab.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined\n    3 | #define __STDC_EMBED_EMPTY__ 2\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\ncc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics\n",
+  "source_sha256": "20c9bf8b887838caf6cb38b60ea336326779d1952d7929cf844b41cadfbbadf2",
+  "proved": null,
+  "total": null,
+  "all_generated_goals_closed": false,
+  "peak_rss_kb": null
+}

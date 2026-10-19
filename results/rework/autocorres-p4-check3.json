@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P4"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:59:21.439814+00:00",
+  "exit_code": 1,
+  "wall_seconds": 17.13291752897203,
+  "output": "Running C_ITP_P4 ...\nC_ITP_P4 FAILED (see also \"isabelle build_log -H Error C_ITP_P4\")\n...\n***              (a +\u21e9p (b + (aa - b) sdiv 2)))\n***  7. \u22c0aa b.\n***        \u27e6b < aa; 0 \u2264 b; b \u2264 aa; aa \u2264 n; \u2200i<nat b. xs ! i < key;\n***         \u2200i. nat aa \u2264 i \u2227 i < length xs \u27f6 key < xs ! i;\n***         heap_w32 s\n***          (PTR_COERCE(32 signed word \u2192 32 word)\n***            (a +\u21e9p (b + (aa - b) sdiv 2))) =\n***         word_of_int key\u27e7\n***        \u27f9 0 \u2264 b + (aa - b) sdiv 2\n***  8. \u22c0aa b.\n***        \u27e6b < aa; 0 \u2264 b; b \u2264 aa; aa \u2264 n; \u2200i<nat b. xs ! i < key;\n***         \u2200i. nat aa \u2264 i \u2227 i < length xs \u27f6 key < xs ! i;\n***         heap_w32 s\n***          (PTR_COERCE(32 signed word \u2192 32 word)\n***            (a +\u21e9p (b + (aa - b) sdiv 2))) =\n***         word_of_int key\u27e7\n***        \u27f9 b + (aa - b) sdiv 2 < n\n***  9. \u22c0aa b.\n***        \u27e6b < aa; 0 \u2264 b; b \u2264 aa; aa \u2264 n; \u2200i<nat b. xs ! i < key;\n***         \u2200i. nat aa \u2264 i \u2227 i < length xs \u27f6 key < xs ! i;\n***         heap_w32 s\n***          (PTR_COERCE(32 signed word \u2192 32 word)\n***            (a +\u21e9p (b + (aa - b) sdiv 2))) =\n***         word_of_int key\u27e7\n***        \u27f9 xs ! nat (b + (aa - b) sdiv 2) = key\n***  10. \u22c0aa b.\n***         \u27e6b < aa; 0 \u2264 b; b \u2264 aa; aa \u2264 n; \u2200i<nat b. xs ! i < key;\n***          \u2200i. nat aa \u2264 i \u2227 i < length xs \u27f6 key < xs ! i;\n***          heap_w32 s\n***           (PTR_COERCE(32 signed word \u2192 32 word)\n***             (a +\u21e9p (b + (aa - b) sdiv 2))) \u2260\n***          word_of_int key;\n***          sint\n***           (heap_w32 s\n***             (PTR_COERCE(32 signed word \u2192 32 word)\n***               (a +\u21e9p (b + (aa - b) sdiv 2))))\n***          < key\u27e7\n***         \u27f9 0 \u2264 2147483649 + (b + (aa - b) sdiv 2)\n*** A total of 25 subgoals...\n*** At command \"done\" (line 28 of \"/work/autocorres/p4/P4.thy\")\nUnfinished session(s): C_ITP_P4\n0:00:15 elapsed time, 0:00:09 cpu time, factor 0.57\n"
+}

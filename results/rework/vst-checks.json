@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "VST",
+    "program": "p1_abs",
+    "source": "vst/verif_p1.v",
+    "source_sha256": "727fcd4a1b0df1ad576a2e9632cac59d595a6cba6bc0362de1a56c03fa463092",
+    "runs": [
+      {
+        "passed": true,
+        "wall_seconds": 5.847214868757874,
+        "peak_rss_kb": 815128
+      },
+      {
+        "passed": true,
+        "wall_seconds": 5.792985421139747,
+        "peak_rss_kb": 815300
+      },
+      {
+        "passed": true,
+        "wall_seconds": 5.7166892089881,
+        "peak_rss_kb": 815476
+      }
+    ],
+    "passed": true,
+    "median_seconds": 5.792985421139747,
+    "deterministic": true
+  },
+  {
+    "tool": "VST",
+    "program": "p2_swap",
+    "source": "vst/verif_p2.v",
+    "source_sha256": "31a60957182499246b40fc82d083fa4e6852ab554eea9e6b5bbc917f25c6e64c",
+    "runs": [
+      {
+        "passed": true,
+        "wall_seconds": 8.500143699347973,
+        "peak_rss_kb": 859984
+      },
+      {
+        "passed": true,
+        "wall_seconds": 8.385708048008382,
+        "peak_rss_kb": 859592
+      },
+      {
+        "passed": true,
+        "wall_seconds": 8.662699132692069,
+        "peak_rss_kb": 859844
+      }
+    ],
+    "passed": true,
+    "median_seconds": 8.500143699347973,
+    "deterministic": true
+  },
+  {
+    "tool": "VST",
+    "program": "p3_sum",
+    "source": "vst/verif_p3.v",
+    "source_sha256": "6024109a320b9654c10a97050c5f287263b3c6631d9d418830464a80bed7aa24",
+    "runs": [
+      {
+        "passed": true,
+        "wall_seconds": 6.462111537810415,
+        "peak_rss_kb": 851736
+      },
+      {
+        "passed": true,
+        "wall_seconds": 6.401506193447858,
+        "peak_rss_kb": 851832
+      },
+      {
+        "passed": true,
+        "wall_seconds": 6.55998556362465,
+        "peak_rss_kb": 851808
+      }
+    ],
+    "passed": true,
+    "median_seconds": 6.462111537810415,
+    "deterministic": true
+  },
+  {
+    "tool": "VST",
+    "program": "p4_binary_search",
+    "source": "vst/verif_p4.v",
+    "source_sha256": "bca333fac4fe5624fe8fee0d3e5e7dfd2581474df0f8ea091987ea8535594951",
+    "runs": [
+      {
+        "passed": true,
+        "wall_seconds": 9.667561611160636,
+        "peak_rss_kb": 901636
+      },
+      {
+        "passed": true,
+        "wall_seconds": 9.650991853326559,
+        "peak_rss_kb": 902124
+      },
+      {
+        "passed": true,
+        "wall_seconds": 9.536103694234043,
+        "peak_rss_kb": 902240
+      }
+    ],
+    "passed": true,
+    "median_seconds": 9.650991853326559,
+    "deterministic": true
+  },
+  {
+    "tool": "VST",
+    "program": "p5_reverse",
+    "source": "vst/verif_p5.v",
+    "source_sha256": "50e7699c6647ddd2eb3e46d32bf9deb6a3e08795c053650ce79a6eb09c883f8f",
+    "runs": [
+      {
+        "passed": true,
+        "wall_seconds": 6.510390596464276,
+        "peak_rss_kb": 855068
+      },
+      {
+        "passed": true,
+        "wall_seconds": 6.516214027069509,
+        "peak_rss_kb": 854588
+      },
+      {
+        "passed": true,
+        "wall_seconds": 6.7216057810001075,
+        "peak_rss_kb": 854724
+      }
+    ],
+    "passed": true,
+    "median_seconds": 6.516214027069509,
+    "deterministic": true
+  }
+]

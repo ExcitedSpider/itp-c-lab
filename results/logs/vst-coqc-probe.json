@@ -1,0 +1,16 @@
+{
+  "label": "vst-coqc-probe",
+  "timestamp": "2026-10-19T02:04:03.569Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "coqc",
+    "--version"
+  ],
+  "env": {},
+  "exit_code": null,
+  "signal": null,
+  "error": "spawnSync coqc ENOENT",
+  "wall_seconds": 0.0023849669999999996,
+  "stdout": "",
+  "stderr": ""
+}

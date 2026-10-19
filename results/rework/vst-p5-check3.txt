@@ -1,0 +1,6 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p5.v"]
+File "./vst/verif_p5.v", line 54, characters 4-39:
+Error: Tactic failure: Cannot solve this goal.
+
+
+Exit: 1

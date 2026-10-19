@@ -1,0 +1,1950 @@
+<recording theory="Draft.P3"><step name="theory" start_symbol="1" end_symbol="49" line="1" proof_open="false"><command>theory P3
+imports AutoCorres2.AutoCorres
+begin</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="49" end_symbol="50" line="3" proof_open="false"><command>
+</command><output></output></step><step name="install_C_file" start_symbol="50" end_symbol="75" line="4" proof_open="false"><command>install_C_file p3_sum.c</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="75" end_symbol="76" line="4" proof_open="false"><command>
+</command><output></output></step><step name="autocorres" start_symbol="76" end_symbol="117" line="5" proof_open="false"><command>autocorres [ts_rules = nondet] p3_sum.c</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="117" end_symbol="118" line="5" proof_open="false"><command>
+</command><output></output></step><step name="context" start_symbol="118" end_symbol="155" line="6" proof_open="false"><command>context p3_sum_global_addresses begin</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="155" end_symbol="156" line="6" proof_open="false"><command>
+</command><output></output></step><step name="thm" start_symbol="156" end_symbol="174" line="7" proof_open="false"><command>thm sum_array&apos;_def</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="174" end_symbol="175" line="7" proof_open="false"><command>
+</command><output></output></step><step name="definition" start_symbol="175" end_symbol="435" line="8" proof_open="false"><command>definition array_values :: lifted_globals \&lt;Rightarrow&gt; 32 signed word ptr \&lt;Rightarrow&gt; int list \&lt;Rightarrow&gt; bool where
+  array_values s a xs = (\&lt;forall&gt;i&lt;length xs.
+    ptr_valid (heap_typing s) (ptr_coerce (a +\&lt;^sub&gt;p int i)::32 word ptr) \&lt;and&gt;
+    sint (heap_w32 s (ptr_coerce (a +\&lt;^sub&gt;p int i))) = xs ! i)</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="435" end_symbol="436" line="11" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="436" end_symbol="700" line="12" proof_open="true"><command>lemma sum_array_correct:
+  assumes A: array_values s a xs
+    and N: n = int (length xs) n \&lt;le&gt; INT_MAX
+    and B: \&lt;forall&gt;k\&lt;le&gt;length xs. INT_MIN \&lt;le&gt; sum_list (take k xs) \&lt;and&gt; sum_list (take k xs) \&lt;le&gt; INT_MAX
+  shows sum_array&apos; a n \&lt;bullet&gt; s \&lt;lbrace&gt;\&lt;lambda&gt;Res r s&apos;. r = sum_list xs \&lt;and&gt; s&apos; = s\&lt;rbrace&gt;</command><output>proof (prove)
+goal (1 subgoal):
+ 1. sum_array&apos; a n
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="700" end_symbol="701" line="16" proof_open="true"><command>
+</command><output>proof (prove)
+goal (1 subgoal):
+ 1. sum_array&apos; a n
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="proof" start_symbol="701" end_symbol="708" line="17" proof_open="true"><command>proof -</command><output>proof (state)
+goal (1 subgoal):
+ 1. sum_array&apos; a n
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="708" end_symbol="711" line="17" proof_open="true"><command>
+  </command><output>proof (state)
+goal (1 subgoal):
+ 1. sum_array&apos; a n
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="have" start_symbol="711" end_symbol="871" line="18" proof_open="true"><command>have access: \&lt;And&gt;i. 0 \&lt;le&gt; i \&lt;Longrightarrow&gt; i &lt; n \&lt;Longrightarrow&gt;
+    ptr_valid (heap_typing s) (ptr_coerce (a +\&lt;^sub&gt;p i)::32 word ptr) \&lt;and&gt;
+    sint (heap_w32 s (ptr_coerce (a +\&lt;^sub&gt;p i))) = xs ! nat i</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="871" end_symbol="874" line="20" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="proof" start_symbol="874" end_symbol="881" line="21" proof_open="true"><command>proof -</command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="881" end_symbol="886" line="21" proof_open="true"><command>
+    </command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="fix" start_symbol="886" end_symbol="896" line="22" proof_open="true"><command>fix i::int</command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="896" end_symbol="897" line="22" proof_open="true"><command> </command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="assume" start_symbol="897" end_symbol="922" line="22" proof_open="true"><command>assume I: 0 \&lt;le&gt; i i &lt; n</command><output>proof (state)
+this:
+  0 \&lt;le&gt; i
+  i &lt; n
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="922" end_symbol="927" line="22" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  0 \&lt;le&gt; i
+  i &lt; n
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="have" start_symbol="927" end_symbol="951" line="23" proof_open="true"><command>have nat i &lt; length xs</command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat i &lt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="951" end_symbol="952" line="23" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat i &lt; length xs</output></step><step name="using" start_symbol="952" end_symbol="961" line="23" proof_open="true"><command>using I N</command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; i
+  i &lt; n
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. nat i &lt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="961" end_symbol="962" line="23" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; i
+  i &lt; n
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. nat i &lt; length xs</output></step><step name="by" start_symbol="962" end_symbol="973" line="23" proof_open="true"><command>by linarith</command><output>proof (state)
+this:
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="973" end_symbol="978" line="23" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="with" start_symbol="978" end_symbol="984" line="24" proof_open="true"><command>with A</command><output>proof (chain)
+picking this:
+  array_values s a xs
+  nat i &lt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="984" end_symbol="985" line="24" proof_open="true"><command> </command><output>proof (chain)
+picking this:
+  array_values s a xs
+  nat i &lt; length xs</output></step><step name="have" start_symbol="985" end_symbol="1135" line="24" proof_open="true"><command>have ptr_valid (heap_typing s) (ptr_coerce (a +\&lt;^sub&gt;p int (nat i))::32 word ptr) \&lt;and&gt;
+      sint (heap_w32 s (ptr_coerce (a +\&lt;^sub&gt;p int (nat i)))) = xs ! nat i</command><output>proof (prove)
+using this:
+  array_values s a xs
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p int (nat i)))) =
+    xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1135" end_symbol="1142" line="25" proof_open="true"><command>
+      </command><output>proof (prove)
+using this:
+  array_values s a xs
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p int (nat i)))) =
+    xs ! nat i</output></step><step name="unfolding" start_symbol="1142" end_symbol="1168" line="26" proof_open="true"><command>unfolding array_values_def</command><output>proof (prove)
+using this:
+  \&lt;forall&gt;i&lt;length xs.
+     IS_VALID(32 word) s
+      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+        (a +\&lt;^sub&gt;p int i)) \&lt;and&gt;
+     sint
+      (heap_w32 s
+        (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+          (a +\&lt;^sub&gt;p int i))) =
+     xs ! i
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p int (nat i)))) =
+    xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1168" end_symbol="1169" line="26" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  \&lt;forall&gt;i&lt;length xs.
+     IS_VALID(32 word) s
+      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+        (a +\&lt;^sub&gt;p int i)) \&lt;and&gt;
+     sint
+      (heap_w32 s
+        (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+          (a +\&lt;^sub&gt;p int i))) =
+     xs ! i
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p int (nat i)))) =
+    xs ! nat i</output></step><step name="by" start_symbol="1169" end_symbol="1177" line="26" proof_open="true"><command>by blast</command><output>proof (state)
+this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1177" end_symbol="1182" line="26" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="then" start_symbol="1182" end_symbol="1186" line="27" proof_open="true"><command>then</command><output>proof (chain)
+picking this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1186" end_symbol="1187" line="27" proof_open="true"><command> </command><output>proof (chain)
+picking this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i</output></step><step name="show" start_symbol="1187" end_symbol="1317" line="27" proof_open="true"><command>show ptr_valid (heap_typing s) (ptr_coerce (a +\&lt;^sub&gt;p i)::32 word ptr) \&lt;and&gt;
+      sint (heap_w32 s (ptr_coerce (a +\&lt;^sub&gt;p i))) = xs ! nat i</command><output>proof (prove)
+using this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+    xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1317" end_symbol="1318" line="28" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+    xs ! nat i</output></step><step name="using" start_symbol="1318" end_symbol="1325" line="28" proof_open="true"><command>using I</command><output>proof (prove)
+using this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i
+  0 \&lt;le&gt; i
+  i &lt; n
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+    xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1325" end_symbol="1326" line="28" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i
+  0 \&lt;le&gt; i
+  i &lt; n
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+    xs ! nat i</output></step><step name="by" start_symbol="1326" end_symbol="1333" line="28" proof_open="true"><command>by simp</command><output>proof (state)
+this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+  xs ! nat i
+
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="1333" end_symbol="1336" line="28" proof_open="true"><command>
+  </command><output>proof (state)
+this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+  xs ! nat i
+
+goal:
+No subgoals!</output></step><step name="qed" start_symbol="1336" end_symbol="1339" line="29" proof_open="true"><command>qed</command><output>proof (state)
+this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. sum_array&apos; a n
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="1339" end_symbol="1342" line="29" proof_open="true"><command>
+  </command><output>proof (state)
+this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. sum_array&apos; a n
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="have" start_symbol="1342" end_symbol="1487" line="30" proof_open="true"><command>have step: \&lt;And&gt;i. 0 \&lt;le&gt; i \&lt;Longrightarrow&gt; i &lt; n \&lt;Longrightarrow&gt;
+    sum_list (take (nat i) xs) + sint (heap_w32 s (ptr_coerce (a +\&lt;^sub&gt;p i))) =
+      sum_list (take (nat (i+1)) xs)</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         sum_list (take (nat (i + 1)) xs)</output></step><step name="&lt;ignored&gt;" start_symbol="1487" end_symbol="1490" line="32" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         sum_list (take (nat (i + 1)) xs)</output></step><step name="proof" start_symbol="1490" end_symbol="1497" line="33" proof_open="true"><command>proof -</command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         sum_list (take (nat (i + 1)) xs)</output></step><step name="&lt;ignored&gt;" start_symbol="1497" end_symbol="1502" line="33" proof_open="true"><command>
+    </command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         sum_list (take (nat (i + 1)) xs)</output></step><step name="fix" start_symbol="1502" end_symbol="1512" line="34" proof_open="true"><command>fix i::int</command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         sum_list (take (nat (i + 1)) xs)</output></step><step name="&lt;ignored&gt;" start_symbol="1512" end_symbol="1513" line="34" proof_open="true"><command> </command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         sum_list (take (nat (i + 1)) xs)</output></step><step name="assume" start_symbol="1513" end_symbol="1538" line="34" proof_open="true"><command>assume I: 0 \&lt;le&gt; i i &lt; n</command><output>proof (state)
+this:
+  0 \&lt;le&gt; i
+  i &lt; n
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         sum_list (take (nat (i + 1)) xs)</output></step><step name="&lt;ignored&gt;" start_symbol="1538" end_symbol="1543" line="34" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  0 \&lt;le&gt; i
+  i &lt; n
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         sum_list (take (nat (i + 1)) xs)</output></step><step name="have" start_symbol="1543" end_symbol="1567" line="35" proof_open="true"><command>have nat i &lt; length xs</command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat i &lt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="1567" end_symbol="1568" line="35" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat i &lt; length xs</output></step><step name="using" start_symbol="1568" end_symbol="1577" line="35" proof_open="true"><command>using I N</command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; i
+  i &lt; n
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. nat i &lt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="1577" end_symbol="1578" line="35" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; i
+  i &lt; n
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. nat i &lt; length xs</output></step><step name="by" start_symbol="1578" end_symbol="1589" line="35" proof_open="true"><command>by linarith</command><output>proof (state)
+this:
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         sum_list (take (nat (i + 1)) xs)</output></step><step name="&lt;ignored&gt;" start_symbol="1589" end_symbol="1594" line="35" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         sum_list (take (nat (i + 1)) xs)</output></step><step name="then" start_symbol="1594" end_symbol="1598" line="36" proof_open="true"><command>then</command><output>proof (chain)
+picking this:
+  nat i &lt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="1598" end_symbol="1599" line="36" proof_open="true"><command> </command><output>proof (chain)
+picking this:
+  nat i &lt; length xs</output></step><step name="show" start_symbol="1599" end_symbol="1714" line="36" proof_open="true"><command>show sum_list (take (nat i) xs) + sint (heap_w32 s (ptr_coerce (a +\&lt;^sub&gt;p i))) =
+      sum_list (take (nat (i+1)) xs)</command><output>proof (prove)
+using this:
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+    sum_list (take (nat (i + 1)) xs)</output></step><step name="&lt;ignored&gt;" start_symbol="1714" end_symbol="1721" line="37" proof_open="true"><command>
+      </command><output>proof (prove)
+using this:
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+    sum_list (take (nat (i + 1)) xs)</output></step><step name="using" start_symbol="1721" end_symbol="1741" line="38" proof_open="true"><command>using access[OF I] I</command><output>proof (prove)
+using this:
+  nat i &lt; length xs
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+  xs ! nat i
+  0 \&lt;le&gt; i
+  i &lt; n
+
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+    sum_list (take (nat (i + 1)) xs)</output></step><step name="&lt;ignored&gt;" start_symbol="1741" end_symbol="1742" line="38" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  nat i &lt; length xs
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+  xs ! nat i
+  0 \&lt;le&gt; i
+  i &lt; n
+
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+    sum_list (take (nat (i + 1)) xs)</output></step><step name="by" start_symbol="1742" end_symbol="1794" line="38" proof_open="true"><command>by (simp add: nat_add_distrib take_Suc_conv_app_nth)</command><output>proof (state)
+this:
+  sum_list (take (nat i) xs) +
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+  sum_list (take (nat (i + 1)) xs)
+
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="1794" end_symbol="1797" line="38" proof_open="true"><command>
+  </command><output>proof (state)
+this:
+  sum_list (take (nat i) xs) +
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+  sum_list (take (nat (i + 1)) xs)
+
+goal:
+No subgoals!</output></step><step name="qed" start_symbol="1797" end_symbol="1800" line="39" proof_open="true"><command>qed</command><output>proof (state)
+this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; sum_list (take (nat ?i) xs) +
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    sum_list (take (nat (?i + 1)) xs)
+
+goal (1 subgoal):
+ 1. sum_array&apos; a n
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="1800" end_symbol="1803" line="39" proof_open="true"><command>
+  </command><output>proof (state)
+this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; sum_list (take (nat ?i) xs) +
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    sum_list (take (nat (?i + 1)) xs)
+
+goal (1 subgoal):
+ 1. sum_array&apos; a n
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="show" start_symbol="1803" end_symbol="1815" line="40" proof_open="true"><command>show ?thesis</command><output>proof (prove)
+goal (1 subgoal):
+ 1. sum_array&apos; a n
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="1815" end_symbol="1818" line="40" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. sum_array&apos; a n
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="unfolding" start_symbol="1818" end_symbol="1842" line="41" proof_open="true"><command>unfolding sum_array&apos;_def</command><output>proof (prove)
+goal (1 subgoal):
+ 1. do {
+      (i, s) \&lt;leftarrow&gt;
+        whileLoop (\&lt;lambda&gt;(i, s&apos;) s. i &lt; n)
+          (\&lt;lambda&gt;(i, s&apos;).
+              do {
+                guard
+                 (\&lt;lambda&gt;s.
+                     IS_VALID(32 word) s
+                      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                        (a +\&lt;^sub&gt;p i)));
+                guard
+                 (\&lt;lambda&gt;s.
+                     - INT_MAX - 1
+                     \&lt;le&gt; s&apos; +
+                           sint
+                            (heap_w32 s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i))));
+                guard
+                 (\&lt;lambda&gt;s.
+                     s&apos; +
+                     sint
+                      (heap_w32 s
+                        (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                          (a +\&lt;^sub&gt;p i)))
+                     \&lt;le&gt; INT_MAX);
+                guard (\&lt;lambda&gt;s. 0 \&lt;le&gt; 2147483649 + i);
+                guard (\&lt;lambda&gt;s. i &lt; INT_MAX);
+                s \&lt;leftarrow&gt;
+                  gets
+                   (\&lt;lambda&gt;s.
+                       s&apos; +
+                       sint
+                        (heap_w32 s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i))));
+                return (i + 1, s)
+              })
+         (0, 0);
+      return s
+    } \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                               r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="1842" end_symbol="1845" line="41" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. do {
+      (i, s) \&lt;leftarrow&gt;
+        whileLoop (\&lt;lambda&gt;(i, s&apos;) s. i &lt; n)
+          (\&lt;lambda&gt;(i, s&apos;).
+              do {
+                guard
+                 (\&lt;lambda&gt;s.
+                     IS_VALID(32 word) s
+                      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                        (a +\&lt;^sub&gt;p i)));
+                guard
+                 (\&lt;lambda&gt;s.
+                     - INT_MAX - 1
+                     \&lt;le&gt; s&apos; +
+                           sint
+                            (heap_w32 s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i))));
+                guard
+                 (\&lt;lambda&gt;s.
+                     s&apos; +
+                     sint
+                      (heap_w32 s
+                        (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                          (a +\&lt;^sub&gt;p i)))
+                     \&lt;le&gt; INT_MAX);
+                guard (\&lt;lambda&gt;s. 0 \&lt;le&gt; 2147483649 + i);
+                guard (\&lt;lambda&gt;s. i &lt; INT_MAX);
+                s \&lt;leftarrow&gt;
+                  gets
+                   (\&lt;lambda&gt;s.
+                       s&apos; +
+                       sint
+                        (heap_w32 s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i))));
+                return (i + 1, s)
+              })
+         (0, 0);
+      return s
+    } \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                               r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="supply" start_symbol="1845" end_symbol="2021" line="42" proof_open="true"><command>supply runs_to_whileLoop_res [where
+    I=\&lt;lambda&gt;(i,acc) s&apos;. 0 \&lt;le&gt; i \&lt;and&gt; i \&lt;le&gt; n \&lt;and&gt; acc = sum_list (take (nat i) xs) \&lt;and&gt; s&apos; = s and
+    R=measure&apos; (\&lt;lambda&gt;((i,acc),s&apos;). nat (n-i)), runs_to_vcg]</command><output>proof (prove)
+goal (1 subgoal):
+ 1. do {
+      (i, s) \&lt;leftarrow&gt;
+        whileLoop (\&lt;lambda&gt;(i, s&apos;) s. i &lt; n)
+          (\&lt;lambda&gt;(i, s&apos;).
+              do {
+                guard
+                 (\&lt;lambda&gt;s.
+                     IS_VALID(32 word) s
+                      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                        (a +\&lt;^sub&gt;p i)));
+                guard
+                 (\&lt;lambda&gt;s.
+                     - INT_MAX - 1
+                     \&lt;le&gt; s&apos; +
+                           sint
+                            (heap_w32 s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i))));
+                guard
+                 (\&lt;lambda&gt;s.
+                     s&apos; +
+                     sint
+                      (heap_w32 s
+                        (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                          (a +\&lt;^sub&gt;p i)))
+                     \&lt;le&gt; INT_MAX);
+                guard (\&lt;lambda&gt;s. 0 \&lt;le&gt; 2147483649 + i);
+                guard (\&lt;lambda&gt;s. i &lt; INT_MAX);
+                s \&lt;leftarrow&gt;
+                  gets
+                   (\&lt;lambda&gt;s.
+                       s&apos; +
+                       sint
+                        (heap_w32 s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i))));
+                return (i + 1, s)
+              })
+         (0, 0);
+      return s
+    } \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                               r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="2021" end_symbol="2024" line="44" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. do {
+      (i, s) \&lt;leftarrow&gt;
+        whileLoop (\&lt;lambda&gt;(i, s&apos;) s. i &lt; n)
+          (\&lt;lambda&gt;(i, s&apos;).
+              do {
+                guard
+                 (\&lt;lambda&gt;s.
+                     IS_VALID(32 word) s
+                      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                        (a +\&lt;^sub&gt;p i)));
+                guard
+                 (\&lt;lambda&gt;s.
+                     - INT_MAX - 1
+                     \&lt;le&gt; s&apos; +
+                           sint
+                            (heap_w32 s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i))));
+                guard
+                 (\&lt;lambda&gt;s.
+                     s&apos; +
+                     sint
+                      (heap_w32 s
+                        (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                          (a +\&lt;^sub&gt;p i)))
+                     \&lt;le&gt; INT_MAX);
+                guard (\&lt;lambda&gt;s. 0 \&lt;le&gt; 2147483649 + i);
+                guard (\&lt;lambda&gt;s. i &lt; INT_MAX);
+                s \&lt;leftarrow&gt;
+                  gets
+                   (\&lt;lambda&gt;s.
+                       s&apos; +
+                       sint
+                        (heap_w32 s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i))));
+                return (i + 1, s)
+              })
+         (0, 0);
+      return s
+    } \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                               r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;</output></step><step name="apply" start_symbol="2024" end_symbol="2041" line="45" proof_open="true"><command>apply runs_to_vcg</command><output>proof (prove)
+goal (10 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p aa))
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; - INT_MAX - 1
+                         \&lt;le&gt; sum_list (take (nat aa) xs) +
+                               sint
+                                (heap_w32 s
+                                  (PTR_COERCE
+                                    (32 signed word \&lt;rightarrow&gt; 32 word)
+                                    (a +\&lt;^sub&gt;p aa)))
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa)))
+                         \&lt;le&gt; INT_MAX
+ 4. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + aa
+ 5. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa &lt; INT_MAX
+ 6. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa + 1
+ 7. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 8. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 9. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 10. 0 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2041" end_symbol="2044" line="45" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (10 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p aa))
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; - INT_MAX - 1
+                         \&lt;le&gt; sum_list (take (nat aa) xs) +
+                               sint
+                                (heap_w32 s
+                                  (PTR_COERCE
+                                    (32 signed word \&lt;rightarrow&gt; 32 word)
+                                    (a +\&lt;^sub&gt;p aa)))
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa)))
+                         \&lt;le&gt; INT_MAX
+ 4. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + aa
+ 5. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa &lt; INT_MAX
+ 6. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa + 1
+ 7. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 8. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 9. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 10. 0 \&lt;le&gt; n</output></step><step name="subgoal" start_symbol="2044" end_symbol="2051" line="46" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p aa_))</output></step><step name="&lt;ignored&gt;" start_symbol="2051" end_symbol="2052" line="46" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p aa_))</output></step><step name="using" start_symbol="2052" end_symbol="2064" line="46" proof_open="true"><command>using access</command><output>proof (prove)
+using this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p aa_))</output></step><step name="&lt;ignored&gt;" start_symbol="2064" end_symbol="2065" line="46" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p aa_))</output></step><step name="by" start_symbol="2065" end_symbol="2073" line="46" proof_open="true"><command>by blast</command><output>proof (prove)
+goal (9 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; - INT_MAX - 1
+                         \&lt;le&gt; sum_list (take (nat aa) xs) +
+                               sint
+                                (heap_w32 s
+                                  (PTR_COERCE
+                                    (32 signed word \&lt;rightarrow&gt; 32 word)
+                                    (a +\&lt;^sub&gt;p aa)))
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa)))
+                         \&lt;le&gt; INT_MAX
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + aa
+ 4. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa &lt; INT_MAX
+ 5. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa + 1
+ 6. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 7. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 8. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 9. 0 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2073" end_symbol="2076" line="46" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (9 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; - INT_MAX - 1
+                         \&lt;le&gt; sum_list (take (nat aa) xs) +
+                               sint
+                                (heap_w32 s
+                                  (PTR_COERCE
+                                    (32 signed word \&lt;rightarrow&gt; 32 word)
+                                    (a +\&lt;^sub&gt;p aa)))
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa)))
+                         \&lt;le&gt; INT_MAX
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + aa
+ 4. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa &lt; INT_MAX
+ 5. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa + 1
+ 6. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 7. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 8. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 9. 0 \&lt;le&gt; n</output></step><step name="subgoal" start_symbol="2076" end_symbol="2104" line="47" proof_open="true"><command>subgoal premises prems for i</command><output>proof (prove)
+goal (1 subgoal):
+ 1. - INT_MAX - 1
+    \&lt;le&gt; sum_list (take (nat i) xs) +
+          sint
+           (heap_w32 s
+             (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+               (a +\&lt;^sub&gt;p i)))</output></step><step name="&lt;ignored&gt;" start_symbol="2104" end_symbol="2107" line="47" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. - INT_MAX - 1
+    \&lt;le&gt; sum_list (take (nat i) xs) +
+          sint
+           (heap_w32 s
+             (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+               (a +\&lt;^sub&gt;p i)))</output></step><step name="proof" start_symbol="2107" end_symbol="2114" line="48" proof_open="true"><command>proof -</command><output>proof (state)
+goal (1 subgoal):
+ 1. - INT_MAX - 1
+    \&lt;le&gt; sum_list (take (nat i) xs) +
+          sint
+           (heap_w32 s
+             (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+               (a +\&lt;^sub&gt;p i)))</output></step><step name="&lt;ignored&gt;" start_symbol="2114" end_symbol="2119" line="48" proof_open="true"><command>
+    </command><output>proof (state)
+goal (1 subgoal):
+ 1. - INT_MAX - 1
+    \&lt;le&gt; sum_list (take (nat i) xs) +
+          sint
+           (heap_w32 s
+             (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+               (a +\&lt;^sub&gt;p i)))</output></step><step name="have" start_symbol="2119" end_symbol="2150" line="49" proof_open="true"><command>have L: nat (i+1) \&lt;le&gt; length xs</command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat (i + 1) \&lt;le&gt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="2150" end_symbol="2151" line="49" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat (i + 1) \&lt;le&gt; length xs</output></step><step name="using" start_symbol="2151" end_symbol="2164" line="49" proof_open="true"><command>using prems N</command><output>proof (prove)
+using this:
+  i &lt; n
+  0 \&lt;le&gt; i
+  i \&lt;le&gt; n
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. nat (i + 1) \&lt;le&gt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="2164" end_symbol="2165" line="49" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  i &lt; n
+  0 \&lt;le&gt; i
+  i \&lt;le&gt; n
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. nat (i + 1) \&lt;le&gt; length xs</output></step><step name="by" start_symbol="2165" end_symbol="2176" line="49" proof_open="true"><command>by linarith</command><output>proof (state)
+this:
+  nat (i + 1) \&lt;le&gt; length xs
+
+goal (1 subgoal):
+ 1. - INT_MAX - 1
+    \&lt;le&gt; sum_list (take (nat i) xs) +
+          sint
+           (heap_w32 s
+             (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+               (a +\&lt;^sub&gt;p i)))</output></step><step name="&lt;ignored&gt;" start_symbol="2176" end_symbol="2181" line="49" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  nat (i + 1) \&lt;le&gt; length xs
+
+goal (1 subgoal):
+ 1. - INT_MAX - 1
+    \&lt;le&gt; sum_list (take (nat i) xs) +
+          sint
+           (heap_w32 s
+             (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+               (a +\&lt;^sub&gt;p i)))</output></step><step name="have" start_symbol="2181" end_symbol="2228" line="50" proof_open="true"><command>have INT_MIN \&lt;le&gt; sum_list (take (nat (i+1)) xs)</command><output>proof (prove)
+goal (1 subgoal):
+ 1. INT_MIN \&lt;le&gt; sum_list (take (nat (i + 1)) xs)</output></step><step name="&lt;ignored&gt;" start_symbol="2228" end_symbol="2229" line="50" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. INT_MIN \&lt;le&gt; sum_list (take (nat (i + 1)) xs)</output></step><step name="using" start_symbol="2229" end_symbol="2238" line="50" proof_open="true"><command>using B L</command><output>proof (prove)
+using this:
+  \&lt;forall&gt;k\&lt;le&gt;length xs.
+     INT_MIN \&lt;le&gt; sum_list (take k xs) \&lt;and&gt;
+     sum_list (take k xs) \&lt;le&gt; INT_MAX
+  nat (i + 1) \&lt;le&gt; length xs
+
+goal (1 subgoal):
+ 1. INT_MIN \&lt;le&gt; sum_list (take (nat (i + 1)) xs)</output></step><step name="&lt;ignored&gt;" start_symbol="2238" end_symbol="2239" line="50" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  \&lt;forall&gt;k\&lt;le&gt;length xs.
+     INT_MIN \&lt;le&gt; sum_list (take k xs) \&lt;and&gt;
+     sum_list (take k xs) \&lt;le&gt; INT_MAX
+  nat (i + 1) \&lt;le&gt; length xs
+
+goal (1 subgoal):
+ 1. INT_MIN \&lt;le&gt; sum_list (take (nat (i + 1)) xs)</output></step><step name="by" start_symbol="2239" end_symbol="2247" line="50" proof_open="true"><command>by blast</command><output>proof (state)
+this:
+  INT_MIN \&lt;le&gt; sum_list (take (nat (i + 1)) xs)
+
+goal (1 subgoal):
+ 1. - INT_MAX - 1
+    \&lt;le&gt; sum_list (take (nat i) xs) +
+          sint
+           (heap_w32 s
+             (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+               (a +\&lt;^sub&gt;p i)))</output></step><step name="&lt;ignored&gt;" start_symbol="2247" end_symbol="2252" line="50" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  INT_MIN \&lt;le&gt; sum_list (take (nat (i + 1)) xs)
+
+goal (1 subgoal):
+ 1. - INT_MAX - 1
+    \&lt;le&gt; sum_list (take (nat i) xs) +
+          sint
+           (heap_w32 s
+             (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+               (a +\&lt;^sub&gt;p i)))</output></step><step name="then" start_symbol="2252" end_symbol="2256" line="51" proof_open="true"><command>then</command><output>proof (chain)
+picking this:
+  INT_MIN \&lt;le&gt; sum_list (take (nat (i + 1)) xs)</output></step><step name="&lt;ignored&gt;" start_symbol="2256" end_symbol="2257" line="51" proof_open="true"><command> </command><output>proof (chain)
+picking this:
+  INT_MIN \&lt;le&gt; sum_list (take (nat (i + 1)) xs)</output></step><step name="show" start_symbol="2257" end_symbol="2269" line="51" proof_open="true"><command>show ?thesis</command><output>proof (prove)
+using this:
+  INT_MIN \&lt;le&gt; sum_list (take (nat (i + 1)) xs)
+
+goal (1 subgoal):
+ 1. - INT_MAX - 1
+    \&lt;le&gt; sum_list (take (nat i) xs) +
+          sint
+           (heap_w32 s
+             (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+               (a +\&lt;^sub&gt;p i)))</output></step><step name="&lt;ignored&gt;" start_symbol="2269" end_symbol="2270" line="51" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  INT_MIN \&lt;le&gt; sum_list (take (nat (i + 1)) xs)
+
+goal (1 subgoal):
+ 1. - INT_MAX - 1
+    \&lt;le&gt; sum_list (take (nat i) xs) +
+          sint
+           (heap_w32 s
+             (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+               (a +\&lt;^sub&gt;p i)))</output></step><step name="using" start_symbol="2270" end_symbol="2292" line="51" proof_open="true"><command>using step[of i] prems</command><output>proof (prove)
+using this:
+  INT_MIN \&lt;le&gt; sum_list (take (nat (i + 1)) xs)
+  \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p i))) =
+                    sum_list (take (nat (i + 1)) xs)
+  i &lt; n
+  0 \&lt;le&gt; i
+  i \&lt;le&gt; n
+
+goal (1 subgoal):
+ 1. - INT_MAX - 1
+    \&lt;le&gt; sum_list (take (nat i) xs) +
+          sint
+           (heap_w32 s
+             (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+               (a +\&lt;^sub&gt;p i)))</output></step><step name="&lt;ignored&gt;" start_symbol="2292" end_symbol="2293" line="51" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  INT_MIN \&lt;le&gt; sum_list (take (nat (i + 1)) xs)
+  \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p i))) =
+                    sum_list (take (nat (i + 1)) xs)
+  i &lt; n
+  0 \&lt;le&gt; i
+  i \&lt;le&gt; n
+
+goal (1 subgoal):
+ 1. - INT_MAX - 1
+    \&lt;le&gt; sum_list (take (nat i) xs) +
+          sint
+           (heap_w32 s
+             (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+               (a +\&lt;^sub&gt;p i)))</output></step><step name="by" start_symbol="2293" end_symbol="2331" line="51" proof_open="true"><command>by (simp add: INT_MIN_def INT_MAX_def)</command><output>proof (state)
+this:
+  - INT_MAX - 1
+  \&lt;le&gt; sum_list (take (nat i) xs) +
+        sint
+         (heap_w32 s
+           (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+             (a +\&lt;^sub&gt;p i)))
+
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="2331" end_symbol="2334" line="51" proof_open="true"><command>
+  </command><output>proof (state)
+this:
+  - INT_MAX - 1
+  \&lt;le&gt; sum_list (take (nat i) xs) +
+        sint
+         (heap_w32 s
+           (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+             (a +\&lt;^sub&gt;p i)))
+
+goal:
+No subgoals!</output></step><step name="qed" start_symbol="2334" end_symbol="2337" line="52" proof_open="true"><command>qed</command><output>proof (prove)
+goal (8 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa)))
+                         \&lt;le&gt; INT_MAX
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + aa
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa &lt; INT_MAX
+ 4. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa + 1
+ 5. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 6. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 7. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 8. 0 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2337" end_symbol="2340" line="52" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (8 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa)))
+                         \&lt;le&gt; INT_MAX
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + aa
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa &lt; INT_MAX
+ 4. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa + 1
+ 5. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 6. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 7. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 8. 0 \&lt;le&gt; n</output></step><step name="subgoal" start_symbol="2340" end_symbol="2368" line="53" proof_open="true"><command>subgoal premises prems for i</command><output>proof (prove)
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+    \&lt;le&gt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="2368" end_symbol="2371" line="53" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+    \&lt;le&gt; INT_MAX</output></step><step name="proof" start_symbol="2371" end_symbol="2378" line="54" proof_open="true"><command>proof -</command><output>proof (state)
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+    \&lt;le&gt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="2378" end_symbol="2383" line="54" proof_open="true"><command>
+    </command><output>proof (state)
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+    \&lt;le&gt; INT_MAX</output></step><step name="have" start_symbol="2383" end_symbol="2414" line="55" proof_open="true"><command>have L: nat (i+1) \&lt;le&gt; length xs</command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat (i + 1) \&lt;le&gt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="2414" end_symbol="2415" line="55" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat (i + 1) \&lt;le&gt; length xs</output></step><step name="using" start_symbol="2415" end_symbol="2428" line="55" proof_open="true"><command>using prems N</command><output>proof (prove)
+using this:
+  i &lt; n
+  0 \&lt;le&gt; i
+  i \&lt;le&gt; n
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. nat (i + 1) \&lt;le&gt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="2428" end_symbol="2429" line="55" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  i &lt; n
+  0 \&lt;le&gt; i
+  i \&lt;le&gt; n
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. nat (i + 1) \&lt;le&gt; length xs</output></step><step name="by" start_symbol="2429" end_symbol="2440" line="55" proof_open="true"><command>by linarith</command><output>proof (state)
+this:
+  nat (i + 1) \&lt;le&gt; length xs
+
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+    \&lt;le&gt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="2440" end_symbol="2445" line="55" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  nat (i + 1) \&lt;le&gt; length xs
+
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+    \&lt;le&gt; INT_MAX</output></step><step name="have" start_symbol="2445" end_symbol="2492" line="56" proof_open="true"><command>have sum_list (take (nat (i+1)) xs) \&lt;le&gt; INT_MAX</command><output>proof (prove)
+goal (1 subgoal):
+ 1. sum_list (take (nat (i + 1)) xs) \&lt;le&gt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="2492" end_symbol="2493" line="56" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. sum_list (take (nat (i + 1)) xs) \&lt;le&gt; INT_MAX</output></step><step name="using" start_symbol="2493" end_symbol="2502" line="56" proof_open="true"><command>using B L</command><output>proof (prove)
+using this:
+  \&lt;forall&gt;k\&lt;le&gt;length xs.
+     INT_MIN \&lt;le&gt; sum_list (take k xs) \&lt;and&gt;
+     sum_list (take k xs) \&lt;le&gt; INT_MAX
+  nat (i + 1) \&lt;le&gt; length xs
+
+goal (1 subgoal):
+ 1. sum_list (take (nat (i + 1)) xs) \&lt;le&gt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="2502" end_symbol="2503" line="56" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  \&lt;forall&gt;k\&lt;le&gt;length xs.
+     INT_MIN \&lt;le&gt; sum_list (take k xs) \&lt;and&gt;
+     sum_list (take k xs) \&lt;le&gt; INT_MAX
+  nat (i + 1) \&lt;le&gt; length xs
+
+goal (1 subgoal):
+ 1. sum_list (take (nat (i + 1)) xs) \&lt;le&gt; INT_MAX</output></step><step name="by" start_symbol="2503" end_symbol="2511" line="56" proof_open="true"><command>by blast</command><output>proof (state)
+this:
+  sum_list (take (nat (i + 1)) xs) \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+    \&lt;le&gt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="2511" end_symbol="2516" line="56" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  sum_list (take (nat (i + 1)) xs) \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+    \&lt;le&gt; INT_MAX</output></step><step name="then" start_symbol="2516" end_symbol="2520" line="57" proof_open="true"><command>then</command><output>proof (chain)
+picking this:
+  sum_list (take (nat (i + 1)) xs) \&lt;le&gt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="2520" end_symbol="2521" line="57" proof_open="true"><command> </command><output>proof (chain)
+picking this:
+  sum_list (take (nat (i + 1)) xs) \&lt;le&gt; INT_MAX</output></step><step name="show" start_symbol="2521" end_symbol="2533" line="57" proof_open="true"><command>show ?thesis</command><output>proof (prove)
+using this:
+  sum_list (take (nat (i + 1)) xs) \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+    \&lt;le&gt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="2533" end_symbol="2534" line="57" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  sum_list (take (nat (i + 1)) xs) \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+    \&lt;le&gt; INT_MAX</output></step><step name="using" start_symbol="2534" end_symbol="2556" line="57" proof_open="true"><command>using step[of i] prems</command><output>proof (prove)
+using this:
+  sum_list (take (nat (i + 1)) xs) \&lt;le&gt; INT_MAX
+  \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p i))) =
+                    sum_list (take (nat (i + 1)) xs)
+  i &lt; n
+  0 \&lt;le&gt; i
+  i \&lt;le&gt; n
+
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+    \&lt;le&gt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="2556" end_symbol="2557" line="57" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  sum_list (take (nat (i + 1)) xs) \&lt;le&gt; INT_MAX
+  \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; sum_list (take (nat i) xs) +
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p i))) =
+                    sum_list (take (nat (i + 1)) xs)
+  i &lt; n
+  0 \&lt;le&gt; i
+  i \&lt;le&gt; n
+
+goal (1 subgoal):
+ 1. sum_list (take (nat i) xs) +
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+    \&lt;le&gt; INT_MAX</output></step><step name="by" start_symbol="2557" end_symbol="2564" line="57" proof_open="true"><command>by simp</command><output>proof (state)
+this:
+  sum_list (take (nat i) xs) +
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+  \&lt;le&gt; INT_MAX
+
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="2564" end_symbol="2567" line="57" proof_open="true"><command>
+  </command><output>proof (state)
+this:
+  sum_list (take (nat i) xs) +
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)))
+  \&lt;le&gt; INT_MAX
+
+goal:
+No subgoals!</output></step><step name="qed" start_symbol="2567" end_symbol="2570" line="58" proof_open="true"><command>qed</command><output>proof (prove)
+goal (7 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + aa
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa &lt; INT_MAX
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa + 1
+ 4. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 5. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 6. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 7. 0 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2570" end_symbol="2573" line="58" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (7 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + aa
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa &lt; INT_MAX
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa + 1
+ 4. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 5. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 6. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 7. 0 \&lt;le&gt; n</output></step><step name="subgoal" start_symbol="2573" end_symbol="2580" line="59" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + aa_</output></step><step name="&lt;ignored&gt;" start_symbol="2580" end_symbol="2581" line="59" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + aa_</output></step><step name="by" start_symbol="2581" end_symbol="2592" line="59" proof_open="true"><command>by linarith</command><output>proof (prove)
+goal (6 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa &lt; INT_MAX
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa + 1
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 4. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 5. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 6. 0 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2592" end_symbol="2595" line="59" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (6 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa &lt; INT_MAX
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa + 1
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 4. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 5. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 6. 0 \&lt;le&gt; n</output></step><step name="subgoal" start_symbol="2595" end_symbol="2602" line="60" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; aa_ &lt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="2602" end_symbol="2603" line="60" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; aa_ &lt; INT_MAX</output></step><step name="using" start_symbol="2603" end_symbol="2610" line="60" proof_open="true"><command>using N</command><output>proof (prove)
+using this:
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; aa_ &lt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="2610" end_symbol="2611" line="60" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; aa_ &lt; INT_MAX</output></step><step name="by" start_symbol="2611" end_symbol="2622" line="60" proof_open="true"><command>by linarith</command><output>proof (prove)
+goal (5 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa + 1
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 4. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 5. 0 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2622" end_symbol="2625" line="60" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (5 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa + 1
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 4. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 5. 0 \&lt;le&gt; n</output></step><step name="subgoal" start_symbol="2625" end_symbol="2632" line="61" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa_ + 1</output></step><step name="&lt;ignored&gt;" start_symbol="2632" end_symbol="2633" line="61" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; 0 \&lt;le&gt; aa_ + 1</output></step><step name="by" start_symbol="2633" end_symbol="2644" line="61" proof_open="true"><command>by linarith</command><output>proof (prove)
+goal (4 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 3. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 4. 0 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2644" end_symbol="2647" line="61" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (4 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa + 1 \&lt;le&gt; n
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 3. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 4. 0 \&lt;le&gt; n</output></step><step name="subgoal" start_symbol="2647" end_symbol="2654" line="62" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; aa_ + 1 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2654" end_symbol="2655" line="62" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; aa_ + 1 \&lt;le&gt; n</output></step><step name="by" start_symbol="2655" end_symbol="2666" line="62" proof_open="true"><command>by linarith</command><output>proof (prove)
+goal (3 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 2. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 3. 0 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2666" end_symbol="2669" line="62" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (3 subgoals):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;aa &lt; n; 0 \&lt;le&gt; aa; aa \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat aa) xs) +
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p aa))) =
+                         sum_list (take (nat (aa + 1)) xs)
+ 2. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 3. 0 \&lt;le&gt; n</output></step><step name="subgoal" start_symbol="2669" end_symbol="2676" line="63" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; sum_list (take (nat aa_) xs) +
+                      sint
+                       (heap_w32 s
+                         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                           (a +\&lt;^sub&gt;p aa_))) =
+                      sum_list (take (nat (aa_ + 1)) xs)</output></step><step name="&lt;ignored&gt;" start_symbol="2676" end_symbol="2677" line="63" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; sum_list (take (nat aa_) xs) +
+                      sint
+                       (heap_w32 s
+                         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                           (a +\&lt;^sub&gt;p aa_))) =
+                      sum_list (take (nat (aa_ + 1)) xs)</output></step><step name="using" start_symbol="2677" end_symbol="2687" line="63" proof_open="true"><command>using step</command><output>proof (prove)
+using this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; sum_list (take (nat ?i) xs) +
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    sum_list (take (nat (?i + 1)) xs)
+
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; sum_list (take (nat aa_) xs) +
+                      sint
+                       (heap_w32 s
+                         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                           (a +\&lt;^sub&gt;p aa_))) =
+                      sum_list (take (nat (aa_ + 1)) xs)</output></step><step name="&lt;ignored&gt;" start_symbol="2687" end_symbol="2688" line="63" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; sum_list (take (nat ?i) xs) +
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    sum_list (take (nat (?i + 1)) xs)
+
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;aa_ &lt; n; 0 \&lt;le&gt; aa_; aa_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; sum_list (take (nat aa_) xs) +
+                      sint
+                       (heap_w32 s
+                         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                           (a +\&lt;^sub&gt;p aa_))) =
+                      sum_list (take (nat (aa_ + 1)) xs)</output></step><step name="by" start_symbol="2688" end_symbol="2696" line="63" proof_open="true"><command>by blast</command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 2. 0 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2696" end_symbol="2699" line="63" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;And&gt;a.
+       \&lt;lbrakk&gt;\&lt;not&gt; a &lt; n; 0 \&lt;le&gt; a; a \&lt;le&gt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; sum_list (take (nat a) xs) = sum_list xs
+ 2. 0 \&lt;le&gt; n</output></step><step name="subgoal" start_symbol="2699" end_symbol="2706" line="64" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;\&lt;not&gt; a_ &lt; n; 0 \&lt;le&gt; a_; a_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; sum_list (take (nat a_) xs) = sum_list xs</output></step><step name="&lt;ignored&gt;" start_symbol="2706" end_symbol="2707" line="64" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;\&lt;not&gt; a_ &lt; n; 0 \&lt;le&gt; a_; a_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; sum_list (take (nat a_) xs) = sum_list xs</output></step><step name="using" start_symbol="2707" end_symbol="2714" line="64" proof_open="true"><command>using N</command><output>proof (prove)
+using this:
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;\&lt;not&gt; a_ &lt; n; 0 \&lt;le&gt; a_; a_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; sum_list (take (nat a_) xs) = sum_list xs</output></step><step name="&lt;ignored&gt;" start_symbol="2714" end_symbol="2715" line="64" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;\&lt;not&gt; a_ &lt; n; 0 \&lt;le&gt; a_; a_ \&lt;le&gt; n\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; sum_list (take (nat a_) xs) = sum_list xs</output></step><step name="by" start_symbol="2715" end_symbol="2722" line="64" proof_open="true"><command>by auto</command><output>proof (prove)
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2722" end_symbol="2725" line="64" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; n</output></step><step name="subgoal" start_symbol="2725" end_symbol="2732" line="65" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2732" end_symbol="2733" line="65" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; n</output></step><step name="using" start_symbol="2733" end_symbol="2740" line="65" proof_open="true"><command>using N</command><output>proof (prove)
+using this:
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2740" end_symbol="2741" line="65" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; n</output></step><step name="by" start_symbol="2741" end_symbol="2748" line="65" proof_open="true"><command>by simp</command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="2748" end_symbol="2751" line="65" proof_open="true"><command>
+  </command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="done" start_symbol="2751" end_symbol="2755" line="66" proof_open="true"><command>done</command><output>proof (state)
+this:
+  sum_array&apos; a n
+  \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                           r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;
+
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="2755" end_symbol="2756" line="66" proof_open="true"><command>
+</command><output>proof (state)
+this:
+  sum_array&apos; a n
+  \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                           r = sum_list xs \&lt;and&gt; s&apos; = s \&lt;rbrace&gt;
+
+goal:
+No subgoals!</output></step><step name="qed" start_symbol="2756" end_symbol="2759" line="67" proof_open="false"><command>qed</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="2759" end_symbol="2760" line="67" proof_open="false"><command>
+</command><output></output></step><step name="ML" start_symbol="2760" end_symbol="2939" line="68" proof_open="false"><command>ML val _ = if null (Thm_Deps.all_oracles [@{thm sum_array_correct}]) then
+  writeln &quot;AUDIT: sum_array_correct has no oracle dependencies&quot; else error &quot;Oracle dependency detected&quot;</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="2939" end_symbol="2940" line="69" proof_open="false"><command>
+</command><output></output></step><step name="end" start_symbol="2940" end_symbol="2943" line="70" proof_open="false"><command>end</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="2943" end_symbol="2944" line="70" proof_open="false"><command>
+</command><output></output></step><step name="end" start_symbol="2944" end_symbol="2947" line="71" proof_open="false"><command>end</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="2947" end_symbol="2948" line="71" proof_open="false"><command>
+</command><output></output></step></recording>

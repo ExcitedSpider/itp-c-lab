@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p4.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:55:56.613783+00:00",
+  "exit_code": 1,
+  "wall_seconds": 5.040955731179565,
+  "output": "1 goal\n  \n  Espec : OracleKind\n  a : val\n  xs : list Z\n  key : Z\n  Delta_specs : Maps.PTree.t funspec\n  H : 0 <= Zlength xs <= Int.max_signed\n  H1 : Int.min_signed <= key <= Int.max_signed\n  H2 : Forall (fun x : Z => Int.min_signed <= x <= Int.max_signed) xs\n  H3 :\n    forall i j : Z, 0 <= i /\\ i <= j < Zlength xs -> Znth i xs <= Znth j xs\n  lo, hi : Z\n  HRE : lo < hi\n  H4 : 0 <= lo /\\ lo <= hi <= Zlength xs\n  H5 : forall i : Z, 0 <= i < lo -> Znth i xs < key\n  H6 : forall i : Z, hi <= i < Zlength xs -> key < Znth i xs\n  Hm : lo <= lo + (hi - lo) / 2 < hi\n  H7 :\n    Int.repr (Znth (lo + (let (q, _) := Z.div_eucl (hi - lo) 2 in q)) xs) <>\n    Int.repr key\n  H8 :\n    Int.signed\n      (Int.repr (Znth (lo + (let (q, _) := Z.div_eucl (hi - lo) 2 in q)) xs)) <\n    key\n  PNa : is_pointer_or_null a\n  H10 : Zlength (map (fun x : Z => Vint (Int.repr x)) xs) = Zlength xs\n  H9 : field_compatible (Tarray tint (Zlength xs) noattr) [] a\n  H0 : Forall (value_fits tint) (map (fun x : Z => Vint (Int.repr x)) xs)\n  ============================\n  0 <= lo + (hi - lo) / 2 + 1 /\\\n  lo + (hi - lo) / 2 + 1 <= hi <= Zlength xs /\\\n  (forall i : Z, 0 <= i < lo + (hi - lo) / 2 + 1 -> Znth i xs < key)\nFile \"./vst/verif_p4.v\", line 64, characters 14-25:\nError: No product even after head-reduction.\n\n"
+}

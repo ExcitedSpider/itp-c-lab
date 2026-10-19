@@ -1,0 +1,7 @@
+[
+ {"name":"VST Verifiable C manual","url":"https://vst.cs.princeton.edu/download/VC.pdf","use":"Floyd workflow, Clight semantics and soundness; not a version record"},
+ {"name":"RefinedC paper and project","url":"https://plv.mpi-sws.org/refinedc/","use":"Ownership/refinement types, Lithium and foundational Coq proofs; not current package compatibility"},
+ {"name":"WP 30 manual","url":"https://www.frama-c.com/download/wp-manual-30.0-beta-Zinc.pdf","use":"WP workflow and RTE obligations; beta documentation, runtime flags checked using installed help"},
+ {"name":"AutoCorres2 AFP entry","url":"https://devel.isa-afp.org/entries/AutoCorres2.html","use":"Project identity and Isabelle integration; development page, not an installed version"},
+ {"name":"RefinedC upstream","url":"https://gitlab.mpi-sws.org/iris/refinedc","use":"Current manifest access failed; compatibility unknown"}
+]

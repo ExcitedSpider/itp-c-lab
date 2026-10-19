@@ -1,0 +1,4 @@
+$ ["rocq","--version"]
+Environment overrides: {}
+
+Exit: null; signal: null; wall_seconds: 0.0012373879999999957

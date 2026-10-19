@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P1"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:51:49.379932+00:00",
+  "exit_code": 1,
+  "wall_seconds": 12.78527941275388,
+  "output": "Running C_ITP_P1 ...\nC_ITP_P1 FAILED (see also \"isabelle build_log -H Error C_ITP_P1\")\n*** Failed to finish proof (line 14 of \"/work/autocorres/p1/P1.thy\"):\n*** goal (1 subgoal):\n***  1. x < 0 \u27f9\n***     - x = \u00a6x\u00a6\n*** At command \"by\" (line 14 of \"/work/autocorres/p1/P1.thy\")\nUnfinished session(s): C_ITP_P1\n0:00:11 elapsed time, 0:00:05 cpu time, factor 0.45\n"
+}

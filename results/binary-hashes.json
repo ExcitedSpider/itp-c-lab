@@ -1,0 +1,10 @@
+[
+  {
+    "file": "/tmp/framac/4.14.1/bin/frama-c",
+    "sha256": "032feb174d4315008ed20af99543c28c07d73a0aeb28196679e8214fac607616"
+  },
+  {
+    "file": "/tmp/framac/4.14.1/bin/alt-ergo",
+    "sha256": "6d41106051baa8758467db92658e732b15ab1c1763b7663351f73b8fdbf74af0"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-19",
+  "environment": "Rootless Podman on Fedora kernel 7.1.3-101.fc43.x86_64; Intel Core Ultra 7 155H, 22 logical CPUs, approximately 31 GiB RAM. Debian 13 containers for WP/VST/RefinedC; Ubuntu 24.04.3 for Isabelle. Separate container-local opam switch 4.14 per Rocq tool; no host package installations.",
+  "tools": {
+    "WP": {"version": "Frama-C 32.0 Germanium; Why3 1.8.2; Alt-Ergo 2.5.4; OCaml 4.14.2", "container": "c-itp-wp", "model": "x86_64; 32-bit signed int", "version_log": "wp-smoke.txt"},
+    "VST": {"version": "VST-Floyd 2.17; Rocq 9.1.0; rocq-stdlib 9.0.0; coq-compcert opam package 3.18; clightgen self-reports 3.17; OCaml 4.14.2", "container": "c-itp-vst", "model": "CompCert x86, model 64; signed 32-bit int", "version_log": "vst-versions.txt"},
+    "RefinedC": {"version": "2e89846baeaa7f65cbe17e3ae7297a8ed5b4feca; executable reports 2e89846-dirty; Lithium dev.2026-09-11.0.2e89846b; Iris dev.2026-09-10.3.b3495ef9; stdpp dev.2026-09-09.1.c3186aad; Rocq 9.1.0; rocq-stdlib 9.0.0; Cerberus f11e6b335a687c1b77539f7e5695607d09dfc3ea", "container": "c-itp-refinedc", "model": "Caesium, i32; source-level refined ownership types", "version_log": "refinedc-versions.txt"},
+    "AutoCorres2": {"version": "Isabelle2025-2; AFP 2026-10-16; Poly/ML 5.9.2", "container": "c-itp-autocorres", "model": "Default ARM C model: 32-bit pointers and int; host is x86_64", "version_log": "autocorres-version.txt"}
+  },
+  "afp_sha256": "f3360294ca6e42855b954d438799080be810e06fa663dc4cbfe0a36096e1d7c6",
+  "framac_image": "docker.io/framac/frama-c@sha256:35c7b8c98fa0109f4dcd44d59c3aa3245362ec8d0276df025986c2c0919c7777",
+  "isabelle_image": "docker.io/makarius/isabelle@sha256:9bd33b183c399327c5d554fc8cde27c29b5d2b20cdc6fe7a604caa3f951018fc",
+  "limitations": [
+    "Function-level correctness under displayed preconditions; no whole-program linking, executable compiler theorem, or end-to-end binary verification was instantiated.",
+    "VST semax_body and RefinedC typed_function establish safety and functional partial correctness. Separate termination proofs were not supplied for these tools. AutoCorres2 runs_to proves total correctness; WP includes termination obligations.",
+    "VST and RefinedC array contracts own initialized arrays; WP permits read-only initialized arrays. These are different admissible memory states, including potentially different empty-array pointer domains.",
+    "P5 VST and RefinedC specify reversal of the value sequence. AutoCorres2 and the unfinished WP contract additionally preserve node identities and values. Frame specifications are not identical across tools.",
+    "AutoCorres2 P1/P3 omit limits.h, used only by ACSL in the shared source. RefinedC adds attributes, refinedc.h and a typedef for node pointers. Executable function bodies are unchanged apart from whitespace.",
+    "This is a small cold-local-build case study with prebuilt libraries and warm OS caches, not a controlled general performance ranking. RSS is a per-process high-water mark, not aggregate memory.",
+    "WP P5 stays open. No interactive Rocq discharge or certificate is claimed; no VST-A experiment was performed."
+  ]
+}

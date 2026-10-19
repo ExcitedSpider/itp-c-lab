@@ -1,0 +1,29 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "frama-c",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-timeout",
+    "10",
+    "-wp-par",
+    "1",
+    "-wp-report-json",
+    "/work/results/rework/wp-p3_sum-3-goals.json",
+    "/work/programs/p3_sum.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:06:30.810136+00:00",
+  "exit_code": 0,
+  "wall_seconds": 1.68144664587453,
+  "output": "[kernel] Parsing programs/p3_sum.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function sum_array\n[wp] 14 goals scheduled\n[wp] Proved goals:   16 / 16\n  Terminating:       1\n  Unreachable:       1\n  Qed:               9 (2ms-2ms-7ms)\n  Alt-Ergo 2.5.4:    5 (8ms-11ms-15ms)\nPEAK_RSS_KB=117136\n"
+}

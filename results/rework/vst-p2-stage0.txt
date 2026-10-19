@@ -1,0 +1,3 @@
+$ ["opam", "exec", "--", "clightgen", "-normalize", "-o", "vst/generated/p2_swap.v", "programs/p2_swap.c"]
+
+Exit: 0

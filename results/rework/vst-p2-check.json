@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p2.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:47:07.965989+00:00",
+  "exit_code": 1,
+  "wall_seconds": 1.4436866049654782,
+  "output": "File \"./vst/verif_p2.v\", line 26, characters 0-4:\nError:  (in proof body_swap_separate): Attempt to save an incomplete proof\n(there are remaining open goals).\n\n"
+}

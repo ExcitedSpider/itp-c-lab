@@ -1,0 +1,16 @@
+{
+  "label": "autocorres-isabelle-probe",
+  "timestamp": "2026-10-19T02:04:03.637Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "isabelle",
+    "version"
+  ],
+  "env": {},
+  "exit_code": null,
+  "signal": null,
+  "error": "spawnSync isabelle ENOENT",
+  "wall_seconds": 0.0019426559999999994,
+  "stdout": "",
+  "stderr": ""
+}

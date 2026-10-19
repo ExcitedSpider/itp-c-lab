@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p4.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:53:10.586091+00:00",
+  "exit_code": 1,
+  "wall_seconds": 4.443864108994603,
+  "output": "File \"./vst/verif_p4.v\", line 60, characters 17-44:\nError: No applicable tactic.\n\n"
+}

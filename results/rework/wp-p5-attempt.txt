@@ -1,0 +1,144 @@
+$ ["opam", "exec", "--", "frama-c", "-machdep", "x86_64", "-wp", "-wp-rte", "-wp-prover", "alt-ergo", "-wp-timeout", "3", "-wp-par", "1", "-wp-print", "programs/p5_reverse.c"]
+[kernel] Parsing programs/p5_reverse.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function reverse
+[wp] programs/p5_reverse.c:24: Warning: 
+  Missing assigns clause (assigns 'everything' instead)
+[wp] 7 goals scheduled
+[wp] [Timeout] typed_reverse_terminates (Qed 1ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_ensures (Qed 2ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_ensures_2 (Qed 3ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_ensures_3 (Qed 4ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_assert_rte_mem_access (Qed 2ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_assert_rte_mem_access_2 (Qed 3ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_assigns (Qed 2ms) (Alt-Ergo)
+[wp] Proved goals:    1 / 8
+  Unreachable:     1
+  Qed:             0 (1ms-4ms)
+  Timeout:         7
+------------------------------------------------------------
+  Function reverse
+------------------------------------------------------------
+
+Goal Termination-condition (generated) in 'reverse':
+Loop termination at line 24
+Assume {
+  (* Pre-condition *)
+  Have: 0 <= i.
+  (* Pre-condition *)
+  Have: 0 <= i_1.
+}
+Prove: false.
+Prover Alt-Ergo 2.5.4 returns Timeout (Qed:1ms) (3s)
+
+------------------------------------------------------------
+
+Goal Post-condition (file programs/p5_reverse.c, line 16) in 'reverse':
+Assume {
+  (* Heap *)
+  Type: (region(l.base) <= 0) /\ linked(Malloc_1) /\ framed(Mptr_1) /\
+      scinit(Init_1).
+  (* Goal *)
+  When: P_list(Init_1, Malloc_1, Mptr_1, l, i).
+  (* Pre-condition *)
+  Have: (0 <= i_1) /\ P_list(Init_1, Malloc_1, Mptr_1, l, i_1).
+  (* Pre-condition *)
+  Have: (0 <= i_2) /\ P_list(Init_1, Malloc_1, Mptr_1, l, i_2).
+}
+Prove: P_list(Init_0, Malloc_0, Mptr_0, reverse_0, i).
+Prover Alt-Ergo 2.5.4 returns Timeout (Qed:2ms) (3s)
+
+------------------------------------------------------------
+
+Goal Post-condition (file programs/p5_reverse.c, line 17) in 'reverse':
+Assume {
+  (* Heap *)
+  Type: (region(l.base) <= 0) /\ framed(Mptr_0).
+  (* Goal *)
+  When: (0 <= i_1) /\ (i_1 < i).
+  (* Pre-condition *)
+  Have: 0 <= i_2.
+  (* Pre-condition *)
+  Have: 0 <= i_3.
+}
+Prove: L_nth(Mptr_0, l, i - 1 - i_1) = L_nth(Mptr_1, reverse_0, i_1).
+Prover Alt-Ergo 2.5.4 returns Timeout (Qed:3ms) (3s)
+
+------------------------------------------------------------
+
+Goal Post-condition (file programs/p5_reverse.c, line 19) in 'reverse':
+Assume {
+  Type: is_sint32_chunk(Mint_0) /\ is_sint32_chunk(Mint_1).
+  (* Heap *)
+  Type: (region(l.base) <= 0) /\ framed(Mptr_0).
+  (* Goal *)
+  When: (0 <= i_1) /\ (i_1 < i).
+  (* Pre-condition *)
+  Have: 0 <= i_2.
+  (* Pre-condition *)
+  Have: 0 <= i_3.
+}
+Prove: Mint_0[shiftfield_F1_node_value(L_nth(Mptr_0, l, i - 1 - i_1))]
+         = Mint_1[shiftfield_F1_node_value(L_nth(Mptr_1, reverse_0, i_1))].
+Prover Alt-Ergo 2.5.4 returns Timeout (Qed:4ms) (3s)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,mem_access' (file programs/p5_reverse.c, line 25):
+Assume {
+  (* Pre-condition *)
+  Have: 0 <= i.
+  (* Pre-condition *)
+  Have: 0 <= i_1.
+  (* Then *)
+  Have: null != l.
+}
+Prove: valid_rd(Malloc_0, shiftfield_F1_node_next(l), 1).
+Prover Alt-Ergo 2.5.4 returns Timeout (Qed:2ms) (3s)
+
+------------------------------------------------------------
+
+Goal Assertion 'rte,mem_access' (file programs/p5_reverse.c, line 26):
+Let a = shiftfield_F1_node_next(l).
+Assume {
+  (* Pre-condition *)
+  Have: 0 <= i.
+  (* Pre-condition *)
+  Have: 0 <= i_1.
+  (* Then *)
+  Have: null != l.
+  (* Assertion 'rte,mem_access' *)
+  Have: valid_rd(Malloc_0, a, 1).
+}
+Prove: valid_rw(Malloc_0, a, 1).
+Prover Alt-Ergo 2.5.4 returns Timeout (Qed:3ms) (3s)
+
+------------------------------------------------------------
+
+Goal Assigns (file programs/p5_reverse.c, line 14) in 'reverse':
+Effect at line 24
+Assume {
+  (* Pre-condition *)
+  Have: 0 <= i.
+  (* Pre-condition *)
+  Have: 0 <= i_1.
+}
+Prove: false.
+Prover Alt-Ergo 2.5.4 returns Timeout (Qed:2ms) (3s)
+
+------------------------------------------------------------
+[wp:pedantic-assigns] programs/p5_reverse.c:22: Warning: 
+  No 'assigns \result \from ...' specification for function 'reverse'returning pointer type.
+  Callers assumptions might be imprecise.
+[wp:pedantic-assigns] programs/p5_reverse.c:14: Warning: 
+  No \from specification for assigned pointer '{p->next |
+                                                struct node *p;
+                                                              ∃ ℤ n, ℤ i;
+                                                                list{Old}(l, n) ∧
+                                                                0 ≤ i < n ∧
+                                                                p ≡
+                                                                nth{Old}
+                                                                (l, i)}'.
+  Callers assumptions might be imprecise.
+
+Exit: 0

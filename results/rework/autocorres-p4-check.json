@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P4"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:56:34.667911+00:00",
+  "exit_code": 1,
+  "wall_seconds": 15.514037027023733,
+  "output": "Running C_ITP_P4 ...\nC_ITP_P4 FAILED (see also \"isabelle build_log -H Error C_ITP_P4\")\n...\n***                    return (hi, mid + 1)\n***                  })\n***                 (return (mid, lo)))\n***           })\n***      (n, 0)\n***     \u2219 s \u2983 \u03bbr t. (\u2200v. r = Result v \u27f6\n***                      throw (- 1)\n***                      \u2219 t \u2983 \u03bbr t. (\u2200v va.\n***                                      Result v = Result va \u27f6\n***                                      r = Result v \u27f6\n***                                      - 1 \u2264 va \u2227\n***                                      va < n \u2227\n***                                      (0 \u2264 va \u27f6 xs ! nat va = key) \u2227\n***                                      (va = - 1) = (key \u2209 set xs) \u2227 t = s) \u2227\n***                                  (\u2200v va.\n***                                      Result v = Result va \u27f6\n***                                      r = Exn v \u27f6\n***                                      - 1 \u2264 va \u2227\n***                                      va < n \u2227\n***                                      (0 \u2264 va \u27f6 xs ! nat va = key) \u2227\n***                                      (va = - 1) = (key \u2209 set xs) \u2227\n***                                      t = s) \u2984) \u2227\n***                 (\u2200e. r = Exn e \u27f6\n***                      (\u2200v va.\n***                          Result v = Result va \u27f6\n***                          Exn e = Result v \u27f6\n***                          - 1 \u2264 va \u2227\n***                          va < n \u2227\n***                          (0 \u2264 va \u27f6 xs ! nat va = key) \u2227\n***                          (va = - 1) = (key \u2209 set xs) \u2227 t = s) \u2227\n***                      (\u2200v va.\n***                          Result v = Result va \u27f6\n***                          Exn e = Exn v \u27f6\n***                          - 1 \u2264 va \u2227\n***                          va < n \u2227\n***                          (0 \u2264 va \u27f6 xs ! nat va = key) \u2227\n***                          (va = - 1) = (key \u2209 set xs) \u2227\n***                          t =\n***                          s)) \u2984\n*** At command \"done\" (line 26 of \"/work/autocorres/p4/P4.thy\")\nUnfinished session(s): C_ITP_P4\n0:00:14 elapsed time, 0:00:08 cpu time, factor 0.56\n"
+}

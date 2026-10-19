@@ -1,0 +1,14 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "refinedc",
+    "--help"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:40:22.126838+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.023991191759705544,
+  "output": "NAME\n       refinedc - RefinedC program verification framework.\n\nSYNOPSIS\n       refinedc [COMMAND] \u2026\n\nCOMMANDS\n       ail [OPTION]\u2026 FILE\n           Print the Cerberus Ail AST of the given C file to stdout.\n\n       check [OPTION]\u2026 FILE\n           Run RefinedC on the given C file.\n\n       clean [--soft] [OPTION]\u2026 FILE\n           Delete all the generated files for the given C source file.\n\n       cpp [OPTION]\u2026 FILE\n           Print the result of the Cerberus preprocessor to stdout.\n\n       help [OPTION]\u2026\n           Show the main help page for RefinedC.\n\n       init [--coq-path=COQDIR] [OPTION]\u2026\n           Create a new RefinedC project in the current directory.\n\n       version [OPTION]\u2026\n           Show detailed version information for RefinedC.\n\nCOMMON OPTIONS\n       --help[=FMT] (default=auto)\n           Show this help in format FMT. The value FMT must be one of auto,\n           pager, groff or plain. With auto, the format is pager or plain\n           whenever the TERM env var is dumb or undefined.\n\n       --version\n           Show version information.\n\nEXIT STATUS\n       refinedc exits with:\n\n       0   on success.\n\n       123 on indiscriminate errors reported on standard error.\n\n       124 on command line parsing errors.\n\n       125 on unexpected internal errors (bugs).\n\n"
+}

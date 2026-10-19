@@ -1,0 +1,16 @@
+{
+  "label": "refinedc-rocq-probe",
+  "timestamp": "2026-10-19T02:04:03.601Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "rocq",
+    "--version"
+  ],
+  "env": {},
+  "exit_code": null,
+  "signal": null,
+  "error": "spawnSync rocq ENOENT",
+  "wall_seconds": 0.0017325569999999998,
+  "stdout": "",
+  "stderr": ""
+}

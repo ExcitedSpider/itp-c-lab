@@ -1,0 +1,26 @@
+$ ["/usr/bin/time","-f","PEAK_RSS_KB=%M","/tmp/framac/4.14.1/bin/frama-c","-wp-why3-extra-config","wp/why3.conf","-machdep","x86_64","-wp","-wp-rte","-wp-prover","alt-ergo","-wp-par","1","-wp-timeout","10","-wp-cache","none","programs/p5_reverse.c"]
+Environment overrides: {"OCAMLPATH":"/tmp/framac/4.14.1/lib","DUNE_DIR_LOCATIONS":"frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"}
+[kernel] Parsing programs/p5_reverse.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function reverse
+[wp] programs/p5_reverse.c:24: Warning: 
+  Missing assigns clause (assigns 'everything' instead)
+[wp] 7 goals scheduled
+[wp] [Failure] typed_reverse_terminates (Qed 0.96ms) (Alt-Ergo)
+[wp] [Failure] typed_reverse_ensures (Qed 3ms) (Alt-Ergo)
+[wp] [Failure] typed_reverse_ensures_2 (Qed 3ms) (Alt-Ergo)
+/tmp/ppannot27744f.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined
+    1 | #define __STDC_EMBED_NOT_FOUND__ 0
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+/tmp/ppannot27744f.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined
+    2 | #define __STDC_EMBED_FOUND__ 1
+      |         ^~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+/tmp/ppannot27744f.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined
+    3 | #define __STDC_EMBED_EMPTY__ 2
+      |         ^~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+cc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics
+
+Exit: null; signal: SIGTERM; wall_seconds: 120.019065161

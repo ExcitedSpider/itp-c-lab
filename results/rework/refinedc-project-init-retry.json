@@ -1,0 +1,12 @@
+{
+  "command": [
+    "sh",
+    "-c",
+    "cd refinedc && opam exec -- refinedc init --coq-path=c_itp_refinedc"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:40:55.053510+00:00",
+  "exit_code": 1,
+  "wall_seconds": 0.045016937889158726,
+  "output": "\u001b[31mDirectory \"/work/refinedc/proofs\" uses a reserved name.\n\u001b[0m"
+}

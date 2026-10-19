@@ -1,0 +1,15 @@
+$ ["/usr/bin/time", "-f", "PEAK_RSS_KB=%M", "opam", "exec", "--", "frama-c", "-machdep", "x86_64", "-wp", "-wp-rte", "-wp-prover", "alt-ergo", "-wp-timeout", "10", "-wp-par", "1", "-wp-report-json", "/work/results/rework/wp-broken-p3_sum-2-goals.json", "/work/wp/broken/p3_sum.c"]
+[kernel] Parsing wp/broken/p3_sum.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function sum_array
+[wp] 14 goals scheduled
+[wp] [Timeout] typed_sum_array_loop_invariant_2_established (Qed 3ms) (Alt-Ergo)
+[wp] Proved goals:   15 / 16
+  Terminating:       1
+  Unreachable:       1
+  Qed:               7 (3ms-3ms-9ms)
+  Alt-Ergo 2.5.4:    6 (8ms-15ms)
+  Timeout:           1
+PEAK_RSS_KB=398704
+
+Exit: 0

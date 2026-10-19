@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p5.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:48:44.460018+00:00",
+  "exit_code": 1,
+  "wall_seconds": 0.9405879797413945,
+  "output": "File \"./vst/verif_p5.v\", line 18, characters 0-4:\nError:  (in proof listrep_local): Attempt to save an incomplete proof\n(there are remaining open goals).\n\n"
+}

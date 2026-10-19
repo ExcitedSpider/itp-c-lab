@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p3_broken.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:10:32.960951+00:00",
+  "exit_code": 1,
+  "wall_seconds": 1.4750619414262474,
+  "output": "1 goal\n  \n  Espec : OracleKind\n  a : val\n  xs : list Z\n  Delta_specs : Maps.PTree.t funspec\n  H : 0 <= Zlength xs <= Int.max_signed\n  H1 : Forall (fun x : Z => Int.min_signed <= x <= Int.max_signed) xs\n  H2 :\n    forall k : Z,\n    0 <= k <= Zlength xs ->\n    Int.min_signed <= sumZ (sublist 0 k xs) <= Int.max_signed\n  PNa : is_pointer_or_null a\n  H4 : Zlength (map (fun x : Z => Vint (Int.repr x)) xs) = Zlength xs\n  H3 : field_compatible (Tarray tint (Zlength xs) noattr) [] a\n  H0 : Forall (value_fits tint) (map (fun x : Z => Vint (Int.repr x)) xs)\n  ============================\n  Vint (Int.repr 1) = Vint (Int.repr 0)\nFile \"./vst/verif_p3_broken.v\", line 40, characters 2-3:\nError: [Focus] Wrong bullet -: Current bullet - is not finished.\n\n"
+}

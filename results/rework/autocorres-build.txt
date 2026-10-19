@@ -1,0 +1,30 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-o", "threads=4", "-d", "/home/isabelle/afp-2026-10-16/thys", "-b", "AutoCorres2"]
+Building Simpl ...
+Finished Simpl (0:01:01 elapsed time, 0:03:12 cpu time, factor 3.13)
+Building AutoCorres2 ...
+AutoCorres2 FAILED (see also "isabelle build_log -H Error AutoCorres2")
+*** Failed to load theory "AutoCorres2.AutoCorres_Documentation" (unresolved "AutoCorres2.AutoCorresInfrastructure", "AutoCorres2.In_Out_Parameters_Ex", "AutoCorres2.fnptr", "AutoCorres2.open_struct", "AutoCorres2.pointers_to_locals", "AutoCorres2.union_ac")
+*** /tmp/isabelle-/bash_script18390724898391405433: line 1: /usr/bin/cpp: No such file or directory
+*** At command "install_C_file" (line 84 of "~/afp-2026-10-16/thys/AutoCorres2/doc/union_ac.thy")
+*** /tmp/isabelle-/bash_script13529012998795530974: line 1: /usr/bin/cpp: No such file or directory
+*** At command "install_C_file" (line 70 of "~/afp-2026-10-16/thys/AutoCorres2/doc/open_struct.thy")
+*** /tmp/isabelle-/bash_script4474825644815418940: line 1: /usr/bin/cpp: No such file or directory
+*** At command "install_C_file" (line 12 of "~/afp-2026-10-16/thys/AutoCorres2/doc/pointers_to_locals.thy")
+*** /tmp/isabelle-/bash_script10063736212809159369: line 1: /usr/bin/cpp: No such file or directory
+*** At command "install_C_file" (line 197 of "~/afp-2026-10-16/thys/AutoCorres2/doc/In_Out_Parameters_Ex.thy")
+*** /tmp/isabelle-/bash_script7387852535808597390: line 1: /usr/bin/cpp: No such file or directory
+*** At command "install_C_file" (line 15 of "~/afp-2026-10-16/thys/AutoCorres2/doc/fnptr.thy")
+*** /tmp/isabelle-/bash_script7006372706120635184: line 1: /usr/bin/cpp: No such file or directory
+*** At command "install_C_file" (line 43 of "~/afp-2026-10-16/thys/AutoCorres2/doc/quickstart/Chapter2_HoareHeap.thy")
+*** /tmp/isabelle-/bash_script10133114369368607243: line 1: /usr/bin/cpp: No such file or directory
+*** At command "install_C_file" (line 27 of "~/afp-2026-10-16/thys/AutoCorres2/doc/quickstart/Chapter3_HoareHeap.thy")
+*** /tmp/isabelle-/bash_script12922573030850883856: line 1: /usr/bin/cpp: No such file or directory
+*** At command "install_C_file" (line 82 of "~/afp-2026-10-16/thys/AutoCorres2/doc/quickstart/Chapter1_MinMax.thy")
+*** /tmp/isabelle-/bash_script3399095977515182143: line 1: /usr/bin/cpp: No such file or directory
+*** At command "install_C_file" (line 243 of "~/afp-2026-10-16/thys/AutoCorres2/doc/AutoCorresInfrastructure.thy")
+*** /tmp/isabelle-/bash_script6337048137361640429: line 1: /usr/bin/cpp: No such file or directory
+*** At command "install_C_file" (line 157 of "~/afp-2026-10-16/thys/AutoCorres2/c-parser/CTranslationInfrastructure.thy")
+Unfinished session(s): AutoCorres2
+0:05:57 elapsed time, 0:19:17 cpu time, factor 3.24
+
+Exit: 1

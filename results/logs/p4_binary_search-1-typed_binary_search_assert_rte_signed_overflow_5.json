@@ -1,0 +1,23 @@
+{
+  "label": "p4_binary_search-1-typed_binary_search_assert_rte_signed_overflow_5",
+  "timestamp": "2026-10-19T02:11:51.833Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "/tmp/framac/4.14.1/bin/alt-ergo",
+    "--frontend",
+    "dolmen",
+    "--timelimit",
+    "3",
+    "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_5_AltmnErgo_2dt6dt0-wp_goal.psmt2"
+  ],
+  "env": {},
+  "exit_code": 0,
+  "signal": null,
+  "error": "spawnSync /usr/bin/time EPERM",
+  "wall_seconds": 0.044182006999999995,
+  "stdout": "\nunsat\n",
+  "stderr": "alt-ergo: option '--frontend': this option is deprecated and will be ignored in the next version\n\n; File \"results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_5_AltmnErgo_2dt6dt0-wp_goal.psmt2\", line 938, characters 1-12: Valid (0.0244) (324 steps) (goal g_1)\nPEAK_RSS_KB=25248\n"
+}

@@ -1,0 +1,35 @@
+{
+  "label": "p2_swap-export-all",
+  "timestamp": "2026-10-19T02:03:16.225Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "/tmp/framac/4.14.1/bin/frama-c",
+    "-wp-why3-extra-config",
+    "wp/why3.conf",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-timeout",
+    "1",
+    "-wp-par",
+    "64",
+    "-wp-out",
+    "results/generated/p2_swap",
+    "-wp-report-json",
+    "results/p2_swap-export-report.json",
+    "programs/p2_swap.c"
+  ],
+  "env": {
+    "OCAMLPATH": "/tmp/framac/4.14.1/lib",
+    "DUNE_DIR_LOCATIONS": "frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"
+  },
+  "exit_code": 0,
+  "signal": null,
+  "error": "spawnSync /tmp/framac/4.14.1/bin/frama-c EPERM",
+  "wall_seconds": 102.744754395,
+  "stdout": "[kernel] Parsing programs/p2_swap.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function swap\n[wp] 8 goals scheduled\n[wp] [Failure] typed_swap_assert_rte_mem_access_3 (Qed 1ms) (Alt-Ergo)\n[wp] [Failure] typed_swap_assert_rte_mem_access (Qed 0.91ms) (Alt-Ergo)\n[wp] [Failure] typed_swap_ensures (Qed 2ms) (Alt-Ergo)\n[wp] Proved goals:    7 / 10\n  Terminating:     1\n  Unreachable:     1\n  Qed:             5 (0.91ms-0.58ms-2ms)\n  Failed:          3\n",
+  "stderr": "/tmp/ppannot0174d4.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined\n    1 | #define __STDC_EMBED_NOT_FOUND__ 0\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot0174d4.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined\n    2 | #define __STDC_EMBED_FOUND__ 1\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot0174d4.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined\n    3 | #define __STDC_EMBED_EMPTY__ 2\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\ncc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics\n"
+}

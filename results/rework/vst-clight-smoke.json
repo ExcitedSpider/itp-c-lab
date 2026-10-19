@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "clightgen",
+    "-normalize",
+    "-o",
+    "vst/generated/p1_abs.v",
+    "programs/p1_abs.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:36:26.666770+00:00",
+  "exit_code": 2,
+  "wall_seconds": 0.04871806688606739,
+  "output": "ccomp: error: vst/generated/p1_abs.v: No such file or directory\n"
+}

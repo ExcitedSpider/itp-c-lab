@@ -1,0 +1,34 @@
+$ ["sh", "-c", "opam exec -- which clightgen && opam exec -- clightgen -version && head -28 vst/generated/p1_abs.v && opam show coq-compcert --field=url.src"]
+/home/opam/.opam/4.14/bin/clightgen
+The CompCert CompCert AST generator, version 3.17
+From Coq Require Import String List ZArith.
+From compcert Require Import Coqlib Integers Floats AST Ctypes Cop Clight Clightdefs.
+Import Clightdefs.ClightNotations.
+Local Open Scope Z_scope.
+Local Open Scope string_scope.
+Local Open Scope clight_scope.
+
+Module Info.
+  Definition version := "3.17".
+  Definition build_number := "".
+  Definition build_tag := "".
+  Definition build_branch := "".
+  Definition arch := "x86".
+  Definition model := "64".
+  Definition abi := "standard".
+  Definition bitsize := 64.
+  Definition big_endian := false.
+  Definition source_file := "programs/p1_abs.c".
+  Definition normalized := true.
+End Info.
+
+Definition ___builtin_ais_annot : ident := $"__builtin_ais_annot".
+Definition ___builtin_annot : ident := $"__builtin_annot".
+Definition ___builtin_annot_intval : ident := $"__builtin_annot_intval".
+Definition ___builtin_bswap : ident := $"__builtin_bswap".
+Definition ___builtin_bswap16 : ident := $"__builtin_bswap16".
+Definition ___builtin_bswap32 : ident := $"__builtin_bswap32".
+Definition ___builtin_bswap64 : ident := $"__builtin_bswap64".
+[ERROR] No printer for "url.src"
+
+Exit: 2

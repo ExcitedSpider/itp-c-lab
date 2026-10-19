@@ -1,0 +1,15 @@
+{
+  "command": [
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://gitlab.mpi-sws.org/iris/refinedc.git",
+    "/home/opam/refinedc"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:27:56.624848+00:00",
+  "exit_code": 0,
+  "wall_seconds": 5.049615183845162,
+  "output": "Cloning into '/home/opam/refinedc'...\n"
+}

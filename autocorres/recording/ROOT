@@ -1,0 +1,24 @@
+session C_ITP_Record_P1 in p1 = AutoCorres2 +
+  options [document = false, quick_and_dirty = false, record_theories = true]
+  directories "../../p1"
+  theories Capture_P1
+
+session C_ITP_Record_P2 in p2 = AutoCorres2 +
+  options [document = false, quick_and_dirty = false, record_theories = true]
+  directories "../../p2"
+  theories Capture_P2
+
+session C_ITP_Record_P3 in p3 = AutoCorres2 +
+  options [document = false, quick_and_dirty = false, record_theories = true]
+  directories "../../p3"
+  theories Capture_P3
+
+session C_ITP_Record_P4 in p4 = AutoCorres2 +
+  options [document = false, quick_and_dirty = false, record_theories = true]
+  directories "../../p4"
+  theories Capture_P4
+
+session C_ITP_Record_P5 in p5 = AutoCorres2 +
+  options [document = false, quick_and_dirty = false, record_theories = true]
+  directories "../../p5"
+  theories Capture_P5

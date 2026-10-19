@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "clightgen",
+    "-normalize",
+    "-o",
+    "vst/generated/p2_swap.v",
+    "programs/p2_swap.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:08:57.907186+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.027202613186091185,
+  "output": "PEAK_RSS_KB=19336\n"
+}

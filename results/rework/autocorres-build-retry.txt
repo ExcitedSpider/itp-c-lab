@@ -1,0 +1,6 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-o", "threads=4", "-d", "/home/isabelle/afp-2026-10-16/thys", "-b", "AutoCorres2"]
+Building AutoCorres2 ...
+Finished AutoCorres2 (0:08:00 elapsed time, 0:28:45 cpu time, factor 3.59)
+0:08:14 elapsed time, 0:28:45 cpu time, factor 3.49
+
+Exit: 0

@@ -1,0 +1,3747 @@
+<recording theory="Draft.P4"><step name="theory" start_symbol="1" end_symbol="49" line="1" proof_open="false"><command>theory P4
+imports AutoCorres2.AutoCorres
+begin</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="49" end_symbol="50" line="3" proof_open="false"><command>
+</command><output></output></step><step name="install_C_file" start_symbol="50" end_symbol="100" line="4" proof_open="false"><command>install_C_file ../../programs/p4_binary_search.c</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="100" end_symbol="101" line="4" proof_open="false"><command>
+</command><output></output></step><step name="autocorres" start_symbol="101" end_symbol="152" line="5" proof_open="false"><command>autocorres [ts_rules = nondet] p4_binary_search.c</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="152" end_symbol="153" line="5" proof_open="false"><command>
+</command><output></output></step><step name="context" start_symbol="153" end_symbol="200" line="6" proof_open="false"><command>context p4_binary_search_global_addresses begin</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="200" end_symbol="201" line="6" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="201" end_symbol="330" line="7" proof_open="true"><command>lemma mid_bounds:
+  fixes lo hi :: int
+  assumes 0 \&lt;le&gt; lo lo &lt; hi
+  shows lo \&lt;le&gt; lo + (hi-lo) sdiv 2 \&lt;and&gt; lo + (hi-lo) sdiv 2 &lt; hi</command><output>proof (prove)
+goal (1 subgoal):
+ 1. lo \&lt;le&gt; lo + (hi - lo) sdiv 2 \&lt;and&gt; lo + (hi - lo) sdiv 2 &lt; hi</output></step><step name="&lt;ignored&gt;" start_symbol="330" end_symbol="333" line="10" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. lo \&lt;le&gt; lo + (hi - lo) sdiv 2 \&lt;and&gt; lo + (hi - lo) sdiv 2 &lt; hi</output></step><step name="using" start_symbol="333" end_symbol="344" line="11" proof_open="true"><command>using assms</command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; lo
+  lo &lt; hi
+
+goal (1 subgoal):
+ 1. lo \&lt;le&gt; lo + (hi - lo) sdiv 2 \&lt;and&gt; lo + (hi - lo) sdiv 2 &lt; hi</output></step><step name="&lt;ignored&gt;" start_symbol="344" end_symbol="345" line="11" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; lo
+  lo &lt; hi
+
+goal (1 subgoal):
+ 1. lo \&lt;le&gt; lo + (hi - lo) sdiv 2 \&lt;and&gt; lo + (hi - lo) sdiv 2 &lt; hi</output></step><step name="by" start_symbol="345" end_symbol="400" line="11" proof_open="false"><command>by (simp add: signed_divide_int_def sgn_if; presburger)</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="400" end_symbol="401" line="11" proof_open="false"><command>
+</command><output></output></step><step name="definition" start_symbol="401" end_symbol="661" line="12" proof_open="false"><command>definition array_values :: lifted_globals \&lt;Rightarrow&gt; 32 signed word ptr \&lt;Rightarrow&gt; int list \&lt;Rightarrow&gt; bool where
+  array_values s a xs = (\&lt;forall&gt;i&lt;length xs.
+    ptr_valid (heap_typing s) (ptr_coerce (a +\&lt;^sub&gt;p int i)::32 word ptr) \&lt;and&gt;
+    sint (heap_w32 s (ptr_coerce (a +\&lt;^sub&gt;p int i))) = xs ! i)</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="661" end_symbol="662" line="15" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="662" end_symbol="1007" line="16" proof_open="true"><command>lemma binary_search_correct:
+  assumes A: array_values s a xs
+    and N: n = int (length xs) n \&lt;le&gt; INT_MAX
+    and K: INT_MIN \&lt;le&gt; key key \&lt;le&gt; INT_MAX
+    and S: \&lt;forall&gt;i j. i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs!i \&lt;le&gt; xs!j
+  shows binary_search&apos; a n key \&lt;bullet&gt; s \&lt;lbrace&gt;\&lt;lambda&gt;Res r s&apos;.
+    -1 \&lt;le&gt; r \&lt;and&gt; r &lt; n \&lt;and&gt; (0 \&lt;le&gt; r \&lt;longrightarrow&gt; xs ! nat r = key) \&lt;and&gt;
+    (r = -1 \&lt;longleftrightarrow&gt; key \&lt;notin&gt; set xs) \&lt;and&gt; s&apos; = s\&lt;rbrace&gt;</command><output>proof (prove)
+goal (1 subgoal):
+ 1. binary_search&apos; a n key
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             - 1 \&lt;le&gt; r \&lt;and&gt;
+                             r &lt; n \&lt;and&gt;
+                             (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                              xs ! nat r = key) \&lt;and&gt;
+                             (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                             s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="1007" end_symbol="1008" line="23" proof_open="true"><command>
+</command><output>proof (prove)
+goal (1 subgoal):
+ 1. binary_search&apos; a n key
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             - 1 \&lt;le&gt; r \&lt;and&gt;
+                             r &lt; n \&lt;and&gt;
+                             (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                              xs ! nat r = key) \&lt;and&gt;
+                             (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                             s&apos; = s \&lt;rbrace&gt;</output></step><step name="proof" start_symbol="1008" end_symbol="1015" line="24" proof_open="true"><command>proof -</command><output>proof (state)
+goal (1 subgoal):
+ 1. binary_search&apos; a n key
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             - 1 \&lt;le&gt; r \&lt;and&gt;
+                             r &lt; n \&lt;and&gt;
+                             (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                              xs ! nat r = key) \&lt;and&gt;
+                             (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                             s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="1015" end_symbol="1018" line="24" proof_open="true"><command>
+  </command><output>proof (state)
+goal (1 subgoal):
+ 1. binary_search&apos; a n key
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             - 1 \&lt;le&gt; r \&lt;and&gt;
+                             r &lt; n \&lt;and&gt;
+                             (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                              xs ! nat r = key) \&lt;and&gt;
+                             (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                             s&apos; = s \&lt;rbrace&gt;</output></step><step name="have" start_symbol="1018" end_symbol="1178" line="25" proof_open="true"><command>have access: \&lt;And&gt;i. 0 \&lt;le&gt; i \&lt;Longrightarrow&gt; i &lt; n \&lt;Longrightarrow&gt;
+    ptr_valid (heap_typing s) (ptr_coerce (a +\&lt;^sub&gt;p i)::32 word ptr) \&lt;and&gt;
+    sint (heap_w32 s (ptr_coerce (a +\&lt;^sub&gt;p i))) = xs ! nat i</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1178" end_symbol="1181" line="27" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="proof" start_symbol="1181" end_symbol="1188" line="28" proof_open="true"><command>proof -</command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1188" end_symbol="1193" line="28" proof_open="true"><command>
+    </command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="fix" start_symbol="1193" end_symbol="1203" line="29" proof_open="true"><command>fix i::int</command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1203" end_symbol="1204" line="29" proof_open="true"><command> </command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="assume" start_symbol="1204" end_symbol="1229" line="29" proof_open="true"><command>assume I: 0 \&lt;le&gt; i i &lt; n</command><output>proof (state)
+this:
+  0 \&lt;le&gt; i
+  i &lt; n
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1229" end_symbol="1234" line="29" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  0 \&lt;le&gt; i
+  i &lt; n
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="have" start_symbol="1234" end_symbol="1258" line="30" proof_open="true"><command>have nat i &lt; length xs</command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat i &lt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="1258" end_symbol="1259" line="30" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat i &lt; length xs</output></step><step name="using" start_symbol="1259" end_symbol="1268" line="30" proof_open="true"><command>using I N</command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; i
+  i &lt; n
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. nat i &lt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="1268" end_symbol="1269" line="30" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; i
+  i &lt; n
+  n = int (length xs)
+  n \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. nat i &lt; length xs</output></step><step name="by" start_symbol="1269" end_symbol="1280" line="30" proof_open="true"><command>by linarith</command><output>proof (state)
+this:
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1280" end_symbol="1285" line="30" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="with" start_symbol="1285" end_symbol="1291" line="31" proof_open="true"><command>with A</command><output>proof (chain)
+picking this:
+  array_values s a xs
+  nat i &lt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="1291" end_symbol="1292" line="31" proof_open="true"><command> </command><output>proof (chain)
+picking this:
+  array_values s a xs
+  nat i &lt; length xs</output></step><step name="have" start_symbol="1292" end_symbol="1442" line="31" proof_open="true"><command>have ptr_valid (heap_typing s) (ptr_coerce (a +\&lt;^sub&gt;p int (nat i))::32 word ptr) \&lt;and&gt;
+      sint (heap_w32 s (ptr_coerce (a +\&lt;^sub&gt;p int (nat i)))) = xs ! nat i</command><output>proof (prove)
+using this:
+  array_values s a xs
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p int (nat i)))) =
+    xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1442" end_symbol="1449" line="32" proof_open="true"><command>
+      </command><output>proof (prove)
+using this:
+  array_values s a xs
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p int (nat i)))) =
+    xs ! nat i</output></step><step name="unfolding" start_symbol="1449" end_symbol="1475" line="33" proof_open="true"><command>unfolding array_values_def</command><output>proof (prove)
+using this:
+  \&lt;forall&gt;i&lt;length xs.
+     IS_VALID(32 word) s
+      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+        (a +\&lt;^sub&gt;p int i)) \&lt;and&gt;
+     sint
+      (heap_w32 s
+        (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+          (a +\&lt;^sub&gt;p int i))) =
+     xs ! i
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p int (nat i)))) =
+    xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1475" end_symbol="1476" line="33" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  \&lt;forall&gt;i&lt;length xs.
+     IS_VALID(32 word) s
+      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+        (a +\&lt;^sub&gt;p int i)) \&lt;and&gt;
+     sint
+      (heap_w32 s
+        (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+          (a +\&lt;^sub&gt;p int i))) =
+     xs ! i
+  nat i &lt; length xs
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p int (nat i)))) =
+    xs ! nat i</output></step><step name="by" start_symbol="1476" end_symbol="1484" line="33" proof_open="true"><command>by blast</command><output>proof (state)
+this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1484" end_symbol="1489" line="33" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i
+
+goal (1 subgoal):
+ 1. \&lt;And&gt;i.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                         sint
+                          (heap_w32 s
+                            (PTR_COERCE
+                              (32 signed word \&lt;rightarrow&gt; 32 word)
+                              (a +\&lt;^sub&gt;p i))) =
+                         xs ! nat i</output></step><step name="then" start_symbol="1489" end_symbol="1493" line="34" proof_open="true"><command>then</command><output>proof (chain)
+picking this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1493" end_symbol="1494" line="34" proof_open="true"><command> </command><output>proof (chain)
+picking this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i</output></step><step name="show" start_symbol="1494" end_symbol="1624" line="34" proof_open="true"><command>show ptr_valid (heap_typing s) (ptr_coerce (a +\&lt;^sub&gt;p i)::32 word ptr) \&lt;and&gt;
+      sint (heap_w32 s (ptr_coerce (a +\&lt;^sub&gt;p i))) = xs ! nat i</command><output>proof (prove)
+using this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+    xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1624" end_symbol="1625" line="35" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+    xs ! nat i</output></step><step name="using" start_symbol="1625" end_symbol="1632" line="35" proof_open="true"><command>using I</command><output>proof (prove)
+using this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i
+  0 \&lt;le&gt; i
+  i &lt; n
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+    xs ! nat i</output></step><step name="&lt;ignored&gt;" start_symbol="1632" end_symbol="1633" line="35" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p int (nat i))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p int (nat i)))) =
+  xs ! nat i
+  0 \&lt;le&gt; i
+  i &lt; n
+
+goal (1 subgoal):
+ 1. IS_VALID(32 word) s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+    sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+    xs ! nat i</output></step><step name="by" start_symbol="1633" end_symbol="1640" line="35" proof_open="true"><command>by simp</command><output>proof (state)
+this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+  xs ! nat i
+
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="1640" end_symbol="1643" line="35" proof_open="true"><command>
+  </command><output>proof (state)
+this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word) (a +\&lt;^sub&gt;p i))) =
+  xs ! nat i
+
+goal:
+No subgoals!</output></step><step name="qed" start_symbol="1643" end_symbol="1646" line="36" proof_open="true"><command>qed</command><output>proof (state)
+this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. binary_search&apos; a n key
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             - 1 \&lt;le&gt; r \&lt;and&gt;
+                             r &lt; n \&lt;and&gt;
+                             (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                              xs ! nat r = key) \&lt;and&gt;
+                             (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                             s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="1646" end_symbol="1649" line="36" proof_open="true"><command>
+  </command><output>proof (state)
+this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; n\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. binary_search&apos; a n key
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             - 1 \&lt;le&gt; r \&lt;and&gt;
+                             r &lt; n \&lt;and&gt;
+                             (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                              xs ! nat r = key) \&lt;and&gt;
+                             (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                             s&apos; = s \&lt;rbrace&gt;</output></step><step name="show" start_symbol="1649" end_symbol="1661" line="37" proof_open="true"><command>show ?thesis</command><output>proof (prove)
+goal (1 subgoal):
+ 1. binary_search&apos; a n key
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             - 1 \&lt;le&gt; r \&lt;and&gt;
+                             r &lt; n \&lt;and&gt;
+                             (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                              xs ! nat r = key) \&lt;and&gt;
+                             (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                             s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="1661" end_symbol="1664" line="37" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. binary_search&apos; a n key
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             - 1 \&lt;le&gt; r \&lt;and&gt;
+                             r &lt; n \&lt;and&gt;
+                             (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                              xs ! nat r = key) \&lt;and&gt;
+                             (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                             s&apos; = s \&lt;rbrace&gt;</output></step><step name="unfolding" start_symbol="1664" end_symbol="1692" line="38" proof_open="true"><command>unfolding binary_search&apos;_def</command><output>proof (prove)
+goal (1 subgoal):
+ 1. finally
+     (do {
+        whileLoop (\&lt;lambda&gt;(hi, lo) s. lo &lt; hi)
+          (\&lt;lambda&gt;(hi, lo).
+              do {
+                liftE
+                 (do {
+                    guard
+                     (\&lt;lambda&gt;s.
+                         - INT_MAX - 1 \&lt;le&gt; lo + (hi - lo) sdiv 2);
+                    guard (\&lt;lambda&gt;s. lo + (hi - lo) sdiv 2 \&lt;le&gt; INT_MAX);
+                    guard
+                     (\&lt;lambda&gt;s. - INT_MAX - 1 \&lt;le&gt; (hi - lo) sdiv 2);
+                    guard (\&lt;lambda&gt;_. (hi - lo) sdiv 2 \&lt;le&gt; INT_MAX);
+                    guard (\&lt;lambda&gt;_. hi - lo \&lt;le&gt; INT_MAX)
+                  });
+                mid \&lt;leftarrow&gt; return (lo + (hi - lo) sdiv 2);
+                guard
+                 (\&lt;lambda&gt;s.
+                     IS_VALID(32 word) s
+                      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                        (a +\&lt;^sub&gt;p mid)));
+                condition (\&lt;lambda&gt;s.
+                              heap_w32 s
+                               (PTR_COERCE
+                                 (32 signed word \&lt;rightarrow&gt; 32 word)
+                                 (a +\&lt;^sub&gt;p mid)) =
+                              word_of_int key)
+                  (throw mid)
+                  skip;
+                liftE
+                 (condition (\&lt;lambda&gt;s.
+                                sint
+                                 (heap_w32 s
+                                   (PTR_COERCE
+                                     (32 signed word \&lt;rightarrow&gt; 32 word)
+                                     (a +\&lt;^sub&gt;p mid)))
+                                &lt; key)
+                    (do {
+                       guard (\&lt;lambda&gt;s. 0 \&lt;le&gt; 2147483649 + mid);
+                       guard (\&lt;lambda&gt;s. mid &lt; INT_MAX);
+                       return (hi, mid + 1)
+                     })
+                    (return (mid, lo)))
+              })
+         (n, 0);
+        throw (- 1)
+      })
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             - 1 \&lt;le&gt; r \&lt;and&gt;
+                             r &lt; n \&lt;and&gt;
+                             (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                              xs ! nat r = key) \&lt;and&gt;
+                             (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                             s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="1692" end_symbol="1695" line="38" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. finally
+     (do {
+        whileLoop (\&lt;lambda&gt;(hi, lo) s. lo &lt; hi)
+          (\&lt;lambda&gt;(hi, lo).
+              do {
+                liftE
+                 (do {
+                    guard
+                     (\&lt;lambda&gt;s.
+                         - INT_MAX - 1 \&lt;le&gt; lo + (hi - lo) sdiv 2);
+                    guard (\&lt;lambda&gt;s. lo + (hi - lo) sdiv 2 \&lt;le&gt; INT_MAX);
+                    guard
+                     (\&lt;lambda&gt;s. - INT_MAX - 1 \&lt;le&gt; (hi - lo) sdiv 2);
+                    guard (\&lt;lambda&gt;_. (hi - lo) sdiv 2 \&lt;le&gt; INT_MAX);
+                    guard (\&lt;lambda&gt;_. hi - lo \&lt;le&gt; INT_MAX)
+                  });
+                mid \&lt;leftarrow&gt; return (lo + (hi - lo) sdiv 2);
+                guard
+                 (\&lt;lambda&gt;s.
+                     IS_VALID(32 word) s
+                      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                        (a +\&lt;^sub&gt;p mid)));
+                condition (\&lt;lambda&gt;s.
+                              heap_w32 s
+                               (PTR_COERCE
+                                 (32 signed word \&lt;rightarrow&gt; 32 word)
+                                 (a +\&lt;^sub&gt;p mid)) =
+                              word_of_int key)
+                  (throw mid)
+                  skip;
+                liftE
+                 (condition (\&lt;lambda&gt;s.
+                                sint
+                                 (heap_w32 s
+                                   (PTR_COERCE
+                                     (32 signed word \&lt;rightarrow&gt; 32 word)
+                                     (a +\&lt;^sub&gt;p mid)))
+                                &lt; key)
+                    (do {
+                       guard (\&lt;lambda&gt;s. 0 \&lt;le&gt; 2147483649 + mid);
+                       guard (\&lt;lambda&gt;s. mid &lt; INT_MAX);
+                       return (hi, mid + 1)
+                     })
+                    (return (mid, lo)))
+              })
+         (n, 0);
+        throw (- 1)
+      })
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             - 1 \&lt;le&gt; r \&lt;and&gt;
+                             r &lt; n \&lt;and&gt;
+                             (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                              xs ! nat r = key) \&lt;and&gt;
+                             (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                             s&apos; = s \&lt;rbrace&gt;</output></step><step name="supply" start_symbol="1695" end_symbol="2018" line="39" proof_open="true"><command>supply runs_to_whileLoop_exn&apos; [where
+    I=\&lt;lambda&gt;r s&apos;. case r of Result (hi,lo) \&lt;Rightarrow&gt;
+      (0 \&lt;le&gt; lo \&lt;and&gt; lo \&lt;le&gt; hi \&lt;and&gt; hi \&lt;le&gt; n \&lt;and&gt; s&apos; = s \&lt;and&gt;
+      (\&lt;forall&gt;i&lt;nat lo. xs!i &lt; key) \&lt;and&gt; (\&lt;forall&gt;i. nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs!i))
+      | Exn k \&lt;Rightarrow&gt; (0 \&lt;le&gt; k \&lt;and&gt; k &lt; n \&lt;and&gt; xs!nat k = key \&lt;and&gt; s&apos; = s) and
+    R=measure&apos; (\&lt;lambda&gt;((hi,lo),s&apos;). nat (hi-lo)), runs_to_vcg]</command><output>proof (prove)
+goal (1 subgoal):
+ 1. finally
+     (do {
+        whileLoop (\&lt;lambda&gt;(hi, lo) s. lo &lt; hi)
+          (\&lt;lambda&gt;(hi, lo).
+              do {
+                liftE
+                 (do {
+                    guard
+                     (\&lt;lambda&gt;s.
+                         - INT_MAX - 1 \&lt;le&gt; lo + (hi - lo) sdiv 2);
+                    guard (\&lt;lambda&gt;s. lo + (hi - lo) sdiv 2 \&lt;le&gt; INT_MAX);
+                    guard
+                     (\&lt;lambda&gt;s. - INT_MAX - 1 \&lt;le&gt; (hi - lo) sdiv 2);
+                    guard (\&lt;lambda&gt;_. (hi - lo) sdiv 2 \&lt;le&gt; INT_MAX);
+                    guard (\&lt;lambda&gt;_. hi - lo \&lt;le&gt; INT_MAX)
+                  });
+                mid \&lt;leftarrow&gt; return (lo + (hi - lo) sdiv 2);
+                guard
+                 (\&lt;lambda&gt;s.
+                     IS_VALID(32 word) s
+                      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                        (a +\&lt;^sub&gt;p mid)));
+                condition (\&lt;lambda&gt;s.
+                              heap_w32 s
+                               (PTR_COERCE
+                                 (32 signed word \&lt;rightarrow&gt; 32 word)
+                                 (a +\&lt;^sub&gt;p mid)) =
+                              word_of_int key)
+                  (throw mid)
+                  skip;
+                liftE
+                 (condition (\&lt;lambda&gt;s.
+                                sint
+                                 (heap_w32 s
+                                   (PTR_COERCE
+                                     (32 signed word \&lt;rightarrow&gt; 32 word)
+                                     (a +\&lt;^sub&gt;p mid)))
+                                &lt; key)
+                    (do {
+                       guard (\&lt;lambda&gt;s. 0 \&lt;le&gt; 2147483649 + mid);
+                       guard (\&lt;lambda&gt;s. mid &lt; INT_MAX);
+                       return (hi, mid + 1)
+                     })
+                    (return (mid, lo)))
+              })
+         (n, 0);
+        throw (- 1)
+      })
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             - 1 \&lt;le&gt; r \&lt;and&gt;
+                             r &lt; n \&lt;and&gt;
+                             (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                              xs ! nat r = key) \&lt;and&gt;
+                             (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                             s&apos; = s \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="2018" end_symbol="2021" line="44" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. finally
+     (do {
+        whileLoop (\&lt;lambda&gt;(hi, lo) s. lo &lt; hi)
+          (\&lt;lambda&gt;(hi, lo).
+              do {
+                liftE
+                 (do {
+                    guard
+                     (\&lt;lambda&gt;s.
+                         - INT_MAX - 1 \&lt;le&gt; lo + (hi - lo) sdiv 2);
+                    guard (\&lt;lambda&gt;s. lo + (hi - lo) sdiv 2 \&lt;le&gt; INT_MAX);
+                    guard
+                     (\&lt;lambda&gt;s. - INT_MAX - 1 \&lt;le&gt; (hi - lo) sdiv 2);
+                    guard (\&lt;lambda&gt;_. (hi - lo) sdiv 2 \&lt;le&gt; INT_MAX);
+                    guard (\&lt;lambda&gt;_. hi - lo \&lt;le&gt; INT_MAX)
+                  });
+                mid \&lt;leftarrow&gt; return (lo + (hi - lo) sdiv 2);
+                guard
+                 (\&lt;lambda&gt;s.
+                     IS_VALID(32 word) s
+                      (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                        (a +\&lt;^sub&gt;p mid)));
+                condition (\&lt;lambda&gt;s.
+                              heap_w32 s
+                               (PTR_COERCE
+                                 (32 signed word \&lt;rightarrow&gt; 32 word)
+                                 (a +\&lt;^sub&gt;p mid)) =
+                              word_of_int key)
+                  (throw mid)
+                  skip;
+                liftE
+                 (condition (\&lt;lambda&gt;s.
+                                sint
+                                 (heap_w32 s
+                                   (PTR_COERCE
+                                     (32 signed word \&lt;rightarrow&gt; 32 word)
+                                     (a +\&lt;^sub&gt;p mid)))
+                                &lt; key)
+                    (do {
+                       guard (\&lt;lambda&gt;s. 0 \&lt;le&gt; 2147483649 + mid);
+                       guard (\&lt;lambda&gt;s. mid &lt; INT_MAX);
+                       return (hi, mid + 1)
+                     })
+                    (return (mid, lo)))
+              })
+         (n, 0);
+        throw (- 1)
+      })
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             - 1 \&lt;le&gt; r \&lt;and&gt;
+                             r &lt; n \&lt;and&gt;
+                             (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                              xs ! nat r = key) \&lt;and&gt;
+                             (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                             s&apos; = s \&lt;rbrace&gt;</output></step><step name="apply" start_symbol="2021" end_symbol="2038" line="45" proof_open="true"><command>apply runs_to_vcg</command><output>proof (prove)
+goal (25 subgoals):
+ 1. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; - INT_MAX - 1 \&lt;le&gt; b + (aa - b) sdiv 2
+ 2. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; b + (aa - b) sdiv 2 \&lt;le&gt; INT_MAX
+ 3. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; - INT_MAX - 1 \&lt;le&gt; (aa - b) sdiv 2
+ 4. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; (aa - b) sdiv 2 \&lt;le&gt; INT_MAX
+ 5. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa - b \&lt;le&gt; INT_MAX
+ 6. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2)))
+ 7. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) =
+        word_of_int key\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; b + (aa - b) sdiv 2
+ 8. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) =
+        word_of_int key\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; b + (aa - b) sdiv 2 &lt; n
+ 9. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) =
+        word_of_int key\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; xs ! nat (b + (aa - b) sdiv 2) = key
+ 10. \&lt;And&gt;aa b.
+        \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+         \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+         \&lt;forall&gt;i.
+            nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+            key &lt; xs ! i;
+         heap_w32 s
+          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+            (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) \&lt;noteq&gt;
+         word_of_int key;
+         sint
+          (heap_w32 s
+            (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+              (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))))
+         &lt; key\&lt;rbrakk&gt;
+        \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + (b + (aa - b) sdiv 2)
+A total of 25 subgoals...</output></step><step name="&lt;ignored&gt;" start_symbol="2038" end_symbol="2041" line="45" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (25 subgoals):
+ 1. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; - INT_MAX - 1 \&lt;le&gt; b + (aa - b) sdiv 2
+ 2. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; b + (aa - b) sdiv 2 \&lt;le&gt; INT_MAX
+ 3. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; - INT_MAX - 1 \&lt;le&gt; (aa - b) sdiv 2
+ 4. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; (aa - b) sdiv 2 \&lt;le&gt; INT_MAX
+ 5. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa - b \&lt;le&gt; INT_MAX
+ 6. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2)))
+ 7. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) =
+        word_of_int key\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; b + (aa - b) sdiv 2
+ 8. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) =
+        word_of_int key\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; b + (aa - b) sdiv 2 &lt; n
+ 9. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) =
+        word_of_int key\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; xs ! nat (b + (aa - b) sdiv 2) = key
+ 10. \&lt;And&gt;aa b.
+        \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+         \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+         \&lt;forall&gt;i.
+            nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+            key &lt; xs ! i;
+         heap_w32 s
+          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+            (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) \&lt;noteq&gt;
+         word_of_int key;
+         sint
+          (heap_w32 s
+            (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+              (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))))
+         &lt; key\&lt;rbrakk&gt;
+        \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + (b + (aa - b) sdiv 2)
+A total of 25 subgoals...</output></step><step name="apply" start_symbol="2041" end_symbol="2068" line="46" proof_open="true"><command>apply (insert N K S access)</command><output>proof (prove)
+goal (25 subgoals):
+ 1. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; - INT_MAX - 1 \&lt;le&gt; b + (aa - b) sdiv 2
+ 2. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; b + (aa - b) sdiv 2 \&lt;le&gt; INT_MAX
+ 3. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; - INT_MAX - 1 \&lt;le&gt; (aa - b) sdiv 2
+ 4. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; (aa - b) sdiv 2 \&lt;le&gt; INT_MAX
+ 5. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa - b \&lt;le&gt; INT_MAX
+ 6. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2)))
+ 7. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) =
+        word_of_int key;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; b + (aa - b) sdiv 2
+ 8. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) =
+        word_of_int key;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; b + (aa - b) sdiv 2 &lt; n
+ 9. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) =
+        word_of_int key;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; xs ! nat (b + (aa - b) sdiv 2) = key
+ 10. \&lt;And&gt;aa b.
+        \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+         \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+         \&lt;forall&gt;i.
+            nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+            key &lt; xs ! i;
+         heap_w32 s
+          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+            (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) \&lt;noteq&gt;
+         word_of_int key;
+         sint
+          (heap_w32 s
+            (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+              (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))))
+         &lt; key;
+         n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+         key \&lt;le&gt; INT_MAX;
+         \&lt;forall&gt;i j.
+            i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+            xs ! i \&lt;le&gt; xs ! j;
+         \&lt;And&gt;i.
+            \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+            \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                               (PTR_COERCE
+                                 (32 signed word \&lt;rightarrow&gt; 32 word)
+                                 (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                              sint
+                               (heap_w32 s
+                                 (PTR_COERCE
+                                   (32 signed word \&lt;rightarrow&gt; 32 word)
+                                   (a +\&lt;^sub&gt;p i))) =
+                              xs ! nat i\&lt;rbrakk&gt;
+        \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + (b + (aa - b) sdiv 2)
+A total of 25 subgoals...</output></step><step name="&lt;ignored&gt;" start_symbol="2068" end_symbol="2071" line="46" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (25 subgoals):
+ 1. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; - INT_MAX - 1 \&lt;le&gt; b + (aa - b) sdiv 2
+ 2. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; b + (aa - b) sdiv 2 \&lt;le&gt; INT_MAX
+ 3. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; - INT_MAX - 1 \&lt;le&gt; (aa - b) sdiv 2
+ 4. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; (aa - b) sdiv 2 \&lt;le&gt; INT_MAX
+ 5. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; aa - b \&lt;le&gt; INT_MAX
+ 6. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                            (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2)))
+ 7. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) =
+        word_of_int key;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; 0 \&lt;le&gt; b + (aa - b) sdiv 2
+ 8. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) =
+        word_of_int key;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; b + (aa - b) sdiv 2 &lt; n
+ 9. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) =
+        word_of_int key;
+        n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+        key \&lt;le&gt; INT_MAX;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; xs ! nat (b + (aa - b) sdiv 2) = key
+ 10. \&lt;And&gt;aa b.
+        \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; b \&lt;le&gt; aa; aa \&lt;le&gt; n;
+         \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+         \&lt;forall&gt;i.
+            nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+            key &lt; xs ! i;
+         heap_w32 s
+          (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+            (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))) \&lt;noteq&gt;
+         word_of_int key;
+         sint
+          (heap_w32 s
+            (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+              (a +\&lt;^sub&gt;p (b + (aa - b) sdiv 2))))
+         &lt; key;
+         n = int (length xs); n \&lt;le&gt; INT_MAX; INT_MIN \&lt;le&gt; key;
+         key \&lt;le&gt; INT_MAX;
+         \&lt;forall&gt;i j.
+            i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+            xs ! i \&lt;le&gt; xs ! j;
+         \&lt;And&gt;i.
+            \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; n\&lt;rbrakk&gt;
+            \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                               (PTR_COERCE
+                                 (32 signed word \&lt;rightarrow&gt; 32 word)
+                                 (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                              sint
+                               (heap_w32 s
+                                 (PTR_COERCE
+                                   (32 signed word \&lt;rightarrow&gt; 32 word)
+                                   (a +\&lt;^sub&gt;p i))) =
+                              xs ! nat i\&lt;rbrakk&gt;
+        \&lt;Longrightarrow&gt; 0 \&lt;le&gt; 2147483649 + (b + (aa - b) sdiv 2)
+A total of 25 subgoals...</output></step><step name="apply" start_symbol="2071" end_symbol="2142" line="47" proof_open="true"><command>apply (auto simp: INT_MIN_def INT_MAX_def signed_divide_int_def sgn_if)</command><output>proof (prove)
+goal (4 subgoals):
+ 1. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) div 2))) =
+        word_of_int key;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; xs ! nat (b + (aa - b) div 2) = key
+ 2. \&lt;And&gt;aa b i.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) div 2))) \&lt;noteq&gt;
+        word_of_int key;
+        xs ! nat (b + (aa - b) div 2) &lt; key;
+        i &lt; nat (b + (aa - b) div 2 + 1); n = int (length xs);
+        length xs \&lt;le&gt; 2147483647; - 2147483648 \&lt;le&gt; key;
+        key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; xs ! i &lt; key
+ 3. \&lt;And&gt;aa b i.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) div 2))) \&lt;noteq&gt;
+        word_of_int key;
+        \&lt;not&gt; xs ! nat (b + (aa - b) div 2) &lt; key;
+        nat (b + (aa - b) div 2) \&lt;le&gt; i; i &lt; length xs;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; key &lt; xs ! i
+ 4. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; aa; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat aa. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i;
+        key \&lt;in&gt; set xs\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="2142" end_symbol="2145" line="47" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (4 subgoals):
+ 1. \&lt;And&gt;aa b.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) div 2))) =
+        word_of_int key;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; xs ! nat (b + (aa - b) div 2) = key
+ 2. \&lt;And&gt;aa b i.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) div 2))) \&lt;noteq&gt;
+        word_of_int key;
+        xs ! nat (b + (aa - b) div 2) &lt; key;
+        i &lt; nat (b + (aa - b) div 2 + 1); n = int (length xs);
+        length xs \&lt;le&gt; 2147483647; - 2147483648 \&lt;le&gt; key;
+        key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; xs ! i &lt; key
+ 3. \&lt;And&gt;aa b i.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) div 2))) \&lt;noteq&gt;
+        word_of_int key;
+        \&lt;not&gt; xs ! nat (b + (aa - b) div 2) &lt; key;
+        nat (b + (aa - b) div 2) \&lt;le&gt; i; i &lt; length xs;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; key &lt; xs ! i
+ 4. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; aa; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat aa. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i;
+        key \&lt;in&gt; set xs\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; False</output></step><step name="subgoal" start_symbol="2145" end_symbol="2177" line="48" proof_open="true"><command>subgoal premises prems for hi lo</command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="&lt;ignored&gt;" start_symbol="2177" end_symbol="2180" line="48" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="proof" start_symbol="2180" end_symbol="2187" line="49" proof_open="true"><command>proof -</command><output>proof (state)
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="&lt;ignored&gt;" start_symbol="2187" end_symbol="2192" line="49" proof_open="true"><command>
+    </command><output>proof (state)
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="let" start_symbol="2192" end_symbol="2221" line="50" proof_open="true"><command>let ?m = lo + (hi-lo) div 2</command><output>proof (state)
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="&lt;ignored&gt;" start_symbol="2221" end_symbol="2226" line="50" proof_open="true"><command>
+    </command><output>proof (state)
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="have" start_symbol="2226" end_symbol="2251" line="51" proof_open="true"><command>have M: 0 \&lt;le&gt; ?m ?m &lt; n</command><output>proof (prove)
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; lo + (hi - lo) div 2 &amp;&amp;&amp; lo + (hi - lo) div 2 &lt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2251" end_symbol="2252" line="51" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; lo + (hi - lo) div 2 &amp;&amp;&amp; lo + (hi - lo) div 2 &lt; n</output></step><step name="using" start_symbol="2252" end_symbol="2263" line="51" proof_open="true"><command>using prems</command><output>proof (prove)
+using this:
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) =
+  word_of_int key
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; lo + (hi - lo) div 2 &amp;&amp;&amp; lo + (hi - lo) div 2 &lt; n</output></step><step name="&lt;ignored&gt;" start_symbol="2263" end_symbol="2264" line="51" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) =
+  word_of_int key
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; lo + (hi - lo) div 2 &amp;&amp;&amp; lo + (hi - lo) div 2 &lt; n</output></step><step name="by" start_symbol="2264" end_symbol="2278" line="51" proof_open="true"><command>by presburger+</command><output>proof (state)
+this:
+  0 \&lt;le&gt; lo + (hi - lo) div 2
+  lo + (hi - lo) div 2 &lt; n
+
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="&lt;ignored&gt;" start_symbol="2278" end_symbol="2283" line="51" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  0 \&lt;le&gt; lo + (hi - lo) div 2
+  lo + (hi - lo) div 2 &lt; n
+
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="have" start_symbol="2283" end_symbol="2348" line="52" proof_open="true"><command>have R: sint (heap_w32 s (ptr_coerce (a +\&lt;^sub&gt;p ?m))) = xs ! nat ?m</command><output>proof (prove)
+goal (1 subgoal):
+ 1. sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+    xs ! nat (lo + (hi - lo) div 2)</output></step><step name="&lt;ignored&gt;" start_symbol="2348" end_symbol="2355" line="52" proof_open="true"><command>
+      </command><output>proof (prove)
+goal (1 subgoal):
+ 1. sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+    xs ! nat (lo + (hi - lo) div 2)</output></step><step name="using" start_symbol="2355" end_symbol="2373" line="53" proof_open="true"><command>using access[OF M]</command><output>proof (prove)
+using this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+  xs ! nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+    xs ! nat (lo + (hi - lo) div 2)</output></step><step name="&lt;ignored&gt;" start_symbol="2373" end_symbol="2374" line="53" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+  xs ! nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+    xs ! nat (lo + (hi - lo) div 2)</output></step><step name="by" start_symbol="2374" end_symbol="2382" line="53" proof_open="true"><command>by blast</command><output>proof (state)
+this:
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+  xs ! nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="&lt;ignored&gt;" start_symbol="2382" end_symbol="2387" line="53" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+  xs ! nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="have" start_symbol="2387" end_symbol="2434" line="54" proof_open="true"><command>have W: sint (word_of_int key::32 word) = key</command><output>proof (prove)
+goal (1 subgoal):
+ 1. sint (word_of_int key) = key</output></step><step name="&lt;ignored&gt;" start_symbol="2434" end_symbol="2441" line="54" proof_open="true"><command>
+      </command><output>proof (prove)
+goal (1 subgoal):
+ 1. sint (word_of_int key) = key</output></step><step name="using" start_symbol="2441" end_symbol="2448" line="55" proof_open="true"><command>using K</command><output>proof (prove)
+using this:
+  INT_MIN \&lt;le&gt; key
+  key \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. sint (word_of_int key) = key</output></step><step name="&lt;ignored&gt;" start_symbol="2448" end_symbol="2449" line="55" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  INT_MIN \&lt;le&gt; key
+  key \&lt;le&gt; INT_MAX
+
+goal (1 subgoal):
+ 1. sint (word_of_int key) = key</output></step><step name="by" start_symbol="2449" end_symbol="2502" line="55" proof_open="true"><command>by (simp add: sint_of_int_eq INT_MIN_def INT_MAX_def)</command><output>proof (state)
+this:
+  sint (word_of_int key) = key
+
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="&lt;ignored&gt;" start_symbol="2502" end_symbol="2507" line="55" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  sint (word_of_int key) = key
+
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="show" start_symbol="2507" end_symbol="2519" line="56" proof_open="true"><command>show ?thesis</command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="&lt;ignored&gt;" start_symbol="2519" end_symbol="2520" line="56" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="using" start_symbol="2520" end_symbol="2535" line="56" proof_open="true"><command>using R W prems</command><output>proof (prove)
+using this:
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+  xs ! nat (lo + (hi - lo) div 2)
+  sint (word_of_int key) = key
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) =
+  word_of_int key
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="&lt;ignored&gt;" start_symbol="2535" end_symbol="2536" line="56" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+  xs ! nat (lo + (hi - lo) div 2)
+  sint (word_of_int key) = key
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) =
+  word_of_int key
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) = key</output></step><step name="by" start_symbol="2536" end_symbol="2543" line="56" proof_open="true"><command>by auto</command><output>proof (state)
+this:
+  xs ! nat (lo + (hi - lo) div 2) = key
+
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="2543" end_symbol="2546" line="56" proof_open="true"><command>
+  </command><output>proof (state)
+this:
+  xs ! nat (lo + (hi - lo) div 2) = key
+
+goal:
+No subgoals!</output></step><step name="qed" start_symbol="2546" end_symbol="2549" line="57" proof_open="true"><command>qed</command><output>proof (prove)
+goal (3 subgoals):
+ 1. \&lt;And&gt;aa b i.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) div 2))) \&lt;noteq&gt;
+        word_of_int key;
+        xs ! nat (b + (aa - b) div 2) &lt; key;
+        i &lt; nat (b + (aa - b) div 2 + 1); n = int (length xs);
+        length xs \&lt;le&gt; 2147483647; - 2147483648 \&lt;le&gt; key;
+        key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; xs ! i &lt; key
+ 2. \&lt;And&gt;aa b i.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) div 2))) \&lt;noteq&gt;
+        word_of_int key;
+        \&lt;not&gt; xs ! nat (b + (aa - b) div 2) &lt; key;
+        nat (b + (aa - b) div 2) \&lt;le&gt; i; i &lt; length xs;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; key &lt; xs ! i
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; aa; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat aa. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i;
+        key \&lt;in&gt; set xs\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="2549" end_symbol="2552" line="57" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (3 subgoals):
+ 1. \&lt;And&gt;aa b i.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) div 2))) \&lt;noteq&gt;
+        word_of_int key;
+        xs ! nat (b + (aa - b) div 2) &lt; key;
+        i &lt; nat (b + (aa - b) div 2 + 1); n = int (length xs);
+        length xs \&lt;le&gt; 2147483647; - 2147483648 \&lt;le&gt; key;
+        key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; xs ! i &lt; key
+ 2. \&lt;And&gt;aa b i.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) div 2))) \&lt;noteq&gt;
+        word_of_int key;
+        \&lt;not&gt; xs ! nat (b + (aa - b) div 2) &lt; key;
+        nat (b + (aa - b) div 2) \&lt;le&gt; i; i &lt; length xs;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; key &lt; xs ! i
+ 3. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; aa; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat aa. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i;
+        key \&lt;in&gt; set xs\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; False</output></step><step name="subgoal" start_symbol="2552" end_symbol="2586" line="58" proof_open="true"><command>subgoal premises prems for hi lo i</command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="2586" end_symbol="2589" line="58" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="proof" start_symbol="2589" end_symbol="2596" line="59" proof_open="true"><command>proof -</command><output>proof (state)
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="2596" end_symbol="2601" line="59" proof_open="true"><command>
+    </command><output>proof (state)
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="let" start_symbol="2601" end_symbol="2630" line="60" proof_open="true"><command>let ?m = lo + (hi-lo) div 2</command><output>proof (state)
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="2630" end_symbol="2635" line="60" proof_open="true"><command>
+    </command><output>proof (state)
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="have" start_symbol="2635" end_symbol="2663" line="61" proof_open="true"><command>have MB: lo \&lt;le&gt; ?m \&lt;and&gt; ?m &lt; hi</command><output>proof (prove)
+goal (1 subgoal):
+ 1. lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi</output></step><step name="&lt;ignored&gt;" start_symbol="2663" end_symbol="2670" line="61" proof_open="true"><command>
+      </command><output>proof (prove)
+goal (1 subgoal):
+ 1. lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi</output></step><step name="using" start_symbol="2670" end_symbol="2702" line="62" proof_open="true"><command>using mid_bounds[of lo hi] prems</command><output>proof (prove)
+using this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; lo; lo &lt; hi\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; lo \&lt;le&gt; lo + (hi - lo) sdiv 2 \&lt;and&gt;
+                    lo + (hi - lo) sdiv 2 &lt; hi
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  xs ! nat (lo + (hi - lo) div 2) &lt; key
+  i &lt; nat (lo + (hi - lo) div 2 + 1)
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi</output></step><step name="&lt;ignored&gt;" start_symbol="2702" end_symbol="2703" line="62" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; lo; lo &lt; hi\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; lo \&lt;le&gt; lo + (hi - lo) sdiv 2 \&lt;and&gt;
+                    lo + (hi - lo) sdiv 2 &lt; hi
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  xs ! nat (lo + (hi - lo) div 2) &lt; key
+  i &lt; nat (lo + (hi - lo) div 2 + 1)
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi</output></step><step name="by" start_symbol="2703" end_symbol="2746" line="62" proof_open="true"><command>by (simp add: signed_divide_int_def sgn_if)</command><output>proof (state)
+this:
+  lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="2746" end_symbol="2751" line="62" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="have" start_symbol="2751" end_symbol="2768" line="63" proof_open="true"><command>have M0: 0 \&lt;le&gt; ?m</command><output>proof (prove)
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; lo + (hi - lo) div 2</output></step><step name="&lt;ignored&gt;" start_symbol="2768" end_symbol="2769" line="63" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; lo + (hi - lo) div 2</output></step><step name="using" start_symbol="2769" end_symbol="2783" line="63" proof_open="true"><command>using MB prems</command><output>proof (prove)
+using this:
+  lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  xs ! nat (lo + (hi - lo) div 2) &lt; key
+  i &lt; nat (lo + (hi - lo) div 2 + 1)
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; lo + (hi - lo) div 2</output></step><step name="&lt;ignored&gt;" start_symbol="2783" end_symbol="2784" line="63" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  xs ! nat (lo + (hi - lo) div 2) &lt; key
+  i &lt; nat (lo + (hi - lo) div 2 + 1)
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; lo + (hi - lo) div 2</output></step><step name="by" start_symbol="2784" end_symbol="2795" line="63" proof_open="true"><command>by linarith</command><output>proof (state)
+this:
+  0 \&lt;le&gt; lo + (hi - lo) div 2
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="2795" end_symbol="2800" line="63" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  0 \&lt;le&gt; lo + (hi - lo) div 2
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="have" start_symbol="2800" end_symbol="2829" line="64" proof_open="true"><command>have M1: nat ?m &lt; length xs</command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat (lo + (hi - lo) div 2) &lt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="2829" end_symbol="2830" line="64" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat (lo + (hi - lo) div 2) &lt; length xs</output></step><step name="using" start_symbol="2830" end_symbol="2847" line="64" proof_open="true"><command>using MB M0 prems</command><output>proof (prove)
+using this:
+  lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi
+  0 \&lt;le&gt; lo + (hi - lo) div 2
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  xs ! nat (lo + (hi - lo) div 2) &lt; key
+  i &lt; nat (lo + (hi - lo) div 2 + 1)
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. nat (lo + (hi - lo) div 2) &lt; length xs</output></step><step name="&lt;ignored&gt;" start_symbol="2847" end_symbol="2848" line="64" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi
+  0 \&lt;le&gt; lo + (hi - lo) div 2
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  xs ! nat (lo + (hi - lo) div 2) &lt; key
+  i &lt; nat (lo + (hi - lo) div 2 + 1)
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. nat (lo + (hi - lo) div 2) &lt; length xs</output></step><step name="by" start_symbol="2848" end_symbol="2859" line="64" proof_open="true"><command>by linarith</command><output>proof (state)
+this:
+  nat (lo + (hi - lo) div 2) &lt; length xs
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="2859" end_symbol="2864" line="64" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  nat (lo + (hi - lo) div 2) &lt; length xs
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="have" start_symbol="2864" end_symbol="2899" line="65" proof_open="true"><command>have E: nat (?m+1) = Suc (nat ?m)</command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat (lo + (hi - lo) div 2 + 1) = Suc (nat (lo + (hi - lo) div 2))</output></step><step name="&lt;ignored&gt;" start_symbol="2899" end_symbol="2900" line="65" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat (lo + (hi - lo) div 2 + 1) = Suc (nat (lo + (hi - lo) div 2))</output></step><step name="using" start_symbol="2900" end_symbol="2908" line="65" proof_open="true"><command>using M0</command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; lo + (hi - lo) div 2
+
+goal (1 subgoal):
+ 1. nat (lo + (hi - lo) div 2 + 1) = Suc (nat (lo + (hi - lo) div 2))</output></step><step name="&lt;ignored&gt;" start_symbol="2908" end_symbol="2909" line="65" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; lo + (hi - lo) div 2
+
+goal (1 subgoal):
+ 1. nat (lo + (hi - lo) div 2 + 1) = Suc (nat (lo + (hi - lo) div 2))</output></step><step name="by" start_symbol="2909" end_symbol="2939" line="65" proof_open="true"><command>by (simp add: nat_add_distrib)</command><output>proof (state)
+this:
+  nat (lo + (hi - lo) div 2 + 1) = Suc (nat (lo + (hi - lo) div 2))
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="2939" end_symbol="2944" line="65" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  nat (lo + (hi - lo) div 2 + 1) = Suc (nat (lo + (hi - lo) div 2))
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="have" start_symbol="2944" end_symbol="2965" line="66" proof_open="true"><command>have M2: i \&lt;le&gt; nat ?m</command><output>proof (prove)
+goal (1 subgoal):
+ 1. i \&lt;le&gt; nat (lo + (hi - lo) div 2)</output></step><step name="&lt;ignored&gt;" start_symbol="2965" end_symbol="2966" line="66" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. i \&lt;le&gt; nat (lo + (hi - lo) div 2)</output></step><step name="using" start_symbol="2966" end_symbol="2979" line="66" proof_open="true"><command>using E prems</command><output>proof (prove)
+using this:
+  nat (lo + (hi - lo) div 2 + 1) = Suc (nat (lo + (hi - lo) div 2))
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  xs ! nat (lo + (hi - lo) div 2) &lt; key
+  i &lt; nat (lo + (hi - lo) div 2 + 1)
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. i \&lt;le&gt; nat (lo + (hi - lo) div 2)</output></step><step name="&lt;ignored&gt;" start_symbol="2979" end_symbol="2980" line="66" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  nat (lo + (hi - lo) div 2 + 1) = Suc (nat (lo + (hi - lo) div 2))
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  xs ! nat (lo + (hi - lo) div 2) &lt; key
+  i &lt; nat (lo + (hi - lo) div 2 + 1)
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. i \&lt;le&gt; nat (lo + (hi - lo) div 2)</output></step><step name="by" start_symbol="2980" end_symbol="2991" line="66" proof_open="true"><command>by linarith</command><output>proof (state)
+this:
+  i \&lt;le&gt; nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="2991" end_symbol="2996" line="66" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  i \&lt;le&gt; nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="have" start_symbol="2996" end_symbol="3019" line="67" proof_open="true"><command>have xs!i \&lt;le&gt; xs!nat ?m</command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! i \&lt;le&gt; xs ! nat (lo + (hi - lo) div 2)</output></step><step name="&lt;ignored&gt;" start_symbol="3019" end_symbol="3020" line="67" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! i \&lt;le&gt; xs ! nat (lo + (hi - lo) div 2)</output></step><step name="using" start_symbol="3020" end_symbol="3033" line="67" proof_open="true"><command>using S M1 M2</command><output>proof (prove)
+using this:
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  nat (lo + (hi - lo) div 2) &lt; length xs
+  i \&lt;le&gt; nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. xs ! i \&lt;le&gt; xs ! nat (lo + (hi - lo) div 2)</output></step><step name="&lt;ignored&gt;" start_symbol="3033" end_symbol="3034" line="67" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  nat (lo + (hi - lo) div 2) &lt; length xs
+  i \&lt;le&gt; nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. xs ! i \&lt;le&gt; xs ! nat (lo + (hi - lo) div 2)</output></step><step name="by" start_symbol="3034" end_symbol="3042" line="67" proof_open="true"><command>by blast</command><output>proof (state)
+this:
+  xs ! i \&lt;le&gt; xs ! nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="3042" end_symbol="3047" line="67" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  xs ! i \&lt;le&gt; xs ! nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="then" start_symbol="3047" end_symbol="3051" line="68" proof_open="true"><command>then</command><output>proof (chain)
+picking this:
+  xs ! i \&lt;le&gt; xs ! nat (lo + (hi - lo) div 2)</output></step><step name="&lt;ignored&gt;" start_symbol="3051" end_symbol="3052" line="68" proof_open="true"><command> </command><output>proof (chain)
+picking this:
+  xs ! i \&lt;le&gt; xs ! nat (lo + (hi - lo) div 2)</output></step><step name="show" start_symbol="3052" end_symbol="3064" line="68" proof_open="true"><command>show ?thesis</command><output>proof (prove)
+using this:
+  xs ! i \&lt;le&gt; xs ! nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="3064" end_symbol="3065" line="68" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  xs ! i \&lt;le&gt; xs ! nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="using" start_symbol="3065" end_symbol="3076" line="68" proof_open="true"><command>using prems</command><output>proof (prove)
+using this:
+  xs ! i \&lt;le&gt; xs ! nat (lo + (hi - lo) div 2)
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  xs ! nat (lo + (hi - lo) div 2) &lt; key
+  i &lt; nat (lo + (hi - lo) div 2 + 1)
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="3076" end_symbol="3077" line="68" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  xs ! i \&lt;le&gt; xs ! nat (lo + (hi - lo) div 2)
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  xs ! nat (lo + (hi - lo) div 2) &lt; key
+  i &lt; nat (lo + (hi - lo) div 2 + 1)
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="by" start_symbol="3077" end_symbol="3088" line="68" proof_open="true"><command>by linarith</command><output>proof (state)
+this:
+  xs ! i &lt; key
+
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="3088" end_symbol="3091" line="68" proof_open="true"><command>
+  </command><output>proof (state)
+this:
+  xs ! i &lt; key
+
+goal:
+No subgoals!</output></step><step name="qed" start_symbol="3091" end_symbol="3094" line="69" proof_open="true"><command>qed</command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;And&gt;aa b i.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) div 2))) \&lt;noteq&gt;
+        word_of_int key;
+        \&lt;not&gt; xs ! nat (b + (aa - b) div 2) &lt; key;
+        nat (b + (aa - b) div 2) \&lt;le&gt; i; i &lt; length xs;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; key &lt; xs ! i
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; aa; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat aa. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i;
+        key \&lt;in&gt; set xs\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="3094" end_symbol="3097" line="69" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;And&gt;aa b i.
+       \&lt;lbrakk&gt;b &lt; aa; 0 \&lt;le&gt; b; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat b. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        heap_w32 s
+         (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+           (a +\&lt;^sub&gt;p (b + (aa - b) div 2))) \&lt;noteq&gt;
+        word_of_int key;
+        \&lt;not&gt; xs ! nat (b + (aa - b) div 2) &lt; key;
+        nat (b + (aa - b) div 2) \&lt;le&gt; i; i &lt; length xs;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; key &lt; xs ! i
+ 2. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; aa; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat aa. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i;
+        key \&lt;in&gt; set xs\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; False</output></step><step name="subgoal" start_symbol="3097" end_symbol="3131" line="70" proof_open="true"><command>subgoal premises prems for hi lo i</command><output>proof (prove)
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3131" end_symbol="3134" line="70" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="proof" start_symbol="3134" end_symbol="3141" line="71" proof_open="true"><command>proof -</command><output>proof (state)
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3141" end_symbol="3146" line="71" proof_open="true"><command>
+    </command><output>proof (state)
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="let" start_symbol="3146" end_symbol="3175" line="72" proof_open="true"><command>let ?m = lo + (hi-lo) div 2</command><output>proof (state)
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3175" end_symbol="3180" line="72" proof_open="true"><command>
+    </command><output>proof (state)
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="have" start_symbol="3180" end_symbol="3208" line="73" proof_open="true"><command>have MB: lo \&lt;le&gt; ?m \&lt;and&gt; ?m &lt; hi</command><output>proof (prove)
+goal (1 subgoal):
+ 1. lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi</output></step><step name="&lt;ignored&gt;" start_symbol="3208" end_symbol="3215" line="73" proof_open="true"><command>
+      </command><output>proof (prove)
+goal (1 subgoal):
+ 1. lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi</output></step><step name="using" start_symbol="3215" end_symbol="3247" line="74" proof_open="true"><command>using mid_bounds[of lo hi] prems</command><output>proof (prove)
+using this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; lo; lo &lt; hi\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; lo \&lt;le&gt; lo + (hi - lo) sdiv 2 \&lt;and&gt;
+                    lo + (hi - lo) sdiv 2 &lt; hi
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  \&lt;not&gt; xs ! nat (lo + (hi - lo) div 2) &lt; key
+  nat (lo + (hi - lo) div 2) \&lt;le&gt; i
+  i &lt; length xs
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi</output></step><step name="&lt;ignored&gt;" start_symbol="3247" end_symbol="3248" line="74" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  \&lt;lbrakk&gt;0 \&lt;le&gt; lo; lo &lt; hi\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; lo \&lt;le&gt; lo + (hi - lo) sdiv 2 \&lt;and&gt;
+                    lo + (hi - lo) sdiv 2 &lt; hi
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  \&lt;not&gt; xs ! nat (lo + (hi - lo) div 2) &lt; key
+  nat (lo + (hi - lo) div 2) \&lt;le&gt; i
+  i &lt; length xs
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi</output></step><step name="by" start_symbol="3248" end_symbol="3291" line="74" proof_open="true"><command>by (simp add: signed_divide_int_def sgn_if)</command><output>proof (state)
+this:
+  lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3291" end_symbol="3296" line="74" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="have" start_symbol="3296" end_symbol="3321" line="75" proof_open="true"><command>have M: 0 \&lt;le&gt; ?m ?m &lt; n</command><output>proof (prove)
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; lo + (hi - lo) div 2 &amp;&amp;&amp; lo + (hi - lo) div 2 &lt; n</output></step><step name="&lt;ignored&gt;" start_symbol="3321" end_symbol="3322" line="75" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; lo + (hi - lo) div 2 &amp;&amp;&amp; lo + (hi - lo) div 2 &lt; n</output></step><step name="using" start_symbol="3322" end_symbol="3336" line="75" proof_open="true"><command>using MB prems</command><output>proof (prove)
+using this:
+  lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  \&lt;not&gt; xs ! nat (lo + (hi - lo) div 2) &lt; key
+  nat (lo + (hi - lo) div 2) \&lt;le&gt; i
+  i &lt; length xs
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; lo + (hi - lo) div 2 &amp;&amp;&amp; lo + (hi - lo) div 2 &lt; n</output></step><step name="&lt;ignored&gt;" start_symbol="3336" end_symbol="3337" line="75" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  lo \&lt;le&gt; lo + (hi - lo) div 2 \&lt;and&gt; lo + (hi - lo) div 2 &lt; hi
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  \&lt;not&gt; xs ! nat (lo + (hi - lo) div 2) &lt; key
+  nat (lo + (hi - lo) div 2) \&lt;le&gt; i
+  i &lt; length xs
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. 0 \&lt;le&gt; lo + (hi - lo) div 2 &amp;&amp;&amp; lo + (hi - lo) div 2 &lt; n</output></step><step name="by" start_symbol="3337" end_symbol="3349" line="75" proof_open="true"><command>by linarith+</command><output>proof (state)
+this:
+  0 \&lt;le&gt; lo + (hi - lo) div 2
+  lo + (hi - lo) div 2 &lt; n
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3349" end_symbol="3354" line="75" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  0 \&lt;le&gt; lo + (hi - lo) div 2
+  lo + (hi - lo) div 2 &lt; n
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="have" start_symbol="3354" end_symbol="3419" line="76" proof_open="true"><command>have R: sint (heap_w32 s (ptr_coerce (a +\&lt;^sub&gt;p ?m))) = xs ! nat ?m</command><output>proof (prove)
+goal (1 subgoal):
+ 1. sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+    xs ! nat (lo + (hi - lo) div 2)</output></step><step name="&lt;ignored&gt;" start_symbol="3419" end_symbol="3426" line="76" proof_open="true"><command>
+      </command><output>proof (prove)
+goal (1 subgoal):
+ 1. sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+    xs ! nat (lo + (hi - lo) div 2)</output></step><step name="using" start_symbol="3426" end_symbol="3444" line="77" proof_open="true"><command>using access[OF M]</command><output>proof (prove)
+using this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+  xs ! nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+    xs ! nat (lo + (hi - lo) div 2)</output></step><step name="&lt;ignored&gt;" start_symbol="3444" end_symbol="3445" line="77" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  IS_VALID(32 word) s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;and&gt;
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+  xs ! nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. sint
+     (heap_w32 s
+       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+         (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+    xs ! nat (lo + (hi - lo) div 2)</output></step><step name="by" start_symbol="3445" end_symbol="3453" line="77" proof_open="true"><command>by blast</command><output>proof (state)
+this:
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+  xs ! nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3453" end_symbol="3458" line="77" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+  xs ! nat (lo + (hi - lo) div 2)
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="have" start_symbol="3458" end_symbol="3486" line="78" proof_open="true"><command>have NE: xs ! nat ?m \&lt;noteq&gt; key</command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) \&lt;noteq&gt; key</output></step><step name="&lt;ignored&gt;" start_symbol="3486" end_symbol="3487" line="78" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) \&lt;noteq&gt; key</output></step><step name="using" start_symbol="3487" end_symbol="3500" line="78" proof_open="true"><command>using R prems</command><output>proof (prove)
+using this:
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+  xs ! nat (lo + (hi - lo) div 2)
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  \&lt;not&gt; xs ! nat (lo + (hi - lo) div 2) &lt; key
+  nat (lo + (hi - lo) div 2) \&lt;le&gt; i
+  i &lt; length xs
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) \&lt;noteq&gt; key</output></step><step name="&lt;ignored&gt;" start_symbol="3500" end_symbol="3501" line="78" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  sint
+   (heap_w32 s
+     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+       (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2)))) =
+  xs ! nat (lo + (hi - lo) div 2)
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  \&lt;not&gt; xs ! nat (lo + (hi - lo) div 2) &lt; key
+  nat (lo + (hi - lo) div 2) \&lt;le&gt; i
+  i &lt; length xs
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) \&lt;noteq&gt; key</output></step><step name="by" start_symbol="3501" end_symbol="3523" line="78" proof_open="true"><command>by (metis of_int_sint)</command><output>proof (state)
+this:
+  xs ! nat (lo + (hi - lo) div 2) \&lt;noteq&gt; key
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3523" end_symbol="3528" line="78" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  xs ! nat (lo + (hi - lo) div 2) \&lt;noteq&gt; key
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="have" start_symbol="3528" end_symbol="3551" line="79" proof_open="true"><command>have xs!nat ?m \&lt;le&gt; xs!i</command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) \&lt;le&gt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3551" end_symbol="3552" line="79" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) \&lt;le&gt; xs ! i</output></step><step name="using" start_symbol="3552" end_symbol="3565" line="79" proof_open="true"><command>using S prems</command><output>proof (prove)
+using this:
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  \&lt;not&gt; xs ! nat (lo + (hi - lo) div 2) &lt; key
+  nat (lo + (hi - lo) div 2) \&lt;le&gt; i
+  i &lt; length xs
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) \&lt;le&gt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3565" end_symbol="3566" line="79" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  \&lt;not&gt; xs ! nat (lo + (hi - lo) div 2) &lt; key
+  nat (lo + (hi - lo) div 2) \&lt;le&gt; i
+  i &lt; length xs
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. xs ! nat (lo + (hi - lo) div 2) \&lt;le&gt; xs ! i</output></step><step name="by" start_symbol="3566" end_symbol="3574" line="79" proof_open="true"><command>by blast</command><output>proof (state)
+this:
+  xs ! nat (lo + (hi - lo) div 2) \&lt;le&gt; xs ! i
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3574" end_symbol="3579" line="79" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  xs ! nat (lo + (hi - lo) div 2) \&lt;le&gt; xs ! i
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="then" start_symbol="3579" end_symbol="3583" line="80" proof_open="true"><command>then</command><output>proof (chain)
+picking this:
+  xs ! nat (lo + (hi - lo) div 2) \&lt;le&gt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3583" end_symbol="3584" line="80" proof_open="true"><command> </command><output>proof (chain)
+picking this:
+  xs ! nat (lo + (hi - lo) div 2) \&lt;le&gt; xs ! i</output></step><step name="show" start_symbol="3584" end_symbol="3596" line="80" proof_open="true"><command>show ?thesis</command><output>proof (prove)
+using this:
+  xs ! nat (lo + (hi - lo) div 2) \&lt;le&gt; xs ! i
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3596" end_symbol="3597" line="80" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  xs ! nat (lo + (hi - lo) div 2) \&lt;le&gt; xs ! i
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="using" start_symbol="3597" end_symbol="3611" line="80" proof_open="true"><command>using NE prems</command><output>proof (prove)
+using this:
+  xs ! nat (lo + (hi - lo) div 2) \&lt;le&gt; xs ! i
+  xs ! nat (lo + (hi - lo) div 2) \&lt;noteq&gt; key
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  \&lt;not&gt; xs ! nat (lo + (hi - lo) div 2) &lt; key
+  nat (lo + (hi - lo) div 2) \&lt;le&gt; i
+  i &lt; length xs
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="3611" end_symbol="3612" line="80" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  xs ! nat (lo + (hi - lo) div 2) \&lt;le&gt; xs ! i
+  xs ! nat (lo + (hi - lo) div 2) \&lt;noteq&gt; key
+  lo &lt; hi
+  0 \&lt;le&gt; lo
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat lo. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  heap_w32 s
+   (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+     (a +\&lt;^sub&gt;p (lo + (hi - lo) div 2))) \&lt;noteq&gt;
+  word_of_int key
+  \&lt;not&gt; xs ! nat (lo + (hi - lo) div 2) &lt; key
+  nat (lo + (hi - lo) div 2) \&lt;le&gt; i
+  i &lt; length xs
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="by" start_symbol="3612" end_symbol="3623" line="80" proof_open="true"><command>by linarith</command><output>proof (state)
+this:
+  key &lt; xs ! i
+
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="3623" end_symbol="3626" line="80" proof_open="true"><command>
+  </command><output>proof (state)
+this:
+  key &lt; xs ! i
+
+goal:
+No subgoals!</output></step><step name="qed" start_symbol="3626" end_symbol="3629" line="81" proof_open="true"><command>qed</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; aa; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat aa. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i;
+        key \&lt;in&gt; set xs\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="3629" end_symbol="3632" line="81" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;aa.
+       \&lt;lbrakk&gt;0 \&lt;le&gt; aa; aa \&lt;le&gt; int (length xs);
+        \&lt;forall&gt;i&lt;nat aa. xs ! i &lt; key;
+        \&lt;forall&gt;i.
+           nat aa \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt;
+           key &lt; xs ! i;
+        n = int (length xs); length xs \&lt;le&gt; 2147483647;
+        - 2147483648 \&lt;le&gt; key; key \&lt;le&gt; 2147483647;
+        \&lt;forall&gt;i j.
+           i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt;
+           xs ! i \&lt;le&gt; xs ! j;
+        \&lt;And&gt;i.
+           \&lt;lbrakk&gt;0 \&lt;le&gt; i; i &lt; int (length xs)\&lt;rbrakk&gt;
+           \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                              (PTR_COERCE
+                                (32 signed word \&lt;rightarrow&gt; 32 word)
+                                (a +\&lt;^sub&gt;p i)) \&lt;and&gt;
+                             sint
+                              (heap_w32 s
+                                (PTR_COERCE
+                                  (32 signed word \&lt;rightarrow&gt; 32 word)
+                                  (a +\&lt;^sub&gt;p i))) =
+                             xs ! nat i;
+        key \&lt;in&gt; set xs\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; False</output></step><step name="subgoal" start_symbol="3632" end_symbol="3661" line="82" proof_open="true"><command>subgoal premises prems for hi</command><output>proof (prove)
+goal (1 subgoal):
+ 1. False</output></step><step name="&lt;ignored&gt;" start_symbol="3661" end_symbol="3664" line="82" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. False</output></step><step name="proof" start_symbol="3664" end_symbol="3671" line="83" proof_open="true"><command>proof -</command><output>proof (state)
+goal (1 subgoal):
+ 1. False</output></step><step name="&lt;ignored&gt;" start_symbol="3671" end_symbol="3676" line="83" proof_open="true"><command>
+    </command><output>proof (state)
+goal (1 subgoal):
+ 1. False</output></step><step name="obtain" start_symbol="3676" end_symbol="3722" line="84" proof_open="true"><command>obtain i where I: i &lt; length xs xs!i = key</command><output>proof (prove)
+goal (1 subgoal):
+ 1. (\&lt;And&gt;i.
+        \&lt;lbrakk&gt;i &lt; length xs; xs ! i = key\&lt;rbrakk&gt;
+        \&lt;Longrightarrow&gt; thesis) \&lt;Longrightarrow&gt;
+    thesis</output></step><step name="&lt;ignored&gt;" start_symbol="3722" end_symbol="3723" line="84" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. (\&lt;And&gt;i.
+        \&lt;lbrakk&gt;i &lt; length xs; xs ! i = key\&lt;rbrakk&gt;
+        \&lt;Longrightarrow&gt; thesis) \&lt;Longrightarrow&gt;
+    thesis</output></step><step name="using" start_symbol="3723" end_symbol="3734" line="84" proof_open="true"><command>using prems</command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; hi
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat hi. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+  key \&lt;in&gt; set xs
+
+goal (1 subgoal):
+ 1. (\&lt;And&gt;i.
+        \&lt;lbrakk&gt;i &lt; length xs; xs ! i = key\&lt;rbrakk&gt;
+        \&lt;Longrightarrow&gt; thesis) \&lt;Longrightarrow&gt;
+    thesis</output></step><step name="&lt;ignored&gt;" start_symbol="3734" end_symbol="3735" line="84" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; hi
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat hi. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+  key \&lt;in&gt; set xs
+
+goal (1 subgoal):
+ 1. (\&lt;And&gt;i.
+        \&lt;lbrakk&gt;i &lt; length xs; xs ! i = key\&lt;rbrakk&gt;
+        \&lt;Longrightarrow&gt; thesis) \&lt;Longrightarrow&gt;
+    thesis</output></step><step name="by" start_symbol="3735" end_symbol="3766" line="84" proof_open="true"><command>by (auto simp: in_set_conv_nth)</command><output>proof (state)
+this:
+  i &lt; length xs
+  xs ! i = key
+
+goal (1 subgoal):
+ 1. False</output></step><step name="&lt;ignored&gt;" start_symbol="3766" end_symbol="3771" line="84" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  i &lt; length xs
+  xs ! i = key
+
+goal (1 subgoal):
+ 1. False</output></step><step name="show" start_symbol="3771" end_symbol="3781" line="85" proof_open="true"><command>show False</command><output>proof (prove)
+goal (1 subgoal):
+ 1. False</output></step><step name="&lt;ignored&gt;" start_symbol="3781" end_symbol="3786" line="85" proof_open="true"><command>
+    </command><output>proof (prove)
+goal (1 subgoal):
+ 1. False</output></step><step name="proof" start_symbol="3786" end_symbol="3812" line="86" proof_open="true"><command>proof (cases i &lt; nat hi)</command><output>proof (state)
+goal (2 subgoals):
+ 1. i &lt; nat hi \&lt;Longrightarrow&gt; False
+ 2. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="3812" end_symbol="3819" line="86" proof_open="true"><command>
+      </command><output>proof (state)
+goal (2 subgoals):
+ 1. i &lt; nat hi \&lt;Longrightarrow&gt; False
+ 2. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="case" start_symbol="3819" end_symbol="3828" line="87" proof_open="true"><command>case True</command><output>proof (state)
+this:
+  i &lt; nat hi
+
+goal (2 subgoals):
+ 1. i &lt; nat hi \&lt;Longrightarrow&gt; False
+ 2. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="3828" end_symbol="3835" line="87" proof_open="true"><command>
+      </command><output>proof (state)
+this:
+  i &lt; nat hi
+
+goal (2 subgoals):
+ 1. i &lt; nat hi \&lt;Longrightarrow&gt; False
+ 2. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="have" start_symbol="3835" end_symbol="3852" line="88" proof_open="true"><command>have xs!i &lt; key</command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="3852" end_symbol="3853" line="88" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="using" start_symbol="3853" end_symbol="3869" line="88" proof_open="true"><command>using prems True</command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; hi
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat hi. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+  key \&lt;in&gt; set xs
+  i &lt; nat hi
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="3869" end_symbol="3870" line="88" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  0 \&lt;le&gt; hi
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat hi. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+  key \&lt;in&gt; set xs
+  i &lt; nat hi
+
+goal (1 subgoal):
+ 1. xs ! i &lt; key</output></step><step name="by" start_symbol="3870" end_symbol="3878" line="88" proof_open="true"><command>by blast</command><output>proof (state)
+this:
+  xs ! i &lt; key
+
+goal (2 subgoals):
+ 1. i &lt; nat hi \&lt;Longrightarrow&gt; False
+ 2. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="3878" end_symbol="3885" line="88" proof_open="true"><command>
+      </command><output>proof (state)
+this:
+  xs ! i &lt; key
+
+goal (2 subgoals):
+ 1. i &lt; nat hi \&lt;Longrightarrow&gt; False
+ 2. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="then" start_symbol="3885" end_symbol="3889" line="89" proof_open="true"><command>then</command><output>proof (chain)
+picking this:
+  xs ! i &lt; key</output></step><step name="&lt;ignored&gt;" start_symbol="3889" end_symbol="3890" line="89" proof_open="true"><command> </command><output>proof (chain)
+picking this:
+  xs ! i &lt; key</output></step><step name="show" start_symbol="3890" end_symbol="3900" line="89" proof_open="true"><command>show False</command><output>proof (prove)
+using this:
+  xs ! i &lt; key
+
+goal (1 subgoal):
+ 1. False</output></step><step name="&lt;ignored&gt;" start_symbol="3900" end_symbol="3901" line="89" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  xs ! i &lt; key
+
+goal (1 subgoal):
+ 1. False</output></step><step name="using" start_symbol="3901" end_symbol="3908" line="89" proof_open="true"><command>using I</command><output>proof (prove)
+using this:
+  xs ! i &lt; key
+  i &lt; length xs
+  xs ! i = key
+
+goal (1 subgoal):
+ 1. False</output></step><step name="&lt;ignored&gt;" start_symbol="3908" end_symbol="3909" line="89" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  xs ! i &lt; key
+  i &lt; length xs
+  xs ! i = key
+
+goal (1 subgoal):
+ 1. False</output></step><step name="by" start_symbol="3909" end_symbol="3916" line="89" proof_open="true"><command>by simp</command><output>proof (state)
+this:
+  False
+
+goal (1 subgoal):
+ 1. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="3916" end_symbol="3921" line="89" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  False
+
+goal (1 subgoal):
+ 1. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="next" start_symbol="3921" end_symbol="3925" line="90" proof_open="true"><command>next</command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="3925" end_symbol="3932" line="90" proof_open="true"><command>
+      </command><output>proof (state)
+goal (1 subgoal):
+ 1. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="case" start_symbol="3932" end_symbol="3942" line="91" proof_open="true"><command>case False</command><output>proof (state)
+this:
+  \&lt;not&gt; i &lt; nat hi
+
+goal (1 subgoal):
+ 1. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="3942" end_symbol="3949" line="91" proof_open="true"><command>
+      </command><output>proof (state)
+this:
+  \&lt;not&gt; i &lt; nat hi
+
+goal (1 subgoal):
+ 1. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="have" start_symbol="3949" end_symbol="3966" line="92" proof_open="true"><command>have nat hi \&lt;le&gt; i</command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat hi \&lt;le&gt; i</output></step><step name="&lt;ignored&gt;" start_symbol="3966" end_symbol="3967" line="92" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. nat hi \&lt;le&gt; i</output></step><step name="using" start_symbol="3967" end_symbol="3978" line="92" proof_open="true"><command>using False</command><output>proof (prove)
+using this:
+  \&lt;not&gt; i &lt; nat hi
+
+goal (1 subgoal):
+ 1. nat hi \&lt;le&gt; i</output></step><step name="&lt;ignored&gt;" start_symbol="3978" end_symbol="3979" line="92" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  \&lt;not&gt; i &lt; nat hi
+
+goal (1 subgoal):
+ 1. nat hi \&lt;le&gt; i</output></step><step name="by" start_symbol="3979" end_symbol="3986" line="92" proof_open="true"><command>by simp</command><output>proof (state)
+this:
+  nat hi \&lt;le&gt; i
+
+goal (1 subgoal):
+ 1. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="3986" end_symbol="3993" line="92" proof_open="true"><command>
+      </command><output>proof (state)
+this:
+  nat hi \&lt;le&gt; i
+
+goal (1 subgoal):
+ 1. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="then" start_symbol="3993" end_symbol="3997" line="93" proof_open="true"><command>then</command><output>proof (chain)
+picking this:
+  nat hi \&lt;le&gt; i</output></step><step name="&lt;ignored&gt;" start_symbol="3997" end_symbol="3998" line="93" proof_open="true"><command> </command><output>proof (chain)
+picking this:
+  nat hi \&lt;le&gt; i</output></step><step name="have" start_symbol="3998" end_symbol="4015" line="93" proof_open="true"><command>have key &lt; xs!i</command><output>proof (prove)
+using this:
+  nat hi \&lt;le&gt; i
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="4015" end_symbol="4016" line="93" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  nat hi \&lt;le&gt; i
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="using" start_symbol="4016" end_symbol="4029" line="93" proof_open="true"><command>using prems I</command><output>proof (prove)
+using this:
+  nat hi \&lt;le&gt; i
+  0 \&lt;le&gt; hi
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat hi. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+  key \&lt;in&gt; set xs
+  i &lt; length xs
+  xs ! i = key
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="4029" end_symbol="4030" line="93" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  nat hi \&lt;le&gt; i
+  0 \&lt;le&gt; hi
+  hi \&lt;le&gt; int (length xs)
+  \&lt;forall&gt;i&lt;nat hi. xs ! i &lt; key
+  \&lt;forall&gt;i.
+     nat hi \&lt;le&gt; i \&lt;and&gt; i &lt; length xs \&lt;longrightarrow&gt; key &lt; xs ! i
+  n = int (length xs)
+  length xs \&lt;le&gt; 2147483647
+  - 2147483648 \&lt;le&gt; key
+  key \&lt;le&gt; 2147483647
+  \&lt;forall&gt;i j.
+     i \&lt;le&gt; j \&lt;and&gt; j &lt; length xs \&lt;longrightarrow&gt; xs ! i \&lt;le&gt; xs ! j
+  \&lt;lbrakk&gt;0 \&lt;le&gt; ?i; ?i &lt; int (length xs)\&lt;rbrakk&gt;
+  \&lt;Longrightarrow&gt; IS_VALID(32 word) s
+                     (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                       (a +\&lt;^sub&gt;p ?i)) \&lt;and&gt;
+                    sint
+                     (heap_w32 s
+                       (PTR_COERCE(32 signed word \&lt;rightarrow&gt; 32 word)
+                         (a +\&lt;^sub&gt;p ?i))) =
+                    xs ! nat ?i
+  key \&lt;in&gt; set xs
+  i &lt; length xs
+  xs ! i = key
+
+goal (1 subgoal):
+ 1. key &lt; xs ! i</output></step><step name="by" start_symbol="4030" end_symbol="4038" line="93" proof_open="true"><command>by blast</command><output>proof (state)
+this:
+  key &lt; xs ! i
+
+goal (1 subgoal):
+ 1. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="4038" end_symbol="4045" line="93" proof_open="true"><command>
+      </command><output>proof (state)
+this:
+  key &lt; xs ! i
+
+goal (1 subgoal):
+ 1. \&lt;not&gt; i &lt; nat hi \&lt;Longrightarrow&gt; False</output></step><step name="then" start_symbol="4045" end_symbol="4049" line="94" proof_open="true"><command>then</command><output>proof (chain)
+picking this:
+  key &lt; xs ! i</output></step><step name="&lt;ignored&gt;" start_symbol="4049" end_symbol="4050" line="94" proof_open="true"><command> </command><output>proof (chain)
+picking this:
+  key &lt; xs ! i</output></step><step name="show" start_symbol="4050" end_symbol="4060" line="94" proof_open="true"><command>show False</command><output>proof (prove)
+using this:
+  key &lt; xs ! i
+
+goal (1 subgoal):
+ 1. False</output></step><step name="&lt;ignored&gt;" start_symbol="4060" end_symbol="4061" line="94" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  key &lt; xs ! i
+
+goal (1 subgoal):
+ 1. False</output></step><step name="using" start_symbol="4061" end_symbol="4068" line="94" proof_open="true"><command>using I</command><output>proof (prove)
+using this:
+  key &lt; xs ! i
+  i &lt; length xs
+  xs ! i = key
+
+goal (1 subgoal):
+ 1. False</output></step><step name="&lt;ignored&gt;" start_symbol="4068" end_symbol="4069" line="94" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  key &lt; xs ! i
+  i &lt; length xs
+  xs ! i = key
+
+goal (1 subgoal):
+ 1. False</output></step><step name="by" start_symbol="4069" end_symbol="4076" line="94" proof_open="true"><command>by simp</command><output>proof (state)
+this:
+  False
+
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="4076" end_symbol="4081" line="94" proof_open="true"><command>
+    </command><output>proof (state)
+this:
+  False
+
+goal:
+No subgoals!</output></step><step name="qed" start_symbol="4081" end_symbol="4084" line="95" proof_open="true"><command>qed</command><output>proof (state)
+this:
+  False
+
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="4084" end_symbol="4087" line="95" proof_open="true"><command>
+  </command><output>proof (state)
+this:
+  False
+
+goal:
+No subgoals!</output></step><step name="qed" start_symbol="4087" end_symbol="4090" line="96" proof_open="true"><command>qed</command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="4090" end_symbol="4093" line="96" proof_open="true"><command>
+  </command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="done" start_symbol="4093" end_symbol="4097" line="97" proof_open="true"><command>done</command><output>proof (state)
+this:
+  binary_search&apos; a n key
+  \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                           - 1 \&lt;le&gt; r \&lt;and&gt;
+                           r &lt; n \&lt;and&gt;
+                           (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                            xs ! nat r = key) \&lt;and&gt;
+                           (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                           s&apos; = s \&lt;rbrace&gt;
+
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="4097" end_symbol="4098" line="97" proof_open="true"><command>
+</command><output>proof (state)
+this:
+  binary_search&apos; a n key
+  \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                           - 1 \&lt;le&gt; r \&lt;and&gt;
+                           r &lt; n \&lt;and&gt;
+                           (0 \&lt;le&gt; r \&lt;longrightarrow&gt;
+                            xs ! nat r = key) \&lt;and&gt;
+                           (r = - 1) = (key \&lt;notin&gt; set xs) \&lt;and&gt;
+                           s&apos; = s \&lt;rbrace&gt;
+
+goal:
+No subgoals!</output></step><step name="qed" start_symbol="4098" end_symbol="4101" line="98" proof_open="false"><command>qed</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="4101" end_symbol="4102" line="98" proof_open="false"><command>
+</command><output></output></step><step name="ML" start_symbol="4102" end_symbol="4289" line="99" proof_open="false"><command>ML val _ = if null (Thm_Deps.all_oracles [@{thm binary_search_correct}]) then
+  writeln &quot;AUDIT: binary_search_correct has no oracle dependencies&quot; else error &quot;Oracle dependency detected&quot;</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="4289" end_symbol="4290" line="100" proof_open="false"><command>
+</command><output></output></step><step name="end" start_symbol="4290" end_symbol="4293" line="101" proof_open="false"><command>end</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="4293" end_symbol="4294" line="101" proof_open="false"><command>
+</command><output></output></step><step name="end" start_symbol="4294" end_symbol="4297" line="102" proof_open="false"><command>end</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="4297" end_symbol="4298" line="102" proof_open="false"><command>
+</command><output></output></step></recording>

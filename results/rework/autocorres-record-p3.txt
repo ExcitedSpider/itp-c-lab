@@ -1,0 +1,6 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-c", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres/recording", "C_ITP_Record_P3"]
+Running C_ITP_Record_P3 ...
+Finished C_ITP_Record_P3 (0:00:07 elapsed time, 0:00:08 cpu time, factor 1.03)
+0:00:14 elapsed time, 0:00:08 cpu time, factor 0.57
+
+Exit: 0

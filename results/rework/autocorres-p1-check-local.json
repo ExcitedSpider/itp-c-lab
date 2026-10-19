@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P1"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:50:27.753553+00:00",
+  "exit_code": 1,
+  "wall_seconds": 12.883445892017335,
+  "output": "Running C_ITP_P1 ...\nC_ITP_P1 FAILED (see also \"isabelle build_log -H Error C_ITP_P1\")\n*** Failed to apply initial proof method (line 13 of \"/work/autocorres/p1/P1.thy\"):\n*** using this:\n***     - 2147483648 < x\n***     x \u2264 2147483647\n*** goal (1 subgoal):\n***  1. condition (\u03bbs. x < 0)\n***       (do {\n***          guard (\u03bb_. - x \u2264 INT_MAX);\n***          return (- x)\n***        })\n***       (return x)\n***     \u2219 s \u2983 \u03bbRes r _.\n***              r =\n***              \u00a6x\u00a6 \u2984\n*** At command \"by\" (line 13 of \"/work/autocorres/p1/P1.thy\")\nUnfinished session(s): C_ITP_P1\n0:00:11 elapsed time, 0:00:05 cpu time, factor 0.44\n"
+}

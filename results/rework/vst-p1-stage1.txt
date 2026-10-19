@@ -1,0 +1,6 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/generated/p1_abs.v"]
+File "./vst/generated/p1_abs.v", line 1, characters 0-43:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+
+Exit: 0

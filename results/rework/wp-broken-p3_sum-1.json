@@ -1,0 +1,29 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "frama-c",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-timeout",
+    "10",
+    "-wp-par",
+    "1",
+    "-wp-report-json",
+    "/work/results/rework/wp-broken-p3_sum-1-goals.json",
+    "/work/wp/broken/p3_sum.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:08:12.796960+00:00",
+  "exit_code": 0,
+  "wall_seconds": 12.098343946971,
+  "output": "[kernel] Parsing wp/broken/p3_sum.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function sum_array\n[wp] 14 goals scheduled\n[wp] [Timeout] typed_sum_array_loop_invariant_2_established (Qed 4ms) (Alt-Ergo)\n[wp] Proved goals:   15 / 16\n  Terminating:       1\n  Unreachable:       1\n  Qed:               7 (4ms-3ms-13ms)\n  Alt-Ergo 2.5.4:    6 (8ms-17ms)\n  Timeout:           1\nPEAK_RSS_KB=403832\n"
+}

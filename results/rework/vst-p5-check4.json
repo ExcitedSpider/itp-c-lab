@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p5.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:50:58.223998+00:00",
+  "exit_code": 1,
+  "wall_seconds": 2.7816031859256327,
+  "output": "File \"./vst/verif_p5.v\", line 53, characters 4-39:\nError: Tactic failure: Cannot solve this goal.\n\n"
+}

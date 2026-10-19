@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p2.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:09:23.435595+00:00",
+  "exit_code": 0,
+  "wall_seconds": 8.107946648262441,
+  "output": "Axioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop,\n  (forall n : nat, {P n} + {~ P n}) ->\n  {n : nat | ~ P n} + {forall n : nat, P n}\nprop_ext : ClassicalFacts.prop_extensionality\nfunctional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x),\n  (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\nEnsembles.Extensionality_Ensembles :\n  forall (U : Type) (A B : Ensembles.Ensemble U),\n  Ensembles.Same_set A B -> A = B\nAxioms:\nClassicalDedekindReals.sig_not_dec : forall P : Prop, {~ ~ P} + {~ P}\nClassicalDedekindReals.sig_forall_dec :\n  forall P : nat -> Prop,\n  (forall n : nat, {P n} + {~ P n}) ->\n  {n : nat | ~ P n} + {forall n : nat, P n}\nprop_ext : ClassicalFacts.prop_extensionality\nfunctional_extensionality_dep :\n  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x),\n  (forall x : A, f x = g x) -> f = g\nClassical_Prop.classic : forall P : Prop, P \\/ ~ P\nEnsembles.Extensionality_Ensembles :\n  forall (U : Type) (A B : Ensembles.Ensemble U),\n  Ensembles.Same_set A B -> A = B\nPEAK_RSS_KB=859844\n"
+}

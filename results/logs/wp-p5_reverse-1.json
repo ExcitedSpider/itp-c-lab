@@ -1,0 +1,41 @@
+{
+  "label": "wp-p5_reverse-1",
+  "timestamp": "2026-10-19T02:01:37.943Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "/tmp/framac/4.14.1/bin/frama-c",
+    "-wp-why3-extra-config",
+    "wp/why3.conf",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-par",
+    "1",
+    "-wp-timeout",
+    "10",
+    "-wp-cache",
+    "none",
+    "programs/p5_reverse.c"
+  ],
+  "env": {
+    "OCAMLPATH": "/tmp/framac/4.14.1/lib",
+    "DUNE_DIR_LOCATIONS": "frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"
+  },
+  "exit_code": null,
+  "signal": "SIGTERM",
+  "error": "spawnSync /usr/bin/time ETIMEDOUT",
+  "wall_seconds": 120.019065161,
+  "stdout": "[kernel] Parsing programs/p5_reverse.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function reverse\n[wp] programs/p5_reverse.c:24: Warning: \n  Missing assigns clause (assigns 'everything' instead)\n[wp] 7 goals scheduled\n[wp] [Failure] typed_reverse_terminates (Qed 0.96ms) (Alt-Ergo)\n[wp] [Failure] typed_reverse_ensures (Qed 3ms) (Alt-Ergo)\n[wp] [Failure] typed_reverse_ensures_2 (Qed 3ms) (Alt-Ergo)\n",
+  "stderr": "/tmp/ppannot27744f.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined\n    1 | #define __STDC_EMBED_NOT_FOUND__ 0\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot27744f.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined\n    2 | #define __STDC_EMBED_FOUND__ 1\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot27744f.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined\n    3 | #define __STDC_EMBED_EMPTY__ 2\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\ncc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics\n",
+  "source_sha256": "9f7e72547930171da3fb352b3b6ba86dede00f62507ab9a0f341d162f33f16c3",
+  "proved": null,
+  "total": null,
+  "all_generated_goals_closed": false,
+  "peak_rss_kb": null
+}

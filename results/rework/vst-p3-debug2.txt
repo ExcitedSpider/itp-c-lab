@@ -1,0 +1,47 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p3.v"]
+2 goals
+  
+  Espec : OracleKind
+  a : val
+  xs : list Z
+  n : Z
+  Delta_specs : Maps.PTree.t funspec
+  Delta := abbreviate : tycontext
+  H : 0 <= n <= Int.max_signed
+  H0 : Zlength xs = n
+  H1 : Forall (fun x : Z => Int.min_signed <= x <= Int.max_signed) xs
+  H2 :
+    forall k : Z,
+    0 <= k <= n -> Int.min_signed <= sumZ (sublist 0 k xs) <= Int.max_signed
+  i : Z
+  HRE : i < n
+  H3 : 0 <= i <= n
+  Hi : 0 <= i < Zlength xs
+  Hs : Int.min_signed <= sumZ (sublist 0 i xs) + Znth i xs <= Int.max_signed
+  ============================
+  ENTAIL Delta,
+  PROP ( )
+  LOCAL (temp _t'1 (Vint (Int.repr (Znth i xs))); 
+  temp _a a; temp _n (Vint (Int.repr n)); temp _i (Vint (Int.repr i));
+  temp _s (Vint (Int.repr (sumZ (sublist 0 i xs)))))
+  SEP (data_at Tsh (tarray tint n) (map (fun x : Z => Vint (Int.repr x)) xs)
+         a)
+  |-- tc_expr Delta (_s + _t'1)%expr
+
+goal 2 is:
+ semax Delta
+   (PROP ( )
+    LOCAL (temp _s
+             (Vint
+                (Int.add (Int.repr (sumZ (sublist 0 i xs)))
+                   (Int.repr (Znth i xs))));
+    temp _t'1 (Vint (Int.repr (Znth i xs))); temp _a a;
+    temp _n (Vint (Int.repr n)); temp _i (Vint (Int.repr i)))
+    SEP (data_at Tsh (tarray tint n)
+           (map (fun x : Z => Vint (Int.repr x)) xs) a))
+   (_i = (_i + (1));) POSTCONDITION
+File "./vst/verif_p3.v", line 45, characters 4-17:
+Error: No applicable tactic.
+
+
+Exit: 1

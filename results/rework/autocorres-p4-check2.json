@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P4"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:58:36.747527+00:00",
+  "exit_code": 1,
+  "wall_seconds": 15.178942252881825,
+  "output": "Running C_ITP_P4 ...\nC_ITP_P4 FAILED (see also \"isabelle build_log -H Error C_ITP_P4\")\n*** Error in case expression:\n*** Not a constructor pattern\n*** In clause\n*** Exception e \u21d2\n***   \u2203k. e = Some k \u2227\n***       0 \u2264 k \u2227\n***       k < n \u2227\n***       xs ! nat k = key \u2227\n***       s' = s\n*** At command \"supply\" (line 20 of \"/work/autocorres/p4/P4.thy\")\nUnfinished session(s): C_ITP_P4\n0:00:14 elapsed time, 0:00:07 cpu time, factor 0.55\n"
+}

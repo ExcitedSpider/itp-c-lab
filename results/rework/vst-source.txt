@@ -1,0 +1,21 @@
+$ ["git", "clone", "--depth", "1", "--branch", "v2.17", "https://github.com/PrincetonUniversity/VST.git", "/home/opam/vst-source"]
+Cloning into '/home/opam/vst-source'...
+Note: switching to '3c37c2e2b574e23aee8fdd1684aa0ffed227491e'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+
+Exit: 0

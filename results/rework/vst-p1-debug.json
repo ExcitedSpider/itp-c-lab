@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p1.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:46:56.310606+00:00",
+  "exit_code": 1,
+  "wall_seconds": 2.3955389601178467,
+  "output": "2 goals\n  \n  Espec : OracleKind\n  x : Z\n  Delta_specs : Maps.PTree.t funspec\n  H : Int.min_signed < x <= Int.max_signed\n  H0 : x < 0\n  ============================\n  Int.signed Int.zero - x <= Int.max_signed\n\ngoal 2 is:\n emp |-- !! (Vint (Int.repr (- x)) = Vint (Int.repr (Z.abs x)))\nFile \"./vst/verif_p1.v\", line 19, characters 2-3:\nError: [Focus] Wrong bullet -: Current bullet - is not finished.\n\n"
+}

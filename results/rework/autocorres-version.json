@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "version"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:31:03.857992+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.2395670171827078,
+  "output": "Isabelle2025-2\n"
+}

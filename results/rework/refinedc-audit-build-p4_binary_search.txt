@@ -1,0 +1,10 @@
+$ ["opam", "exec", "--", "refinedc", "check", "refinedc/p4_binary_search.c"]
+Entering directory '/work/refinedc'
+        rocq proofs/p4_binary_search/.c_itp_refinedc.theory.d
+        rocq proofs/p4_binary_search/generated_code.{glob,vo}
+        rocq proofs/p4_binary_search/generated_spec.{glob,vo}
+        rocq proofs/p4_binary_search/generated_proof_binary_search.{glob,vo}
+Leaving directory '/work/refinedc'
+File "refinedc/p4_binary_search.c" successfully checked.
+
+Exit: 0

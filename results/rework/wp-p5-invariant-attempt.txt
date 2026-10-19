@@ -1,0 +1,33 @@
+$ ["opam", "exec", "--", "frama-c", "-machdep", "x86_64", "-wp", "-wp-rte", "-wp-prover", "alt-ergo", "-wp-timeout", "3", "-wp-par", "1", "-wp-report-json", "results/rework/wp-p5-goals.json", "programs/p5_reverse.c"]
+[kernel] Parsing programs/p5_reverse.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function reverse
+[wp] 14 goals scheduled
+[wp] [Timeout] typed_reverse_terminates (Qed 2ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_ensures_2 (Qed 21ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_ensures_3 (Qed 18ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_loop_invariant_established (Qed 8ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_loop_invariant_preserved (Qed 19ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_assert_rte_mem_access (Qed 17ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_assert_rte_mem_access_2 (Qed 19ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_loop_assigns_part3 (Qed 31ms) (Alt-Ergo)
+[wp] Proved goals:    7 / 15
+  Unreachable:       1
+  Qed:               3 (2ms-17ms-41ms)
+  Alt-Ergo 2.5.4:    3 (29ms-44ms-72ms)
+  Timeout:           8
+[wp:pedantic-assigns] programs/p5_reverse.c:22: Warning: 
+  No 'assigns \result \from ...' specification for function 'reverse'returning pointer type.
+  Callers assumptions might be imprecise.
+[wp:pedantic-assigns] programs/p5_reverse.c:14: Warning: 
+  No \from specification for assigned pointer '{p->next |
+                                                struct node *p;
+                                                              ∃ ℤ n, ℤ i;
+                                                                list{Old}(l, n) ∧
+                                                                0 ≤ i < n ∧
+                                                                p ≡
+                                                                nth{Old}
+                                                                (l, i)}'.
+  Callers assumptions might be imprecise.
+
+Exit: 0

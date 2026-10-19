@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p1.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:46:38.243059+00:00",
+  "exit_code": 1,
+  "wall_seconds": 2.2763747139833868,
+  "output": "File \"./vst/verif_p1.v\", line 18, characters 24-48:\nError: Found no subterm matching \"Z.abs ?M78308\" in the current goal.\n\n"
+}

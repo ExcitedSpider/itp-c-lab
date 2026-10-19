@@ -1,0 +1,16 @@
+{
+  "label": "gcc-version",
+  "timestamp": "2026-10-19T01:56:31.630Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "gcc",
+    "--version"
+  ],
+  "env": {},
+  "exit_code": 0,
+  "signal": null,
+  "error": "spawnSync gcc EPERM",
+  "wall_seconds": 0.0022399500000000075,
+  "stdout": "gcc (GCC) 15.2.1 20260123 (Red Hat 15.2.1-7)\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "stderr": ""
+}

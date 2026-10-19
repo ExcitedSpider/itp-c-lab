@@ -1,0 +1,6 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p3.v"]
+File "./vst/verif_p3.v", line 44, characters 22-29:
+Error: No matching clauses for match.
+
+
+Exit: 1

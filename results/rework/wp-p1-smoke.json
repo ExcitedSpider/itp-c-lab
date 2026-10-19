@@ -1,0 +1,24 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "frama-c",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-timeout",
+    "10",
+    "-wp-par",
+    "1",
+    "programs/p1_abs.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:28:06.363561+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.4239026322029531,
+  "output": "[kernel] Parsing programs/p1_abs.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function abs_val\n[wp] 4 goals scheduled\n[wp] Proved goals:    6 / 6\n  Terminating:     1\n  Unreachable:     1\n  Qed:             4\n"
+}

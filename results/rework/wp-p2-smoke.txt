@@ -1,0 +1,12 @@
+$ ["opam", "exec", "--", "frama-c", "-machdep", "x86_64", "-wp", "-wp-rte", "-wp-prover", "alt-ergo", "-wp-timeout", "10", "-wp-par", "1", "programs/p2_swap.c"]
+[kernel] Parsing programs/p2_swap.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function swap
+[wp] 8 goals scheduled
+[wp] Proved goals:   10 / 10
+  Terminating:       1
+  Unreachable:       1
+  Qed:               5 (1ms-0.73ms-2ms)
+  Alt-Ergo 2.5.4:    3 (8ms-10ms)
+
+Exit: 0

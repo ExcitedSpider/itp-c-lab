@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/generated/p4_binary_search.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:48:17.390955+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.5871754311956465,
+  "output": "File \"./vst/generated/p4_binary_search.v\", line 1, characters 0-43:\nWarning: \"From Coq\" has been replaced by \"From Stdlib\".\n[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]\n"
+}

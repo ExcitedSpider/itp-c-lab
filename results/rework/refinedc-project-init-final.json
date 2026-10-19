@@ -1,0 +1,12 @@
+{
+  "command": [
+    "sh",
+    "-c",
+    "cd refinedc && opam exec -- refinedc init --coq-path=c_itp_refinedc"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:41:13.747362+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.03960710996761918,
+  "output": "Initialized a RefinedC project in \"/work/refinedc\".\nUsing Coq root module path [c_itp_refinedc].\n"
+}

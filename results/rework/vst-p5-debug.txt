@@ -1,0 +1,10 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p5.v"]
+1 goal
+  
+  ============================
+  nullval = nullval <-> [] = []
+File "./vst/verif_p5.v", line 17, characters 2-3:
+Error: [Focus] Wrong bullet -: Current bullet - is not finished.
+
+
+Exit: 1

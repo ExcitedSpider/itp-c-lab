@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p5.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:52:54.939490+00:00",
+  "exit_code": 1,
+  "wall_seconds": 2.94859281135723,
+  "output": "1 goal\n  \n  Espec : OracleKind\n  p : val\n  Delta_specs : Maps.PTree.t funspec\n  ys : list int\n  r : val\n  PNr : is_pointer_or_null r\n  PNl : is_pointer_or_null nullval\n  H0 : r = nullval <-> ys = []\n  H1 : nullval = nullval <-> [] = []\n  ============================\n  listrep [] nullval |-- emp\nFile \"./vst/verif_p5.v\", line 56, characters 0-4:\nError:  (in proof body_reverse): Attempt to save an incomplete proof\n(there are remaining open goals).\n\n"
+}

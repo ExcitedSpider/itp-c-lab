@@ -1,0 +1,31 @@
+$ ["curl", "-IL", "--max-time", "20", "https://www.isa-afp.org/release/afp-2026-10-16.tar.gz"]
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0
+
+  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0
+  0  101M    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0
+HTTP/2 302 
+alt-svc: h3=":443"; ma=2592000
+location: https://isa-afp.org/release/afp-2026-10-16.tar.gz
+server: Caddy
+date: Mon, 19 Oct 2026 03:06:24 GMT
+
+HTTP/2 200 
+accept-ranges: bytes
+access-control-allow-origin: https://afp-submit.proof.cit.tum.de
+alt-svc: h3=":443"; ma=2592000
+content-type: application/gzip
+etag: "dm6bd2mic7bs1rgk7x"
+last-modified: Fri, 16 Oct 2026 13:57:32 GMT
+server: Caddy
+vary: Accept-Encoding
+content-length: 106588509
+date: Mon, 19 Oct 2026 03:06:25 GMT
+
+
+Exit: 0

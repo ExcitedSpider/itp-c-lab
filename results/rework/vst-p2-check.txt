@@ -1,0 +1,7 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p2.v"]
+File "./vst/verif_p2.v", line 26, characters 0-4:
+Error:  (in proof body_swap_separate): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+Exit: 1

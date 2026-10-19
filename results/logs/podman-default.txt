@@ -1,0 +1,5 @@
+$ ["podman","ps","-a"]
+Environment overrides: {}
+Failed to obtain podman configuration: set sticky bit on: chmod /run/user/1000/libpod: read-only file system
+
+Exit: 1; signal: null; wall_seconds: 0.012745467000000002

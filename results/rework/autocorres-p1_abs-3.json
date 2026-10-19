@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-c",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P1"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:15:15.719258+00:00",
+  "exit_code": 0,
+  "wall_seconds": 13.113631535787135,
+  "output": "Cleaned C_ITP_P1\nRunning C_ITP_P1 ...\nFinished C_ITP_P1 (0:00:05 elapsed time, 0:00:05 cpu time, factor 1.00)\n0:00:11 elapsed time, 0:00:05 cpu time, factor 0.46\nPEAK_RSS_KB=3194924\n"
+}

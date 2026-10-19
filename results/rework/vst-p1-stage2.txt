@@ -1,0 +1,6 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p1.v"]
+File "./vst/verif_p1.v", line 18, characters 24-48:
+Error: Found no subterm matching "Z.abs ?M78308" in the current goal.
+
+
+Exit: 1

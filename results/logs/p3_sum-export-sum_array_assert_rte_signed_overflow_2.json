@@ -1,0 +1,39 @@
+{
+  "label": "p3_sum-export-sum_array_assert_rte_signed_overflow_2",
+  "timestamp": "2026-10-19T02:00:56.360Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "timeout",
+    "-k",
+    "1",
+    "1",
+    "/tmp/framac/4.14.1/bin/frama-c",
+    "-wp-why3-extra-config",
+    "wp/why3.conf",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-cache",
+    "none",
+    "-wp-prop",
+    "sum_array_assert_rte_signed_overflow_2",
+    "-wp-par",
+    "1",
+    "-wp-out",
+    "results/replay/p3_sum/sum_array_assert_rte_signed_overflow_2",
+    "programs/p3_sum.c"
+  ],
+  "env": {
+    "OCAMLPATH": "/tmp/framac/4.14.1/lib",
+    "DUNE_DIR_LOCATIONS": "frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"
+  },
+  "exit_code": 0,
+  "signal": null,
+  "error": "spawnSync timeout EPERM",
+  "wall_seconds": 0.14222794,
+  "stdout": "[kernel] Parsing programs/p3_sum.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function sum_array\n[wp] Warning: No goal generated\n",
+  "stderr": "/tmp/ppannotfef454.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined\n    1 | #define __STDC_EMBED_NOT_FOUND__ 0\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannotfef454.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined\n    2 | #define __STDC_EMBED_FOUND__ 1\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannotfef454.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined\n    3 | #define __STDC_EMBED_EMPTY__ 2\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\ncc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics\n"
+}

@@ -1,0 +1,5 @@
+$ ["gcc","-std=c11","-Wall","-Wextra","-Werror","-fsyntax-only","programs/p1_abs.c","programs/p2_swap.c","programs/p3_sum.c","programs/p4_binary_search.c","programs/p5_reverse.c"]
+Environment overrides: {}
+
+Runner error: spawnSync gcc EPERM
+Exit: 0; signal: null; wall_seconds: 0.030774372000000005

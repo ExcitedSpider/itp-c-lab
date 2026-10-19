@@ -1,0 +1,48 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-v", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres", "C_ITP_P1"]
+Started at Mon Oct 19 02:53:05 GMT 2026 (polyml-5.9.2_x86_64_32-linux on d9ebc079028b)
+ISABELLE_TOOL_JAVA_OPTIONS="-Djava.awt.headless=true -Xms512m -Xmx4g -Xss16m"
+ISABELLE_BUILD_OPTIONS=""
+
+ML_PLATFORM="x86_64_32-linux"
+ML_HOME="/home/isabelle/Isabelle/contrib/polyml-5.9.2-2/x86_64_32-linux"
+ML_SYSTEM="polyml-5.9.2"
+ML_OPTIONS="--minheap 500"
+
+Session Pure/Pure
+Session FOL/FOL
+Session Misc/Tools
+Session HOL/HOL (main)
+Session HOL/HOL-Cardinals (timing)
+Session HOL/HOL-Library (main timing)
+Session HOL/HOL-Combinatorics (main timing)
+Session HOL/HOL-Computational_Algebra (main timing)
+Session HOL/HOL-Algebra (main timing)
+Session HOL/HOL-Decision_Procs (timing)
+Session HOL/HOL-Number_Theory (main timing)
+Session HOL/HOL-ex (timing)
+Session HOL/HOL-Real_Asymp
+Session HOL/HOL-Analysis (main timing)
+Session HOL/HOL-Eisbach
+Session HOL/HOL-Statespace
+Session AFP/Simpl (AFP)
+Session AFP/Word_Lib (AFP)
+Session AFP/AutoCorres2 (AFP)
+Session Unsorted/C_ITP_P1
+Running C_ITP_P1 ...
+C_ITP_P1: theory C_ITP_P1.P1
+C_ITP_P1: theory C_ITP_P1.P1 100% (3.085s cumulated time)
+C_ITP_P1 FAILED (see also "isabelle build_log -H Error C_ITP_P1")
+*** Failed to finish proof:
+*** goal (2 subgoals):
+***  1. x < 0 ⟹ - x ≤ INT_MAX
+***  2. x < 0 ⟹ - x = ¦x¦
+*** variables:
+***     s :: lifted_globals
+***     x :: int
+*** At command "done" (line 17 of "/work/autocorres/p1/P1.thy")
+Unfinished session(s): C_ITP_P1
+
+Finished at Mon Oct 19 02:53:17 GMT 2026
+0:00:12 elapsed time, 0:00:05 cpu time, factor 0.44
+
+Exit: 1

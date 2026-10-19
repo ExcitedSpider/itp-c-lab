@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p4.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:48:18.112934+00:00",
+  "exit_code": 1,
+  "wall_seconds": 0.7215904840268195,
+  "output": "File \"./vst/verif_p4.v\", line 12, characters 17-28:\nError:\nIn environment\nx : val * list Z * Z * Z\np : val * list Z * Z\nkey : Z\np0 : val * list Z\nn : Z\na : val\nxs : list Z\ni : Z\nj : Z\nThe term \"0 <= i <= j\" has type \"Prop\" while it is expected to have type \"Z\".\n\n"
+}

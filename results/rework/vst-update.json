@@ -1,0 +1,12 @@
+{
+  "command": [
+    "opam",
+    "update",
+    "default"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:28:33.368477+00:00",
+  "exit_code": 40,
+  "wall_seconds": 0.5279371743090451,
+  "output": "\n<><> Updating package repositories ><><><><><><><><><><><><><><><><><><><><><><>\n[ERROR] Could not update repository \"default\": \"/usr/bin/git fetch -q\" exited with code 128\n"
+}

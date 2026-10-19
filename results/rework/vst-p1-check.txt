@@ -1,0 +1,7 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p1.v"]
+File "./vst/verif_p1.v", line 21, characters 49-58:
+Error:
+Tactic failure: The entailer tactic works only on entailments  _ |-- _ .
+
+
+Exit: 1

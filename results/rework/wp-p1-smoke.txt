@@ -1,0 +1,11 @@
+$ ["opam", "exec", "--", "frama-c", "-machdep", "x86_64", "-wp", "-wp-rte", "-wp-prover", "alt-ergo", "-wp-timeout", "10", "-wp-par", "1", "programs/p1_abs.c"]
+[kernel] Parsing programs/p1_abs.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function abs_val
+[wp] 4 goals scheduled
+[wp] Proved goals:    6 / 6
+  Terminating:     1
+  Unreachable:     1
+  Qed:             4
+
+Exit: 0

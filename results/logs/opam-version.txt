@@ -1,0 +1,5 @@
+$ ["opam","--version"]
+Environment overrides: {}
+2.5.1
+
+Exit: 0; signal: null; wall_seconds: 0.026178449

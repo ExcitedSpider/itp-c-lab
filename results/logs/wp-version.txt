@@ -1,0 +1,5 @@
+$ ["/tmp/framac/4.14.1/bin/frama-c","-version"]
+Environment overrides: {"OCAMLPATH":"/tmp/framac/4.14.1/lib","DUNE_DIR_LOCATIONS":"frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"}
+30.0 (Zinc)
+
+Exit: 0; signal: null; wall_seconds: 0.023918994

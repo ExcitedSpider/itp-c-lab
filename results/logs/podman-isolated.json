@@ -1,0 +1,24 @@
+{
+  "label": "podman-isolated",
+  "timestamp": "2026-10-19T01:56:31.575Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "podman",
+    "--root",
+    "/tmp/c-itp-podman-storage",
+    "--runroot",
+    "/tmp/c-itp-runtime/run",
+    "--storage-driver",
+    "vfs",
+    "info"
+  ],
+  "env": {
+    "XDG_RUNTIME_DIR": "/tmp/c-itp-runtime"
+  },
+  "exit_code": 125,
+  "signal": null,
+  "error": "spawnSync podman EPERM",
+  "wall_seconds": 0.020283708000000004,
+  "stdout": "",
+  "stderr": "time=\"2026-10-19T12:56:31+11:00\" level=warning msg=\"\\\"/\\\" is not a shared mount, this could cause issues or missing mounts with rootless containers\"\ntime=\"2026-10-19T12:56:31+11:00\" level=error msg=\"running `/usr/bin/newuidmap 32 0 1000 1 1 524288 65536`: newuidmap: write to uid_map failed: Operation not permitted\\n\"\nError: cannot set up namespace using \"/usr/bin/newuidmap\": exit status 1\n"
+}

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "frama-c",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-timeout",
+    "10",
+    "-wp-par",
+    "1",
+    "programs/p2_swap.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:28:24.029925+00:00",
+  "exit_code": 0,
+  "wall_seconds": 1.1095133880153298,
+  "output": "[kernel] Parsing programs/p2_swap.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function swap\n[wp] 8 goals scheduled\n[wp] Proved goals:   10 / 10\n  Terminating:       1\n  Unreachable:       1\n  Qed:               5 (1ms-0.73ms-2ms)\n  Alt-Ergo 2.5.4:    3 (8ms-10ms)\n"
+}

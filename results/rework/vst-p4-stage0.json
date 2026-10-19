@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "clightgen",
+    "-normalize",
+    "-o",
+    "vst/generated/p4_binary_search.v",
+    "programs/p4_binary_search.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:48:16.803532+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.03773204516619444,
+  "output": ""
+}

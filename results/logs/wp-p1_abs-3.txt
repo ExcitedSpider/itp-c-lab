@@ -1,0 +1,27 @@
+$ ["/usr/bin/time","-f","PEAK_RSS_KB=%M","/tmp/framac/4.14.1/bin/frama-c","-wp-why3-extra-config","wp/why3.conf","-machdep","x86_64","-wp","-wp-rte","-wp-prover","alt-ergo","-wp-par","1","-wp-timeout","10","-wp-cache","none","-wp-out","results/generated/p1_abs","-wp-report-json","results/wp-p1_abs-3-goals.json","programs/p1_abs.c"]
+Environment overrides: {"OCAMLPATH":"/tmp/framac/4.14.1/lib","DUNE_DIR_LOCATIONS":"frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"}
+[kernel] Parsing programs/p1_abs.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function abs_val
+[wp] 4 goals scheduled
+[wp] Proved goals:    6 / 6
+  Terminating:     1
+  Unreachable:     1
+  Qed:             4
+/tmp/ppannot8c4611.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined
+    1 | #define __STDC_EMBED_NOT_FOUND__ 0
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+/tmp/ppannot8c4611.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined
+    2 | #define __STDC_EMBED_FOUND__ 1
+      |         ^~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+/tmp/ppannot8c4611.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined
+    3 | #define __STDC_EMBED_EMPTY__ 2
+      |         ^~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+cc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics
+PEAK_RSS_KB=90076
+
+Runner error: spawnSync /usr/bin/time EPERM
+Exit: 0; signal: null; wall_seconds: 0.369056953

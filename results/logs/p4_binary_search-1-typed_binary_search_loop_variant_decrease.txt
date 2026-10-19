@@ -1,0 +1,11 @@
+$ ["/usr/bin/time","-f","PEAK_RSS_KB=%M","/tmp/framac/4.14.1/bin/alt-ergo","--frontend","dolmen","--timelimit","3","results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_variant_decrease_AltmnErgo_2dt6dt0-wp_goal.psmt2"]
+Environment overrides: {}
+
+unsat
+alt-ergo: option '--frontend': this option is deprecated and will be ignored in the next version
+
+; File "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_variant_decrease_AltmnErgo_2dt6dt0-wp_goal.psmt2", line 986, characters 1-12: Valid (0.0334) (464 steps) (goal g_1)
+PEAK_RSS_KB=26152
+
+Runner error: spawnSync /usr/bin/time EPERM
+Exit: 0; signal: null; wall_seconds: 0.05322388100000001

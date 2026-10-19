@@ -1,0 +1,1507 @@
+<recording theory="Draft.P5"><step name="&lt;ignored&gt;" start_symbol="1" end_symbol="164" line="1" proof_open="false"><command> Adapted from AFP AutoCorres2/tests/examples/ListRev.thy.
+ * Copyright 2020 Data61, CSIRO; Copyright 2022 Apple Inc.
+ * SPDX-License-Identifier: BSD-2-Clause 
+</command><output></output></step><step name="theory" start_symbol="164" end_symbol="212" line="4" proof_open="false"><command>theory P5
+imports AutoCorres2.AutoCorres
+begin</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="212" end_symbol="213" line="6" proof_open="false"><command>
+</command><output></output></step><step name="install_C_file" start_symbol="213" end_symbol="257" line="7" proof_open="false"><command>install_C_file ../../programs/p5_reverse.c</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="257" end_symbol="258" line="7" proof_open="false"><command>
+</command><output></output></step><step name="autocorres" start_symbol="258" end_symbol="301" line="8" proof_open="false"><command>autocorres [heap_abs_syntax] p5_reverse.c</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="301" end_symbol="302" line="8" proof_open="false"><command>
+</command><output></output></step><step name="context" start_symbol="302" end_symbol="343" line="9" proof_open="false"><command>context p5_reverse_global_addresses begin</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="343" end_symbol="344" line="9" proof_open="false"><command>
+</command><output></output></step><step name="primrec" start_symbol="344" end_symbol="561" line="10" proof_open="false"><command>primrec listrep :: lifted_globals \&lt;Rightarrow&gt; node_C ptr \&lt;Rightarrow&gt; node_C ptr list \&lt;Rightarrow&gt; bool where
+  listrep s p [] = (p = NULL)
+| listrep s p (x#xs) = (p = x \&lt;and&gt; p \&lt;noteq&gt; NULL \&lt;and&gt;
+     ptr_valid (heap_typing s) p \&lt;and&gt; listrep s (s[p]\&lt;rightarrow&gt;next) xs)</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="561" end_symbol="562" line="13" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="562" end_symbol="618" line="14" proof_open="true"><command>lemma list_empty [simp]: listrep s NULL xs = (xs = [])</command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s NULL xs = (xs = [])</output></step><step name="&lt;ignored&gt;" start_symbol="618" end_symbol="621" line="14" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s NULL xs = (xs = [])</output></step><step name="by" start_symbol="621" end_symbol="640" line="15" proof_open="false"><command>by (induct xs) auto</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="640" end_symbol="641" line="15" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="641" end_symbol="704" line="16" proof_open="true"><command>lemma list_in [simp]: \&lt;lbrakk&gt;listrep s p xs; p \&lt;noteq&gt; NULL\&lt;rbrakk&gt; \&lt;Longrightarrow&gt; p \&lt;in&gt; set xs</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p \&lt;noteq&gt; NULL\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; p \&lt;in&gt; set xs</output></step><step name="&lt;ignored&gt;" start_symbol="704" end_symbol="707" line="16" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p \&lt;noteq&gt; NULL\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; p \&lt;in&gt; set xs</output></step><step name="by" start_symbol="707" end_symbol="726" line="17" proof_open="false"><command>by (induct xs) auto</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="726" end_symbol="727" line="17" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="727" end_symbol="857" line="18" proof_open="true"><command>lemma list_non_NULL:
+  p \&lt;noteq&gt; NULL \&lt;Longrightarrow&gt; listrep s p xs =
+    (\&lt;exists&gt;ys. xs = p#ys \&lt;and&gt; ptr_valid (heap_typing s) p \&lt;and&gt; listrep s (s[p]\&lt;rightarrow&gt;next) ys)</command><output>proof (prove)
+goal (1 subgoal):
+ 1. p \&lt;noteq&gt; NULL \&lt;Longrightarrow&gt;
+    listrep s p xs =
+    (\&lt;exists&gt;ys.
+        xs = p # ys \&lt;and&gt;
+        IS_VALID(node_C) s p \&lt;and&gt; listrep s s[p]\&lt;rightarrow&gt;next ys)</output></step><step name="&lt;ignored&gt;" start_symbol="857" end_symbol="860" line="20" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. p \&lt;noteq&gt; NULL \&lt;Longrightarrow&gt;
+    listrep s p xs =
+    (\&lt;exists&gt;ys.
+        xs = p # ys \&lt;and&gt;
+        IS_VALID(node_C) s p \&lt;and&gt; listrep s s[p]\&lt;rightarrow&gt;next ys)</output></step><step name="by" start_symbol="860" end_symbol="878" line="21" proof_open="false"><command>by (cases xs) auto</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="878" end_symbol="879" line="21" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="879" end_symbol="941" line="22" proof_open="true"><command>lemma list_unique: listrep s p xs \&lt;Longrightarrow&gt; listrep s p ys \&lt;Longrightarrow&gt; xs = ys</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; listrep s p ys\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; xs = ys</output></step><step name="&lt;ignored&gt;" start_symbol="941" end_symbol="944" line="22" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; listrep s p ys\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; xs = ys</output></step><step name="by" start_symbol="944" end_symbol="1001" line="23" proof_open="false"><command>by (induct xs arbitrary: p ys) (auto simp: list_non_NULL)</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="1001" end_symbol="1002" line="23" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="1002" end_symbol="1070" line="24" proof_open="true"><command>lemma list_append_Ex: listrep s p (xs @ ys) \&lt;Longrightarrow&gt; (\&lt;exists&gt;q. listrep s q ys)</command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p (xs @ ys) \&lt;Longrightarrow&gt; \&lt;exists&gt;q. listrep s q ys</output></step><step name="&lt;ignored&gt;" start_symbol="1070" end_symbol="1073" line="24" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p (xs @ ys) \&lt;Longrightarrow&gt; \&lt;exists&gt;q. listrep s q ys</output></step><step name="by" start_symbol="1073" end_symbol="1105" line="25" proof_open="false"><command>by (induct xs arbitrary: p) auto</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="1105" end_symbol="1106" line="25" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="1106" end_symbol="1164" line="26" proof_open="true"><command>lemma list_distinct [simp]: listrep s p xs \&lt;Longrightarrow&gt; distinct xs</command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt; distinct xs</output></step><step name="&lt;ignored&gt;" start_symbol="1164" end_symbol="1167" line="26" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt; distinct xs</output></step><step name="apply" start_symbol="1167" end_symbol="1197" line="27" proof_open="true"><command>apply (induct xs arbitrary: p)</command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;And&gt;p. listrep s p [] \&lt;Longrightarrow&gt; distinct []
+ 2. \&lt;And&gt;x1 xs p.
+       \&lt;lbrakk&gt;\&lt;And&gt;p. listrep s p xs \&lt;Longrightarrow&gt; distinct xs;
+        listrep s p (x1 # xs)\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; distinct (x1 # xs)</output></step><step name="&lt;ignored&gt;" start_symbol="1197" end_symbol="1201" line="27" proof_open="true"><command>
+   </command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;And&gt;p. listrep s p [] \&lt;Longrightarrow&gt; distinct []
+ 2. \&lt;And&gt;x1 xs p.
+       \&lt;lbrakk&gt;\&lt;And&gt;p. listrep s p xs \&lt;Longrightarrow&gt; distinct xs;
+        listrep s p (x1 # xs)\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; distinct (x1 # xs)</output></step><step name="apply" start_symbol="1201" end_symbol="1211" line="28" proof_open="true"><command>apply simp</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;x1 xs p.
+       \&lt;lbrakk&gt;\&lt;And&gt;p. listrep s p xs \&lt;Longrightarrow&gt; distinct xs;
+        listrep s p (x1 # xs)\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; distinct (x1 # xs)</output></step><step name="&lt;ignored&gt;" start_symbol="1211" end_symbol="1214" line="28" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;x1 xs p.
+       \&lt;lbrakk&gt;\&lt;And&gt;p. listrep s p xs \&lt;Longrightarrow&gt; distinct xs;
+        listrep s p (x1 # xs)\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; distinct (x1 # xs)</output></step><step name="apply" start_symbol="1214" end_symbol="1248" line="29" proof_open="true"><command>apply (clarsimp dest!: split_list)</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;x1 ys zs.
+       \&lt;lbrakk&gt;\&lt;And&gt;p.
+                   listrep s p (ys @ x1 # zs) \&lt;Longrightarrow&gt;
+                   distinct ys \&lt;and&gt;
+                   x1 \&lt;notin&gt; set zs \&lt;and&gt;
+                   distinct zs \&lt;and&gt;
+                   x1 \&lt;notin&gt; set ys \&lt;and&gt; set ys \&lt;inter&gt; set zs = {};
+        x1 \&lt;noteq&gt; NULL; IS_VALID(node_C) s x1;
+        listrep s s[x1]\&lt;rightarrow&gt;next (ys @ x1 # zs)\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="1248" end_symbol="1251" line="29" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;x1 ys zs.
+       \&lt;lbrakk&gt;\&lt;And&gt;p.
+                   listrep s p (ys @ x1 # zs) \&lt;Longrightarrow&gt;
+                   distinct ys \&lt;and&gt;
+                   x1 \&lt;notin&gt; set zs \&lt;and&gt;
+                   distinct zs \&lt;and&gt;
+                   x1 \&lt;notin&gt; set ys \&lt;and&gt; set ys \&lt;inter&gt; set zs = {};
+        x1 \&lt;noteq&gt; NULL; IS_VALID(node_C) s x1;
+        listrep s s[x1]\&lt;rightarrow&gt;next (ys @ x1 # zs)\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; False</output></step><step name="apply" start_symbol="1251" end_symbol="1279" line="30" proof_open="true"><command>apply (frule list_append_Ex)</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;x1 ys zs.
+       \&lt;lbrakk&gt;\&lt;And&gt;p.
+                   listrep s p (ys @ x1 # zs) \&lt;Longrightarrow&gt;
+                   distinct ys \&lt;and&gt;
+                   x1 \&lt;notin&gt; set zs \&lt;and&gt;
+                   distinct zs \&lt;and&gt;
+                   x1 \&lt;notin&gt; set ys \&lt;and&gt; set ys \&lt;inter&gt; set zs = {};
+        x1 \&lt;noteq&gt; NULL; IS_VALID(node_C) s x1;
+        listrep s s[x1]\&lt;rightarrow&gt;next (ys @ x1 # zs);
+        \&lt;exists&gt;q. listrep s q (x1 # zs)\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; False</output></step><step name="&lt;ignored&gt;" start_symbol="1279" end_symbol="1282" line="30" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;x1 ys zs.
+       \&lt;lbrakk&gt;\&lt;And&gt;p.
+                   listrep s p (ys @ x1 # zs) \&lt;Longrightarrow&gt;
+                   distinct ys \&lt;and&gt;
+                   x1 \&lt;notin&gt; set zs \&lt;and&gt;
+                   distinct zs \&lt;and&gt;
+                   x1 \&lt;notin&gt; set ys \&lt;and&gt; set ys \&lt;inter&gt; set zs = {};
+        x1 \&lt;noteq&gt; NULL; IS_VALID(node_C) s x1;
+        listrep s s[x1]\&lt;rightarrow&gt;next (ys @ x1 # zs);
+        \&lt;exists&gt;q. listrep s q (x1 # zs)\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; False</output></step><step name="apply" start_symbol="1282" end_symbol="1312" line="31" proof_open="true"><command>apply (auto dest: list_unique)</command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="1312" end_symbol="1315" line="31" proof_open="true"><command>
+  </command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="done" start_symbol="1315" end_symbol="1319" line="32" proof_open="false"><command>done</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="1319" end_symbol="1320" line="32" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="1320" end_symbol="1421" line="33" proof_open="true"><command>lemma list_heap_update_ignore [simp]:
+  q \&lt;notin&gt; set xs \&lt;Longrightarrow&gt; listrep (s[q\&lt;rightarrow&gt;next := v]) p xs = listrep s p xs</command><output>proof (prove)
+goal (1 subgoal):
+ 1. q \&lt;notin&gt; set xs \&lt;Longrightarrow&gt;
+    listrep s[q\&lt;rightarrow&gt;next := v] p xs = listrep s p xs</output></step><step name="&lt;ignored&gt;" start_symbol="1421" end_symbol="1424" line="34" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. q \&lt;notin&gt; set xs \&lt;Longrightarrow&gt;
+    listrep s[q\&lt;rightarrow&gt;next := v] p xs = listrep s p xs</output></step><step name="by" start_symbol="1424" end_symbol="1476" line="35" proof_open="false"><command>by (induct xs arbitrary: p) (auto simp: fun_upd_def)</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="1476" end_symbol="1477" line="35" proof_open="false"><command>
+</command><output></output></step><step name="definition" start_symbol="1477" end_symbol="1529" line="36" proof_open="false"><command>definition the_list s p = (THE xs. listrep s p xs)</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="1529" end_symbol="1530" line="36" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="1530" end_symbol="1593" line="37" proof_open="true"><command>lemma the_list_val [simp]: listrep s p xs \&lt;Longrightarrow&gt; the_list s p = xs</command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt; the_list s p = xs</output></step><step name="&lt;ignored&gt;" start_symbol="1593" end_symbol="1596" line="37" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt; the_list s p = xs</output></step><step name="unfolding" start_symbol="1596" end_symbol="1618" line="38" proof_open="true"><command>unfolding the_list_def</command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt; The (listrep s p) = xs</output></step><step name="&lt;ignored&gt;" start_symbol="1618" end_symbol="1619" line="38" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt; The (listrep s p) = xs</output></step><step name="by" start_symbol="1619" end_symbol="1654" line="38" proof_open="false"><command>by (metis list_unique the_equality)</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="1654" end_symbol="1655" line="38" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="1655" end_symbol="1765" line="39" proof_open="true"><command>lemma the_list_update [simp]:
+  \&lt;lbrakk&gt;q \&lt;notin&gt; set xs; listrep s p xs\&lt;rbrakk&gt; \&lt;Longrightarrow&gt;
+     the_list s[q\&lt;rightarrow&gt;next := v] p = the_list s p</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;q \&lt;notin&gt; set xs; listrep s p xs\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; the_list s[q\&lt;rightarrow&gt;next := v] p = the_list s p</output></step><step name="&lt;ignored&gt;" start_symbol="1765" end_symbol="1768" line="41" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;q \&lt;notin&gt; set xs; listrep s p xs\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; the_list s[q\&lt;rightarrow&gt;next := v] p = the_list s p</output></step><step name="by" start_symbol="1768" end_symbol="1815" line="42" proof_open="false"><command>by (metis list_heap_update_ignore the_list_val)</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="1815" end_symbol="1816" line="42" proof_open="false"><command>
+</command><output></output></step><step name="definition" start_symbol="1816" end_symbol="1991" line="43" proof_open="false"><command>definition reverse_inv xs s0 l r s =
+  (\&lt;exists&gt;ys zs. listrep s l ys \&lt;and&gt; listrep s r zs \&lt;and&gt;
+    rev xs = rev ys @ zs \&lt;and&gt; distinct (rev xs) \&lt;and&gt;
+    (\&lt;forall&gt;p \&lt;in&gt; set xs. s[p]\&lt;rightarrow&gt;value = s0[p]\&lt;rightarrow&gt;value))</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="1991" end_symbol="1992" line="46" proof_open="false"><command>
+</command><output></output></step><step name="lemmas" start_symbol="1992" end_symbol="2073" line="47" proof_open="false"><command>lemmas runs_to_whileLoop2 = runs_to_whileLoop_res&apos; [split_tuple C and B arity: 2]</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="2073" end_symbol="2074" line="47" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="2074" end_symbol="2219" line="48" proof_open="true"><command>lemma reverse_correct:
+  listrep s p xs \&lt;Longrightarrow&gt; reverse&apos; p \&lt;bullet&gt; s
+    \&lt;lbrace&gt;\&lt;lambda&gt;Res r s&apos;. listrep s&apos; r (rev xs) \&lt;and&gt;
+      (\&lt;forall&gt;p \&lt;in&gt; set xs. s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value)\&lt;rbrace&gt;</command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    reverse&apos; p
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             listrep s&apos; r (rev xs) \&lt;and&gt;
+                             (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                                 s&apos;[p]\&lt;rightarrow&gt;value =
+                                 s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="2219" end_symbol="2222" line="51" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    reverse&apos; p
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                             listrep s&apos; r (rev xs) \&lt;and&gt;
+                             (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                                 s&apos;[p]\&lt;rightarrow&gt;value =
+                                 s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt;</output></step><step name="unfolding" start_symbol="2222" end_symbol="2244" line="52" proof_open="true"><command>unfolding reverse&apos;_def</command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    do {
+      (l, r) \&lt;leftarrow&gt;
+        whileLoop (\&lt;lambda&gt;(l, r) s. l \&lt;noteq&gt; NULL)
+          (\&lt;lambda&gt;(l, r).
+              do {
+                guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+                next \&lt;leftarrow&gt; gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+                modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+                return (next, l)
+              })
+         (p, NULL);
+      return r
+    } \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                               listrep s&apos; r (rev xs) \&lt;and&gt;
+                               (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                                   s&apos;[p]\&lt;rightarrow&gt;value =
+                                   s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="2244" end_symbol="2247" line="52" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    do {
+      (l, r) \&lt;leftarrow&gt;
+        whileLoop (\&lt;lambda&gt;(l, r) s. l \&lt;noteq&gt; NULL)
+          (\&lt;lambda&gt;(l, r).
+              do {
+                guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+                next \&lt;leftarrow&gt; gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+                modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+                return (next, l)
+              })
+         (p, NULL);
+      return r
+    } \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                               listrep s&apos; r (rev xs) \&lt;and&gt;
+                               (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                                   s&apos;[p]\&lt;rightarrow&gt;value =
+                                   s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt;</output></step><step name="apply" start_symbol="2247" end_symbol="2264" line="53" proof_open="true"><command>apply runs_to_vcg</command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    whileLoop (\&lt;lambda&gt;(l, r) s. l \&lt;noteq&gt; NULL)
+      (\&lt;lambda&gt;(l, r).
+          do {
+            guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+            next \&lt;leftarrow&gt; gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+            modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+            return (next, l)
+          })
+     (p, NULL)
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res v t.
+                             (case v of (l, r) \&lt;Rightarrow&gt; return r)
+                             \&lt;bullet&gt; t \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                listrep s&apos; r (rev xs) \&lt;and&gt;
+                (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                    s&apos;[p]\&lt;rightarrow&gt;value =
+                    s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt; \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="2264" end_symbol="2267" line="53" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    whileLoop (\&lt;lambda&gt;(l, r) s. l \&lt;noteq&gt; NULL)
+      (\&lt;lambda&gt;(l, r).
+          do {
+            guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+            next \&lt;leftarrow&gt; gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+            modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+            return (next, l)
+          })
+     (p, NULL)
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res v t.
+                             (case v of (l, r) \&lt;Rightarrow&gt; return r)
+                             \&lt;bullet&gt; t \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                listrep s&apos; r (rev xs) \&lt;and&gt;
+                (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                    s&apos;[p]\&lt;rightarrow&gt;value =
+                    s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt; \&lt;rbrace&gt;</output></step><step name="apply" start_symbol="2267" end_symbol="2435" line="54" proof_open="true"><command>apply (rule runs_to_whileLoop2 [where
+    I=\&lt;lambda&gt;(l,r) s&apos;. reverse_inv xs s l r s&apos; and
+    R=measure (\&lt;lambda&gt;((l,r),s). length (the_list s l)),
+    unfolded reverse_inv_def])</command><output>proof (prove)
+goal (4 subgoals):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    wf (measure (\&lt;lambda&gt;((l, r), s). length (the_list s l)))
+ 2. listrep s p xs \&lt;Longrightarrow&gt;
+    (case (p, NULL) of
+     (l, r) \&lt;Rightarrow&gt;
+       \&lt;lambda&gt;s&apos;.
+          \&lt;exists&gt;ys zs.
+             listrep s&apos; l ys \&lt;and&gt;
+             listrep s&apos; r zs \&lt;and&gt;
+             rev xs = rev ys @ zs \&lt;and&gt;
+             distinct (rev xs) \&lt;and&gt;
+             (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                 s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+     s
+ 3. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; \&lt;not&gt; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; (case Result (l, r) of
+                          Exception x \&lt;Rightarrow&gt; undefined_unit x
+                          | Result v \&lt;Rightarrow&gt;
+                              \&lt;lambda&gt;t.
+                                 (case v of (l, r) \&lt;Rightarrow&gt; return r)
+                                 \&lt;bullet&gt; t \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                    listrep s&apos; r (rev xs) \&lt;and&gt;
+                    (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                        s&apos;[p]\&lt;rightarrow&gt;value =
+                        s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt;)
+                          sa
+ 4. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; do {
+                           guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+                           next \&lt;leftarrow&gt;
+                             gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+                           modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+                           return (next, l)
+                         } \&lt;bullet&gt; sa \&lt;lbrace&gt; \&lt;lambda&gt;ra t.
+               \&lt;forall&gt;b.
+                  ra = Result b \&lt;longrightarrow&gt;
+                  (case b of
+                   (l, r) \&lt;Rightarrow&gt;
+                     \&lt;lambda&gt;s&apos;.
+                        \&lt;exists&gt;ys zs.
+                           listrep s&apos; l ys \&lt;and&gt;
+                           listrep s&apos; r zs \&lt;and&gt;
+                           rev xs = rev ys @ zs \&lt;and&gt;
+                           distinct (rev xs) \&lt;and&gt;
+                           (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                               s&apos;[p]\&lt;rightarrow&gt;value =
+                               s[p]\&lt;rightarrow&gt;value))
+                   t \&lt;and&gt;
+                  ((b, t), (l, r), sa)
+                  \&lt;in&gt; measure
+                         (\&lt;lambda&gt;((l, r), s).
+                             length (the_list s l)) \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="2435" end_symbol="2438" line="57" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (4 subgoals):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    wf (measure (\&lt;lambda&gt;((l, r), s). length (the_list s l)))
+ 2. listrep s p xs \&lt;Longrightarrow&gt;
+    (case (p, NULL) of
+     (l, r) \&lt;Rightarrow&gt;
+       \&lt;lambda&gt;s&apos;.
+          \&lt;exists&gt;ys zs.
+             listrep s&apos; l ys \&lt;and&gt;
+             listrep s&apos; r zs \&lt;and&gt;
+             rev xs = rev ys @ zs \&lt;and&gt;
+             distinct (rev xs) \&lt;and&gt;
+             (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                 s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+     s
+ 3. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; \&lt;not&gt; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; (case Result (l, r) of
+                          Exception x \&lt;Rightarrow&gt; undefined_unit x
+                          | Result v \&lt;Rightarrow&gt;
+                              \&lt;lambda&gt;t.
+                                 (case v of (l, r) \&lt;Rightarrow&gt; return r)
+                                 \&lt;bullet&gt; t \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                    listrep s&apos; r (rev xs) \&lt;and&gt;
+                    (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                        s&apos;[p]\&lt;rightarrow&gt;value =
+                        s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt;)
+                          sa
+ 4. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; do {
+                           guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+                           next \&lt;leftarrow&gt;
+                             gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+                           modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+                           return (next, l)
+                         } \&lt;bullet&gt; sa \&lt;lbrace&gt; \&lt;lambda&gt;ra t.
+               \&lt;forall&gt;b.
+                  ra = Result b \&lt;longrightarrow&gt;
+                  (case b of
+                   (l, r) \&lt;Rightarrow&gt;
+                     \&lt;lambda&gt;s&apos;.
+                        \&lt;exists&gt;ys zs.
+                           listrep s&apos; l ys \&lt;and&gt;
+                           listrep s&apos; r zs \&lt;and&gt;
+                           rev xs = rev ys @ zs \&lt;and&gt;
+                           distinct (rev xs) \&lt;and&gt;
+                           (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                               s&apos;[p]\&lt;rightarrow&gt;value =
+                               s[p]\&lt;rightarrow&gt;value))
+                   t \&lt;and&gt;
+                  ((b, t), (l, r), sa)
+                  \&lt;in&gt; measure
+                         (\&lt;lambda&gt;((l, r), s).
+                             length (the_list s l)) \&lt;rbrace&gt;</output></step><step name="subgoal" start_symbol="2438" end_symbol="2445" line="58" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    wf (measure (\&lt;lambda&gt;((l, r), s). length (the_list s l)))</output></step><step name="&lt;ignored&gt;" start_symbol="2445" end_symbol="2446" line="58" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    wf (measure (\&lt;lambda&gt;((l, r), s). length (the_list s l)))</output></step><step name="by" start_symbol="2446" end_symbol="2453" line="58" proof_open="true"><command>by simp</command><output>proof (prove)
+goal (3 subgoals):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    (case (p, NULL) of
+     (l, r) \&lt;Rightarrow&gt;
+       \&lt;lambda&gt;s&apos;.
+          \&lt;exists&gt;ys zs.
+             listrep s&apos; l ys \&lt;and&gt;
+             listrep s&apos; r zs \&lt;and&gt;
+             rev xs = rev ys @ zs \&lt;and&gt;
+             distinct (rev xs) \&lt;and&gt;
+             (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                 s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+     s
+ 2. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; \&lt;not&gt; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; (case Result (l, r) of
+                          Exception x \&lt;Rightarrow&gt; undefined_unit x
+                          | Result v \&lt;Rightarrow&gt;
+                              \&lt;lambda&gt;t.
+                                 (case v of (l, r) \&lt;Rightarrow&gt; return r)
+                                 \&lt;bullet&gt; t \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                    listrep s&apos; r (rev xs) \&lt;and&gt;
+                    (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                        s&apos;[p]\&lt;rightarrow&gt;value =
+                        s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt;)
+                          sa
+ 3. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; do {
+                           guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+                           next \&lt;leftarrow&gt;
+                             gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+                           modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+                           return (next, l)
+                         } \&lt;bullet&gt; sa \&lt;lbrace&gt; \&lt;lambda&gt;ra t.
+               \&lt;forall&gt;b.
+                  ra = Result b \&lt;longrightarrow&gt;
+                  (case b of
+                   (l, r) \&lt;Rightarrow&gt;
+                     \&lt;lambda&gt;s&apos;.
+                        \&lt;exists&gt;ys zs.
+                           listrep s&apos; l ys \&lt;and&gt;
+                           listrep s&apos; r zs \&lt;and&gt;
+                           rev xs = rev ys @ zs \&lt;and&gt;
+                           distinct (rev xs) \&lt;and&gt;
+                           (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                               s&apos;[p]\&lt;rightarrow&gt;value =
+                               s[p]\&lt;rightarrow&gt;value))
+                   t \&lt;and&gt;
+                  ((b, t), (l, r), sa)
+                  \&lt;in&gt; measure
+                         (\&lt;lambda&gt;((l, r), s).
+                             length (the_list s l)) \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="2453" end_symbol="2456" line="58" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (3 subgoals):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    (case (p, NULL) of
+     (l, r) \&lt;Rightarrow&gt;
+       \&lt;lambda&gt;s&apos;.
+          \&lt;exists&gt;ys zs.
+             listrep s&apos; l ys \&lt;and&gt;
+             listrep s&apos; r zs \&lt;and&gt;
+             rev xs = rev ys @ zs \&lt;and&gt;
+             distinct (rev xs) \&lt;and&gt;
+             (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                 s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+     s
+ 2. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; \&lt;not&gt; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; (case Result (l, r) of
+                          Exception x \&lt;Rightarrow&gt; undefined_unit x
+                          | Result v \&lt;Rightarrow&gt;
+                              \&lt;lambda&gt;t.
+                                 (case v of (l, r) \&lt;Rightarrow&gt; return r)
+                                 \&lt;bullet&gt; t \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                    listrep s&apos; r (rev xs) \&lt;and&gt;
+                    (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                        s&apos;[p]\&lt;rightarrow&gt;value =
+                        s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt;)
+                          sa
+ 3. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; do {
+                           guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+                           next \&lt;leftarrow&gt;
+                             gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+                           modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+                           return (next, l)
+                         } \&lt;bullet&gt; sa \&lt;lbrace&gt; \&lt;lambda&gt;ra t.
+               \&lt;forall&gt;b.
+                  ra = Result b \&lt;longrightarrow&gt;
+                  (case b of
+                   (l, r) \&lt;Rightarrow&gt;
+                     \&lt;lambda&gt;s&apos;.
+                        \&lt;exists&gt;ys zs.
+                           listrep s&apos; l ys \&lt;and&gt;
+                           listrep s&apos; r zs \&lt;and&gt;
+                           rev xs = rev ys @ zs \&lt;and&gt;
+                           distinct (rev xs) \&lt;and&gt;
+                           (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                               s&apos;[p]\&lt;rightarrow&gt;value =
+                               s[p]\&lt;rightarrow&gt;value))
+                   t \&lt;and&gt;
+                  ((b, t), (l, r), sa)
+                  \&lt;in&gt; measure
+                         (\&lt;lambda&gt;((l, r), s).
+                             length (the_list s l)) \&lt;rbrace&gt;</output></step><step name="subgoal" start_symbol="2456" end_symbol="2463" line="59" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    (case (p, NULL) of
+     (l, r) \&lt;Rightarrow&gt;
+       \&lt;lambda&gt;s&apos;.
+          \&lt;exists&gt;ys zs.
+             listrep s&apos; l ys \&lt;and&gt;
+             listrep s&apos; r zs \&lt;and&gt;
+             rev xs = rev ys @ zs \&lt;and&gt;
+             distinct (rev xs) \&lt;and&gt;
+             (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                 s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+     s</output></step><step name="&lt;ignored&gt;" start_symbol="2463" end_symbol="2464" line="59" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. listrep s p xs \&lt;Longrightarrow&gt;
+    (case (p, NULL) of
+     (l, r) \&lt;Rightarrow&gt;
+       \&lt;lambda&gt;s&apos;.
+          \&lt;exists&gt;ys zs.
+             listrep s&apos; l ys \&lt;and&gt;
+             listrep s&apos; r zs \&lt;and&gt;
+             rev xs = rev ys @ zs \&lt;and&gt;
+             distinct (rev xs) \&lt;and&gt;
+             (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                 s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+     s</output></step><step name="by" start_symbol="2464" end_symbol="2471" line="59" proof_open="true"><command>by simp</command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; \&lt;not&gt; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; (case Result (l, r) of
+                          Exception x \&lt;Rightarrow&gt; undefined_unit x
+                          | Result v \&lt;Rightarrow&gt;
+                              \&lt;lambda&gt;t.
+                                 (case v of (l, r) \&lt;Rightarrow&gt; return r)
+                                 \&lt;bullet&gt; t \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                    listrep s&apos; r (rev xs) \&lt;and&gt;
+                    (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                        s&apos;[p]\&lt;rightarrow&gt;value =
+                        s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt;)
+                          sa
+ 2. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; do {
+                           guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+                           next \&lt;leftarrow&gt;
+                             gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+                           modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+                           return (next, l)
+                         } \&lt;bullet&gt; sa \&lt;lbrace&gt; \&lt;lambda&gt;ra t.
+               \&lt;forall&gt;b.
+                  ra = Result b \&lt;longrightarrow&gt;
+                  (case b of
+                   (l, r) \&lt;Rightarrow&gt;
+                     \&lt;lambda&gt;s&apos;.
+                        \&lt;exists&gt;ys zs.
+                           listrep s&apos; l ys \&lt;and&gt;
+                           listrep s&apos; r zs \&lt;and&gt;
+                           rev xs = rev ys @ zs \&lt;and&gt;
+                           distinct (rev xs) \&lt;and&gt;
+                           (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                               s&apos;[p]\&lt;rightarrow&gt;value =
+                               s[p]\&lt;rightarrow&gt;value))
+                   t \&lt;and&gt;
+                  ((b, t), (l, r), sa)
+                  \&lt;in&gt; measure
+                         (\&lt;lambda&gt;((l, r), s).
+                             length (the_list s l)) \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="2471" end_symbol="2474" line="59" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; \&lt;not&gt; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; (case Result (l, r) of
+                          Exception x \&lt;Rightarrow&gt; undefined_unit x
+                          | Result v \&lt;Rightarrow&gt;
+                              \&lt;lambda&gt;t.
+                                 (case v of (l, r) \&lt;Rightarrow&gt; return r)
+                                 \&lt;bullet&gt; t \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                    listrep s&apos; r (rev xs) \&lt;and&gt;
+                    (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                        s&apos;[p]\&lt;rightarrow&gt;value =
+                        s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt;)
+                          sa
+ 2. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; do {
+                           guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+                           next \&lt;leftarrow&gt;
+                             gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+                           modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+                           return (next, l)
+                         } \&lt;bullet&gt; sa \&lt;lbrace&gt; \&lt;lambda&gt;ra t.
+               \&lt;forall&gt;b.
+                  ra = Result b \&lt;longrightarrow&gt;
+                  (case b of
+                   (l, r) \&lt;Rightarrow&gt;
+                     \&lt;lambda&gt;s&apos;.
+                        \&lt;exists&gt;ys zs.
+                           listrep s&apos; l ys \&lt;and&gt;
+                           listrep s&apos; r zs \&lt;and&gt;
+                           rev xs = rev ys @ zs \&lt;and&gt;
+                           distinct (rev xs) \&lt;and&gt;
+                           (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                               s&apos;[p]\&lt;rightarrow&gt;value =
+                               s[p]\&lt;rightarrow&gt;value))
+                   t \&lt;and&gt;
+                  ((b, t), (l, r), sa)
+                  \&lt;in&gt; measure
+                         (\&lt;lambda&gt;((l, r), s).
+                             length (the_list s l)) \&lt;rbrace&gt;</output></step><step name="subgoal" start_symbol="2474" end_symbol="2481" line="60" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; \&lt;not&gt; l_ \&lt;noteq&gt; NULL;
+     (case (l_, r_) of
+      (l, r) \&lt;Rightarrow&gt;
+        \&lt;lambda&gt;s&apos;.
+           \&lt;exists&gt;ys zs.
+              listrep s&apos; l ys \&lt;and&gt;
+              listrep s&apos; r zs \&lt;and&gt;
+              rev xs = rev ys @ zs \&lt;and&gt;
+              distinct (rev xs) \&lt;and&gt;
+              (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                  s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+      sa_\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; (case Result (l_, r_) of
+                       Exception x \&lt;Rightarrow&gt; undefined_unit x
+                       | Result v \&lt;Rightarrow&gt;
+                           \&lt;lambda&gt;t.
+                              (case v of (l, r) \&lt;Rightarrow&gt; return r)
+                              \&lt;bullet&gt; t \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                 listrep s&apos; r (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value =
+                     s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt;)
+                       sa_</output></step><step name="&lt;ignored&gt;" start_symbol="2481" end_symbol="2482" line="60" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; \&lt;not&gt; l_ \&lt;noteq&gt; NULL;
+     (case (l_, r_) of
+      (l, r) \&lt;Rightarrow&gt;
+        \&lt;lambda&gt;s&apos;.
+           \&lt;exists&gt;ys zs.
+              listrep s&apos; l ys \&lt;and&gt;
+              listrep s&apos; r zs \&lt;and&gt;
+              rev xs = rev ys @ zs \&lt;and&gt;
+              distinct (rev xs) \&lt;and&gt;
+              (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                  s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+      sa_\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; (case Result (l_, r_) of
+                       Exception x \&lt;Rightarrow&gt; undefined_unit x
+                       | Result v \&lt;Rightarrow&gt;
+                           \&lt;lambda&gt;t.
+                              (case v of (l, r) \&lt;Rightarrow&gt; return r)
+                              \&lt;bullet&gt; t \&lt;lbrace&gt; \&lt;lambda&gt;Res r s&apos;.
+                 listrep s&apos; r (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value =
+                     s[p]\&lt;rightarrow&gt;value) \&lt;rbrace&gt;)
+                       sa_</output></step><step name="by" start_symbol="2482" end_symbol="2510" line="60" proof_open="true"><command>by (simp split: prod.splits)</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; do {
+                           guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+                           next \&lt;leftarrow&gt;
+                             gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+                           modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+                           return (next, l)
+                         } \&lt;bullet&gt; sa \&lt;lbrace&gt; \&lt;lambda&gt;ra t.
+               \&lt;forall&gt;b.
+                  ra = Result b \&lt;longrightarrow&gt;
+                  (case b of
+                   (l, r) \&lt;Rightarrow&gt;
+                     \&lt;lambda&gt;s&apos;.
+                        \&lt;exists&gt;ys zs.
+                           listrep s&apos; l ys \&lt;and&gt;
+                           listrep s&apos; r zs \&lt;and&gt;
+                           rev xs = rev ys @ zs \&lt;and&gt;
+                           distinct (rev xs) \&lt;and&gt;
+                           (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                               s&apos;[p]\&lt;rightarrow&gt;value =
+                               s[p]\&lt;rightarrow&gt;value))
+                   t \&lt;and&gt;
+                  ((b, t), (l, r), sa)
+                  \&lt;in&gt; measure
+                         (\&lt;lambda&gt;((l, r), s).
+                             length (the_list s l)) \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="2510" end_symbol="2513" line="60" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; do {
+                           guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+                           next \&lt;leftarrow&gt;
+                             gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+                           modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+                           return (next, l)
+                         } \&lt;bullet&gt; sa \&lt;lbrace&gt; \&lt;lambda&gt;ra t.
+               \&lt;forall&gt;b.
+                  ra = Result b \&lt;longrightarrow&gt;
+                  (case b of
+                   (l, r) \&lt;Rightarrow&gt;
+                     \&lt;lambda&gt;s&apos;.
+                        \&lt;exists&gt;ys zs.
+                           listrep s&apos; l ys \&lt;and&gt;
+                           listrep s&apos; r zs \&lt;and&gt;
+                           rev xs = rev ys @ zs \&lt;and&gt;
+                           distinct (rev xs) \&lt;and&gt;
+                           (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                               s&apos;[p]\&lt;rightarrow&gt;value =
+                               s[p]\&lt;rightarrow&gt;value))
+                   t \&lt;and&gt;
+                  ((b, t), (l, r), sa)
+                  \&lt;in&gt; measure
+                         (\&lt;lambda&gt;((l, r), s).
+                             length (the_list s l)) \&lt;rbrace&gt;</output></step><step name="supply" start_symbol="2513" end_symbol="2542" line="61" proof_open="true"><command>supply distinct_rev[simp del]</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; do {
+                           guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+                           next \&lt;leftarrow&gt;
+                             gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+                           modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+                           return (next, l)
+                         } \&lt;bullet&gt; sa \&lt;lbrace&gt; \&lt;lambda&gt;ra t.
+               \&lt;forall&gt;b.
+                  ra = Result b \&lt;longrightarrow&gt;
+                  (case b of
+                   (l, r) \&lt;Rightarrow&gt;
+                     \&lt;lambda&gt;s&apos;.
+                        \&lt;exists&gt;ys zs.
+                           listrep s&apos; l ys \&lt;and&gt;
+                           listrep s&apos; r zs \&lt;and&gt;
+                           rev xs = rev ys @ zs \&lt;and&gt;
+                           distinct (rev xs) \&lt;and&gt;
+                           (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                               s&apos;[p]\&lt;rightarrow&gt;value =
+                               s[p]\&lt;rightarrow&gt;value))
+                   t \&lt;and&gt;
+                  ((b, t), (l, r), sa)
+                  \&lt;in&gt; measure
+                         (\&lt;lambda&gt;((l, r), s).
+                             length (the_list s l)) \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="2542" end_symbol="2545" line="61" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;l r sa.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL;
+        (case (l, r) of
+         (l, r) \&lt;Rightarrow&gt;
+           \&lt;lambda&gt;s&apos;.
+              \&lt;exists&gt;ys zs.
+                 listrep s&apos; l ys \&lt;and&gt;
+                 listrep s&apos; r zs \&lt;and&gt;
+                 rev xs = rev ys @ zs \&lt;and&gt;
+                 distinct (rev xs) \&lt;and&gt;
+                 (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                     s&apos;[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value))
+         sa\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; do {
+                           guard (\&lt;lambda&gt;s. IS_VALID(node_C) s l);
+                           next \&lt;leftarrow&gt;
+                             gets (\&lt;lambda&gt;s. s[l]\&lt;rightarrow&gt;next);
+                           modify (\&lt;lambda&gt;s. s[l\&lt;rightarrow&gt;next := r]);
+                           return (next, l)
+                         } \&lt;bullet&gt; sa \&lt;lbrace&gt; \&lt;lambda&gt;ra t.
+               \&lt;forall&gt;b.
+                  ra = Result b \&lt;longrightarrow&gt;
+                  (case b of
+                   (l, r) \&lt;Rightarrow&gt;
+                     \&lt;lambda&gt;s&apos;.
+                        \&lt;exists&gt;ys zs.
+                           listrep s&apos; l ys \&lt;and&gt;
+                           listrep s&apos; r zs \&lt;and&gt;
+                           rev xs = rev ys @ zs \&lt;and&gt;
+                           distinct (rev xs) \&lt;and&gt;
+                           (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                               s&apos;[p]\&lt;rightarrow&gt;value =
+                               s[p]\&lt;rightarrow&gt;value))
+                   t \&lt;and&gt;
+                  ((b, t), (l, r), sa)
+                  \&lt;in&gt; measure
+                         (\&lt;lambda&gt;((l, r), s).
+                             length (the_list s l)) \&lt;rbrace&gt;</output></step><step name="apply" start_symbol="2545" end_symbol="2562" line="62" proof_open="true"><command>apply runs_to_vcg</command><output>proof (prove)
+goal (3 subgoals):
+ 1. \&lt;And&gt;l r sa ys zs.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL; listrep sa l ys;
+        listrep sa r zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           sa[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(node_C) sa l
+ 2. \&lt;And&gt;l r sa ys zs.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL; listrep sa l ys;
+        listrep sa r zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           sa[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; \&lt;exists&gt;ys.
+                            listrep sa[l\&lt;rightarrow&gt;next := r]
+                             sa[l]\&lt;rightarrow&gt;next ys \&lt;and&gt;
+                            (\&lt;exists&gt;zs.
+                                listrep sa[l\&lt;rightarrow&gt;next := r] l
+                                 zs \&lt;and&gt;
+                                rev xs = rev ys @ zs \&lt;and&gt;
+                                distinct (rev xs) \&lt;and&gt;
+                                (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                                    sa[p]\&lt;rightarrow&gt;value =
+                                    s[p]\&lt;rightarrow&gt;value))
+ 3. \&lt;And&gt;l r sa ys zs.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL; listrep sa l ys;
+        listrep sa r zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           sa[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; length
+                          (the_list sa[l\&lt;rightarrow&gt;next := r]
+                            sa[l]\&lt;rightarrow&gt;next)
+                         &lt; length (the_list sa l)</output></step><step name="&lt;ignored&gt;" start_symbol="2562" end_symbol="2565" line="62" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (3 subgoals):
+ 1. \&lt;And&gt;l r sa ys zs.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL; listrep sa l ys;
+        listrep sa r zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           sa[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; IS_VALID(node_C) sa l
+ 2. \&lt;And&gt;l r sa ys zs.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL; listrep sa l ys;
+        listrep sa r zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           sa[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; \&lt;exists&gt;ys.
+                            listrep sa[l\&lt;rightarrow&gt;next := r]
+                             sa[l]\&lt;rightarrow&gt;next ys \&lt;and&gt;
+                            (\&lt;exists&gt;zs.
+                                listrep sa[l\&lt;rightarrow&gt;next := r] l
+                                 zs \&lt;and&gt;
+                                rev xs = rev ys @ zs \&lt;and&gt;
+                                distinct (rev xs) \&lt;and&gt;
+                                (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                                    sa[p]\&lt;rightarrow&gt;value =
+                                    s[p]\&lt;rightarrow&gt;value))
+ 3. \&lt;And&gt;l r sa ys zs.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL; listrep sa l ys;
+        listrep sa r zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           sa[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; length
+                          (the_list sa[l\&lt;rightarrow&gt;next := r]
+                            sa[l]\&lt;rightarrow&gt;next)
+                         &lt; length (the_list sa l)</output></step><step name="subgoal" start_symbol="2565" end_symbol="2572" line="63" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; l_ \&lt;noteq&gt; NULL; listrep sa_ l_ ys_;
+     listrep sa_ r_ zs_; rev xs = rev ys_ @ zs_; distinct (rev xs);
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        sa_[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; IS_VALID(node_C) sa_ l_</output></step><step name="&lt;ignored&gt;" start_symbol="2572" end_symbol="2573" line="63" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; l_ \&lt;noteq&gt; NULL; listrep sa_ l_ ys_;
+     listrep sa_ r_ zs_; rev xs = rev ys_ @ zs_; distinct (rev xs);
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        sa_[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; IS_VALID(node_C) sa_ l_</output></step><step name="using" start_symbol="2573" end_symbol="2592" line="63" proof_open="true"><command>using list_non_NULL</command><output>proof (prove)
+using this:
+  ?p \&lt;noteq&gt; NULL \&lt;Longrightarrow&gt;
+  listrep ?s ?p ?xs =
+  (\&lt;exists&gt;ys.
+      ?xs = ?p # ys \&lt;and&gt;
+      IS_VALID(node_C) ?s ?p \&lt;and&gt; listrep ?s ?s[?p]\&lt;rightarrow&gt;next ys)
+
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; l_ \&lt;noteq&gt; NULL; listrep sa_ l_ ys_;
+     listrep sa_ r_ zs_; rev xs = rev ys_ @ zs_; distinct (rev xs);
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        sa_[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; IS_VALID(node_C) sa_ l_</output></step><step name="&lt;ignored&gt;" start_symbol="2592" end_symbol="2593" line="63" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  ?p \&lt;noteq&gt; NULL \&lt;Longrightarrow&gt;
+  listrep ?s ?p ?xs =
+  (\&lt;exists&gt;ys.
+      ?xs = ?p # ys \&lt;and&gt;
+      IS_VALID(node_C) ?s ?p \&lt;and&gt; listrep ?s ?s[?p]\&lt;rightarrow&gt;next ys)
+
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; l_ \&lt;noteq&gt; NULL; listrep sa_ l_ ys_;
+     listrep sa_ r_ zs_; rev xs = rev ys_ @ zs_; distinct (rev xs);
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        sa_[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; IS_VALID(node_C) sa_ l_</output></step><step name="by" start_symbol="2593" end_symbol="2601" line="63" proof_open="true"><command>by blast</command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;And&gt;l r sa ys zs.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL; listrep sa l ys;
+        listrep sa r zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           sa[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; \&lt;exists&gt;ys.
+                            listrep sa[l\&lt;rightarrow&gt;next := r]
+                             sa[l]\&lt;rightarrow&gt;next ys \&lt;and&gt;
+                            (\&lt;exists&gt;zs.
+                                listrep sa[l\&lt;rightarrow&gt;next := r] l
+                                 zs \&lt;and&gt;
+                                rev xs = rev ys @ zs \&lt;and&gt;
+                                distinct (rev xs) \&lt;and&gt;
+                                (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                                    sa[p]\&lt;rightarrow&gt;value =
+                                    s[p]\&lt;rightarrow&gt;value))
+ 2. \&lt;And&gt;l r sa ys zs.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL; listrep sa l ys;
+        listrep sa r zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           sa[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; length
+                          (the_list sa[l\&lt;rightarrow&gt;next := r]
+                            sa[l]\&lt;rightarrow&gt;next)
+                         &lt; length (the_list sa l)</output></step><step name="&lt;ignored&gt;" start_symbol="2601" end_symbol="2604" line="63" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;And&gt;l r sa ys zs.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL; listrep sa l ys;
+        listrep sa r zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           sa[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; \&lt;exists&gt;ys.
+                            listrep sa[l\&lt;rightarrow&gt;next := r]
+                             sa[l]\&lt;rightarrow&gt;next ys \&lt;and&gt;
+                            (\&lt;exists&gt;zs.
+                                listrep sa[l\&lt;rightarrow&gt;next := r] l
+                                 zs \&lt;and&gt;
+                                rev xs = rev ys @ zs \&lt;and&gt;
+                                distinct (rev xs) \&lt;and&gt;
+                                (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                                    sa[p]\&lt;rightarrow&gt;value =
+                                    s[p]\&lt;rightarrow&gt;value))
+ 2. \&lt;And&gt;l r sa ys zs.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL; listrep sa l ys;
+        listrep sa r zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           sa[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; length
+                          (the_list sa[l\&lt;rightarrow&gt;next := r]
+                            sa[l]\&lt;rightarrow&gt;next)
+                         &lt; length (the_list sa l)</output></step><step name="subgoal" start_symbol="2604" end_symbol="2634" line="64" proof_open="true"><command>subgoal for p_ys p_zs s1 ys zs</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_ys ys;
+     listrep s1 p_zs zs; rev xs = rev ys @ zs; distinct (rev xs);
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; \&lt;exists&gt;ys.
+                         listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                          s1[p_ys]\&lt;rightarrow&gt;next ys \&lt;and&gt;
+                         (\&lt;exists&gt;zs.
+                             listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs] p_ys
+                              zs \&lt;and&gt;
+                             rev xs = rev ys @ zs \&lt;and&gt;
+                             distinct (rev xs) \&lt;and&gt;
+                             (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                                 s1[p]\&lt;rightarrow&gt;value =
+                                 s[p]\&lt;rightarrow&gt;value))</output></step><step name="&lt;ignored&gt;" start_symbol="2634" end_symbol="2639" line="64" proof_open="true"><command>
+    </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_ys ys;
+     listrep s1 p_zs zs; rev xs = rev ys @ zs; distinct (rev xs);
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; \&lt;exists&gt;ys.
+                         listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                          s1[p_ys]\&lt;rightarrow&gt;next ys \&lt;and&gt;
+                         (\&lt;exists&gt;zs.
+                             listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs] p_ys
+                              zs \&lt;and&gt;
+                             rev xs = rev ys @ zs \&lt;and&gt;
+                             distinct (rev xs) \&lt;and&gt;
+                             (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                                 s1[p]\&lt;rightarrow&gt;value =
+                                 s[p]\&lt;rightarrow&gt;value))</output></step><step name="apply" start_symbol="2639" end_symbol="2669" line="65" proof_open="true"><command>apply (case_tac ys, fastforce)</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;a list.
+       \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_ys ys;
+        listrep s1 p_zs zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+        ys = a # list\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; \&lt;exists&gt;ys.
+                            listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                             s1[p_ys]\&lt;rightarrow&gt;next ys \&lt;and&gt;
+                            (\&lt;exists&gt;zs.
+                                listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                                 p_ys zs \&lt;and&gt;
+                                rev xs = rev ys @ zs \&lt;and&gt;
+                                distinct (rev xs) \&lt;and&gt;
+                                (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                                    s1[p]\&lt;rightarrow&gt;value =
+                                    s[p]\&lt;rightarrow&gt;value))</output></step><step name="&lt;ignored&gt;" start_symbol="2669" end_symbol="2674" line="65" proof_open="true"><command>
+    </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;a list.
+       \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_ys ys;
+        listrep s1 p_zs zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+        ys = a # list\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; \&lt;exists&gt;ys.
+                            listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                             s1[p_ys]\&lt;rightarrow&gt;next ys \&lt;and&gt;
+                            (\&lt;exists&gt;zs.
+                                listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                                 p_ys zs \&lt;and&gt;
+                                rev xs = rev ys @ zs \&lt;and&gt;
+                                distinct (rev xs) \&lt;and&gt;
+                                (\&lt;forall&gt;p\&lt;in&gt;set xs.
+                                    s1[p]\&lt;rightarrow&gt;value =
+                                    s[p]\&lt;rightarrow&gt;value))</output></step><step name="apply" start_symbol="2674" end_symbol="2688" line="66" proof_open="true"><command>apply clarsimp</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;list.
+       \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+        rev xs = rev list @ p_ys # zs;
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+        ys = p_ys # list; IS_VALID(node_C) s1 p_ys;
+        listrep s1 s1[p_ys]\&lt;rightarrow&gt;next list; distinct (rev list);
+        p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set list;
+        set list \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; \&lt;exists&gt;ys.
+                            listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                             s1[p_ys]\&lt;rightarrow&gt;next ys \&lt;and&gt;
+                            (\&lt;exists&gt;zsa.
+                                listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                                 p_ys zsa \&lt;and&gt;
+                                rev list @ p_ys # zs = rev ys @ zsa)</output></step><step name="&lt;ignored&gt;" start_symbol="2688" end_symbol="2693" line="66" proof_open="true"><command>
+    </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;list.
+       \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+        rev xs = rev list @ p_ys # zs;
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+        ys = p_ys # list; IS_VALID(node_C) s1 p_ys;
+        listrep s1 s1[p_ys]\&lt;rightarrow&gt;next list; distinct (rev list);
+        p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set list;
+        set list \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; \&lt;exists&gt;ys.
+                            listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                             s1[p_ys]\&lt;rightarrow&gt;next ys \&lt;and&gt;
+                            (\&lt;exists&gt;zsa.
+                                listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                                 p_ys zsa \&lt;and&gt;
+                                rev list @ p_ys # zs = rev ys @ zsa)</output></step><step name="subgoal" start_symbol="2693" end_symbol="2708" line="67" proof_open="true"><command>subgoal for ys&apos;</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; \&lt;exists&gt;ys.
+                         listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                          s1[p_ys]\&lt;rightarrow&gt;next ys \&lt;and&gt;
+                         (\&lt;exists&gt;zsa.
+                             listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs] p_ys
+                              zsa \&lt;and&gt;
+                             rev ys&apos; @ p_ys # zs = rev ys @ zsa)</output></step><step name="&lt;ignored&gt;" start_symbol="2708" end_symbol="2715" line="67" proof_open="true"><command>
+      </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; \&lt;exists&gt;ys.
+                         listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                          s1[p_ys]\&lt;rightarrow&gt;next ys \&lt;and&gt;
+                         (\&lt;exists&gt;zsa.
+                             listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs] p_ys
+                              zsa \&lt;and&gt;
+                             rev ys&apos; @ p_ys # zs = rev ys @ zsa)</output></step><step name="apply" start_symbol="2715" end_symbol="2744" line="68" proof_open="true"><command>apply (rule_tac x=ys&apos; in exI)</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                       s1[p_ys]\&lt;rightarrow&gt;next ys&apos; \&lt;and&gt;
+                      (\&lt;exists&gt;zsa.
+                          listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs] p_ys
+                           zsa \&lt;and&gt;
+                          rev ys&apos; @ p_ys # zs = rev ys&apos; @ zsa)</output></step><step name="&lt;ignored&gt;" start_symbol="2744" end_symbol="2751" line="68" proof_open="true"><command>
+      </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                       s1[p_ys]\&lt;rightarrow&gt;next ys&apos; \&lt;and&gt;
+                      (\&lt;exists&gt;zsa.
+                          listrep s1[p_ys\&lt;rightarrow&gt;next := p_zs] p_ys
+                           zsa \&lt;and&gt;
+                          rev ys&apos; @ p_ys # zs = rev ys&apos; @ zsa)</output></step><step name="apply" start_symbol="2751" end_symbol="2780" line="69" proof_open="true"><command>apply (simp add: fun_upd_def)</command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="2780" end_symbol="2787" line="69" proof_open="true"><command>
+      </command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="done" start_symbol="2787" end_symbol="2791" line="70" proof_open="true"><command>done</command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="2791" end_symbol="2796" line="70" proof_open="true"><command>
+    </command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="done" start_symbol="2796" end_symbol="2800" line="71" proof_open="true"><command>done</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;l r sa ys zs.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL; listrep sa l ys;
+        listrep sa r zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           sa[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; length
+                          (the_list sa[l\&lt;rightarrow&gt;next := r]
+                            sa[l]\&lt;rightarrow&gt;next)
+                         &lt; length (the_list sa l)</output></step><step name="&lt;ignored&gt;" start_symbol="2800" end_symbol="2803" line="71" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;l r sa ys zs.
+       \&lt;lbrakk&gt;listrep s p xs; l \&lt;noteq&gt; NULL; listrep sa l ys;
+        listrep sa r zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           sa[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; length
+                          (the_list sa[l\&lt;rightarrow&gt;next := r]
+                            sa[l]\&lt;rightarrow&gt;next)
+                         &lt; length (the_list sa l)</output></step><step name="subgoal" start_symbol="2803" end_symbol="2833" line="72" proof_open="true"><command>subgoal for p_ys p_zs s1 ys zs</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_ys ys;
+     listrep s1 p_zs zs; rev xs = rev ys @ zs; distinct (rev xs);
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; length
+                       (the_list s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                         s1[p_ys]\&lt;rightarrow&gt;next)
+                      &lt; length (the_list s1 p_ys)</output></step><step name="&lt;ignored&gt;" start_symbol="2833" end_symbol="2838" line="72" proof_open="true"><command>
+    </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_ys ys;
+     listrep s1 p_zs zs; rev xs = rev ys @ zs; distinct (rev xs);
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; length
+                       (the_list s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                         s1[p_ys]\&lt;rightarrow&gt;next)
+                      &lt; length (the_list s1 p_ys)</output></step><step name="apply" start_symbol="2838" end_symbol="2868" line="73" proof_open="true"><command>apply (case_tac ys, fastforce)</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;a list.
+       \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_ys ys;
+        listrep s1 p_zs zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+        ys = a # list\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; length
+                          (the_list s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                            s1[p_ys]\&lt;rightarrow&gt;next)
+                         &lt; length (the_list s1 p_ys)</output></step><step name="&lt;ignored&gt;" start_symbol="2868" end_symbol="2873" line="73" proof_open="true"><command>
+    </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;a list.
+       \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_ys ys;
+        listrep s1 p_zs zs; rev xs = rev ys @ zs; distinct (rev xs);
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+        ys = a # list\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; length
+                          (the_list s1[p_ys\&lt;rightarrow&gt;next := p_zs]
+                            s1[p_ys]\&lt;rightarrow&gt;next)
+                         &lt; length (the_list s1 p_ys)</output></step><step name="apply" start_symbol="2873" end_symbol="2887" line="74" proof_open="true"><command>apply clarsimp</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;list.
+       \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+        rev xs = rev list @ p_ys # zs;
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+        ys = p_ys # list; IS_VALID(node_C) s1 p_ys;
+        listrep s1 s1[p_ys]\&lt;rightarrow&gt;next list; distinct (rev list);
+        p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set list;
+        set list \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; length list &lt; length (the_list s1 p_ys)</output></step><step name="&lt;ignored&gt;" start_symbol="2887" end_symbol="2892" line="74" proof_open="true"><command>
+    </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;And&gt;list.
+       \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+        rev xs = rev list @ p_ys # zs;
+        \&lt;forall&gt;p\&lt;in&gt;set xs.
+           s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+        ys = p_ys # list; IS_VALID(node_C) s1 p_ys;
+        listrep s1 s1[p_ys]\&lt;rightarrow&gt;next list; distinct (rev list);
+        p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set list;
+        set list \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+       \&lt;Longrightarrow&gt; length list &lt; length (the_list s1 p_ys)</output></step><step name="subgoal" start_symbol="2892" end_symbol="2907" line="75" proof_open="true"><command>subgoal for ys&apos;</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; length ys&apos; &lt; length (the_list s1 p_ys)</output></step><step name="&lt;ignored&gt;" start_symbol="2907" end_symbol="2914" line="75" proof_open="true"><command>
+      </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; length ys&apos; &lt; length (the_list s1 p_ys)</output></step><step name="apply" start_symbol="2914" end_symbol="2965" line="76" proof_open="true"><command>apply (subgoal_tac the_list s1 p_ys = (p_ys#ys&apos;))</command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}; the_list s1 p_ys = p_ys # ys&apos;\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; length ys&apos; &lt; length (the_list s1 p_ys)
+ 2. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; the_list s1 p_ys = p_ys # ys&apos;</output></step><step name="&lt;ignored&gt;" start_symbol="2965" end_symbol="2973" line="76" proof_open="true"><command>
+       </command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}; the_list s1 p_ys = p_ys # ys&apos;\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; length ys&apos; &lt; length (the_list s1 p_ys)
+ 2. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; the_list s1 p_ys = p_ys # ys&apos;</output></step><step name="apply" start_symbol="2973" end_symbol="2991" line="77" proof_open="true"><command>apply (simp only:)</command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}; the_list s1 p_ys = p_ys # ys&apos;\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; length ys&apos; &lt; length (p_ys # ys&apos;)
+ 2. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; the_list s1 p_ys = p_ys # ys&apos;</output></step><step name="&lt;ignored&gt;" start_symbol="2991" end_symbol="2999" line="77" proof_open="true"><command>
+       </command><output>proof (prove)
+goal (2 subgoals):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}; the_list s1 p_ys = p_ys # ys&apos;\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; length ys&apos; &lt; length (p_ys # ys&apos;)
+ 2. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; the_list s1 p_ys = p_ys # ys&apos;</output></step><step name="apply" start_symbol="2999" end_symbol="3009" line="78" proof_open="true"><command>apply simp</command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; the_list s1 p_ys = p_ys # ys&apos;</output></step><step name="&lt;ignored&gt;" start_symbol="3009" end_symbol="3016" line="78" proof_open="true"><command>
+      </command><output>proof (prove)
+goal (1 subgoal):
+ 1. \&lt;lbrakk&gt;listrep s p xs; p_ys \&lt;noteq&gt; NULL; listrep s1 p_zs zs;
+     rev xs = rev ys&apos; @ p_ys # zs;
+     \&lt;forall&gt;p\&lt;in&gt;set xs.
+        s1[p]\&lt;rightarrow&gt;value = s[p]\&lt;rightarrow&gt;value;
+     ys = p_ys # ys&apos;; IS_VALID(node_C) s1 p_ys;
+     listrep s1 s1[p_ys]\&lt;rightarrow&gt;next ys&apos;; distinct (rev ys&apos;);
+     p_ys \&lt;notin&gt; set zs; p_ys \&lt;notin&gt; set ys&apos;;
+     set ys&apos; \&lt;inter&gt; set zs = {}\&lt;rbrakk&gt;
+    \&lt;Longrightarrow&gt; the_list s1 p_ys = p_ys # ys&apos;</output></step><step name="apply" start_symbol="3016" end_symbol="3026" line="79" proof_open="true"><command>apply simp</command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="3026" end_symbol="3033" line="79" proof_open="true"><command>
+      </command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="done" start_symbol="3033" end_symbol="3037" line="80" proof_open="true"><command>done</command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="3037" end_symbol="3042" line="80" proof_open="true"><command>
+    </command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="done" start_symbol="3042" end_symbol="3046" line="81" proof_open="true"><command>done</command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="3046" end_symbol="3049" line="81" proof_open="true"><command>
+  </command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="done" start_symbol="3049" end_symbol="3053" line="82" proof_open="false"><command>done</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="3053" end_symbol="3054" line="82" proof_open="false"><command>
+</command><output></output></step><step name="ML" start_symbol="3054" end_symbol="3229" line="83" proof_open="false"><command>ML val _ = if null (Thm_Deps.all_oracles [@{thm reverse_correct}]) then
+  writeln &quot;AUDIT: reverse_correct has no oracle dependencies&quot; else error &quot;Oracle dependency detected&quot;</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="3229" end_symbol="3230" line="84" proof_open="false"><command>
+</command><output></output></step><step name="end" start_symbol="3230" end_symbol="3233" line="85" proof_open="false"><command>end</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="3233" end_symbol="3234" line="85" proof_open="false"><command>
+</command><output></output></step><step name="end" start_symbol="3234" end_symbol="3237" line="86" proof_open="false"><command>end</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="3237" end_symbol="3238" line="86" proof_open="false"><command>
+</command><output></output></step></recording>

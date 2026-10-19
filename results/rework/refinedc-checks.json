@@ -1,0 +1,262 @@
+[
+  {
+    "tool": "RefinedC",
+    "program": "p1_abs",
+    "source": "refinedc/p1_abs.c",
+    "source_sha256": "fa72b0780e7fb5881b0eb648f0034b0c20b206d630af29283c5daa03da4158e2",
+    "runs": [
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 2.7422797018662095,
+        "peak_rss_kb": 604076,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p1_abs/generated_proof_abs_val.vo"
+        ]
+      },
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 2.5671384879387915,
+        "peak_rss_kb": 604172,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p1_abs/generated_proof_abs_val.vo"
+        ]
+      },
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 2.557385118212551,
+        "peak_rss_kb": 604220,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p1_abs/generated_proof_abs_val.vo"
+        ]
+      }
+    ],
+    "passed": true,
+    "median_seconds": 2.5671384879387915,
+    "deterministic": true
+  },
+  {
+    "tool": "RefinedC",
+    "program": "p2_swap",
+    "source": "refinedc/p2_swap.c",
+    "source_sha256": "12fa0af707f5c700158256638df418f31cab71db9230f7f1a848c52e999e6a65",
+    "runs": [
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 2.4943827306851745,
+        "peak_rss_kb": 602188,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p2_swap/generated_proof_swap.vo"
+        ]
+      },
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 2.4992285296320915,
+        "peak_rss_kb": 601632,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p2_swap/generated_proof_swap.vo"
+        ]
+      },
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 2.4651559898629785,
+        "peak_rss_kb": 602072,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p2_swap/generated_proof_swap.vo"
+        ]
+      }
+    ],
+    "passed": true,
+    "median_seconds": 2.4943827306851745,
+    "deterministic": true
+  },
+  {
+    "tool": "RefinedC",
+    "program": "p2_swap_alias",
+    "source": "refinedc/p2_swap_alias.c",
+    "source_sha256": "1f8c328413a723b67eda8a0ef6dbe8756f1d2430c05cef5b220ab36d5397d485",
+    "runs": [
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 2.5355332302860916,
+        "peak_rss_kb": 603072,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p2_swap_alias/generated_proof_swap.vo"
+        ]
+      },
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 2.5097680082544684,
+        "peak_rss_kb": 603212,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p2_swap_alias/generated_proof_swap.vo"
+        ]
+      },
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 2.515679156873375,
+        "peak_rss_kb": 603424,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p2_swap_alias/generated_proof_swap.vo"
+        ]
+      }
+    ],
+    "passed": true,
+    "median_seconds": 2.515679156873375,
+    "deterministic": true
+  },
+  {
+    "tool": "RefinedC",
+    "program": "p3_sum",
+    "source": "refinedc/p3_sum.c",
+    "source_sha256": "c1f82ab1b8f48b4032073d68fc7b5c0bd253db754c9d8069a5a5f621d1c14c2b",
+    "runs": [
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 4.236951305996627,
+        "peak_rss_kb": 618944,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p3_sum/generated_proof_sum_array.vo"
+        ]
+      },
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 4.231833843048662,
+        "peak_rss_kb": 618816,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p3_sum/generated_proof_sum_array.vo"
+        ]
+      },
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 4.278093601111323,
+        "peak_rss_kb": 618900,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p3_sum/generated_proof_sum_array.vo"
+        ]
+      }
+    ],
+    "passed": true,
+    "median_seconds": 4.236951305996627,
+    "deterministic": true
+  },
+  {
+    "tool": "RefinedC",
+    "program": "p4_binary_search",
+    "source": "refinedc/p4_binary_search.c",
+    "source_sha256": "5b0d10ada0cfa539e3258f36d4ee3ded7aaa1b8bd797132e7d3d742026daa458",
+    "runs": [
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 9.057623940054327,
+        "peak_rss_kb": 747712,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p4_binary_search/generated_proof_binary_search.vo"
+        ]
+      },
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 9.027663616929203,
+        "peak_rss_kb": 747396,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p4_binary_search/generated_proof_binary_search.vo"
+        ]
+      },
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 9.063720461446792,
+        "peak_rss_kb": 747464,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p4_binary_search/generated_proof_binary_search.vo"
+        ]
+      }
+    ],
+    "passed": true,
+    "median_seconds": 9.057623940054327,
+    "deterministic": true
+  },
+  {
+    "tool": "RefinedC",
+    "program": "p5_reverse",
+    "source": "refinedc/p5_reverse.c",
+    "source_sha256": "03447e09dcb1622ef1ce9f1f5b62cab0e0465b8e3c358cd8793168ba6a8c7e17",
+    "runs": [
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 3.6157380426302552,
+        "peak_rss_kb": 615536,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p5_reverse/generated_proof_reverse.vo"
+        ]
+      },
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 3.633619832806289,
+        "peak_rss_kb": 615840,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p5_reverse/generated_proof_reverse.vo"
+        ]
+      },
+      {
+        "passed": true,
+        "exit_code": 0,
+        "wall_seconds": 3.6406548572704196,
+        "peak_rss_kb": 615572,
+        "checked_objects": [
+          "refinedc/_build/default/proofs/p5_reverse/generated_proof_reverse.vo"
+        ]
+      }
+    ],
+    "passed": true,
+    "median_seconds": 3.633619832806289,
+    "deterministic": true
+  },
+  {
+    "tool": "RefinedC",
+    "program": "p3_sum_broken",
+    "source": "refinedc/p3_sum_broken.c",
+    "source_sha256": "11cecc8d67d321b64cfa02cbc5d58d05b4dfaccfe668742a961b97aac75ad380",
+    "runs": [
+      {
+        "passed": false,
+        "exit_code": 1,
+        "wall_seconds": 4.227416966110468,
+        "peak_rss_kb": 612512,
+        "checked_objects": []
+      },
+      {
+        "passed": false,
+        "exit_code": 1,
+        "wall_seconds": 4.201589521951973,
+        "peak_rss_kb": 612304,
+        "checked_objects": []
+      },
+      {
+        "passed": false,
+        "exit_code": 1,
+        "wall_seconds": 4.234055444132537,
+        "peak_rss_kb": 612616,
+        "checked_objects": []
+      }
+    ],
+    "passed": false,
+    "median_seconds": 4.227416966110468,
+    "deterministic": true
+  }
+]

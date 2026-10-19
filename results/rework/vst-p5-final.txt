@@ -1,0 +1,7 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p5.v"]
+File "./vst/verif_p5.v", line 56, characters 0-4:
+Error:  (in proof body_reverse): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+Exit: 1

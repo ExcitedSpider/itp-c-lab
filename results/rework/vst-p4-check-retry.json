@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p4.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:51:14.607842+00:00",
+  "exit_code": 1,
+  "wall_seconds": 3.3917242572642863,
+  "output": "File \"./vst/verif_p4.v\", line 53, characters 4-5:\nError: [Focus] Wrong bullet +: Current bullet + is not finished.\n\n"
+}

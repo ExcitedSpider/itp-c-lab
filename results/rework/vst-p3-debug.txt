@@ -1,0 +1,6 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p3.v"]
+File "./vst/verif_p3.v", line 13, characters 35-38:
+Error: Tactic failure:  Cannot find witness.
+
+
+Exit: 1

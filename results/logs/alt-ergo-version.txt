@@ -1,0 +1,5 @@
+$ ["/tmp/framac/4.14.1/bin/alt-ergo","--version"]
+Environment overrides: {}
+v2.6.0
+
+Exit: 0; signal: null; wall_seconds: 0.006676921

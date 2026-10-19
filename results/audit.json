@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "source SHA256 match",
+    "export SHA256 match",
+    "every positive SMT verdict backed by exact command and successful real output",
+    "three runs per WP program",
+    "negative control changes exactly one invariant and is rejected",
+    "13-slide self-contained HTML; inline JavaScript parses",
+    "C syntax with GCC warnings as errors"
+  ],
+  "browser": "Not validated: Chrome aborts on prohibited socket operation"
+}

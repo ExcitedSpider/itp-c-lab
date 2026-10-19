@@ -1,0 +1,34 @@
+$ ["/usr/bin/time", "-f", "PEAK_RSS_KB=%M", "opam", "exec", "--", "frama-c", "-machdep", "x86_64", "-wp", "-wp-rte", "-wp-prover", "alt-ergo", "-wp-timeout", "3", "-wp-par", "1", "-wp-report-json", "/work/results/rework/wp-p5_reverse-3-goals.json", "/work/programs/p5_reverse.c"]
+[kernel] Parsing programs/p5_reverse.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function reverse
+[wp] 14 goals scheduled
+[wp] [Timeout] typed_reverse_terminates (Qed 0.82ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_ensures_2 (Qed 12ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_ensures_3 (Qed 13ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_loop_invariant_established (Qed 6ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_loop_invariant_preserved (Qed 20ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_assert_rte_mem_access (Qed 11ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_assert_rte_mem_access_2 (Qed 16ms) (Alt-Ergo)
+[wp] [Timeout] typed_reverse_loop_assigns_part3 (Qed 20ms) (Alt-Ergo)
+[wp] Proved goals:    7 / 15
+  Unreachable:       1
+  Qed:               3 (0.82ms-11ms-23ms)
+  Alt-Ergo 2.5.4:    3 (19ms-26ms-37ms)
+  Timeout:           8
+[wp:pedantic-assigns] programs/p5_reverse.c:22: Warning: 
+  No 'assigns \result \from ...' specification for function 'reverse'returning pointer type.
+  Callers assumptions might be imprecise.
+[wp:pedantic-assigns] programs/p5_reverse.c:14: Warning: 
+  No \from specification for assigned pointer '{p->next |
+                                                struct node *p;
+                                                              ∃ ℤ n, ℤ i;
+                                                                list{Old}(l, n) ∧
+                                                                0 ≤ i < n ∧
+                                                                p ≡
+                                                                nth{Old}
+                                                                (l, i)}'.
+  Callers assumptions might be imprecise.
+PEAK_RSS_KB=159708
+
+Exit: 0

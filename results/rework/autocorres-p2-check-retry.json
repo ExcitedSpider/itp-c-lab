@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P2"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:53:04.908897+00:00",
+  "exit_code": 1,
+  "wall_seconds": 14.098467210773379,
+  "output": "Running C_ITP_P2 ...\nC_ITP_P2 FAILED (see also \"isabelle build_log -H Error C_ITP_P2\")\n...\n*** Operand:   [b] :: 32 word ptr list\n*** \n*** At command \"lemma\" (line 8 of \"/work/autocorres/p2/P2.thy\")\n*** Type unification failed: Clash of types \"_\n***    \u21d2 _\" and \"_ lifted_globals_scheme\"\n*** \n*** Type error in application: operator not of function type\n*** \n*** Operator:  s :: ??'a lifted_globals_scheme\n*** Operand:   [a] :: 32 word ptr list\n*** \n*** At command \"lemma\" (line 8 of \"/work/autocorres/p2/P2.thy\")\n*** Type unification failed: Clash of types \"_ bit0\" and \"_ signed\"\n*** \n*** Type error in application: incompatible operand type\n*** \n*** Operator:  swap' ::\n***   32 signed word ptr\n***   \u21d2 32 signed word ptr \u21d2 (unit, unit, lifted_globals) spec_monad\n*** Operand:   a :: 32 word ptr\n*** \n*** At command \"lemma\" (line 8 of \"/work/autocorres/p2/P2.thy\")\n*** Type unification failed: Clash of types \"_\n***    \u21d2 _\" and \"_ lifted_globals_scheme\"\n*** \n*** Type error in application: operator not of function type\n*** \n*** Operator:  s :: ??'a lifted_globals_scheme\n*** Operand:   [a] :: 32 word ptr list\n*** \n*** At command \"lemma\" (line 8 of \"/work/autocorres/p2/P2.thy\")\n*** Type unification failed: Clash of types \"_\n***    \u21d2 _\" and \"_ lifted_globals_scheme\"\n*** \n*** Type error in application: operator not of function type\n*** \n*** Operator:  s :: ??'a lifted_globals_scheme\n*** Operand:   [b] :: 32 word ptr list\n*** \n*** At command \"lemma\" (line 8 of \"/work/autocorres/p2/P2.thy\")\nUnfinished session(s): C_ITP_P2\n0:00:12 elapsed time, 0:00:06 cpu time, factor 0.48\n"
+}

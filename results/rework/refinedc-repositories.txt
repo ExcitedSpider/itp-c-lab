@@ -1,0 +1,7 @@
+$ ["opam", "repository", "add", "iris-dev", "https://gitlab.mpi-sws.org/iris/opam.git", "-y"]
+[iris-dev] Initialised
+[NOTE] Repository iris-dev has been added to the selections of switch 4.14 only.
+       Run `opam repository add iris-dev --all-switches|--set-default' to use it in all existing switches, or in newly created switches, respectively.
+
+
+Exit: 0

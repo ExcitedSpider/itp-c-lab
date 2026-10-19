@@ -1,0 +1,24 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "frama-c",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-timeout",
+    "10",
+    "-wp-par",
+    "1",
+    "programs/p4_binary_search.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:29:17.929716+00:00",
+  "exit_code": 0,
+  "wall_seconds": 3.230447467416525,
+  "output": "[kernel] Parsing programs/p4_binary_search.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function binary_search\n[wp] 22 goals scheduled\n[wp] Proved goals:   24 / 24\n  Terminating:       1\n  Unreachable:       1\n  Qed:              10 (6ms-11ms-42ms)\n  Alt-Ergo 2.5.4:   12 (12ms-28ms-59ms)\n"
+}

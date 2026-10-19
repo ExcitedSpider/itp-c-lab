@@ -1,0 +1,10 @@
+$ ["opam", "exec", "--", "refinedc", "check", "refinedc/p5_reverse.c"]
+Entering directory '/work/refinedc'
+        rocq proofs/p5_reverse/.c_itp_refinedc.theory.d
+        rocq proofs/p5_reverse/generated_code.{glob,vo}
+        rocq proofs/p5_reverse/generated_spec.{glob,vo}
+        rocq proofs/p5_reverse/generated_proof_reverse.{glob,vo}
+Leaving directory '/work/refinedc'
+File "refinedc/p5_reverse.c" successfully checked.
+
+Exit: 0

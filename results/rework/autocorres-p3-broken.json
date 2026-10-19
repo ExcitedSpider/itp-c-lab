@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P3_Broken"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:01:35.638895+00:00",
+  "exit_code": 1,
+  "wall_seconds": 15.465068764053285,
+  "output": "Running C_ITP_P3_Broken ...\nC_ITP_P3_Broken FAILED (see also \"isabelle build_log -H Error C_ITP_P3_Broken\")\n*** Failed to finish proof (line 56 of \"/work/autocorres/broken/P3_Broken.thy\"):\n*** goal (1 subgoal):\n***  1. \u27e6sum_list (take (nat (i + 1)) xs) \u2264 INT_MAX;\n***      sum_list (take (nat i) xs) +\n***      sint (heap_w32 s (PTR_COERCE(32 signed word \u2192 32 word) (a +\u21e9p i))) =\n***      sum_list (take (nat (i + 1)) xs);\n***      i < n; 0 \u2264 i\u27e7\n***     \u27f9 sum_list (take (nat i) xs) + 1 +\n***        sint (heap_w32 s (PTR_COERCE(32 signed word \u2192 32 word) (a +\u21e9p i)))\n***        \u2264 INT_MAX\n*** At command \"by\" (line 56 of \"/work/autocorres/broken/P3_Broken.thy\")\nUnfinished session(s): C_ITP_P3_Broken\n0:00:14 elapsed time, 0:00:08 cpu time, factor 0.57\n"
+}

@@ -1,0 +1,503 @@
+{
+  "method": "Nonempty physical ACSL lines, delimiters excluded; loop blocks separate. No manual proof files: exactly 0 tactic/Isar/apply steps for WP. Absent tool artifacts are null, never 0. Replay time is NOT source-to-proof latency.",
+  "rows": [
+    {
+      "tool": "WP",
+      "program": "p1_abs",
+      "source": "programs/p1_abs.c",
+      "source_sha256": "28e5c7ddc1f2f1ed5a7dac6dcc920ae307080c39c708594088500eb22a90b9a6",
+      "spec_lines": 3,
+      "annotation_lines": 0,
+      "proof_script_lines": 0,
+      "manual_proof_steps": 0,
+      "counted_lines": [
+        {
+          "line": 3,
+          "kind": "spec"
+        },
+        {
+          "line": 4,
+          "kind": "spec"
+        },
+        {
+          "line": 5,
+          "kind": "spec"
+        }
+      ],
+      "automation": "annotations only",
+      "status": "exported VCs checked",
+      "replay_median_seconds": 0.207126313,
+      "end_to_end_median_seconds": 0.378692786,
+      "peak_rss_kb": 90080,
+      "goals": 4,
+      "closed": 4
+    },
+    {
+      "tool": "VST",
+      "program": "p1_abs",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "RefinedC",
+      "program": "p1_abs",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "AutoCorres2",
+      "program": "p1_abs",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "WP",
+      "program": "p2_swap",
+      "source": "programs/p2_swap.c",
+      "source_sha256": "7f9910ec647ab3cc4e62ec1657fdff9d353e8a30b1a6219c6fcf46ac834fa6e8",
+      "spec_lines": 5,
+      "annotation_lines": 0,
+      "proof_script_lines": 0,
+      "manual_proof_steps": 0,
+      "counted_lines": [
+        {
+          "line": 1,
+          "kind": "spec"
+        },
+        {
+          "line": 2,
+          "kind": "spec"
+        },
+        {
+          "line": 3,
+          "kind": "spec"
+        },
+        {
+          "line": 4,
+          "kind": "spec"
+        },
+        {
+          "line": 5,
+          "kind": "spec"
+        }
+      ],
+      "automation": "annotations only",
+      "status": "exported VCs checked",
+      "replay_median_seconds": 0.368712769,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": 96752,
+      "goals": 8,
+      "closed": 8
+    },
+    {
+      "tool": "VST",
+      "program": "p2_swap",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "RefinedC",
+      "program": "p2_swap",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "AutoCorres2",
+      "program": "p2_swap",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "WP",
+      "program": "p3_sum",
+      "source": "programs/p3_sum.c",
+      "source_sha256": "84ae6d8feb1fe4ebd852de9bc9ab10ff535645db017eb25e3b119683e5dea25a",
+      "spec_lines": 9,
+      "annotation_lines": 5,
+      "proof_script_lines": 0,
+      "manual_proof_steps": 0,
+      "counted_lines": [
+        {
+          "line": 3,
+          "kind": "spec"
+        },
+        {
+          "line": 4,
+          "kind": "spec"
+        },
+        {
+          "line": 6,
+          "kind": "spec"
+        },
+        {
+          "line": 7,
+          "kind": "spec"
+        },
+        {
+          "line": 8,
+          "kind": "spec"
+        },
+        {
+          "line": 9,
+          "kind": "spec"
+        },
+        {
+          "line": 10,
+          "kind": "spec"
+        },
+        {
+          "line": 11,
+          "kind": "spec"
+        },
+        {
+          "line": 12,
+          "kind": "spec"
+        },
+        {
+          "line": 17,
+          "kind": "annotation"
+        },
+        {
+          "line": 18,
+          "kind": "annotation"
+        },
+        {
+          "line": 19,
+          "kind": "annotation"
+        },
+        {
+          "line": 20,
+          "kind": "annotation"
+        },
+        {
+          "line": 23,
+          "kind": "annotation"
+        }
+      ],
+      "automation": "annotations only",
+      "status": "exported VCs checked",
+      "replay_median_seconds": 0.4633911159999999,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": 98700,
+      "goals": 14,
+      "closed": 14
+    },
+    {
+      "tool": "VST",
+      "program": "p3_sum",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "RefinedC",
+      "program": "p3_sum",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "AutoCorres2",
+      "program": "p3_sum",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "WP",
+      "program": "p4_binary_search",
+      "source": "programs/p4_binary_search.c",
+      "source_sha256": "39ffbee46cd081563079704c4a889a0335055b5b2dff2270f6d6258ce8b0d08c",
+      "spec_lines": 8,
+      "annotation_lines": 5,
+      "proof_script_lines": 0,
+      "manual_proof_steps": 0,
+      "counted_lines": [
+        {
+          "line": 1,
+          "kind": "spec"
+        },
+        {
+          "line": 2,
+          "kind": "spec"
+        },
+        {
+          "line": 3,
+          "kind": "spec"
+        },
+        {
+          "line": 4,
+          "kind": "spec"
+        },
+        {
+          "line": 5,
+          "kind": "spec"
+        },
+        {
+          "line": 6,
+          "kind": "spec"
+        },
+        {
+          "line": 7,
+          "kind": "spec"
+        },
+        {
+          "line": 8,
+          "kind": "spec"
+        },
+        {
+          "line": 13,
+          "kind": "annotation"
+        },
+        {
+          "line": 14,
+          "kind": "annotation"
+        },
+        {
+          "line": 15,
+          "kind": "annotation"
+        },
+        {
+          "line": 16,
+          "kind": "annotation"
+        },
+        {
+          "line": 17,
+          "kind": "annotation"
+        }
+      ],
+      "automation": "annotations only",
+      "status": "exported VCs checked",
+      "replay_median_seconds": 0.98357241,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": 108996,
+      "goals": 22,
+      "closed": 22
+    },
+    {
+      "tool": "VST",
+      "program": "p4_binary_search",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "RefinedC",
+      "program": "p4_binary_search",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "AutoCorres2",
+      "program": "p4_binary_search",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "WP",
+      "program": "p5_reverse",
+      "source": "programs/p5_reverse.c",
+      "source_sha256": "f38484ca2a2a291d13aa70e5acfef6b5e7cb2f015e8016dcd84631c49b8ffa52",
+      "spec_lines": 17,
+      "annotation_lines": 0,
+      "proof_script_lines": 0,
+      "manual_proof_steps": 0,
+      "counted_lines": [
+        {
+          "line": 3,
+          "kind": "spec"
+        },
+        {
+          "line": 4,
+          "kind": "spec"
+        },
+        {
+          "line": 5,
+          "kind": "spec"
+        },
+        {
+          "line": 6,
+          "kind": "spec"
+        },
+        {
+          "line": 7,
+          "kind": "spec"
+        },
+        {
+          "line": 8,
+          "kind": "spec"
+        },
+        {
+          "line": 9,
+          "kind": "spec"
+        },
+        {
+          "line": 10,
+          "kind": "spec"
+        },
+        {
+          "line": 11,
+          "kind": "spec"
+        },
+        {
+          "line": 13,
+          "kind": "spec"
+        },
+        {
+          "line": 14,
+          "kind": "spec"
+        },
+        {
+          "line": 15,
+          "kind": "spec"
+        },
+        {
+          "line": 16,
+          "kind": "spec"
+        },
+        {
+          "line": 17,
+          "kind": "spec"
+        },
+        {
+          "line": 18,
+          "kind": "spec"
+        },
+        {
+          "line": 19,
+          "kind": "spec"
+        },
+        {
+          "line": 20,
+          "kind": "spec"
+        }
+      ],
+      "automation": "annotations only",
+      "status": "partial",
+      "replay_median_seconds": 0.31110409600000005,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": 97632,
+      "goals": 7,
+      "closed": 0
+    },
+    {
+      "tool": "VST",
+      "program": "p5_reverse",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "RefinedC",
+      "program": "p5_reverse",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    },
+    {
+      "tool": "AutoCorres2",
+      "program": "p5_reverse",
+      "status": "blocked",
+      "spec_lines": null,
+      "annotation_lines": null,
+      "proof_script_lines": null,
+      "manual_proof_steps": null,
+      "replay_median_seconds": null,
+      "end_to_end_median_seconds": null,
+      "peak_rss_kb": null,
+      "automation": "not measured"
+    }
+  ]
+}

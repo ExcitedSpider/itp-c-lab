@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p5.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:49:03.155899+00:00",
+  "exit_code": 1,
+  "wall_seconds": 1.012322944123298,
+  "output": "1 goal\n  \n  a : int\n  xs : list int\n  IHxs :\n    forall p : val,\n    listrep xs p |-- !! (is_pointer_or_null p /\\ (p = nullval <-> xs = []))\n  p, q : val\n  H : field_compatible tnode [] p\n  H0 : value_fits tnode (Vint a, q)\n  PNq : is_pointer_or_null q\n  H1 : q = nullval <-> xs = []\n  ============================\n  p = nullval <-> a :: xs = []\nFile \"./vst/verif_p5.v\", line 18, characters 0-4:\nError:  (in proof listrep_local): Attempt to save an incomplete proof\n(there are remaining open goals).\n\n"
+}

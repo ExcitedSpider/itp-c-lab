@@ -1,0 +1,15 @@
+{
+  "command": [
+    "opam",
+    "repository",
+    "add",
+    "coq-released",
+    "https://coq.inria.fr/opam/released",
+    "-y"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:27:56.875901+00:00",
+  "exit_code": 0,
+  "wall_seconds": 5.2760483273305,
+  "output": "[coq-released] Initialised\n[NOTE] Repository coq-released has been added to the selections of switch 4.14 only.\n       Run `opam repository add coq-released --all-switches|--set-default' to use it in all existing switches, or in newly created switches, respectively.\n\n"
+}

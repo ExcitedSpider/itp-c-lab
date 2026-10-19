@@ -1,0 +1,7 @@
+$ ["/usr/bin/time", "-f", "PEAK_RSS_KB=%M", "opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/generated/p2_swap.v"]
+File "./vst/generated/p2_swap.v", line 1, characters 0-43:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+PEAK_RSS_KB=489248
+
+Exit: 0

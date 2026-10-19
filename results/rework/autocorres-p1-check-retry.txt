@@ -1,0 +1,12 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres", "C_ITP_P1"]
+Running C_ITP_P1 ...
+C_ITP_P1 FAILED (see also "isabelle build_log -H Error C_ITP_P1")
+*** /tmp/isabelle-/process3884024481128562932/cpp23116022/work/programs/p1_abs.c:1:10: fatal error: limits.h: No such file or directory
+***     1 | #include <limits.h>
+***       |          ^~~~~~~~~~
+*** compilation terminated.
+*** At command "install_C_file" (line 4 of "/work/autocorres/p1/P1.thy")
+Unfinished session(s): C_ITP_P1
+0:00:09 elapsed time
+
+Exit: 1

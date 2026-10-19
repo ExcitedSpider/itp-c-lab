@@ -1,0 +1,6 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p3_broken.v"]
+File "./vst/verif_p3_broken.v", line 40, characters 2-3:
+Error: [Focus] Wrong bullet -: Current bullet - is not finished.
+
+
+Exit: 1

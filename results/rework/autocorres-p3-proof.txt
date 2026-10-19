@@ -1,0 +1,28 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres", "C_ITP_P3"]
+Running C_ITP_P3 ...
+C_ITP_P3 FAILED (see also "isabelle build_log -H Error C_ITP_P3")
+*** Failed to finish proof (line 26 of "/work/autocorres/p3/P3.thy"):
+*** goal (1 subgoal):
+***  1. ⟦i < int (length xs); 0 ≤ i;
+***      ∀i<length xs.
+***         IS_VALID(32 word) s
+***          (PTR_COERCE(32 signed word → 32 word) (a +⇩p int i)) ∧
+***         sint
+***          (heap_w32 s (PTR_COERCE(32 signed word → 32 word) (a +⇩p int i))) =
+***         xs ! i;
+***      ∀k≤length xs.
+***         - 2147483648 ≤ sum_list (take k xs) ∧
+***         sum_list (take k xs) ≤ 2147483647;
+***      n = int (length xs); length xs ≤ 2147483647⟧
+***     ⟹ - 2147483648
+***        ≤ sum_list (take (nat i) xs) +
+***          sint
+***           (heap_w32 s
+***             (PTR_COERCE(32 signed word → 32 word)
+***               (a +⇩p
+***                i)))
+*** At command "by" (line 26 of "/work/autocorres/p3/P3.thy")
+Unfinished session(s): C_ITP_P3
+0:00:14 elapsed time, 0:00:08 cpu time, factor 0.56
+
+Exit: 1

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "opam",
+    "show",
+    "--raw",
+    "coq-compcert.3.18"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:02:35.085603+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.23409203393384814,
+  "output": "opam-version: \"2.0\"\nname: \"coq-compcert\"\nversion: \"3.18\"\nsynopsis: \"The CompCert C compiler (64 bit)\"\nmaintainer: \"Xavier Leroy\"\nauthors: \"Xavier Leroy <xavier.leroy@college-de-france.fr>\"\nlicense: \"INRIA Non-Commercial License Agreement\"\ntags: [\n  \"category:Computer Science/Semantics and Compilation/Compilation\"\n  \"category:Computer Science/Semantics and Compilation/Semantics\"\n  \"keyword:C\"\n  \"keyword:compiler\"\n  \"logpath:compcert\"\n  \"date:2026-08-31\"\n]\nhomepage: \"https://compcert.org/\"\nbug-reports: \"https://github.com/AbsInt/CompCert/issues\"\ndepends: [\n  \"coq\" {>= \"8.15.0\" & < \"9.3~\"}\n  \"menhir\" {>= \"20200624\" & != \"20260122\" & != \"dev\"}\n  \"ocaml\" {>= \"4.05.0\"}\n  \"coq-flocq\" {>= \"4.1.0\" & < \"5~\"}\n  \"coq-menhirlib\" {>= \"20200624\"}\n]\nbuild: [\n  [\n    \"./configure\"\n    \"amd64-linux\" {os = \"linux\" & arch = \"x86_64\"}\n    \"amd64-macosx\" {os = \"macos\" & arch = \"x86_64\"}\n    \"arm64-linux\" {os = \"linux\" & (arch = \"arm64\" | arch = \"aarch64\")}\n    \"arm64-macosx\" {os = \"macos\" & (arch = \"arm64\" | arch = \"aarch64\")}\n    \"amd64-cygwin\" {os = \"cygwin\"}\n    \"amd64-cygwin\" {os = \"win32\" & os-distribution = \"cygwinports\"}\n    \"-toolprefix\"\n      {os = \"win32\" & os-distribution = \"cygwinports\" & arch = \"i686\"}\n    \"x86_64-pc-cygwin-\"\n      {os = \"win32\" & os-distribution = \"cygwinports\" & arch = \"i686\"}\n    \"-prefix\"\n    \"%{prefix}%\"\n    \"-install-coqdev\"\n    \"-clightgen\"\n    \"-use-external-Flocq\"\n    \"-use-external-MenhirLib\"\n    \"-coqdevdir\"\n    \"%{lib}%/coq/user-contrib/compcert\"\n    \"-ignore-coq-version\"\n  ]\n  [make \"-j%{jobs}%\" {ocaml:version >= \"4.06\"}]\n]\ninstall: [make \"install\"]\ndev-repo: \"git+https://github.com/AbsInt/CompCert.git\"\nurl {\n  src: \"https://github.com/AbsInt/CompCert/archive/v3.18.tar.gz\"\n  checksum: [\n    \"sha256=564b312b3ed3162f02605f0108feb555bd28fe7a80b97ea269c546bcc60c1cf0\"\n    \"sha512=764ff4cea9e8504337610f8c922d3b18790601df92515e7bb56b90601469bf2af881819dba54d9d7c3bb1cea87887062925e1003ec07078be86c0376eb3b7cd5\"\n  ]\n}\n"
+}

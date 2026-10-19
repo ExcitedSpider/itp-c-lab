@@ -1,0 +1,16 @@
+{
+  "label": "coqc-version",
+  "timestamp": "2026-10-19T01:56:31.631Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "coqc",
+    "--version"
+  ],
+  "env": {},
+  "exit_code": null,
+  "signal": null,
+  "error": "spawnSync coqc ENOENT",
+  "wall_seconds": 0.0009242519999999956,
+  "stdout": "",
+  "stderr": ""
+}

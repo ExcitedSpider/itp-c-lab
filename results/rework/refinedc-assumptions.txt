@@ -1,0 +1,9 @@
+$ ["opam", "exec", "--", "coqtop", "-quiet", "-batch", "-Q", "refinedc/_build/default/proofs/p1_abs", "c_itp_refinedc.p1_abs", "-Q", "refinedc/_build/default/proofs/p2_swap", "c_itp_refinedc.p2_swap", "-Q", "refinedc/_build/default/proofs/p2_swap_alias", "c_itp_refinedc.p2_swap_alias", "-Q", "refinedc/_build/default/proofs/p3_sum", "c_itp_refinedc.p3_sum", "-Q", "refinedc/_build/default/proofs/p4_binary_search", "c_itp_refinedc.p4_binary_search", "-Q", "refinedc/_build/default/proofs/p5_reverse", "c_itp_refinedc.p5_reverse", "-l", "refinedc/audit.v"]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+
+Exit: 0

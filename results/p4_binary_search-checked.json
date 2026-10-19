@@ -1,0 +1,1367 @@
+{
+  "source": "programs/p4_binary_search.c",
+  "source_sha256": "39ffbee46cd081563079704c4a889a0335055b5b2dff2270f6d6258ce8b0d08c",
+  "mode": "Fresh WP inventory + replay of previously exported SMT tasks; NOT end-to-end source check timing",
+  "complete": true,
+  "same_outcomes": true,
+  "median_seconds": 0.98357241,
+  "peak_rss_kb": 108996,
+  "runs": [
+    {
+      "run": 1,
+      "wall_seconds": 1.0046328679999998,
+      "peak_rss_kb": 108988,
+      "goals": [
+        {
+          "goal": "typed_binary_search_ensures",
+          "property": "binary_search_ensures",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 6,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_ensures_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "dd57fb9dbbda0070235b583ac74797ec3b2c2df7f9fb7449184651830121dfe5",
+          "log": "p4_binary_search-1-typed_binary_search_ensures"
+        },
+        {
+          "goal": "typed_binary_search_ensures_2",
+          "property": "binary_search_ensures_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 7,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_ensures_3",
+          "property": "binary_search_ensures_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 8,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_ensures_3_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "220fd04f337c048cb5242d8bad7d4783f35086e2f538e629a24de4e41c570cb5",
+          "log": "p4_binary_search-1-typed_binary_search_ensures_3"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_preserved",
+          "property": "binary_search_loop_invariant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 13,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_invariant_preserved_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "34ae620fc4eaded33b542fb0537b2957a8dea5ba28c5a5c94c2e9c11d8775075",
+          "log": "p4_binary_search-1-typed_binary_search_loop_invariant_preserved"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_established",
+          "property": "binary_search_loop_invariant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 13,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_2_preserved",
+          "property": "binary_search_loop_invariant_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 14,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_invariant_2_preserved_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "c01eebb5567deb8fa3876d08ac21650f7c893ed050e77e3ccaec26c97248c3ab",
+          "log": "p4_binary_search-1-typed_binary_search_loop_invariant_2_preserved"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_2_established",
+          "property": "binary_search_loop_invariant_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 14,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_3_preserved",
+          "property": "binary_search_loop_invariant_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 15,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_invariant_3_preserved_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "07322b0f3644731b696c13e5a87d530797faa753ded4ac369bf6169a7e36c6c4",
+          "log": "p4_binary_search-1-typed_binary_search_loop_invariant_3_preserved"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_3_established",
+          "property": "binary_search_loop_invariant_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 15,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow",
+          "property": "binary_search_assert_rte_signed_overflow",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 20,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "b2b22beea6b80eb9a58680272096ca42b3e4114a6f55a74bf61b6b2b4e9c8a0b",
+          "log": "p4_binary_search-1-typed_binary_search_assert_rte_signed_overflow"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow_2",
+          "property": "binary_search_assert_rte_signed_overflow_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 20,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_2_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "9c7c4200791ed01424f1d3ca9a772d978a046202ad7919edad09b61c9e2f3d75",
+          "log": "p4_binary_search-1-typed_binary_search_assert_rte_signed_overflow_2"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow_3",
+          "property": "binary_search_assert_rte_signed_overflow_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 20,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_3_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "bdf2e752825e26f020b5556f65a5ed13e5134b6498010f629455968976be31ff",
+          "log": "p4_binary_search-1-typed_binary_search_assert_rte_signed_overflow_3"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow_4",
+          "property": "binary_search_assert_rte_signed_overflow_4",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 20,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_4_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "7a95b30aa2b6350549f9ba71b176fd9c3a9854c94e720e781f72d9a7236f1234",
+          "log": "p4_binary_search-1-typed_binary_search_assert_rte_signed_overflow_4"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_mem_access",
+          "property": "binary_search_assert_rte_mem_access",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 21,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "d2ecb94840b4b5d9caf58c0bf9ef31b405dade25e47fa9ff91cc20916bf9a594",
+          "log": "p4_binary_search-1-typed_binary_search_assert_rte_mem_access"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_mem_access_2",
+          "property": "binary_search_assert_rte_mem_access_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 22,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow_5",
+          "property": "binary_search_assert_rte_signed_overflow_5",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 22,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_5_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "2b96d62ea4ceedb076ea40244898f9b30b6be07eca8ac3cef447e540cee622fb",
+          "log": "p4_binary_search-1-typed_binary_search_assert_rte_signed_overflow_5"
+        },
+        {
+          "goal": "typed_binary_search_loop_assigns",
+          "property": "binary_search_loop_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 16,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assigns_part1",
+          "property": "binary_search_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 10,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assigns_part2",
+          "property": "binary_search_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 10,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assigns_part3",
+          "property": "binary_search_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 10,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_loop_variant_decrease",
+          "property": "binary_search_loop_variant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 17,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_variant_decrease_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "bf963fd74d46959395cd1b8e6e57ac6f71db2cdd7d5bf875777b8670516f331b",
+          "log": "p4_binary_search-1-typed_binary_search_loop_variant_decrease"
+        },
+        {
+          "goal": "typed_binary_search_loop_variant_positive",
+          "property": "binary_search_loop_variant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 17,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        }
+      ],
+      "inventory_exit": 0,
+      "warnings": [],
+      "all_obligations_closed": true
+    },
+    {
+      "run": 2,
+      "wall_seconds": 0.98357241,
+      "peak_rss_kb": 108924,
+      "goals": [
+        {
+          "goal": "typed_binary_search_ensures",
+          "property": "binary_search_ensures",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 6,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_ensures_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "dd57fb9dbbda0070235b583ac74797ec3b2c2df7f9fb7449184651830121dfe5",
+          "log": "p4_binary_search-2-typed_binary_search_ensures"
+        },
+        {
+          "goal": "typed_binary_search_ensures_2",
+          "property": "binary_search_ensures_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 7,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_ensures_3",
+          "property": "binary_search_ensures_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 8,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_ensures_3_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "220fd04f337c048cb5242d8bad7d4783f35086e2f538e629a24de4e41c570cb5",
+          "log": "p4_binary_search-2-typed_binary_search_ensures_3"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_preserved",
+          "property": "binary_search_loop_invariant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 13,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_invariant_preserved_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "34ae620fc4eaded33b542fb0537b2957a8dea5ba28c5a5c94c2e9c11d8775075",
+          "log": "p4_binary_search-2-typed_binary_search_loop_invariant_preserved"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_established",
+          "property": "binary_search_loop_invariant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 13,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_2_preserved",
+          "property": "binary_search_loop_invariant_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 14,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_invariant_2_preserved_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "c01eebb5567deb8fa3876d08ac21650f7c893ed050e77e3ccaec26c97248c3ab",
+          "log": "p4_binary_search-2-typed_binary_search_loop_invariant_2_preserved"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_2_established",
+          "property": "binary_search_loop_invariant_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 14,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_3_preserved",
+          "property": "binary_search_loop_invariant_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 15,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_invariant_3_preserved_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "07322b0f3644731b696c13e5a87d530797faa753ded4ac369bf6169a7e36c6c4",
+          "log": "p4_binary_search-2-typed_binary_search_loop_invariant_3_preserved"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_3_established",
+          "property": "binary_search_loop_invariant_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 15,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow",
+          "property": "binary_search_assert_rte_signed_overflow",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 20,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "b2b22beea6b80eb9a58680272096ca42b3e4114a6f55a74bf61b6b2b4e9c8a0b",
+          "log": "p4_binary_search-2-typed_binary_search_assert_rte_signed_overflow"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow_2",
+          "property": "binary_search_assert_rte_signed_overflow_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 20,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_2_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "9c7c4200791ed01424f1d3ca9a772d978a046202ad7919edad09b61c9e2f3d75",
+          "log": "p4_binary_search-2-typed_binary_search_assert_rte_signed_overflow_2"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow_3",
+          "property": "binary_search_assert_rte_signed_overflow_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 20,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_3_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "bdf2e752825e26f020b5556f65a5ed13e5134b6498010f629455968976be31ff",
+          "log": "p4_binary_search-2-typed_binary_search_assert_rte_signed_overflow_3"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow_4",
+          "property": "binary_search_assert_rte_signed_overflow_4",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 20,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_4_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "7a95b30aa2b6350549f9ba71b176fd9c3a9854c94e720e781f72d9a7236f1234",
+          "log": "p4_binary_search-2-typed_binary_search_assert_rte_signed_overflow_4"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_mem_access",
+          "property": "binary_search_assert_rte_mem_access",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 21,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "d2ecb94840b4b5d9caf58c0bf9ef31b405dade25e47fa9ff91cc20916bf9a594",
+          "log": "p4_binary_search-2-typed_binary_search_assert_rte_mem_access"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_mem_access_2",
+          "property": "binary_search_assert_rte_mem_access_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 22,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow_5",
+          "property": "binary_search_assert_rte_signed_overflow_5",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 22,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_5_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "2b96d62ea4ceedb076ea40244898f9b30b6be07eca8ac3cef447e540cee622fb",
+          "log": "p4_binary_search-2-typed_binary_search_assert_rte_signed_overflow_5"
+        },
+        {
+          "goal": "typed_binary_search_loop_assigns",
+          "property": "binary_search_loop_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 16,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assigns_part1",
+          "property": "binary_search_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 10,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assigns_part2",
+          "property": "binary_search_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 10,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assigns_part3",
+          "property": "binary_search_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 10,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_loop_variant_decrease",
+          "property": "binary_search_loop_variant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 17,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_variant_decrease_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "bf963fd74d46959395cd1b8e6e57ac6f71db2cdd7d5bf875777b8670516f331b",
+          "log": "p4_binary_search-2-typed_binary_search_loop_variant_decrease"
+        },
+        {
+          "goal": "typed_binary_search_loop_variant_positive",
+          "property": "binary_search_loop_variant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 17,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        }
+      ],
+      "inventory_exit": 0,
+      "warnings": [],
+      "all_obligations_closed": true
+    },
+    {
+      "run": 3,
+      "wall_seconds": 0.9676138790000002,
+      "peak_rss_kb": 108996,
+      "goals": [
+        {
+          "goal": "typed_binary_search_ensures",
+          "property": "binary_search_ensures",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 6,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_ensures_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "dd57fb9dbbda0070235b583ac74797ec3b2c2df7f9fb7449184651830121dfe5",
+          "log": "p4_binary_search-3-typed_binary_search_ensures"
+        },
+        {
+          "goal": "typed_binary_search_ensures_2",
+          "property": "binary_search_ensures_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 7,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_ensures_3",
+          "property": "binary_search_ensures_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 8,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_ensures_3_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "220fd04f337c048cb5242d8bad7d4783f35086e2f538e629a24de4e41c570cb5",
+          "log": "p4_binary_search-3-typed_binary_search_ensures_3"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_preserved",
+          "property": "binary_search_loop_invariant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 13,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_invariant_preserved_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "34ae620fc4eaded33b542fb0537b2957a8dea5ba28c5a5c94c2e9c11d8775075",
+          "log": "p4_binary_search-3-typed_binary_search_loop_invariant_preserved"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_established",
+          "property": "binary_search_loop_invariant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 13,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_2_preserved",
+          "property": "binary_search_loop_invariant_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 14,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_invariant_2_preserved_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "c01eebb5567deb8fa3876d08ac21650f7c893ed050e77e3ccaec26c97248c3ab",
+          "log": "p4_binary_search-3-typed_binary_search_loop_invariant_2_preserved"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_2_established",
+          "property": "binary_search_loop_invariant_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 14,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_3_preserved",
+          "property": "binary_search_loop_invariant_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 15,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_invariant_3_preserved_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "07322b0f3644731b696c13e5a87d530797faa753ded4ac369bf6169a7e36c6c4",
+          "log": "p4_binary_search-3-typed_binary_search_loop_invariant_3_preserved"
+        },
+        {
+          "goal": "typed_binary_search_loop_invariant_3_established",
+          "property": "binary_search_loop_invariant_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 15,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow",
+          "property": "binary_search_assert_rte_signed_overflow",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 20,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "b2b22beea6b80eb9a58680272096ca42b3e4114a6f55a74bf61b6b2b4e9c8a0b",
+          "log": "p4_binary_search-3-typed_binary_search_assert_rte_signed_overflow"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow_2",
+          "property": "binary_search_assert_rte_signed_overflow_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 20,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_2_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "9c7c4200791ed01424f1d3ca9a772d978a046202ad7919edad09b61c9e2f3d75",
+          "log": "p4_binary_search-3-typed_binary_search_assert_rte_signed_overflow_2"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow_3",
+          "property": "binary_search_assert_rte_signed_overflow_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 20,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_3_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "bdf2e752825e26f020b5556f65a5ed13e5134b6498010f629455968976be31ff",
+          "log": "p4_binary_search-3-typed_binary_search_assert_rte_signed_overflow_3"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow_4",
+          "property": "binary_search_assert_rte_signed_overflow_4",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 20,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_4_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "7a95b30aa2b6350549f9ba71b176fd9c3a9854c94e720e781f72d9a7236f1234",
+          "log": "p4_binary_search-3-typed_binary_search_assert_rte_signed_overflow_4"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_mem_access",
+          "property": "binary_search_assert_rte_mem_access",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 21,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "d2ecb94840b4b5d9caf58c0bf9ef31b405dade25e47fa9ff91cc20916bf9a594",
+          "log": "p4_binary_search-3-typed_binary_search_assert_rte_mem_access"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_mem_access_2",
+          "property": "binary_search_assert_rte_mem_access_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 22,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assert_rte_signed_overflow_5",
+          "property": "binary_search_assert_rte_signed_overflow_5",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 22,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_assert_rte_signed_overflow_5_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "2b96d62ea4ceedb076ea40244898f9b30b6be07eca8ac3cef447e540cee622fb",
+          "log": "p4_binary_search-3-typed_binary_search_assert_rte_signed_overflow_5"
+        },
+        {
+          "goal": "typed_binary_search_loop_assigns",
+          "property": "binary_search_loop_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 16,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assigns_part1",
+          "property": "binary_search_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 10,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assigns_part2",
+          "property": "binary_search_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 10,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_assigns_part3",
+          "property": "binary_search_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 10,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_binary_search_loop_variant_decrease",
+          "property": "binary_search_loop_variant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 17,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p4_binary_search-39ffbee46cd0/typed/zilch-typed_binary_search_loop_variant_decrease_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "bf963fd74d46959395cd1b8e6e57ac6f71db2cdd7d5bf875777b8670516f331b",
+          "log": "p4_binary_search-3-typed_binary_search_loop_variant_decrease"
+        },
+        {
+          "goal": "typed_binary_search_loop_variant_positive",
+          "property": "binary_search_loop_variant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p4_binary_search.c",
+          "line": 17,
+          "function": "binary_search",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        }
+      ],
+      "inventory_exit": 0,
+      "warnings": [],
+      "all_obligations_closed": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+$ ["/usr/bin/time", "-f", "PEAK_RSS_KB=%M", "opam", "exec", "--", "frama-c", "-machdep", "x86_64", "-wp", "-wp-rte", "-wp-prover", "alt-ergo", "-wp-timeout", "10", "-wp-par", "1", "-wp-report-json", "/work/results/rework/wp-p2_swap-3-goals.json", "/work/programs/p2_swap.c"]
+[kernel] Parsing programs/p2_swap.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function swap
+[wp] 8 goals scheduled
+[wp] Proved goals:   10 / 10
+  Terminating:       1
+  Unreachable:       1
+  Qed:               5 (2ms-0.98ms-3ms)
+  Alt-Ergo 2.5.4:    3 (7ms-13ms)
+PEAK_RSS_KB=115528
+
+Exit: 0

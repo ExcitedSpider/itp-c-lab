@@ -1,0 +1,19 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-c", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres", "C_ITP_P3_Broken"]
+Cleaned C_ITP_P3_Broken
+Running C_ITP_P3_Broken ...
+C_ITP_P3_Broken FAILED (see also "isabelle build_log -H Error C_ITP_P3_Broken")
+*** Failed to finish proof (line 56 of "/work/autocorres/broken/P3_Broken.thy"):
+*** goal (1 subgoal):
+***  1. ⟦sum_list (take (nat (i + 1)) xs) ≤ INT_MAX;
+***      sum_list (take (nat i) xs) +
+***      sint (heap_w32 s (PTR_COERCE(32 signed word → 32 word) (a +⇩p i))) =
+***      sum_list (take (nat (i + 1)) xs);
+***      i < n; 0 ≤ i⟧
+***     ⟹ sum_list (take (nat i) xs) + 1 +
+***        sint (heap_w32 s (PTR_COERCE(32 signed word → 32 word) (a +⇩p i)))
+***        ≤ INT_MAX
+*** At command "by" (line 56 of "/work/autocorres/broken/P3_Broken.thy")
+Unfinished session(s): C_ITP_P3_Broken
+0:00:14 elapsed time, 0:00:07 cpu time, factor 0.52
+
+Exit: 1

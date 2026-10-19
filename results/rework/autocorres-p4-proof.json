@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P4"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:00:55.694379+00:00",
+  "exit_code": 1,
+  "wall_seconds": 20.43096132716164,
+  "output": "Running C_ITP_P4 ...\nC_ITP_P4 FAILED (see also \"isabelle build_log -H Error C_ITP_P4\")\n...\n***             \u27f9 IS_VALID(32 word) s\n***                 (PTR_COERCE(32 signed word \u2192 32 word) (a +\u21e9p i)) \u2227\n***                sint\n***                 (heap_w32 s\n***                   (PTR_COERCE(32 signed word \u2192 32 word) (a +\u21e9p i))) =\n***                xs ! nat i\u27e7\n***        \u27f9 xs ! i < key\n***  3. \u22c0aa b i.\n***        \u27e6b < aa; 0 \u2264 b; aa \u2264 int (length xs); \u2200i<nat b. xs ! i < key;\n***         \u2200i. nat aa \u2264 i \u2227 i < length xs \u27f6 key < xs ! i;\n***         heap_w32 s\n***          (PTR_COERCE(32 signed word \u2192 32 word)\n***            (a +\u21e9p (b + (aa - b) div 2))) \u2260\n***         word_of_int key;\n***         \u00ac xs ! nat (b + (aa - b) div 2) < key; nat (b + (aa - b) div 2) \u2264 i;\n***         i < length xs; n = int (length xs); length xs \u2264 2147483647;\n***         - 2147483648 \u2264 key; key \u2264 2147483647;\n***         \u2200i j. i \u2264 j \u2227 j < length xs \u27f6 xs ! i \u2264 xs ! j;\n***         \u22c0i. \u27e60 \u2264 i; i < int (length xs)\u27e7\n***             \u27f9 IS_VALID(32 word) s\n***                 (PTR_COERCE(32 signed word \u2192 32 word) (a +\u21e9p i)) \u2227\n***                sint\n***                 (heap_w32 s\n***                   (PTR_COERCE(32 signed word \u2192 32 word) (a +\u21e9p i))) =\n***                xs ! nat i\u27e7\n***        \u27f9 key < xs ! i\n***  4. \u22c0aa. \u27e60 \u2264 aa; aa \u2264 int (length xs); \u2200i<nat aa. xs ! i < key;\n***           \u2200i. nat aa \u2264 i \u2227 i < length xs \u27f6 key < xs ! i;\n***           n = int (length xs); length xs \u2264 2147483647; - 2147483648 \u2264 key;\n***           key \u2264 2147483647; \u2200i j. i \u2264 j \u2227 j < length xs \u27f6 xs ! i \u2264 xs ! j;\n***           \u22c0i. \u27e60 \u2264 i; i < int (length xs)\u27e7\n***               \u27f9 IS_VALID(32 word) s\n***                   (PTR_COERCE(32 signed word \u2192 32 word) (a +\u21e9p i)) \u2227\n***                  sint\n***                   (heap_w32 s\n***                     (PTR_COERCE(32 signed word \u2192 32 word) (a +\u21e9p i))) =\n***                  xs ! nat i;\n***           key \u2208 set xs\u27e7\n***          \u27f9 False\n*** At command \"done\" (line 49 of \"/work/autocorres/p4/P4.thy\")\nUnfinished session(s): C_ITP_P4\n0:00:19 elapsed time, 0:00:15 cpu time, factor 0.79\n"
+}

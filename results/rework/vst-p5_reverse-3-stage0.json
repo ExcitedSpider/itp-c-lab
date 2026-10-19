@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "clightgen",
+    "-normalize",
+    "-o",
+    "vst/generated/p5_reverse.v",
+    "programs/p5_reverse.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:10:24.784197+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.02133371215313673,
+  "output": "PEAK_RSS_KB=19276\n"
+}

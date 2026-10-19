@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "clightgen",
+    "-normalize",
+    "-o",
+    "vst/generated/p2_swap.v",
+    "programs/p2_swap.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:46:43.343512+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.02388849901035428,
+  "output": ""
+}

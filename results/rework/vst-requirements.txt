@@ -1,0 +1,109 @@
+$ ["opam", "show", "coq-vst", "--all-versions", "--field=version,depends"]
+version 2.2
+depends "ocaml" "coq" {>= "8.7.0"} "coq-compcert" {= "3.3.0"}
+version 2.6
+depends "ocaml"
+        "coq" {>= "8.11" & < "8.13"}
+        "coq-compcert"
+          {(= "3.7~coq-platform~open-source") | (= "3.7~coq-platform") |
+           (= "3.7+8.12~coq_platform~open_source") |
+           (= "3.7+8.12~coq_platform")}
+        "coq-flocq" {>= "3.2.1"}
+version 2.7
+depends "ocaml"
+        "coq" {>= "8.12" & < "8.14"}
+        "coq-compcert" {(= "3.8") | (= "3.8~open-source")}
+        "coq-flocq" {>= "3.2.1"}
+version 2.7.1
+depends "ocaml"
+        "coq" {>= "8.12" & < "8.14"}
+        "coq-compcert" {(= "3.8") | (= "3.8~open-source")}
+        "coq-flocq" {>= "3.2.1"}
+version 2.8
+depends "ocaml"
+        "coq" {>= "8.12" & < "8.15~"}
+        "coq-compcert" {= "3.9"}
+        "coq-flocq" {>= "3.2.1"}
+version 2.9
+depends "ocaml"
+        "coq" {>= "8.12" & < "8.16~"}
+        "coq-compcert" {= "3.10"}
+        "coq-flocq" {>= "3.2.1"}
+version 2.9.1
+depends "ocaml"
+        "coq" {>= "8.12" & < "8.16~"}
+        "coq-compcert" {= "3.10"}
+        "coq-flocq" {>= "3.2.1"}
+version 2.10
+depends "ocaml"
+        "coq" {>= "8.13" & < "8.17~"}
+        "coq-compcert" {= "3.11"}
+        "coq-flocq" {>= "4.1.0"}
+version 2.11
+depends "ocaml"
+        "coq" {>= "8.14" & < "8.17~"}
+        "coq-compcert" {= "3.11"}
+        "coq-vst-zlist" {= "2.11"}
+        "coq-flocq" {>= "4.1.0"}
+version 2.11.1
+depends "ocaml"
+        "coq" {>= "8.14" & < "8.17~"}
+        "coq-compcert" {= "3.11"}
+        "coq-vst-zlist" {= "2.11"}
+        "coq-flocq" {>= "4.1.0"}
+version 2.12
+depends "ocaml"
+        "coq" {>= "8.14" & < "8.18~"}
+        "coq-compcert" {= "3.12"}
+        "coq-vst-zlist" {= version}
+        "coq-flocq" {>= "4.1.0"}
+version 2.13
+depends "ocaml"
+        "coq" {>= "8.16" & < "8.19~"}
+        "coq-compcert" {= "3.13.1"}
+        "coq-vst-zlist" {= version}
+        "coq-flocq" {>= "4.1.0"}
+version 2.14
+depends "ocaml"
+        "coq" {>= "8.17" & < "8.21~"}
+        "coq-compcert" {= "3.13.1"}
+        "coq-vst-zlist" {= "2.13"}
+        "coq-flocq" {>= "4.1.0"}
+version 2.15
+depends "ocaml"
+        "coq" {>= "8.19" & < "8.21~"}
+        "coq-compcert" {= "3.15"}
+        "coq-vst-zlist" {= "2.13"}
+        "coq-flocq" {>= "4.2.0"}
+version 2.16
+depends "ocaml"
+        "coq" {>= "9.0" & < "9.4~"}
+        "coq-compcert" {>= "3.16" & < "3.18~"}
+        "coq-vst-zlist" {= "2.13"}
+        "coq-flocq" {>= "4.2.0" & < "5~"}
+version 2.17
+depends "ocaml"
+        "coq-core" {>= "9.0" & < "9.4~"}
+        "rocq-stdlib"
+        "coq" {>= "9.0" & < "9.4~"}
+        "coq-compcert" {>= "3.18" & < "3.19~"}
+        "coq-vst-zlist" {= "2.13"}
+        "coq-flocq" {>= "4.2.0" & < "5~"}
+version 3.0beta2
+depends "ocaml"
+        "coq" {>= "8.18" & < "8.20~"}
+        "coq-compcert" {= "3.13.1"}
+        "coq-vst-zlist" {= "2.13"}
+        "coq-flocq" {>= "4.1.0"}
+        "coq-iris" {= "4.2.0"}
+version 3.1beta
+depends "ocaml"
+        "coq" {>= "8.19" & < "8.21~"}
+        "coq-compcert" {>= "3.15"}
+        "coq-flocq" {>= "4.1.0" & < "5.0"}
+        "coq-vst-zlist" {= "2.13"}
+        "coq-vcfloat" {>= "2.2"}
+        "coq-iris" {= "4.3.0"}
+        "coq-vst-ora" {= "1.0"}
+
+Exit: 0

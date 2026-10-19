@@ -1,0 +1,29 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "frama-c",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-timeout",
+    "10",
+    "-wp-par",
+    "1",
+    "-wp-report-json",
+    "/work/results/rework/wp-p4_binary_search-2-goals.json",
+    "/work/programs/p4_binary_search.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:06:37.196882+00:00",
+  "exit_code": 0,
+  "wall_seconds": 3.1964132371358573,
+  "output": "[kernel] Parsing programs/p4_binary_search.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function binary_search\n[wp] 22 goals scheduled\n[wp] Proved goals:   24 / 24\n  Terminating:       1\n  Unreachable:       1\n  Qed:              10 (7ms-10ms-34ms)\n  Alt-Ergo 2.5.4:   12 (10ms-25ms-55ms)\nPEAK_RSS_KB=132960\n"
+}

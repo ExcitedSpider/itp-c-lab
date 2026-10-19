@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "clightgen",
+    "-normalize",
+    "-o",
+    "vst/generated/p3_sum.v",
+    "programs/p3_sum.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:09:23.466184+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.02862962195649743,
+  "output": "PEAK_RSS_KB=19396\n"
+}

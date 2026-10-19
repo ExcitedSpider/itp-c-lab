@@ -1,0 +1,11 @@
+$ ["/usr/bin/time", "-f", "PEAK_RSS_KB=%M", "opam", "exec", "--", "refinedc", "check", "refinedc/p5_reverse.c"]
+Entering directory '/work/refinedc'
+        rocq proofs/p5_reverse/.c_itp_refinedc.theory.d
+        rocq proofs/p5_reverse/generated_code.{glob,vo}
+        rocq proofs/p5_reverse/generated_spec.{glob,vo}
+        rocq proofs/p5_reverse/generated_proof_reverse.{glob,vo}
+Leaving directory '/work/refinedc'
+File "refinedc/p5_reverse.c" successfully checked.
+PEAK_RSS_KB=615536
+
+Exit: 0

@@ -1,0 +1,16 @@
+{
+  "label": "vst-clightgen-probe",
+  "timestamp": "2026-10-19T02:04:03.573Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "clightgen",
+    "-version"
+  ],
+  "env": {},
+  "exit_code": null,
+  "signal": null,
+  "error": "spawnSync clightgen ENOENT",
+  "wall_seconds": 0.0015454149999999983,
+  "stdout": "",
+  "stderr": ""
+}

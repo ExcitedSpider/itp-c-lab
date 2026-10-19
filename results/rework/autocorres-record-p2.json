@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-c",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres/recording",
+    "C_ITP_Record_P2"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T06:28:02.852597+00:00",
+  "exit_code": 0,
+  "wall_seconds": 14.533848386723548,
+  "output": "Running C_ITP_Record_P2 ...\nFinished C_ITP_Record_P2 (0:00:06 elapsed time, 0:00:07 cpu time, factor 1.03)\n0:00:13 elapsed time, 0:00:07 cpu time, factor 0.54\n"
+}

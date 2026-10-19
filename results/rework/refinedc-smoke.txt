@@ -1,0 +1,51 @@
+$ ["opam", "exec", "--", "refinedc", "--help"]
+NAME
+       refinedc - RefinedC program verification framework.
+
+SYNOPSIS
+       refinedc [COMMAND] …
+
+COMMANDS
+       ail [OPTION]… FILE
+           Print the Cerberus Ail AST of the given C file to stdout.
+
+       check [OPTION]… FILE
+           Run RefinedC on the given C file.
+
+       clean [--soft] [OPTION]… FILE
+           Delete all the generated files for the given C source file.
+
+       cpp [OPTION]… FILE
+           Print the result of the Cerberus preprocessor to stdout.
+
+       help [OPTION]…
+           Show the main help page for RefinedC.
+
+       init [--coq-path=COQDIR] [OPTION]…
+           Create a new RefinedC project in the current directory.
+
+       version [OPTION]…
+           Show detailed version information for RefinedC.
+
+COMMON OPTIONS
+       --help[=FMT] (default=auto)
+           Show this help in format FMT. The value FMT must be one of auto,
+           pager, groff or plain. With auto, the format is pager or plain
+           whenever the TERM env var is dumb or undefined.
+
+       --version
+           Show version information.
+
+EXIT STATUS
+       refinedc exits with:
+
+       0   on success.
+
+       123 on indiscriminate errors reported on standard error.
+
+       124 on command line parsing errors.
+
+       125 on unexpected internal errors (bugs).
+
+
+Exit: 0

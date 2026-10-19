@@ -1,0 +1,64 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p4.v"]
+2 goals
+  
+  Espec : OracleKind
+  a : val
+  xs : list Z
+  n, key : Z
+  Delta_specs : Maps.PTree.t funspec
+  Delta := abbreviate : tycontext
+  H : 0 <= n <= Int.max_signed
+  H0 : Zlength xs = n
+  H1 : Int.min_signed <= key <= Int.max_signed
+  H2 : Forall (fun x : Z => Int.min_signed <= x <= Int.max_signed) xs
+  H3 : forall i j : Z, 0 <= i /\ i <= j < n -> Znth i xs <= Znth j xs
+  lo, hi : Z
+  HRE : lo < hi
+  H4 : 0 <= lo /\ lo <= hi <= n
+  H5 : forall i : Z, 0 <= i < lo -> Znth i xs < key
+  H6 : forall i : Z, hi <= i < n -> key < Znth i xs
+  Hm : lo <= lo + (hi - lo) / 2 < hi
+  H7 :
+    Int.repr (Znth (lo + (let (q, _) := Z.div_eucl (hi - lo) 2 in q)) xs) <>
+    Int.repr key
+  H8 :
+    Int.signed
+      (Int.repr (Znth (lo + (let (q, _) := Z.div_eucl (hi - lo) 2 in q)) xs)) <
+    key
+  ============================
+  ENTAIL Delta,
+  PROP ( )
+  LOCAL (temp _t'1 (Vint (Int.repr (Znth (lo + (hi - lo) / 2) xs)));
+  temp _t'2 (Vint (Int.repr (Znth (lo + (hi - lo) / 2) xs)));
+  temp _mid (Vint (Int.repr (lo + (hi - lo) / 2))); 
+  temp _a a; temp _n (Vint (Int.repr n)); temp _key (Vint (Int.repr key));
+  temp _lo (Vint (Int.repr lo)); temp _hi (Vint (Int.repr hi)))
+  SEP (data_at Tsh (tarray tint n) (map (fun x : Z => Vint (Int.repr x)) xs)
+         a)
+  |-- tc_expr Delta (_mid + (1))%expr
+
+goal 2 is:
+ ENTAIL Delta,
+ PROP ( )
+ LOCAL (temp _lo
+          (Vint (Int.add (Int.repr (lo + (hi - lo) / 2)) (Int.repr 1)));
+ temp _t'1 (Vint (Int.repr (Znth (lo + (hi - lo) / 2) xs)));
+ temp _t'2 (Vint (Int.repr (Znth (lo + (hi - lo) / 2) xs)));
+ temp _mid (Vint (Int.repr (lo + (hi - lo) / 2))); 
+ temp _a a; temp _n (Vint (Int.repr n)); temp _key (Vint (Int.repr key));
+ temp _hi (Vint (Int.repr hi)))
+ SEP (data_at Tsh (tarray tint n) (map (fun x : Z => Vint (Int.repr x)) xs) a)
+ |-- EX a0 : Z * Z,
+     PROP (0 <= fst a0 /\ fst a0 <= snd a0 <= n;
+     forall i : Z, 0 <= i < fst a0 -> Znth i xs < key;
+     forall i : Z, snd a0 <= i < n -> key < Znth i xs)
+     LOCAL (temp _a a; temp _n (Vint (Int.repr n));
+     temp _key (Vint (Int.repr key)); temp _lo (Vint (Int.repr (fst a0)));
+     temp _hi (Vint (Int.repr (snd a0))))
+     SEP (data_at Tsh (tarray tint n)
+            (map (fun x : Z => Vint (Int.repr x)) xs) a)
+File "./vst/verif_p4.v", line 60, characters 23-50:
+Error: No applicable tactic.
+
+
+Exit: 1

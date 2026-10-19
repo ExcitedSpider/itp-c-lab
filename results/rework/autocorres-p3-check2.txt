@@ -1,0 +1,34 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres", "C_ITP_P3"]
+Running C_ITP_P3 ...
+C_ITP_P3 FAILED (see also "isabelle build_log -H Error C_ITP_P3")
+*** Failed to finish proof:
+*** goal (10 subgoals):
+***  1. ⋀aa. ⟦aa < n; 0 ≤ aa; aa ≤ n⟧
+***          ⟹ IS_VALID(32 word) s
+***              (PTR_COERCE(32 signed word → 32 word) (a +⇩p aa))
+***  2. ⋀aa. ⟦aa < n; 0 ≤ aa; aa ≤ n⟧
+***          ⟹ - INT_MAX - 1
+***             ≤ sum_list (take (nat aa) xs) +
+***               sint
+***                (heap_w32 s (PTR_COERCE(32 signed word → 32 word) (a +⇩p aa)))
+***  3. ⋀aa. ⟦aa < n; 0 ≤ aa; aa ≤ n⟧
+***          ⟹ sum_list (take (nat aa) xs) +
+***             sint
+***              (heap_w32 s (PTR_COERCE(32 signed word → 32 word) (a +⇩p aa)))
+***             ≤ INT_MAX
+***  4. ⋀aa. ⟦aa < n; 0 ≤ aa; aa ≤ n⟧ ⟹ 0 ≤ 2147483649 + aa
+***  5. ⋀aa. ⟦aa < n; 0 ≤ aa; aa ≤ n⟧ ⟹ aa < INT_MAX
+***  6. ⋀aa. ⟦aa < n; 0 ≤ aa; aa ≤ n⟧ ⟹ 0 ≤ aa + 1
+***  7. ⋀aa. ⟦aa < n; 0 ≤ aa; aa ≤ n⟧ ⟹ aa + 1 ≤ n
+***  8. ⋀aa. ⟦aa < n; 0 ≤ aa; aa ≤ n⟧
+***          ⟹ sum_list (take (nat aa) xs) +
+***             sint
+***              (heap_w32 s (PTR_COERCE(32 signed word → 32 word) (a +⇩p aa))) =
+***             sum_list (take (nat (aa + 1)) xs)
+***  9. ⋀a. ⟦¬ a < n; 0 ≤ a; a ≤ n⟧ ⟹ sum_list (take (nat a) xs) = sum_list xs
+***  10. 0 ≤ n
+*** At command "done" (line 23 of "/work/autocorres/p3/P3.thy")
+Unfinished session(s): C_ITP_P3
+0:00:13 elapsed time, 0:00:07 cpu time, factor 0.53
+
+Exit: 1

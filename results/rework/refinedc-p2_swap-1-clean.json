@@ -1,0 +1,16 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "dune",
+    "clean",
+    "--root",
+    "refinedc"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:11:13.715267+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.027157170232385397,
+  "output": ""
+}

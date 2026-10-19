@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "refinedc",
+    "check",
+    "refinedc/p4_binary_search.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:12:08.895779+00:00",
+  "exit_code": 0,
+  "wall_seconds": 9.063720461446792,
+  "output": "Entering directory '/work/refinedc'\n        rocq proofs/p4_binary_search/.c_itp_refinedc.theory.d\n        rocq proofs/p4_binary_search/generated_code.{glob,vo}\n        rocq proofs/p4_binary_search/generated_spec.{glob,vo}\n        rocq proofs/p4_binary_search/generated_proof_binary_search.{glob,vo}\nLeaving directory '/work/refinedc'\nFile \"refinedc/p4_binary_search.c\" successfully checked.\nPEAK_RSS_KB=747464\n"
+}

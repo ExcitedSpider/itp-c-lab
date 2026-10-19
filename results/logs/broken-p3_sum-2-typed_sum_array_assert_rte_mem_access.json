@@ -1,0 +1,23 @@
+{
+  "label": "broken-p3_sum-2-typed_sum_array_assert_rte_mem_access",
+  "timestamp": "2026-10-19T02:13:38.127Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "/tmp/framac/4.14.1/bin/alt-ergo",
+    "--frontend",
+    "dolmen",
+    "--timelimit",
+    "3",
+    "results/generated/broken-p3_sum-12fee16e7b70/typed/zilch-typed_sum_array_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2"
+  ],
+  "env": {},
+  "exit_code": 0,
+  "signal": null,
+  "error": "spawnSync /usr/bin/time EPERM",
+  "wall_seconds": 0.029460575999999492,
+  "stdout": "\nunsat\n",
+  "stderr": "alt-ergo: option '--frontend': this option is deprecated and will be ignored in the next version\n\n; File \"results/generated/broken-p3_sum-12fee16e7b70/typed/zilch-typed_sum_array_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2\", line 906, characters 1-12: Valid (0.0131) (148 steps) (goal g_1)\nPEAK_RSS_KB=24420\n"
+}

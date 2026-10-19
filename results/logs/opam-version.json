@@ -1,0 +1,16 @@
+{
+  "label": "opam-version",
+  "timestamp": "2026-10-19T01:56:31.624Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "opam",
+    "--version"
+  ],
+  "env": {},
+  "exit_code": 0,
+  "signal": null,
+  "error": "spawnSync opam EPERM",
+  "wall_seconds": 0.026178449,
+  "stdout": "2.5.1\n",
+  "stderr": ""
+}

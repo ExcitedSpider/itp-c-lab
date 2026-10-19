@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "clightgen",
+    "-normalize",
+    "-o",
+    "vst/generated/p4_binary_search.v",
+    "programs/p4_binary_search.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:09:52.567309+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.028554431162774563,
+  "output": "PEAK_RSS_KB=19324\n"
+}

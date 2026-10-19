@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/generated/p3_sum.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:09:24.002485+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.5354809630662203,
+  "output": "File \"./vst/generated/p3_sum.v\", line 1, characters 0-43:\nWarning: \"From Coq\" has been replaced by \"From Stdlib\".\n[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]\nPEAK_RSS_KB=489372\n"
+}

@@ -1,0 +1,76 @@
+<recording theory="Draft.P1"><step name="theory" start_symbol="1" end_symbol="49" line="1" proof_open="false"><command>theory P1
+imports AutoCorres2.AutoCorres
+begin</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="49" end_symbol="50" line="3" proof_open="false"><command>
+</command><output></output></step><step name="install_C_file" start_symbol="50" end_symbol="75" line="4" proof_open="false"><command>install_C_file p1_abs.c</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="75" end_symbol="76" line="4" proof_open="false"><command>
+</command><output></output></step><step name="autocorres" start_symbol="76" end_symbol="117" line="5" proof_open="false"><command>autocorres [ts_rules = nondet] p1_abs.c</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="117" end_symbol="118" line="5" proof_open="false"><command>
+</command><output></output></step><step name="context" start_symbol="118" end_symbol="155" line="6" proof_open="false"><command>context p1_abs_global_addresses begin</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="155" end_symbol="156" line="6" proof_open="false"><command>
+</command><output></output></step><step name="thm" start_symbol="156" end_symbol="172" line="7" proof_open="false"><command>thm abs_val&apos;_def</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="172" end_symbol="173" line="7" proof_open="false"><command>
+</command><output></output></step><step name="lemma" start_symbol="173" end_symbol="289" line="8" proof_open="true"><command>lemma abs_val_correct:
+  assumes -2147483648 &lt; x x \&lt;le&gt; 2147483647
+  shows abs_val&apos; x \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r _. r = abs x \&lt;rbrace&gt;</command><output>proof (prove)
+goal (1 subgoal):
+ 1. abs_val&apos; x
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r _. r = \&lt;bar&gt;x\&lt;bar&gt; \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="289" end_symbol="292" line="10" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. abs_val&apos; x
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r _. r = \&lt;bar&gt;x\&lt;bar&gt; \&lt;rbrace&gt;</output></step><step name="unfolding" start_symbol="292" end_symbol="314" line="11" proof_open="true"><command>unfolding abs_val&apos;_def</command><output>proof (prove)
+goal (1 subgoal):
+ 1. condition (\&lt;lambda&gt;s. x &lt; 0)
+      (do {
+         guard (\&lt;lambda&gt;_. - x \&lt;le&gt; INT_MAX);
+         return (- x)
+       })
+      (return x)
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r _. r = \&lt;bar&gt;x\&lt;bar&gt; \&lt;rbrace&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="314" end_symbol="317" line="11" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. condition (\&lt;lambda&gt;s. x &lt; 0)
+      (do {
+         guard (\&lt;lambda&gt;_. - x \&lt;le&gt; INT_MAX);
+         return (- x)
+       })
+      (return x)
+    \&lt;bullet&gt; s \&lt;lbrace&gt; \&lt;lambda&gt;Res r _. r = \&lt;bar&gt;x\&lt;bar&gt; \&lt;rbrace&gt;</output></step><step name="apply" start_symbol="317" end_symbol="334" line="12" proof_open="true"><command>apply runs_to_vcg</command><output>proof (prove)
+goal (2 subgoals):
+ 1. x &lt; 0 \&lt;Longrightarrow&gt; - x \&lt;le&gt; INT_MAX
+ 2. x &lt; 0 \&lt;Longrightarrow&gt; - x = \&lt;bar&gt;x\&lt;bar&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="334" end_symbol="337" line="12" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (2 subgoals):
+ 1. x &lt; 0 \&lt;Longrightarrow&gt; - x \&lt;le&gt; INT_MAX
+ 2. x &lt; 0 \&lt;Longrightarrow&gt; - x = \&lt;bar&gt;x\&lt;bar&gt;</output></step><step name="subgoal" start_symbol="337" end_symbol="344" line="13" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. x &lt; 0 \&lt;Longrightarrow&gt; - x \&lt;le&gt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="344" end_symbol="345" line="13" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. x &lt; 0 \&lt;Longrightarrow&gt; - x \&lt;le&gt; INT_MAX</output></step><step name="using" start_symbol="345" end_symbol="356" line="13" proof_open="true"><command>using assms</command><output>proof (prove)
+using this:
+  - 2147483648 &lt; x
+  x \&lt;le&gt; 2147483647
+
+goal (1 subgoal):
+ 1. x &lt; 0 \&lt;Longrightarrow&gt; - x \&lt;le&gt; INT_MAX</output></step><step name="&lt;ignored&gt;" start_symbol="356" end_symbol="357" line="13" proof_open="true"><command> </command><output>proof (prove)
+using this:
+  - 2147483648 &lt; x
+  x \&lt;le&gt; 2147483647
+
+goal (1 subgoal):
+ 1. x &lt; 0 \&lt;Longrightarrow&gt; - x \&lt;le&gt; INT_MAX</output></step><step name="by" start_symbol="357" end_symbol="393" line="13" proof_open="true"><command>by (simp add: INT_MAX_def; linarith)</command><output>proof (prove)
+goal (1 subgoal):
+ 1. x &lt; 0 \&lt;Longrightarrow&gt; - x = \&lt;bar&gt;x\&lt;bar&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="393" end_symbol="396" line="13" proof_open="true"><command>
+  </command><output>proof (prove)
+goal (1 subgoal):
+ 1. x &lt; 0 \&lt;Longrightarrow&gt; - x = \&lt;bar&gt;x\&lt;bar&gt;</output></step><step name="subgoal" start_symbol="396" end_symbol="403" line="14" proof_open="true"><command>subgoal</command><output>proof (prove)
+goal (1 subgoal):
+ 1. x &lt; 0 \&lt;Longrightarrow&gt; - x = \&lt;bar&gt;x\&lt;bar&gt;</output></step><step name="&lt;ignored&gt;" start_symbol="403" end_symbol="404" line="14" proof_open="true"><command> </command><output>proof (prove)
+goal (1 subgoal):
+ 1. x &lt; 0 \&lt;Longrightarrow&gt; - x = \&lt;bar&gt;x\&lt;bar&gt;</output></step><step name="by" start_symbol="404" end_symbol="411" line="14" proof_open="true"><command>by simp</command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="&lt;ignored&gt;" start_symbol="411" end_symbol="414" line="14" proof_open="true"><command>
+  </command><output>proof (prove)
+goal:
+No subgoals!</output></step><step name="done" start_symbol="414" end_symbol="418" line="15" proof_open="false"><command>done</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="418" end_symbol="419" line="15" proof_open="false"><command>
+</command><output></output></step><step name="ML" start_symbol="419" end_symbol="594" line="16" proof_open="false"><command>ML val _ = if null (Thm_Deps.all_oracles [@{thm abs_val_correct}]) then
+  writeln &quot;AUDIT: abs_val_correct has no oracle dependencies&quot; else error &quot;Oracle dependency detected&quot;</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="594" end_symbol="595" line="17" proof_open="false"><command>
+</command><output></output></step><step name="end" start_symbol="595" end_symbol="598" line="18" proof_open="false"><command>end</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="598" end_symbol="599" line="18" proof_open="false"><command>
+</command><output></output></step><step name="end" start_symbol="599" end_symbol="602" line="19" proof_open="false"><command>end</command><output></output></step><step name="&lt;ignored&gt;" start_symbol="602" end_symbol="603" line="19" proof_open="false"><command>
+</command><output></output></step></recording>

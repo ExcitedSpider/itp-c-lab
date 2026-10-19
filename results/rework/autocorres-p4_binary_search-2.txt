@@ -1,0 +1,8 @@
+$ ["/usr/bin/time", "-f", "PEAK_RSS_KB=%M", "/home/isabelle/Isabelle/bin/isabelle", "build", "-c", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres", "C_ITP_P4"]
+Cleaned C_ITP_P4
+Running C_ITP_P4 ...
+Finished C_ITP_P4 (0:00:17 elapsed time, 0:00:19 cpu time, factor 1.13)
+0:00:23 elapsed time, 0:00:19 cpu time, factor 0.83
+PEAK_RSS_KB=2410832
+
+Exit: 0

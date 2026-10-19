@@ -1,0 +1,41 @@
+{
+  "label": "wp-p2_swap-1",
+  "timestamp": "2026-10-19T01:58:37.908Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "/tmp/framac/4.14.1/bin/frama-c",
+    "-wp-why3-extra-config",
+    "wp/why3.conf",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-par",
+    "1",
+    "-wp-timeout",
+    "10",
+    "-wp-cache",
+    "none",
+    "programs/p2_swap.c"
+  ],
+  "env": {
+    "OCAMLPATH": "/tmp/framac/4.14.1/lib",
+    "DUNE_DIR_LOCATIONS": "frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"
+  },
+  "exit_code": 0,
+  "signal": null,
+  "error": "spawnSync /usr/bin/time EPERM",
+  "wall_seconds": 103.18005287599999,
+  "stdout": "[kernel] Parsing programs/p2_swap.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function swap\n[wp] 8 goals scheduled\n[wp] [Failure] typed_swap_ensures (Qed 2ms) (Alt-Ergo)\n[wp] [Failure] typed_swap_assert_rte_mem_access (Qed 2ms) (Alt-Ergo)\n[wp] [Failure] typed_swap_assert_rte_mem_access_3 (Qed 3ms) (Alt-Ergo)\n[wp] Proved goals:    7 / 10\n  Terminating:     1\n  Unreachable:     1\n  Qed:             5 (2ms-0.87ms-3ms)\n  Failed:          3\n",
+  "stderr": "/tmp/ppannot551aec.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined\n    1 | #define __STDC_EMBED_NOT_FOUND__ 0\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot551aec.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined\n    2 | #define __STDC_EMBED_FOUND__ 1\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot551aec.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined\n    3 | #define __STDC_EMBED_EMPTY__ 2\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\ncc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics\nPEAK_RSS_KB=102912\n",
+  "source_sha256": "3a6e88f7f3afd823d1cc436b8e521cc223ae67bccceb33041cd3e2a701f11f7f",
+  "proved": 7,
+  "total": 10,
+  "all_generated_goals_closed": false,
+  "peak_rss_kb": 102912
+}

@@ -1,0 +1,12 @@
+$ ["/usr/bin/time", "-f", "PEAK_RSS_KB=%M", "opam", "exec", "--", "refinedc", "check", "refinedc/p3_sum.c"]
+Entering directory '/work/refinedc'
+        rocq proofs/p3_sum/.c_itp_refinedc.theory.d
+        rocq proofs/p3_sum/generated_code.{glob,vo}
+        rocq proofs/p3_sum/sum_extra.{glob,vo}
+        rocq proofs/p3_sum/generated_spec.{glob,vo}
+        rocq proofs/p3_sum/generated_proof_sum_array.{glob,vo}
+Leaving directory '/work/refinedc'
+File "refinedc/p3_sum.c" successfully checked.
+PEAK_RSS_KB=618944
+
+Exit: 0

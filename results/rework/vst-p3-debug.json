@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p3.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:47:23.625467+00:00",
+  "exit_code": 1,
+  "wall_seconds": 0.7410463113337755,
+  "output": "File \"./vst/verif_p3.v\", line 13, characters 35-38:\nError: Tactic failure:  Cannot find witness.\n\n"
+}

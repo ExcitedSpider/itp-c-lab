@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p5.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:49:50.844190+00:00",
+  "exit_code": 1,
+  "wall_seconds": 2.1693935398943722,
+  "output": "1 goal\n  \n  Espec : OracleKind\n  xs : list int\n  p : val\n  Delta_specs : Maps.PTree.t funspec\n  Delta := abbreviate : tycontext\n  ys : list int\n  z : int\n  zs : list int\n  r, l : val\n  HRE : l <> nullval\n  H : xs = rev ys ++ z :: zs\n  q : val\n  ============================\n  ENTAIL Delta,\n  PROP ( )\n  LOCAL (temp _l q; temp _r l; temp _next q)\n  SEP (listrep ys r; data_at Tsh tnode (Vint z, r) l; listrep zs q)\n  |-- EX a : list int * list int * val * val,\n      PROP (xs = rev (fst (fst (fst a))) ++ snd (fst (fst a)))\n      LOCAL (temp _r (snd (fst a)); temp _l (snd a))\n      SEP (listrep (fst (fst (fst a))) (snd (fst a));\n      listrep (snd (fst (fst a))) (snd a))\nFile \"./vst/verif_p5.v\", line 50, characters 12-33:\nError: No applicable tactic.\n\n"
+}

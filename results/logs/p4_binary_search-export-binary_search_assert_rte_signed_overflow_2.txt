@@ -1,0 +1,21 @@
+$ ["timeout","-k","1","1","/tmp/framac/4.14.1/bin/frama-c","-wp-why3-extra-config","wp/why3.conf","-machdep","x86_64","-wp","-wp-rte","-wp-prover","alt-ergo","-wp-cache","none","-wp-prop","binary_search_assert_rte_signed_overflow_2","-wp-par","1","-wp-out","results/replay/p4_binary_search/binary_search_assert_rte_signed_overflow_2","programs/p4_binary_search.c"]
+Environment overrides: {"OCAMLPATH":"/tmp/framac/4.14.1/lib","DUNE_DIR_LOCATIONS":"frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"}
+[kernel] Parsing programs/p4_binary_search.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function binary_search
+[wp] Warning: No goal generated
+/tmp/ppannot836c4e.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined
+    1 | #define __STDC_EMBED_NOT_FOUND__ 0
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+/tmp/ppannot836c4e.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined
+    2 | #define __STDC_EMBED_FOUND__ 1
+      |         ^~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+/tmp/ppannot836c4e.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined
+    3 | #define __STDC_EMBED_EMPTY__ 2
+      |         ^~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+cc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics
+
+Exit: 0; signal: null; wall_seconds: 0.15167124700000023

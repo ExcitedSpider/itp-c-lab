@@ -1,0 +1,17 @@
+$ ["opam", "exec", "--", "coqc", "-Q", "vst/generated", "CPrograms", "vst/verif_p4.v"]
+File "./vst/verif_p4.v", line 12, characters 17-28:
+Error:
+In environment
+x : val * list Z * Z * Z
+p : val * list Z * Z
+key : Z
+p0 : val * list Z
+n : Z
+a : val
+xs : list Z
+i : Z
+j : Z
+The term "0 <= i <= j" has type "Prop" while it is expected to have type "Z".
+
+
+Exit: 1

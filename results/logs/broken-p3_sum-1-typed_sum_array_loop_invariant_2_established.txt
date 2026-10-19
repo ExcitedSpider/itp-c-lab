@@ -1,0 +1,13 @@
+$ ["/usr/bin/time","-f","PEAK_RSS_KB=%M","/tmp/framac/4.14.1/bin/alt-ergo","--frontend","dolmen","--timelimit","3","results/generated/broken-p3_sum-12fee16e7b70/typed/zilch-typed_sum_array_loop_invariant_2_established_AltmnErgo_2dt6dt0-wp_goal.psmt2"]
+Environment overrides: {}
+
+unknown
+(error "timeout")
+alt-ergo: option '--frontend': this option is deprecated and will be ignored in the next version
+
+; File "results/generated/broken-p3_sum-12fee16e7b70/typed/zilch-typed_sum_array_loop_invariant_2_established_AltmnErgo_2dt6dt0-wp_goal.psmt2", line 883, characters 1-12: Timeout (3.0007) (78598 steps) (goal g_1)
+Command exited with non-zero status 142
+PEAK_RSS_KB=112668
+
+Runner error: spawnSync /usr/bin/time EPERM
+Exit: 142; signal: null; wall_seconds: 3.0629329779999996

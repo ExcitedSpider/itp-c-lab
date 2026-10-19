@@ -1,0 +1,10 @@
+$ ["sh", "-c", "opam pin add -n -y cerberus-lib git+https://github.com/rems-project/cerberus.git#f11e6b335a687c1b77539f7e5695607d09dfc3ea && opam pin add -n -y coq-lithium /home/opam/refinedc && opam pin add -n -y refinedc /home/opam/refinedc"]
+[NOTE] Package cerberus-lib does not exist in opam repositories registered in the current switch.
+[cerberus-lib.dev] synchronised (git+https://github.com/rems-project/cerberus.git#f11e6b335a687c1b77539f7e5695607d09dfc3ea)
+cerberus-lib is now pinned to git+https://github.com/rems-project/cerberus.git#f11e6b335a687c1b77539f7e5695607d09dfc3ea (version dev)
+[coq-lithium.dev.2026-09-11.0.2e89846b] synchronised (git+file:///home/opam/refinedc#master)
+coq-lithium is now pinned to git+file:///home/opam/refinedc#master (version dev.2026-09-11.0.2e89846b)
+[refinedc.dev.2026-09-11.0.2e89846b] synchronised (git+file:///home/opam/refinedc#master)
+refinedc is now pinned to git+file:///home/opam/refinedc#master (version dev.2026-09-11.0.2e89846b)
+
+Exit: 0

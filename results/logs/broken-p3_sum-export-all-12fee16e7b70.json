@@ -1,0 +1,37 @@
+{
+  "label": "broken-p3_sum-export-all-12fee16e7b70",
+  "timestamp": "2026-10-19T02:13:07.161Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "/tmp/framac/4.14.1/bin/frama-c",
+    "-wp-why3-extra-config",
+    "wp/why3.conf",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-timeout",
+    "1",
+    "-wp-par",
+    "64",
+    "-wp-msg-key",
+    "prover",
+    "-wp-out",
+    "results/generated/broken-p3_sum-12fee16e7b70",
+    "-wp-report-json",
+    "results/broken-p3_sum-export-report.json",
+    "wp/broken/p3_sum.c"
+  ],
+  "env": {
+    "OCAMLPATH": "/tmp/framac/4.14.1/lib",
+    "DUNE_DIR_LOCATIONS": "frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"
+  },
+  "exit_code": 0,
+  "signal": null,
+  "error": "spawnSync /tmp/framac/4.14.1/bin/frama-c EPERM",
+  "wall_seconds": 239.38853263500002,
+  "stdout": "[kernel] Parsing wp/broken/p3_sum.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function sum_array\n[wp] 14 goals scheduled\n[wp] [Qed] Goal typed_sum_array_ensures preprocessing\n[wp] [Qed] Goal typed_sum_array_loop_invariant_preserved preprocessing\n[wp] [Qed] Goal typed_sum_array_loop_invariant_established preprocessing\n[wp] [Qed] Goal typed_sum_array_loop_invariant_2_preserved preprocessing\n[wp] [Qed] Goal typed_sum_array_loop_invariant_2_established preprocessing\n[wp] [Qed] Goal typed_sum_array_assert preprocessing\n[wp] [Qed] Goal typed_sum_array_assert_rte_mem_access preprocessing\n[wp] [Qed] Goal typed_sum_array_assert_rte_signed_overflow preprocessing\n[wp] [Qed] Goal typed_sum_array_assert_rte_signed_overflow_2 preprocessing\n[wp] [Qed] Goal typed_sum_array_assert_rte_signed_overflow_3 preprocessing\n[wp] [Qed] Goal typed_sum_array_loop_assigns preprocessing\n[wp] [Qed] Goal typed_sum_array_assigns preprocessing\n[wp] [Qed] Goal typed_sum_array_loop_variant_decrease preprocessing\n[wp] [Qed] Goal typed_sum_array_loop_variant_positive preprocessing\n[wp:prover] \n  Prover command \"/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f\"\n[wp:prover] \n  Prover command \"/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f\"\n[wp:prover] \n  Prover command \"/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f\"\n[wp:prover] \n  Prover command \"/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f\"\n[wp:prover] \n  Prover command \"/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f\"\n[wp:prover] \n  Prover command \"/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f\"\n[wp:prover] \n  Prover command \"/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f\"\n[wp] [Failure] typed_sum_array_assert_rte_signed_overflow_2 (Qed 3ms) (Alt-Ergo)\n[wp] [Failure] typed_sum_array_assert_rte_signed_overflow (Qed 3ms) (Alt-Ergo)\n[wp] [Failure] typed_sum_array_assert_rte_mem_access (Qed 5ms) (Alt-Ergo)\n[wp] [Failure] typed_sum_array_assert (Qed 4ms) (Alt-Ergo)\n[wp] [Failure] typed_sum_array_loop_invariant_2_established (Qed 2ms) (Alt-Ergo)\n[wp] [Failure] typed_sum_array_loop_invariant_2_preserved (Qed 5ms) (Alt-Ergo)\n[wp] [Failure] typed_sum_array_ensures (Qed 5ms) (Alt-Ergo)\n[wp] Proved goals:    9 / 16\n  Terminating:     1\n  Unreachable:     1\n  Qed:             7 (2ms-2ms-5ms)\n  Failed:          7\n",
+  "stderr": "/tmp/ppannot2e6cfd.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined\n    1 | #define __STDC_EMBED_NOT_FOUND__ 0\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot2e6cfd.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined\n    2 | #define __STDC_EMBED_FOUND__ 1\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\n/tmp/ppannot2e6cfd.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined\n    3 | #define __STDC_EMBED_EMPTY__ 2\n      |         ^~~~~~~~~~~~~~~~~~~~\n<built-in>: note: this is the location of the previous definition\ncc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics\n"
+}

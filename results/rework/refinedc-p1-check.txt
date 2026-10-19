@@ -1,0 +1,10 @@
+$ ["opam", "exec", "--", "refinedc", "check", "refinedc/p1_abs.c"]
+Entering directory '/work/refinedc'
+        rocq proofs/p1_abs/.c_itp_refinedc.theory.d
+        rocq proofs/p1_abs/generated_code.{glob,vo}
+        rocq proofs/p1_abs/generated_spec.{glob,vo}
+        rocq proofs/p1_abs/generated_proof_abs_val.{glob,vo}
+Leaving directory '/work/refinedc'
+File "refinedc/p1_abs.c" successfully checked.
+
+Exit: 0

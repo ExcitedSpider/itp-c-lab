@@ -1,0 +1,48 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres", "C_ITP_P4"]
+Running C_ITP_P4 ...
+C_ITP_P4 FAILED (see also "isabelle build_log -H Error C_ITP_P4")
+...
+***             ⟹ IS_VALID(32 word) s
+***                 (PTR_COERCE(32 signed word → 32 word) (a +⇩p i)) ∧
+***                sint
+***                 (heap_w32 s
+***                   (PTR_COERCE(32 signed word → 32 word) (a +⇩p i))) =
+***                xs ! nat i⟧
+***        ⟹ xs ! i < key
+***  3. ⋀aa b i.
+***        ⟦b < aa; 0 ≤ b; aa ≤ int (length xs); ∀i<nat b. xs ! i < key;
+***         ∀i. nat aa ≤ i ∧ i < length xs ⟶ key < xs ! i;
+***         heap_w32 s
+***          (PTR_COERCE(32 signed word → 32 word)
+***            (a +⇩p (b + (aa - b) div 2))) ≠
+***         word_of_int key;
+***         ¬ xs ! nat (b + (aa - b) div 2) < key; nat (b + (aa - b) div 2) ≤ i;
+***         i < length xs; n = int (length xs); length xs ≤ 2147483647;
+***         - 2147483648 ≤ key; key ≤ 2147483647;
+***         ∀i j. i ≤ j ∧ j < length xs ⟶ xs ! i ≤ xs ! j;
+***         ⋀i. ⟦0 ≤ i; i < int (length xs)⟧
+***             ⟹ IS_VALID(32 word) s
+***                 (PTR_COERCE(32 signed word → 32 word) (a +⇩p i)) ∧
+***                sint
+***                 (heap_w32 s
+***                   (PTR_COERCE(32 signed word → 32 word) (a +⇩p i))) =
+***                xs ! nat i⟧
+***        ⟹ key < xs ! i
+***  4. ⋀aa. ⟦0 ≤ aa; aa ≤ int (length xs); ∀i<nat aa. xs ! i < key;
+***           ∀i. nat aa ≤ i ∧ i < length xs ⟶ key < xs ! i;
+***           n = int (length xs); length xs ≤ 2147483647; - 2147483648 ≤ key;
+***           key ≤ 2147483647; ∀i j. i ≤ j ∧ j < length xs ⟶ xs ! i ≤ xs ! j;
+***           ⋀i. ⟦0 ≤ i; i < int (length xs)⟧
+***               ⟹ IS_VALID(32 word) s
+***                   (PTR_COERCE(32 signed word → 32 word) (a +⇩p i)) ∧
+***                  sint
+***                   (heap_w32 s
+***                     (PTR_COERCE(32 signed word → 32 word) (a +⇩p i))) =
+***                  xs ! nat i;
+***           key ∈ set xs⟧
+***          ⟹ False
+*** At command "done" (line 49 of "/work/autocorres/p4/P4.thy")
+Unfinished session(s): C_ITP_P4
+0:00:19 elapsed time, 0:00:15 cpu time, factor 0.79
+
+Exit: 1

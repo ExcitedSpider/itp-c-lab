@@ -1,0 +1,269 @@
+{
+  "source": "programs/p1_abs.c",
+  "source_sha256": "28e5c7ddc1f2f1ed5a7dac6dcc920ae307080c39c708594088500eb22a90b9a6",
+  "mode": "Fresh WP inventory + replay of previously exported SMT tasks; NOT end-to-end source check timing",
+  "complete": true,
+  "same_outcomes": true,
+  "median_seconds": 0.207126313,
+  "peak_rss_kb": 90080,
+  "runs": [
+    {
+      "run": 1,
+      "wall_seconds": 0.207126313,
+      "peak_rss_kb": 89720,
+      "goals": [
+        {
+          "goal": "typed_abs_val_ensures",
+          "property": "abs_val_ensures",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p1_abs.c",
+          "line": 5,
+          "function": "abs_val",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_abs_val_assert_rte_signed_overflow",
+          "property": "abs_val_assert_rte_signed_overflow",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p1_abs.c",
+          "line": 8,
+          "function": "abs_val",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_abs_val_assigns_part1",
+          "property": "abs_val_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p1_abs.c",
+          "line": 7,
+          "function": "abs_val",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_abs_val_assigns_part2",
+          "property": "abs_val_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p1_abs.c",
+          "line": 7,
+          "function": "abs_val",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        }
+      ],
+      "inventory_exit": 0,
+      "warnings": [],
+      "all_obligations_closed": true
+    },
+    {
+      "run": 2,
+      "wall_seconds": 0.20739978,
+      "peak_rss_kb": 89924,
+      "goals": [
+        {
+          "goal": "typed_abs_val_ensures",
+          "property": "abs_val_ensures",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p1_abs.c",
+          "line": 5,
+          "function": "abs_val",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_abs_val_assert_rte_signed_overflow",
+          "property": "abs_val_assert_rte_signed_overflow",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p1_abs.c",
+          "line": 8,
+          "function": "abs_val",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_abs_val_assigns_part1",
+          "property": "abs_val_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p1_abs.c",
+          "line": 7,
+          "function": "abs_val",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_abs_val_assigns_part2",
+          "property": "abs_val_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p1_abs.c",
+          "line": 7,
+          "function": "abs_val",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        }
+      ],
+      "inventory_exit": 0,
+      "warnings": [],
+      "all_obligations_closed": true
+    },
+    {
+      "run": 3,
+      "wall_seconds": 0.20428578199999997,
+      "peak_rss_kb": 90080,
+      "goals": [
+        {
+          "goal": "typed_abs_val_ensures",
+          "property": "abs_val_ensures",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p1_abs.c",
+          "line": 5,
+          "function": "abs_val",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_abs_val_assert_rte_signed_overflow",
+          "property": "abs_val_assert_rte_signed_overflow",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p1_abs.c",
+          "line": 8,
+          "function": "abs_val",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_abs_val_assigns_part1",
+          "property": "abs_val_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p1_abs.c",
+          "line": 7,
+          "function": "abs_val",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_abs_val_assigns_part2",
+          "property": "abs_val_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p1_abs.c",
+          "line": 7,
+          "function": "abs_val",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        }
+      ],
+      "inventory_exit": 0,
+      "warnings": [],
+      "all_obligations_closed": true
+    }
+  ]
+}

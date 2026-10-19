@@ -1,0 +1,39 @@
+$ ["/usr/bin/time","-f","PEAK_RSS_KB=%M","/tmp/framac/4.14.1/bin/frama-c","-wp-why3-extra-config","wp/why3.conf","-machdep","x86_64","-wp","-wp-rte","-wp-prover","alt-ergo","-wp-gen","-wp-report-json","results/p5_reverse-inventory-1.json","programs/p5_reverse.c"]
+Environment overrides: {"OCAMLPATH":"/tmp/framac/4.14.1/lib","DUNE_DIR_LOCATIONS":"frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"}
+[kernel] Parsing programs/p5_reverse.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function reverse
+[wp] programs/p5_reverse.c:24: Warning: 
+  Missing assigns clause (assigns 'everything' instead)
+[wp] 7 goals scheduled
+[wp] 7 goals generated
+[wp:pedantic-assigns] programs/p5_reverse.c:22: Warning: 
+  No 'assigns \result \from ...' specification for function 'reverse'returning pointer type.
+  Callers assumptions might be imprecise.
+[wp:pedantic-assigns] programs/p5_reverse.c:14: Warning: 
+  No \from specification for assigned pointer '{p->next |
+                                                struct node *p;
+                                                              ∃ ℤ n, ℤ i;
+                                                                list{Old}(l, n) ∧
+                                                                0 ≤ i < n ∧
+                                                                p ≡
+                                                                nth{Old}
+                                                                (l, i)}'.
+  Callers assumptions might be imprecise.
+/tmp/ppannot830a31.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined
+    1 | #define __STDC_EMBED_NOT_FOUND__ 0
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+/tmp/ppannot830a31.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined
+    2 | #define __STDC_EMBED_FOUND__ 1
+      |         ^~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+/tmp/ppannot830a31.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined
+    3 | #define __STDC_EMBED_EMPTY__ 2
+      |         ^~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+cc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics
+PEAK_RSS_KB=96768
+
+Runner error: spawnSync /usr/bin/time EPERM
+Exit: 0; signal: null; wall_seconds: 0.325314199

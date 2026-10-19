@@ -1,0 +1,9 @@
+["/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell", "--headless", "--no-sandbox", "--disable-dev-shm-usage", "--no-first-run", "--hide-scrollbars", "--window-size=1440,1100", "--virtual-time-budget=1000", "--dump-dom", "--screenshot=/work/results/rework/laptop.png", "file:///tmp/tmp9ztm192o/test.html"]
+[1019/065401.941815:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1019/065401.942468:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1019/065401.942510:ERROR:dbus/bus.cc:406] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1019/065401.949899:WARNING:device/bluetooth/dbus/bluez_dbus_manager.cc:209] Floss manager service not available, cannot set Floss enable/disable.
+[1019/065401.953742:WARNING:sandbox/policy/linux/sandbox_linux.cc:404] InitializeSandbox() called with multiple threads in process gpu-process.
+221879 bytes written to file /work/results/rework/laptop.png
+
+Exit: 0

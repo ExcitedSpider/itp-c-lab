@@ -1,0 +1,18 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres", "C_ITP_P3"]
+Running C_ITP_P3 ...
+C_ITP_P3 FAILED (see also "isabelle build_log -H Error C_ITP_P3")
+*** Failed to apply proof method (line 48 of "/work/autocorres/p3/P3.thy"):
+*** goal (1 subgoal):
+***  1. ⟦i < n; 0 ≤ i; i ≤ n⟧
+***     ⟹ - INT_MAX - 1
+***        ≤ sum_list (take (nat i) xs) +
+***          sint
+***           (heap_w32 s
+***             (PTR_COERCE(32 signed word → 32 word)
+***               (a +⇩p
+***                i)))
+*** At command "apply" (line 48 of "/work/autocorres/p3/P3.thy")
+Unfinished session(s): C_ITP_P3
+0:00:14 elapsed time, 0:00:08 cpu time, factor 0.57
+
+Exit: 1

@@ -1,0 +1,85 @@
+$ ["/tmp/framac/4.14.1/bin/frama-c","-wp-why3-extra-config","wp/why3.conf","-machdep","x86_64","-wp","-wp-rte","-wp-prover","alt-ergo","-wp-timeout","1","-wp-par","64","-wp-msg-key","prover","-wp-out","results/generated/p4_binary_search-39ffbee46cd0","-wp-report-json","results/p4_binary_search-export-report.json","programs/p4_binary_search.c"]
+Environment overrides: {"OCAMLPATH":"/tmp/framac/4.14.1/lib","DUNE_DIR_LOCATIONS":"frama-c:share:/tmp/framac/4.14.1/share/frama-c:frama-c:lib:/tmp/framac/4.14.1/lib/frama-c"}
+[kernel] Parsing programs/p4_binary_search.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function binary_search
+[wp] 22 goals scheduled
+[wp] [Qed] Goal typed_binary_search_ensures preprocessing
+[wp] [Qed] Goal typed_binary_search_ensures_2 preprocessing
+[wp] [Qed] Goal typed_binary_search_ensures_3 preprocessing
+[wp] [Qed] Goal typed_binary_search_loop_invariant_preserved preprocessing
+[wp] [Qed] Goal typed_binary_search_loop_invariant_established preprocessing
+[wp] [Qed] Goal typed_binary_search_loop_invariant_2_preserved preprocessing
+[wp] [Qed] Goal typed_binary_search_loop_invariant_2_established preprocessing
+[wp] [Qed] Goal typed_binary_search_loop_invariant_3_preserved preprocessing
+[wp] [Qed] Goal typed_binary_search_loop_invariant_3_established preprocessing
+[wp] [Qed] Goal typed_binary_search_assert_rte_signed_overflow preprocessing
+[wp] [Qed] Goal typed_binary_search_assert_rte_signed_overflow_2 preprocessing
+[wp] [Qed] Goal typed_binary_search_assert_rte_signed_overflow_3 preprocessing
+[wp] [Qed] Goal typed_binary_search_assert_rte_signed_overflow_4 preprocessing
+[wp] [Qed] Goal typed_binary_search_assert_rte_mem_access preprocessing
+[wp] [Qed] Goal typed_binary_search_assert_rte_mem_access_2 preprocessing
+[wp] [Qed] Goal typed_binary_search_assert_rte_signed_overflow_5 preprocessing
+[wp] [Qed] Goal typed_binary_search_loop_assigns preprocessing
+[wp] [Qed] Goal typed_binary_search_assigns_part1 preprocessing
+[wp] [Qed] Goal typed_binary_search_assigns_part2 preprocessing
+[wp] [Qed] Goal typed_binary_search_assigns_part3 preprocessing
+[wp] [Qed] Goal typed_binary_search_loop_variant_decrease preprocessing
+[wp] [Qed] Goal typed_binary_search_loop_variant_positive preprocessing
+[wp:prover] 
+  Prover command "/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f"
+[wp:prover] 
+  Prover command "/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f"
+[wp:prover] 
+  Prover command "/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f"
+[wp:prover] 
+  Prover command "/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f"
+[wp:prover] 
+  Prover command "/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f"
+[wp:prover] 
+  Prover command "/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f"
+[wp:prover] 
+  Prover command "/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f"
+[wp:prover] 
+  Prover command "/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f"
+[wp:prover] 
+  Prover command "/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f"
+[wp:prover] 
+  Prover command "/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f"
+[wp:prover] 
+  Prover command "/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f"
+[wp:prover] 
+  Prover command "/tmp/framac/4.14.1/bin/alt-ergo --frontend dolmen --timelimit %t %f"
+[wp] [Failure] typed_binary_search_loop_variant_decrease (Qed 28ms) (Alt-Ergo)
+[wp] [Failure] typed_binary_search_assert_rte_signed_overflow_5 (Qed 8ms) (Alt-Ergo)
+[wp] [Failure] typed_binary_search_assert_rte_mem_access (Qed 6ms) (Alt-Ergo)
+[wp] [Failure] typed_binary_search_assert_rte_signed_overflow_4 (Qed 4ms) (Alt-Ergo)
+[wp] [Failure] typed_binary_search_assert_rte_signed_overflow_3 (Qed 3ms) (Alt-Ergo)
+[wp] [Failure] typed_binary_search_assert_rte_signed_overflow_2 (Qed 3ms) (Alt-Ergo)
+[wp] [Failure] typed_binary_search_assert_rte_signed_overflow (Qed 3ms) (Alt-Ergo)
+[wp] [Failure] typed_binary_search_loop_invariant_3_preserved (Qed 25ms) (Alt-Ergo)
+[wp] [Failure] typed_binary_search_loop_invariant_2_preserved (Qed 24ms) (Alt-Ergo)
+[wp] [Failure] typed_binary_search_loop_invariant_preserved (Qed 25ms) (Alt-Ergo)
+[wp] [Failure] typed_binary_search_ensures_3 (Qed 19ms) (Alt-Ergo)
+[wp] [Failure] typed_binary_search_ensures (Qed 19ms) (Alt-Ergo)
+[wp] Proved goals:   12 / 24
+  Terminating:     1
+  Unreachable:     1
+  Qed:            10 (3ms-8ms-28ms)
+  Failed:         12
+/tmp/ppannota75d9c.c:1:9: warning: ‘__STDC_EMBED_NOT_FOUND__’ redefined
+    1 | #define __STDC_EMBED_NOT_FOUND__ 0
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+/tmp/ppannota75d9c.c:2:9: warning: ‘__STDC_EMBED_FOUND__’ redefined
+    2 | #define __STDC_EMBED_FOUND__ 1
+      |         ^~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+/tmp/ppannota75d9c.c:3:9: warning: ‘__STDC_EMBED_EMPTY__’ redefined
+    3 | #define __STDC_EMBED_EMPTY__ 2
+      |         ^~~~~~~~~~~~~~~~~~~~
+<built-in>: note: this is the location of the previous definition
+cc1: note: unrecognized command-line option ‘-Wno-unknown-warning-option’ may have been intended to silence earlier diagnostics
+
+Runner error: spawnSync /tmp/framac/4.14.1/bin/frama-c EPERM
+Exit: 0; signal: null; wall_seconds: 410.292893989

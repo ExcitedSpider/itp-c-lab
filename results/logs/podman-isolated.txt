@@ -1,0 +1,7 @@
+$ ["podman","--root","/tmp/c-itp-podman-storage","--runroot","/tmp/c-itp-runtime/run","--storage-driver","vfs","info"]
+Environment overrides: {"XDG_RUNTIME_DIR":"/tmp/c-itp-runtime"}
+time="2026-10-19T12:56:31+11:00" level=warning msg="\"/\" is not a shared mount, this could cause issues or missing mounts with rootless containers"
+time="2026-10-19T12:56:31+11:00" level=error msg="running `/usr/bin/newuidmap 32 0 1000 1 1 524288 65536`: newuidmap: write to uid_map failed: Operation not permitted\n"
+Error: cannot set up namespace using "/usr/bin/newuidmap": exit status 1
+
+Exit: 125; signal: null; wall_seconds: 0.020283708000000004

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "refinedc",
+    "check",
+    "refinedc/p2_swap_alias.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:42:15.573619+00:00",
+  "exit_code": 0,
+  "wall_seconds": 3.682789256796241,
+  "output": "Entering directory '/work/refinedc'\n        rocq proofs/p2_swap_alias/.c_itp_refinedc.theory.d\n        rocq proofs/p2_swap_alias/generated_code.{glob,vo}\n        rocq proofs/p2_swap_alias/generated_spec.{glob,vo}\n        rocq proofs/p2_swap_alias/generated_proof_swap.{glob,vo}\nLeaving directory '/work/refinedc'\nFile \"refinedc/p2_swap_alias.c\" successfully checked.\n"
+}

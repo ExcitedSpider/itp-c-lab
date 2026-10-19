@@ -1,0 +1,78 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build_log", "-H", "Error", "C_ITP_P4"]
+
+Build errors:
+*** Failed to finish proof:
+*** goal (4 subgoals):
+***  1. \<And>aa b.
+***        \<lbrakk>b < aa; 0 \<le> b; aa \<le> int (length xs); \<forall>i<nat b. xs ! i < key;
+***         \<forall>i. nat aa \<le> i \<and> i < length xs \<longrightarrow> key < xs ! i;
+***         heap_w32 s
+***          (PTR_COERCE(32 signed word \<rightarrow> 32 word)
+***            (a +\<^sub>p (b + (aa - b) div 2))) =
+***         word_of_int key;
+***         n = int (length xs); length xs \<le> 2147483647; - 2147483648 \<le> key;
+***         key \<le> 2147483647; \<forall>i j. i \<le> j \<and> j < length xs \<longrightarrow> xs ! i \<le> xs ! j;
+***         \<And>i. \<lbrakk>0 \<le> i; i < int (length xs)\<rbrakk>
+***             \<Longrightarrow> IS_VALID(32 word) s
+***                 (PTR_COERCE(32 signed word \<rightarrow> 32 word) (a +\<^sub>p i)) \<and>
+***                sint
+***                 (heap_w32 s
+***                   (PTR_COERCE(32 signed word \<rightarrow> 32 word) (a +\<^sub>p i))) =
+***                xs ! nat i\<rbrakk>
+***        \<Longrightarrow> xs ! nat (b + (aa - b) div 2) = key
+***  2. \<And>aa b i.
+***        \<lbrakk>b < aa; 0 \<le> b; aa \<le> int (length xs); \<forall>i<nat b. xs ! i < key;
+***         \<forall>i. nat aa \<le> i \<and> i < length xs \<longrightarrow> key < xs ! i;
+***         heap_w32 s
+***          (PTR_COERCE(32 signed word \<rightarrow> 32 word)
+***            (a +\<^sub>p (b + (aa - b) div 2))) \<noteq>
+***         word_of_int key;
+***         xs ! nat (b + (aa - b) div 2) < key;
+***         i < nat (b + (aa - b) div 2 + 1); n = int (length xs);
+***         length xs \<le> 2147483647; - 2147483648 \<le> key; key \<le> 2147483647;
+***         \<forall>i j. i \<le> j \<and> j < length xs \<longrightarrow> xs ! i \<le> xs ! j;
+***         \<And>i. \<lbrakk>0 \<le> i; i < int (length xs)\<rbrakk>
+***             \<Longrightarrow> IS_VALID(32 word) s
+***                 (PTR_COERCE(32 signed word \<rightarrow> 32 word) (a +\<^sub>p i)) \<and>
+***                sint
+***                 (heap_w32 s
+***                   (PTR_COERCE(32 signed word \<rightarrow> 32 word) (a +\<^sub>p i))) =
+***                xs ! nat i\<rbrakk>
+***        \<Longrightarrow> xs ! i < key
+***  3. \<And>aa b i.
+***        \<lbrakk>b < aa; 0 \<le> b; aa \<le> int (length xs); \<forall>i<nat b. xs ! i < key;
+***         \<forall>i. nat aa \<le> i \<and> i < length xs \<longrightarrow> key < xs ! i;
+***         heap_w32 s
+***          (PTR_COERCE(32 signed word \<rightarrow> 32 word)
+***            (a +\<^sub>p (b + (aa - b) div 2))) \<noteq>
+***         word_of_int key;
+***         \<not> xs ! nat (b + (aa - b) div 2) < key; nat (b + (aa - b) div 2) \<le> i;
+***         i < length xs; n = int (length xs); length xs \<le> 2147483647;
+***         - 2147483648 \<le> key; key \<le> 2147483647;
+***         \<forall>i j. i \<le> j \<and> j < length xs \<longrightarrow> xs ! i \<le> xs ! j;
+***         \<And>i. \<lbrakk>0 \<le> i; i < int (length xs)\<rbrakk>
+***             \<Longrightarrow> IS_VALID(32 word) s
+***                 (PTR_COERCE(32 signed word \<rightarrow> 32 word) (a +\<^sub>p i)) \<and>
+***                sint
+***                 (heap_w32 s
+***                   (PTR_COERCE(32 signed word \<rightarrow> 32 word) (a +\<^sub>p i))) =
+***                xs ! nat i\<rbrakk>
+***        \<Longrightarrow> key < xs ! i
+***  4. \<And>aa. \<lbrakk>0 \<le> aa; aa \<le> int (length xs); \<forall>i<nat aa. xs ! i < key;
+***           \<forall>i. nat aa \<le> i \<and> i < length xs \<longrightarrow> key < xs ! i;
+***           n = int (length xs); length xs \<le> 2147483647; - 2147483648 \<le> key;
+***           key \<le> 2147483647; \<forall>i j. i \<le> j \<and> j < length xs \<longrightarrow> xs ! i \<le> xs ! j;
+***           \<And>i. \<lbrakk>0 \<le> i; i < int (length xs)\<rbrakk>
+***               \<Longrightarrow> IS_VALID(32 word) s
+***                   (PTR_COERCE(32 signed word \<rightarrow> 32 word) (a +\<^sub>p i)) \<and>
+***                  sint
+***                   (heap_w32 s
+***                     (PTR_COERCE(32 signed word \<rightarrow> 32 word) (a +\<^sub>p i))) =
+***                  xs ! nat i;
+***           key \<in> set xs\<rbrakk>
+***          \<Longrightarrow> False
+*** At command "done" (line 49 of "/work/autocorres/p4/P4.thy")
+
+Return code: 1 (ERROR)
+
+Exit: 0

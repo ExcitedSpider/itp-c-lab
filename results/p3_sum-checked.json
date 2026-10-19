@@ -1,0 +1,869 @@
+{
+  "source": "programs/p3_sum.c",
+  "source_sha256": "84ae6d8feb1fe4ebd852de9bc9ab10ff535645db017eb25e3b119683e5dea25a",
+  "mode": "Fresh WP inventory + replay of previously exported SMT tasks; NOT end-to-end source check timing",
+  "complete": true,
+  "same_outcomes": true,
+  "median_seconds": 0.4633911159999999,
+  "peak_rss_kb": 98700,
+  "runs": [
+    {
+      "run": 1,
+      "wall_seconds": 0.463894737,
+      "peak_rss_kb": 98540,
+      "goals": [
+        {
+          "goal": "typed_sum_array_ensures",
+          "property": "sum_array_ensures",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 12,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_invariant_preserved",
+          "property": "sum_array_loop_invariant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 17,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_invariant_established",
+          "property": "sum_array_loop_invariant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 17,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_invariant_2_preserved",
+          "property": "sum_array_loop_invariant_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 18,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_invariant_2_established",
+          "property": "sum_array_loop_invariant_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 18,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_loop_invariant_2_established_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "91e13d095c3f3d41016b2cdde9a5146d2edbea075571ab421bb83591e305c118",
+          "log": "p3_sum-1-typed_sum_array_loop_invariant_2_established"
+        },
+        {
+          "goal": "typed_sum_array_assert",
+          "property": "sum_array_assert",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 23,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "b932473cc3da6a2fa427c7c85b5fba0a3a883cec4804a6e051cca1f5418ab0a5",
+          "log": "p3_sum-1-typed_sum_array_assert"
+        },
+        {
+          "goal": "typed_sum_array_assert_rte_mem_access",
+          "property": "sum_array_assert_rte_mem_access",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 24,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "87f47be24f2065a7bc904271e983e479458f933d20ec9dc7163b929dc0766e51",
+          "log": "p3_sum-1-typed_sum_array_assert_rte_mem_access"
+        },
+        {
+          "goal": "typed_sum_array_assert_rte_signed_overflow",
+          "property": "sum_array_assert_rte_signed_overflow",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 24,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_signed_overflow_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "461086725ca3e51383ae4f848eb9686027b768b6283dc19ed86c567806872670",
+          "log": "p3_sum-1-typed_sum_array_assert_rte_signed_overflow"
+        },
+        {
+          "goal": "typed_sum_array_assert_rte_signed_overflow_2",
+          "property": "sum_array_assert_rte_signed_overflow_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 24,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_signed_overflow_2_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "5e3d72110ce8f7e9c55d549bd1e5a8523d4416ec2e5d269db48b64a4e694f373",
+          "log": "p3_sum-1-typed_sum_array_assert_rte_signed_overflow_2"
+        },
+        {
+          "goal": "typed_sum_array_assert_rte_signed_overflow_3",
+          "property": "sum_array_assert_rte_signed_overflow_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 25,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_assigns",
+          "property": "sum_array_loop_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 19,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_assigns",
+          "property": "sum_array_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 14,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_variant_decrease",
+          "property": "sum_array_loop_variant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 20,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_variant_positive",
+          "property": "sum_array_loop_variant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 20,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        }
+      ],
+      "inventory_exit": 0,
+      "warnings": [],
+      "all_obligations_closed": true
+    },
+    {
+      "run": 2,
+      "wall_seconds": 0.458787619,
+      "peak_rss_kb": 98700,
+      "goals": [
+        {
+          "goal": "typed_sum_array_ensures",
+          "property": "sum_array_ensures",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 12,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_invariant_preserved",
+          "property": "sum_array_loop_invariant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 17,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_invariant_established",
+          "property": "sum_array_loop_invariant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 17,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_invariant_2_preserved",
+          "property": "sum_array_loop_invariant_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 18,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_invariant_2_established",
+          "property": "sum_array_loop_invariant_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 18,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_loop_invariant_2_established_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "91e13d095c3f3d41016b2cdde9a5146d2edbea075571ab421bb83591e305c118",
+          "log": "p3_sum-2-typed_sum_array_loop_invariant_2_established"
+        },
+        {
+          "goal": "typed_sum_array_assert",
+          "property": "sum_array_assert",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 23,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "b932473cc3da6a2fa427c7c85b5fba0a3a883cec4804a6e051cca1f5418ab0a5",
+          "log": "p3_sum-2-typed_sum_array_assert"
+        },
+        {
+          "goal": "typed_sum_array_assert_rte_mem_access",
+          "property": "sum_array_assert_rte_mem_access",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 24,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "87f47be24f2065a7bc904271e983e479458f933d20ec9dc7163b929dc0766e51",
+          "log": "p3_sum-2-typed_sum_array_assert_rte_mem_access"
+        },
+        {
+          "goal": "typed_sum_array_assert_rte_signed_overflow",
+          "property": "sum_array_assert_rte_signed_overflow",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 24,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_signed_overflow_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "461086725ca3e51383ae4f848eb9686027b768b6283dc19ed86c567806872670",
+          "log": "p3_sum-2-typed_sum_array_assert_rte_signed_overflow"
+        },
+        {
+          "goal": "typed_sum_array_assert_rte_signed_overflow_2",
+          "property": "sum_array_assert_rte_signed_overflow_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 24,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_signed_overflow_2_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "5e3d72110ce8f7e9c55d549bd1e5a8523d4416ec2e5d269db48b64a4e694f373",
+          "log": "p3_sum-2-typed_sum_array_assert_rte_signed_overflow_2"
+        },
+        {
+          "goal": "typed_sum_array_assert_rte_signed_overflow_3",
+          "property": "sum_array_assert_rte_signed_overflow_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 25,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_assigns",
+          "property": "sum_array_loop_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 19,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_assigns",
+          "property": "sum_array_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 14,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_variant_decrease",
+          "property": "sum_array_loop_variant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 20,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_variant_positive",
+          "property": "sum_array_loop_variant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 20,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        }
+      ],
+      "inventory_exit": 0,
+      "warnings": [],
+      "all_obligations_closed": true
+    },
+    {
+      "run": 3,
+      "wall_seconds": 0.4633911159999999,
+      "peak_rss_kb": 98532,
+      "goals": [
+        {
+          "goal": "typed_sum_array_ensures",
+          "property": "sum_array_ensures",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 12,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_invariant_preserved",
+          "property": "sum_array_loop_invariant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 17,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_invariant_established",
+          "property": "sum_array_loop_invariant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 17,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_invariant_2_preserved",
+          "property": "sum_array_loop_invariant_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 18,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_invariant_2_established",
+          "property": "sum_array_loop_invariant_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 18,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_loop_invariant_2_established_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "91e13d095c3f3d41016b2cdde9a5146d2edbea075571ab421bb83591e305c118",
+          "log": "p3_sum-3-typed_sum_array_loop_invariant_2_established"
+        },
+        {
+          "goal": "typed_sum_array_assert",
+          "property": "sum_array_assert",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 23,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "b932473cc3da6a2fa427c7c85b5fba0a3a883cec4804a6e051cca1f5418ab0a5",
+          "log": "p3_sum-3-typed_sum_array_assert"
+        },
+        {
+          "goal": "typed_sum_array_assert_rte_mem_access",
+          "property": "sum_array_assert_rte_mem_access",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 24,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "87f47be24f2065a7bc904271e983e479458f933d20ec9dc7163b929dc0766e51",
+          "log": "p3_sum-3-typed_sum_array_assert_rte_mem_access"
+        },
+        {
+          "goal": "typed_sum_array_assert_rte_signed_overflow",
+          "property": "sum_array_assert_rte_signed_overflow",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 24,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_signed_overflow_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "461086725ca3e51383ae4f848eb9686027b768b6283dc19ed86c567806872670",
+          "log": "p3_sum-3-typed_sum_array_assert_rte_signed_overflow"
+        },
+        {
+          "goal": "typed_sum_array_assert_rte_signed_overflow_2",
+          "property": "sum_array_assert_rte_signed_overflow_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 24,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_signed_overflow_2_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "5e3d72110ce8f7e9c55d549bd1e5a8523d4416ec2e5d269db48b64a4e694f373",
+          "log": "p3_sum-3-typed_sum_array_assert_rte_signed_overflow_2"
+        },
+        {
+          "goal": "typed_sum_array_assert_rte_signed_overflow_3",
+          "property": "sum_array_assert_rte_signed_overflow_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 25,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_assigns",
+          "property": "sum_array_loop_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 19,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_assigns",
+          "property": "sum_array_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 14,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_variant_decrease",
+          "property": "sum_array_loop_variant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 20,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_sum_array_loop_variant_positive",
+          "property": "sum_array_loop_variant",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p3_sum.c",
+          "line": 20,
+          "function": "sum_array",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        }
+      ],
+      "inventory_exit": 0,
+      "warnings": [],
+      "all_obligations_closed": true
+    }
+  ]
+}

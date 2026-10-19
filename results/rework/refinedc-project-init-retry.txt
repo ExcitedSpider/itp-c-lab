@@ -1,0 +1,4 @@
+$ ["sh", "-c", "cd refinedc && opam exec -- refinedc init --coq-path=c_itp_refinedc"]
+[31mDirectory "/work/refinedc/proofs" uses a reserved name.
+[0m
+Exit: 1

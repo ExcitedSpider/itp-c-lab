@@ -1,0 +1,10 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "build", "-c", "-o", "threads=2", "-d", "/home/isabelle/afp-2026-10-16/thys", "-d", "autocorres/recording", "C_ITP_Record_P1"]
+Running C_ITP_Record_P1 ...
+C_ITP_Record_P1 FAILED (see also "isabelle build_log -H Error C_ITP_Record_P1")
+*** Theory loader: undefined entry for theory "C_ITP_Record_P1.P1"
+*** 
+*** At command "ML" (line 5 of "/work/autocorres/recording/p1/Capture_P1.thy")
+Unfinished session(s): C_ITP_Record_P1
+0:00:12 elapsed time, 0:00:05 cpu time, factor 0.46
+
+Exit: 1

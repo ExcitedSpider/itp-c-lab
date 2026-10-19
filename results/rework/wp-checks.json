@@ -1,0 +1,458 @@
+[
+  {
+    "tool": "WP",
+    "program": "p1_abs",
+    "source": "programs/p1_abs.c",
+    "source_sha256": "28e5c7ddc1f2f1ed5a7dac6dcc920ae307080c39c708594088500eb22a90b9a6",
+    "runs": [
+      {
+        "passed": true,
+        "goals": 4,
+        "closed": 4,
+        "outcomes": {
+          "typed_abs_val_ensures": "valid",
+          "typed_abs_val_assert_rte_signed_overflow": "valid",
+          "typed_abs_val_assigns_part1": "valid",
+          "typed_abs_val_assigns_part2": "valid"
+        },
+        "wall_seconds": 0.4108721357770264,
+        "peak_rss_kb": 101332
+      },
+      {
+        "passed": true,
+        "goals": 4,
+        "closed": 4,
+        "outcomes": {
+          "typed_abs_val_ensures": "valid",
+          "typed_abs_val_assert_rte_signed_overflow": "valid",
+          "typed_abs_val_assigns_part1": "valid",
+          "typed_abs_val_assigns_part2": "valid"
+        },
+        "wall_seconds": 0.39700622111558914,
+        "peak_rss_kb": 101116
+      },
+      {
+        "passed": true,
+        "goals": 4,
+        "closed": 4,
+        "outcomes": {
+          "typed_abs_val_ensures": "valid",
+          "typed_abs_val_assert_rte_signed_overflow": "valid",
+          "typed_abs_val_assigns_part1": "valid",
+          "typed_abs_val_assigns_part2": "valid"
+        },
+        "wall_seconds": 0.3935422948561609,
+        "peak_rss_kb": 101416
+      }
+    ],
+    "passed": true,
+    "median_seconds": 0.39700622111558914,
+    "deterministic": true
+  },
+  {
+    "tool": "WP",
+    "program": "p2_swap",
+    "source": "programs/p2_swap.c",
+    "source_sha256": "7f9910ec647ab3cc4e62ec1657fdff9d353e8a30b1a6219c6fcf46ac834fa6e8",
+    "runs": [
+      {
+        "passed": true,
+        "goals": 8,
+        "closed": 8,
+        "outcomes": {
+          "typed_swap_ensures": "valid",
+          "typed_swap_ensures_2": "valid",
+          "typed_swap_assert_rte_mem_access": "valid",
+          "typed_swap_assert_rte_mem_access_2": "valid",
+          "typed_swap_assert_rte_mem_access_3": "valid",
+          "typed_swap_assert_rte_mem_access_4": "valid",
+          "typed_swap_assigns_part1": "valid",
+          "typed_swap_assigns_part2": "valid"
+        },
+        "wall_seconds": 1.125519037246704,
+        "peak_rss_kb": 115196
+      },
+      {
+        "passed": true,
+        "goals": 8,
+        "closed": 8,
+        "outcomes": {
+          "typed_swap_ensures": "valid",
+          "typed_swap_ensures_2": "valid",
+          "typed_swap_assert_rte_mem_access": "valid",
+          "typed_swap_assert_rte_mem_access_2": "valid",
+          "typed_swap_assert_rte_mem_access_3": "valid",
+          "typed_swap_assert_rte_mem_access_4": "valid",
+          "typed_swap_assigns_part1": "valid",
+          "typed_swap_assigns_part2": "valid"
+        },
+        "wall_seconds": 1.1231430601328611,
+        "peak_rss_kb": 115608
+      },
+      {
+        "passed": true,
+        "goals": 8,
+        "closed": 8,
+        "outcomes": {
+          "typed_swap_ensures": "valid",
+          "typed_swap_ensures_2": "valid",
+          "typed_swap_assert_rte_mem_access": "valid",
+          "typed_swap_assert_rte_mem_access_2": "valid",
+          "typed_swap_assert_rte_mem_access_3": "valid",
+          "typed_swap_assert_rte_mem_access_4": "valid",
+          "typed_swap_assigns_part1": "valid",
+          "typed_swap_assigns_part2": "valid"
+        },
+        "wall_seconds": 1.1193518256768584,
+        "peak_rss_kb": 115528
+      }
+    ],
+    "passed": true,
+    "median_seconds": 1.1231430601328611,
+    "deterministic": true
+  },
+  {
+    "tool": "WP",
+    "program": "p3_sum",
+    "source": "programs/p3_sum.c",
+    "source_sha256": "84ae6d8feb1fe4ebd852de9bc9ab10ff535645db017eb25e3b119683e5dea25a",
+    "runs": [
+      {
+        "passed": true,
+        "goals": 14,
+        "closed": 14,
+        "outcomes": {
+          "typed_sum_array_ensures": "valid",
+          "typed_sum_array_loop_invariant_established": "valid",
+          "typed_sum_array_loop_invariant_preserved": "valid",
+          "typed_sum_array_loop_invariant_2_established": "valid",
+          "typed_sum_array_loop_invariant_2_preserved": "valid",
+          "typed_sum_array_assert": "valid",
+          "typed_sum_array_assert_rte_mem_access": "valid",
+          "typed_sum_array_assert_rte_signed_overflow": "valid",
+          "typed_sum_array_assert_rte_signed_overflow_2": "valid",
+          "typed_sum_array_assert_rte_signed_overflow_3": "valid",
+          "typed_sum_array_loop_assigns": "valid",
+          "typed_sum_array_assigns": "valid",
+          "typed_sum_array_loop_variant_positive": "valid",
+          "typed_sum_array_loop_variant_decrease": "valid"
+        },
+        "wall_seconds": 1.686736132018268,
+        "peak_rss_kb": 116696
+      },
+      {
+        "passed": true,
+        "goals": 14,
+        "closed": 14,
+        "outcomes": {
+          "typed_sum_array_ensures": "valid",
+          "typed_sum_array_loop_invariant_established": "valid",
+          "typed_sum_array_loop_invariant_preserved": "valid",
+          "typed_sum_array_loop_invariant_2_established": "valid",
+          "typed_sum_array_loop_invariant_2_preserved": "valid",
+          "typed_sum_array_assert": "valid",
+          "typed_sum_array_assert_rte_mem_access": "valid",
+          "typed_sum_array_assert_rte_signed_overflow": "valid",
+          "typed_sum_array_assert_rte_signed_overflow_2": "valid",
+          "typed_sum_array_assert_rte_signed_overflow_3": "valid",
+          "typed_sum_array_loop_assigns": "valid",
+          "typed_sum_array_assigns": "valid",
+          "typed_sum_array_loop_variant_positive": "valid",
+          "typed_sum_array_loop_variant_decrease": "valid"
+        },
+        "wall_seconds": 1.6823724559508264,
+        "peak_rss_kb": 117004
+      },
+      {
+        "passed": true,
+        "goals": 14,
+        "closed": 14,
+        "outcomes": {
+          "typed_sum_array_ensures": "valid",
+          "typed_sum_array_loop_invariant_established": "valid",
+          "typed_sum_array_loop_invariant_preserved": "valid",
+          "typed_sum_array_loop_invariant_2_established": "valid",
+          "typed_sum_array_loop_invariant_2_preserved": "valid",
+          "typed_sum_array_assert": "valid",
+          "typed_sum_array_assert_rte_mem_access": "valid",
+          "typed_sum_array_assert_rte_signed_overflow": "valid",
+          "typed_sum_array_assert_rte_signed_overflow_2": "valid",
+          "typed_sum_array_assert_rte_signed_overflow_3": "valid",
+          "typed_sum_array_loop_assigns": "valid",
+          "typed_sum_array_assigns": "valid",
+          "typed_sum_array_loop_variant_positive": "valid",
+          "typed_sum_array_loop_variant_decrease": "valid"
+        },
+        "wall_seconds": 1.68144664587453,
+        "peak_rss_kb": 117136
+      }
+    ],
+    "passed": true,
+    "median_seconds": 1.6823724559508264,
+    "deterministic": true
+  },
+  {
+    "tool": "WP",
+    "program": "p4_binary_search",
+    "source": "programs/p4_binary_search.c",
+    "source_sha256": "39ffbee46cd081563079704c4a889a0335055b5b2dff2270f6d6258ce8b0d08c",
+    "runs": [
+      {
+        "passed": true,
+        "goals": 22,
+        "closed": 22,
+        "outcomes": {
+          "typed_binary_search_ensures": "valid",
+          "typed_binary_search_ensures_2": "valid",
+          "typed_binary_search_ensures_3": "valid",
+          "typed_binary_search_loop_invariant_established": "valid",
+          "typed_binary_search_loop_invariant_preserved": "valid",
+          "typed_binary_search_loop_invariant_2_established": "valid",
+          "typed_binary_search_loop_invariant_2_preserved": "valid",
+          "typed_binary_search_loop_invariant_3_established": "valid",
+          "typed_binary_search_loop_invariant_3_preserved": "valid",
+          "typed_binary_search_assert_rte_signed_overflow": "valid",
+          "typed_binary_search_assert_rte_signed_overflow_2": "valid",
+          "typed_binary_search_assert_rte_signed_overflow_3": "valid",
+          "typed_binary_search_assert_rte_signed_overflow_4": "valid",
+          "typed_binary_search_assert_rte_mem_access": "valid",
+          "typed_binary_search_assert_rte_mem_access_2": "valid",
+          "typed_binary_search_assert_rte_signed_overflow_5": "valid",
+          "typed_binary_search_loop_assigns": "valid",
+          "typed_binary_search_assigns_part1": "valid",
+          "typed_binary_search_assigns_part2": "valid",
+          "typed_binary_search_assigns_part3": "valid",
+          "typed_binary_search_loop_variant_positive": "valid",
+          "typed_binary_search_loop_variant_decrease": "valid"
+        },
+        "wall_seconds": 3.1883171014487743,
+        "peak_rss_kb": 133156
+      },
+      {
+        "passed": true,
+        "goals": 22,
+        "closed": 22,
+        "outcomes": {
+          "typed_binary_search_ensures": "valid",
+          "typed_binary_search_ensures_2": "valid",
+          "typed_binary_search_ensures_3": "valid",
+          "typed_binary_search_loop_invariant_established": "valid",
+          "typed_binary_search_loop_invariant_preserved": "valid",
+          "typed_binary_search_loop_invariant_2_established": "valid",
+          "typed_binary_search_loop_invariant_2_preserved": "valid",
+          "typed_binary_search_loop_invariant_3_established": "valid",
+          "typed_binary_search_loop_invariant_3_preserved": "valid",
+          "typed_binary_search_assert_rte_signed_overflow": "valid",
+          "typed_binary_search_assert_rte_signed_overflow_2": "valid",
+          "typed_binary_search_assert_rte_signed_overflow_3": "valid",
+          "typed_binary_search_assert_rte_signed_overflow_4": "valid",
+          "typed_binary_search_assert_rte_mem_access": "valid",
+          "typed_binary_search_assert_rte_mem_access_2": "valid",
+          "typed_binary_search_assert_rte_signed_overflow_5": "valid",
+          "typed_binary_search_loop_assigns": "valid",
+          "typed_binary_search_assigns_part1": "valid",
+          "typed_binary_search_assigns_part2": "valid",
+          "typed_binary_search_assigns_part3": "valid",
+          "typed_binary_search_loop_variant_positive": "valid",
+          "typed_binary_search_loop_variant_decrease": "valid"
+        },
+        "wall_seconds": 3.1964132371358573,
+        "peak_rss_kb": 132960
+      },
+      {
+        "passed": true,
+        "goals": 22,
+        "closed": 22,
+        "outcomes": {
+          "typed_binary_search_ensures": "valid",
+          "typed_binary_search_ensures_2": "valid",
+          "typed_binary_search_ensures_3": "valid",
+          "typed_binary_search_loop_invariant_established": "valid",
+          "typed_binary_search_loop_invariant_preserved": "valid",
+          "typed_binary_search_loop_invariant_2_established": "valid",
+          "typed_binary_search_loop_invariant_2_preserved": "valid",
+          "typed_binary_search_loop_invariant_3_established": "valid",
+          "typed_binary_search_loop_invariant_3_preserved": "valid",
+          "typed_binary_search_assert_rte_signed_overflow": "valid",
+          "typed_binary_search_assert_rte_signed_overflow_2": "valid",
+          "typed_binary_search_assert_rte_signed_overflow_3": "valid",
+          "typed_binary_search_assert_rte_signed_overflow_4": "valid",
+          "typed_binary_search_assert_rte_mem_access": "valid",
+          "typed_binary_search_assert_rte_mem_access_2": "valid",
+          "typed_binary_search_assert_rte_signed_overflow_5": "valid",
+          "typed_binary_search_loop_assigns": "valid",
+          "typed_binary_search_assigns_part1": "valid",
+          "typed_binary_search_assigns_part2": "valid",
+          "typed_binary_search_assigns_part3": "valid",
+          "typed_binary_search_loop_variant_positive": "valid",
+          "typed_binary_search_loop_variant_decrease": "valid"
+        },
+        "wall_seconds": 3.196915555279702,
+        "peak_rss_kb": 132872
+      }
+    ],
+    "passed": true,
+    "median_seconds": 3.1964132371358573,
+    "deterministic": true
+  },
+  {
+    "tool": "WP",
+    "program": "p5_reverse",
+    "source": "programs/p5_reverse.c",
+    "source_sha256": "6373b473a137c72da422bb7bb71dca0bb4297b6cf60f6f2bf483b92e072b2d3e",
+    "runs": [
+      {
+        "passed": false,
+        "goals": 14,
+        "closed": 6,
+        "outcomes": {
+          "typed_reverse_terminates": "timeout",
+          "typed_reverse_ensures": "valid",
+          "typed_reverse_ensures_2": "timeout",
+          "typed_reverse_ensures_3": "timeout",
+          "typed_reverse_loop_invariant_established": "timeout",
+          "typed_reverse_loop_invariant_preserved": "timeout",
+          "typed_reverse_loop_invariant_2_established": "valid",
+          "typed_reverse_loop_invariant_2_preserved": "valid",
+          "typed_reverse_assert_rte_mem_access": "timeout",
+          "typed_reverse_assert_rte_mem_access_2": "timeout",
+          "typed_reverse_loop_assigns_part1": "valid",
+          "typed_reverse_loop_assigns_part2": "valid",
+          "typed_reverse_loop_assigns_part3": "timeout",
+          "typed_reverse_assigns": "valid"
+        },
+        "wall_seconds": 26.780432761181146,
+        "peak_rss_kb": 159940
+      },
+      {
+        "passed": false,
+        "goals": 14,
+        "closed": 6,
+        "outcomes": {
+          "typed_reverse_terminates": "timeout",
+          "typed_reverse_ensures": "valid",
+          "typed_reverse_ensures_2": "timeout",
+          "typed_reverse_ensures_3": "timeout",
+          "typed_reverse_loop_invariant_established": "timeout",
+          "typed_reverse_loop_invariant_preserved": "timeout",
+          "typed_reverse_loop_invariant_2_established": "valid",
+          "typed_reverse_loop_invariant_2_preserved": "valid",
+          "typed_reverse_assert_rte_mem_access": "timeout",
+          "typed_reverse_assert_rte_mem_access_2": "timeout",
+          "typed_reverse_loop_assigns_part1": "valid",
+          "typed_reverse_loop_assigns_part2": "valid",
+          "typed_reverse_loop_assigns_part3": "timeout",
+          "typed_reverse_assigns": "valid"
+        },
+        "wall_seconds": 26.836045008152723,
+        "peak_rss_kb": 160108
+      },
+      {
+        "passed": false,
+        "goals": 14,
+        "closed": 6,
+        "outcomes": {
+          "typed_reverse_terminates": "timeout",
+          "typed_reverse_ensures": "valid",
+          "typed_reverse_ensures_2": "timeout",
+          "typed_reverse_ensures_3": "timeout",
+          "typed_reverse_loop_invariant_established": "timeout",
+          "typed_reverse_loop_invariant_preserved": "timeout",
+          "typed_reverse_loop_invariant_2_established": "valid",
+          "typed_reverse_loop_invariant_2_preserved": "valid",
+          "typed_reverse_assert_rte_mem_access": "timeout",
+          "typed_reverse_assert_rte_mem_access_2": "timeout",
+          "typed_reverse_loop_assigns_part1": "valid",
+          "typed_reverse_loop_assigns_part2": "valid",
+          "typed_reverse_loop_assigns_part3": "timeout",
+          "typed_reverse_assigns": "valid"
+        },
+        "wall_seconds": 26.682437625247985,
+        "peak_rss_kb": 159708
+      }
+    ],
+    "passed": false,
+    "median_seconds": 26.780432761181146,
+    "deterministic": true
+  },
+  {
+    "tool": "WP",
+    "program": "broken-p3_sum",
+    "source": "wp/broken/p3_sum.c",
+    "source_sha256": "12fee16e7b70713282a19f96e881bbfdeba855699887a27a99fc017aa6925f07",
+    "runs": [
+      {
+        "passed": false,
+        "goals": 14,
+        "closed": 13,
+        "outcomes": {
+          "typed_sum_array_ensures": "valid",
+          "typed_sum_array_loop_invariant_established": "valid",
+          "typed_sum_array_loop_invariant_preserved": "valid",
+          "typed_sum_array_loop_invariant_2_established": "timeout",
+          "typed_sum_array_loop_invariant_2_preserved": "valid",
+          "typed_sum_array_assert": "valid",
+          "typed_sum_array_assert_rte_mem_access": "valid",
+          "typed_sum_array_assert_rte_signed_overflow": "valid",
+          "typed_sum_array_assert_rte_signed_overflow_2": "valid",
+          "typed_sum_array_assert_rte_signed_overflow_3": "valid",
+          "typed_sum_array_loop_assigns": "valid",
+          "typed_sum_array_assigns": "valid",
+          "typed_sum_array_loop_variant_positive": "valid",
+          "typed_sum_array_loop_variant_decrease": "valid"
+        },
+        "wall_seconds": 12.098343946971,
+        "peak_rss_kb": 403832
+      },
+      {
+        "passed": false,
+        "goals": 14,
+        "closed": 13,
+        "outcomes": {
+          "typed_sum_array_ensures": "valid",
+          "typed_sum_array_loop_invariant_established": "valid",
+          "typed_sum_array_loop_invariant_preserved": "valid",
+          "typed_sum_array_loop_invariant_2_established": "timeout",
+          "typed_sum_array_loop_invariant_2_preserved": "valid",
+          "typed_sum_array_assert": "valid",
+          "typed_sum_array_assert_rte_mem_access": "valid",
+          "typed_sum_array_assert_rte_signed_overflow": "valid",
+          "typed_sum_array_assert_rte_signed_overflow_2": "valid",
+          "typed_sum_array_assert_rte_signed_overflow_3": "valid",
+          "typed_sum_array_loop_assigns": "valid",
+          "typed_sum_array_assigns": "valid",
+          "typed_sum_array_loop_variant_positive": "valid",
+          "typed_sum_array_loop_variant_decrease": "valid"
+        },
+        "wall_seconds": 12.095381433609873,
+        "peak_rss_kb": 398704
+      },
+      {
+        "passed": false,
+        "goals": 14,
+        "closed": 13,
+        "outcomes": {
+          "typed_sum_array_ensures": "valid",
+          "typed_sum_array_loop_invariant_established": "valid",
+          "typed_sum_array_loop_invariant_preserved": "valid",
+          "typed_sum_array_loop_invariant_2_established": "timeout",
+          "typed_sum_array_loop_invariant_2_preserved": "valid",
+          "typed_sum_array_assert": "valid",
+          "typed_sum_array_assert_rte_mem_access": "valid",
+          "typed_sum_array_assert_rte_signed_overflow": "valid",
+          "typed_sum_array_assert_rte_signed_overflow_2": "valid",
+          "typed_sum_array_assert_rte_signed_overflow_3": "valid",
+          "typed_sum_array_loop_assigns": "valid",
+          "typed_sum_array_assigns": "valid",
+          "typed_sum_array_loop_variant_positive": "valid",
+          "typed_sum_array_loop_variant_decrease": "valid"
+        },
+        "wall_seconds": 12.08783434331417,
+        "peak_rss_kb": 413712
+      }
+    ],
+    "passed": false,
+    "median_seconds": 12.095381433609873,
+    "deterministic": true
+  }
+]

@@ -1,0 +1,3 @@
+$ ["opam", "exec", "--", "clightgen", "-normalize", "-o", "vst/generated/p4_binary_search.v", "programs/p4_binary_search.c"]
+
+Exit: 0

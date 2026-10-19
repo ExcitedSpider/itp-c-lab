@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "install",
+    "-y",
+    "-j",
+    "4",
+    "coq.9.1.0",
+    "coq-vst.2.17",
+    "coq-compcert.3.18"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:46:24.246443+00:00",
+  "exit_code": 0,
+  "wall_seconds": 1031.8723662891425,
+  "output": "The following actions will be performed:\n=== install 14 packages\n  - install conf-g++            1.0      [required by coq-flocq]\n  - install conf-linux-libc-dev 0        [required by rocq-runtime]\n  - install coq                 9.1.0\n  - install coq-compcert        3.18\n  - install coq-core            9.1.0    [required by coq, coq-vst]\n  - install coq-flocq           4.2.2    [required by coq-compcert, coq-vst]\n  - install coq-menhirlib       20240715 [required by coq-compcert]\n  - install coq-stdlib          9.0.0    [required by coq]\n  - install coq-vst             2.17\n  - install coq-vst-zlist       2.13     [required by coq-vst]\n  - install coqide-server       9.1.0    [required by coq]\n  - install rocq-core           9.1.0    [required by rocq-stdlib]\n  - install rocq-runtime        9.1.0    [required by coq-core, coqide-server]\n  - install rocq-stdlib         9.0.0    [required by coq-vst]\n\n<><> Processing actions <><><><><><><><><><><><><><><><><><><><><><><><><><><><>\n-> installed conf-g++.1.0\n-> installed conf-linux-libc-dev.0\n-> retrieved coq-compcert.3.18  (https://github.com/AbsInt/CompCert/archive/v3.18.tar.gz)\n-> retrieved coq-menhirlib.20240715  (cached)\n-> retrieved coq-core.9.1.0, coqide-server.9.1.0, rocq-core.9.1.0, rocq-runtime.9.1.0  (https://opam.ocaml.org/cache)\n-> retrieved coq-flocq.4.2.2  (https://flocq.gitlabpages.inria.fr/releases/flocq-4.2.2.tar.gz)\n-> retrieved coq-vst.2.17  (https://github.com/PrincetonUniversity/VST/archive/refs/tags/v2.17.tar.gz)\n-> retrieved coq-vst-zlist.2.13  (https://github.com/PrincetonUniversity/VST/archive/refs/tags/v2.13.tar.gz)\n-> retrieved rocq-stdlib.9.0.0  (https://opam.ocaml.org/cache)\n-> installed rocq-runtime.9.1.0\n-> installed coq-core.9.1.0\n-> installed coqide-server.9.1.0\n-> installed rocq-core.9.1.0\n-> installed rocq-stdlib.9.0.0\n-> installed coq-stdlib.9.0.0\n-> installed coq.9.1.0\n-> installed coq-menhirlib.20240715\n-> installed coq-vst-zlist.2.13\n-> installed coq-flocq.4.2.2\n-> installed coq-compcert.3.18\n-> installed coq-vst.2.17\nDone.\n\n<><> coq-core.9.1.0 installed successfully ><><><><><><><><><><><><><><><><><><>\n=> Coq has been renamed to The Rocq Prover, see https://rocq-prover.org/refman/changes.html#porting-to-the-rocq-prover for details.\n      This package provides compatibility binaries to ease the transition to the new rocq binary.\n# To update the current shell environment, run: eval $(opam env)\n"
+}

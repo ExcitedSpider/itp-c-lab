@@ -1,0 +1,7 @@
+$ ["sh", "-c", "tar -xzf /home/isabelle/afp-current.tar.gz -C /home/isabelle && sha256sum /home/isabelle/afp-current.tar.gz && ls /home/isabelle"]
+f3360294ca6e42855b954d438799080be810e06fa663dc4cbfe0a36096e1d7c6  /home/isabelle/afp-current.tar.gz
+Isabelle
+afp-2026-10-16
+afp-current.tar.gz
+
+Exit: 0

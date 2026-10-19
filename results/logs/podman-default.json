@@ -1,0 +1,17 @@
+{
+  "label": "podman-default",
+  "timestamp": "2026-10-19T01:56:31.552Z",
+  "cwd": "/home/qfeng/Workspace/C-ITP-Lab",
+  "command": [
+    "podman",
+    "ps",
+    "-a"
+  ],
+  "env": {},
+  "exit_code": 1,
+  "signal": null,
+  "error": "spawnSync podman EPERM",
+  "wall_seconds": 0.012745467000000002,
+  "stdout": "",
+  "stderr": "Failed to obtain podman configuration: set sticky bit on: chmod /run/user/1000/libpod: read-only file system\n"
+}

@@ -1,0 +1,29 @@
+{
+  "command": [
+    "/usr/bin/time",
+    "-f",
+    "PEAK_RSS_KB=%M",
+    "opam",
+    "exec",
+    "--",
+    "frama-c",
+    "-machdep",
+    "x86_64",
+    "-wp",
+    "-wp-rte",
+    "-wp-prover",
+    "alt-ergo",
+    "-wp-timeout",
+    "3",
+    "-wp-par",
+    "1",
+    "-wp-report-json",
+    "/work/results/rework/wp-p5_reverse-3-goals.json",
+    "/work/programs/p5_reverse.c"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T03:08:00.696609+00:00",
+  "exit_code": 0,
+  "wall_seconds": 26.682437625247985,
+  "output": "[kernel] Parsing programs/p5_reverse.c (with preprocessing)\n[wp] Running WP plugin...\n[rte:annot] annotating function reverse\n[wp] 14 goals scheduled\n[wp] [Timeout] typed_reverse_terminates (Qed 0.82ms) (Alt-Ergo)\n[wp] [Timeout] typed_reverse_ensures_2 (Qed 12ms) (Alt-Ergo)\n[wp] [Timeout] typed_reverse_ensures_3 (Qed 13ms) (Alt-Ergo)\n[wp] [Timeout] typed_reverse_loop_invariant_established (Qed 6ms) (Alt-Ergo)\n[wp] [Timeout] typed_reverse_loop_invariant_preserved (Qed 20ms) (Alt-Ergo)\n[wp] [Timeout] typed_reverse_assert_rte_mem_access (Qed 11ms) (Alt-Ergo)\n[wp] [Timeout] typed_reverse_assert_rte_mem_access_2 (Qed 16ms) (Alt-Ergo)\n[wp] [Timeout] typed_reverse_loop_assigns_part3 (Qed 20ms) (Alt-Ergo)\n[wp] Proved goals:    7 / 15\n  Unreachable:       1\n  Qed:               3 (0.82ms-11ms-23ms)\n  Alt-Ergo 2.5.4:    3 (19ms-26ms-37ms)\n  Timeout:           8\n[wp:pedantic-assigns] programs/p5_reverse.c:22: Warning: \n  No 'assigns \\result \\from ...' specification for function 'reverse'returning pointer type.\n  Callers assumptions might be imprecise.\n[wp:pedantic-assigns] programs/p5_reverse.c:14: Warning: \n  No \\from specification for assigned pointer '{p->next |\n                                                struct node *p;\n                                                              \u2203 \u2124 n, \u2124 i;\n                                                                list{Old}(l, n) \u2227\n                                                                0 \u2264 i < n \u2227\n                                                                p \u2261\n                                                                nth{Old}\n                                                                (l, i)}'.\n  Callers assumptions might be imprecise.\nPEAK_RSS_KB=159708\n"
+}

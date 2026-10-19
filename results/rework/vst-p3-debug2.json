@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p3.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:48:02.778838+00:00",
+  "exit_code": 1,
+  "wall_seconds": 2.395013000816107,
+  "output": "2 goals\n  \n  Espec : OracleKind\n  a : val\n  xs : list Z\n  n : Z\n  Delta_specs : Maps.PTree.t funspec\n  Delta := abbreviate : tycontext\n  H : 0 <= n <= Int.max_signed\n  H0 : Zlength xs = n\n  H1 : Forall (fun x : Z => Int.min_signed <= x <= Int.max_signed) xs\n  H2 :\n    forall k : Z,\n    0 <= k <= n -> Int.min_signed <= sumZ (sublist 0 k xs) <= Int.max_signed\n  i : Z\n  HRE : i < n\n  H3 : 0 <= i <= n\n  Hi : 0 <= i < Zlength xs\n  Hs : Int.min_signed <= sumZ (sublist 0 i xs) + Znth i xs <= Int.max_signed\n  ============================\n  ENTAIL Delta,\n  PROP ( )\n  LOCAL (temp _t'1 (Vint (Int.repr (Znth i xs))); \n  temp _a a; temp _n (Vint (Int.repr n)); temp _i (Vint (Int.repr i));\n  temp _s (Vint (Int.repr (sumZ (sublist 0 i xs)))))\n  SEP (data_at Tsh (tarray tint n) (map (fun x : Z => Vint (Int.repr x)) xs)\n         a)\n  |-- tc_expr Delta (_s + _t'1)%expr\n\ngoal 2 is:\n semax Delta\n   (PROP ( )\n    LOCAL (temp _s\n             (Vint\n                (Int.add (Int.repr (sumZ (sublist 0 i xs)))\n                   (Int.repr (Znth i xs))));\n    temp _t'1 (Vint (Int.repr (Znth i xs))); temp _a a;\n    temp _n (Vint (Int.repr n)); temp _i (Vint (Int.repr i)))\n    SEP (data_at Tsh (tarray tint n)\n           (map (fun x : Z => Vint (Int.repr x)) xs) a))\n   (_i = (_i + (1));) POSTCONDITION\nFile \"./vst/verif_p3.v\", line 45, characters 4-17:\nError: No applicable tactic.\n\n"
+}

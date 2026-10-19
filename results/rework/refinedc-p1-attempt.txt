@@ -1,0 +1,10 @@
+$ ["opam", "exec", "--", "refinedc", "check", "refinedc/p1_abs.c"]
+refinedc: internal error, uncaught exception:
+          Sys_error("/work/refinedc/_CoqProject: No such file or directory")
+          Raised by primitive operation at Stdlib.open_out_gen in file "stdlib.ml", line 331, characters 29-55
+          Called from Dune__exe__Extra.append_file in file "frontend/extra.ml", line 219, characters 11-45
+          Called from Dune__exe__Main.run in file "frontend/main.ml", line 220, characters 8-44
+          Called from Cmdliner_term.app.(fun) in file "cmdliner_term.ml", line 24, characters 19-24
+          Called from Cmdliner_eval.run_parser in file "cmdliner_eval.ml", line 35, characters 37-44
+
+Exit: 125

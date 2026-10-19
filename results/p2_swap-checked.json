@@ -1,0 +1,514 @@
+{
+  "source": "programs/p2_swap.c",
+  "source_sha256": "7f9910ec647ab3cc4e62ec1657fdff9d353e8a30b1a6219c6fcf46ac834fa6e8",
+  "mode": "Fresh WP inventory + replay of previously exported SMT tasks; NOT end-to-end source check timing",
+  "complete": true,
+  "median_seconds": 0.368712769,
+  "peak_rss_kb": 96752,
+  "runs": [
+    {
+      "run": 1,
+      "wall_seconds": 0.367873537,
+      "peak_rss_kb": 96104,
+      "goals": [
+        {
+          "goal": "typed_swap_ensures",
+          "property": "swap_ensures",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 4,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p2_swap-7f9910ec647a/typed/zilch-typed_swap_ensures_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "995ee4cccb4f1b4602e871377d20f9b65ea7b688450643cccf8545c3cc73dc1d",
+          "log": "p2_swap-1-typed_swap_ensures"
+        },
+        {
+          "goal": "typed_swap_ensures_2",
+          "property": "swap_ensures_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 5,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_swap_assert_rte_mem_access",
+          "property": "swap_assert_rte_mem_access",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 8,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p2_swap-7f9910ec647a/typed/zilch-typed_swap_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "7f8f20ca01d9a0c3dfcce9255932546814545bb65f761ebc46c385944268d1b0",
+          "log": "p2_swap-1-typed_swap_assert_rte_mem_access"
+        },
+        {
+          "goal": "typed_swap_assert_rte_mem_access_2",
+          "property": "swap_assert_rte_mem_access_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 9,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_swap_assert_rte_mem_access_3",
+          "property": "swap_assert_rte_mem_access_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 9,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p2_swap-7f9910ec647a/typed/zilch-typed_swap_assert_rte_mem_access_3_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "2c6836b4c0d42f63dc3b0fa1e4ae8452ad0e5e0bea345b1e84b4977a0939066d",
+          "log": "p2_swap-1-typed_swap_assert_rte_mem_access_3"
+        },
+        {
+          "goal": "typed_swap_assert_rte_mem_access_4",
+          "property": "swap_assert_rte_mem_access_4",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 10,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_swap_assigns_part1",
+          "property": "swap_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 3,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_swap_assigns_part2",
+          "property": "swap_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 3,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        }
+      ],
+      "inventory_exit": 0,
+      "warnings": [],
+      "all_obligations_closed": true
+    },
+    {
+      "run": 2,
+      "wall_seconds": 0.371946907,
+      "peak_rss_kb": 96516,
+      "goals": [
+        {
+          "goal": "typed_swap_ensures",
+          "property": "swap_ensures",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 4,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p2_swap-7f9910ec647a/typed/zilch-typed_swap_ensures_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "995ee4cccb4f1b4602e871377d20f9b65ea7b688450643cccf8545c3cc73dc1d",
+          "log": "p2_swap-2-typed_swap_ensures"
+        },
+        {
+          "goal": "typed_swap_ensures_2",
+          "property": "swap_ensures_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 5,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_swap_assert_rte_mem_access",
+          "property": "swap_assert_rte_mem_access",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 8,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p2_swap-7f9910ec647a/typed/zilch-typed_swap_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "7f8f20ca01d9a0c3dfcce9255932546814545bb65f761ebc46c385944268d1b0",
+          "log": "p2_swap-2-typed_swap_assert_rte_mem_access"
+        },
+        {
+          "goal": "typed_swap_assert_rte_mem_access_2",
+          "property": "swap_assert_rte_mem_access_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 9,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_swap_assert_rte_mem_access_3",
+          "property": "swap_assert_rte_mem_access_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 9,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p2_swap-7f9910ec647a/typed/zilch-typed_swap_assert_rte_mem_access_3_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "2c6836b4c0d42f63dc3b0fa1e4ae8452ad0e5e0bea345b1e84b4977a0939066d",
+          "log": "p2_swap-2-typed_swap_assert_rte_mem_access_3"
+        },
+        {
+          "goal": "typed_swap_assert_rte_mem_access_4",
+          "property": "swap_assert_rte_mem_access_4",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 10,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_swap_assigns_part1",
+          "property": "swap_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 3,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_swap_assigns_part2",
+          "property": "swap_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 3,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        }
+      ],
+      "inventory_exit": 0,
+      "warnings": [],
+      "all_obligations_closed": true
+    },
+    {
+      "run": 3,
+      "wall_seconds": 0.368712769,
+      "peak_rss_kb": 96752,
+      "goals": [
+        {
+          "goal": "typed_swap_ensures",
+          "property": "swap_ensures",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 4,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p2_swap-7f9910ec647a/typed/zilch-typed_swap_ensures_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "995ee4cccb4f1b4602e871377d20f9b65ea7b688450643cccf8545c3cc73dc1d",
+          "log": "p2_swap-3-typed_swap_ensures"
+        },
+        {
+          "goal": "typed_swap_ensures_2",
+          "property": "swap_ensures_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 5,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_swap_assert_rte_mem_access",
+          "property": "swap_assert_rte_mem_access",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 8,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p2_swap-7f9910ec647a/typed/zilch-typed_swap_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "7f8f20ca01d9a0c3dfcce9255932546814545bb65f761ebc46c385944268d1b0",
+          "log": "p2_swap-3-typed_swap_assert_rte_mem_access"
+        },
+        {
+          "goal": "typed_swap_assert_rte_mem_access_2",
+          "property": "swap_assert_rte_mem_access_2",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 9,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_swap_assert_rte_mem_access_3",
+          "property": "swap_assert_rte_mem_access_3",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 9,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "none",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 0
+            }
+          ],
+          "method": "Alt-Ergo (direct Why3-export replay)",
+          "export": "results/generated/p2_swap-7f9910ec647a/typed/zilch-typed_swap_assert_rte_mem_access_3_AltmnErgo_2dt6dt0-wp_goal.psmt2",
+          "sha256": "2c6836b4c0d42f63dc3b0fa1e4ae8452ad0e5e0bea345b1e84b4977a0939066d",
+          "log": "p2_swap-3-typed_swap_assert_rte_mem_access_3"
+        },
+        {
+          "goal": "typed_swap_assert_rte_mem_access_4",
+          "property": "swap_assert_rte_mem_access_4",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 10,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_swap_assigns_part1",
+          "property": "swap_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 3,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        },
+        {
+          "goal": "typed_swap_assigns_part2",
+          "property": "swap_assigns",
+          "file": "/home/qfeng/Workspace/C-ITP-Lab/programs/p2_swap.c",
+          "line": 3,
+          "function": "swap",
+          "smoke": false,
+          "passed": true,
+          "verdict": "valid",
+          "provers": [
+            {
+              "prover": "qed",
+              "time": 0,
+              "success": 1
+            }
+          ],
+          "proved": 1,
+          "method": "Qed"
+        }
+      ],
+      "inventory_exit": 0,
+      "warnings": [],
+      "all_obligations_closed": true
+    }
+  ]
+}

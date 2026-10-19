@@ -1,0 +1,7 @@
+$ ["opam", "repository", "set-url", "default", "https://opam.ocaml.org", "-y"]
+[default] Initialised
+default (at https://opam.ocaml.org): 
+    [WARNING] opam >= 2.5.2 includes important security fixes; please consider upgrading (https://opam.ocaml.org/doc/Install.html)
+
+
+Exit: 0

@@ -1,0 +1,5 @@
+$ ["coqc","--version"]
+Environment overrides: {}
+
+Runner error: spawnSync coqc ENOENT
+Exit: null; signal: null; wall_seconds: 0.0023849669999999996

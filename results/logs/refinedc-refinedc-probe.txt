@@ -1,0 +1,5 @@
+$ ["refinedc","--help"]
+Environment overrides: {}
+
+Runner error: spawnSync refinedc ENOENT
+Exit: null; signal: null; wall_seconds: 0.0011957580000000014

@@ -1,0 +1,19 @@
+$ ["opam", "exec", "--", "refinedc", "check", "refinedc/p3_sum_broken.c"]
+Entering directory '/work/refinedc'
+        rocq proofs/p3_sum_broken/.c_itp_refinedc.theory.d
+Warning: in file generated_proof_sum_array.v, library sum_extra is required
+         from root c_itp_refinedc.p3_sum and has not been found in the loadpath!
+         [module-not-found,filesystem,default]
+Warning: in file generated_spec.v, library sum_extra is required
+         from root c_itp_refinedc.p3_sum and has not been found in the loadpath!
+         [module-not-found,filesystem,default]
+        rocq proofs/p3_sum_broken/generated_code.{glob,vo}
+        rocq proofs/p3_sum_broken/generated_spec.{glob,vo} (exit 1)
+File "./proofs/p3_sum_broken/generated_spec.v", line 4, characters 42-51:
+Error: Cannot find a physical path bound to logical path
+sum_extra with prefix c_itp_refinedc.p3_sum.
+
+Leaving directory '/work/refinedc'
+[31mThe call to [dune] returned with error code 1.
+[0m
+Exit: 1

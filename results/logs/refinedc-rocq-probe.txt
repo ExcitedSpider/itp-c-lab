@@ -1,0 +1,5 @@
+$ ["rocq","--version"]
+Environment overrides: {}
+
+Runner error: spawnSync rocq ENOENT
+Exit: null; signal: null; wall_seconds: 0.0017325569999999998

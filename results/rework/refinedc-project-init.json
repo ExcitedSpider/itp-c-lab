@@ -1,0 +1,12 @@
+{
+  "command": [
+    "sh",
+    "-c",
+    "cd refinedc && opam exec -- refinedc init"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:40:41.418461+00:00",
+  "exit_code": 1,
+  "wall_seconds": 0.030195394065231085,
+  "output": "\u001b[31mA RefinedC project already exists here.\n\u001b[0m"
+}

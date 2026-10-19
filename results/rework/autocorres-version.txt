@@ -1,0 +1,4 @@
+$ ["/home/isabelle/Isabelle/bin/isabelle", "version"]
+Isabelle2025-2
+
+Exit: 0

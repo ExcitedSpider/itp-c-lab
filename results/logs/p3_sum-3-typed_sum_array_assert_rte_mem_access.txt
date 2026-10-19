@@ -1,0 +1,11 @@
+$ ["/usr/bin/time","-f","PEAK_RSS_KB=%M","/tmp/framac/4.14.1/bin/alt-ergo","--frontend","dolmen","--timelimit","3","results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2"]
+Environment overrides: {}
+
+unsat
+alt-ergo: option '--frontend': this option is deprecated and will be ignored in the next version
+
+; File "results/generated/p3_sum-84ae6d8feb1f/typed/zilch-typed_sum_array_assert_rte_mem_access_AltmnErgo_2dt6dt0-wp_goal.psmt2", line 906, characters 1-12: Valid (0.0115) (152 steps) (goal g_1)
+PEAK_RSS_KB=24452
+
+Runner error: spawnSync /usr/bin/time EPERM
+Exit: 0; signal: null; wall_seconds: 0.024349549000000026

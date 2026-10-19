@@ -1,0 +1,17 @@
+{
+  "command": [
+    "opam",
+    "exec",
+    "--",
+    "coqc",
+    "-Q",
+    "vst/generated",
+    "CPrograms",
+    "vst/verif_p4.v"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:48:46.953679+00:00",
+  "exit_code": 1,
+  "wall_seconds": 2.2580314208753407,
+  "output": "File \"./vst/verif_p4.v\", line 39, characters 13-20:\nError: No matching clauses for match.\n\n"
+}

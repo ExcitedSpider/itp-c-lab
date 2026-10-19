@@ -1,0 +1,13 @@
+$ ["/usr/bin/time", "-f", "PEAK_RSS_KB=%M", "opam", "exec", "--", "frama-c", "-machdep", "x86_64", "-wp", "-wp-rte", "-wp-prover", "alt-ergo", "-wp-timeout", "10", "-wp-par", "1", "-wp-report-json", "/work/results/rework/wp-p4_binary_search-1-goals.json", "/work/programs/p4_binary_search.c"]
+[kernel] Parsing programs/p4_binary_search.c (with preprocessing)
+[wp] Running WP plugin...
+[rte:annot] annotating function binary_search
+[wp] 22 goals scheduled
+[wp] Proved goals:   24 / 24
+  Terminating:       1
+  Unreachable:       1
+  Qed:              10 (7ms-10ms-33ms)
+  Alt-Ergo 2.5.4:   12 (11ms-25ms-55ms)
+PEAK_RSS_KB=133156
+
+Exit: 0

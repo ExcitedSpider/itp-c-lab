@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/isabelle/Isabelle/bin/isabelle",
+    "build",
+    "-o",
+    "threads=2",
+    "-d",
+    "/home/isabelle/afp-2026-10-16/thys",
+    "-d",
+    "autocorres",
+    "C_ITP_P3"
+  ],
+  "cwd": "/work",
+  "timestamp": "2026-10-19T02:55:40.910243+00:00",
+  "exit_code": 1,
+  "wall_seconds": 14.807176807895303,
+  "output": "Running C_ITP_P3 ...\nC_ITP_P3 FAILED (see also \"isabelle build_log -H Error C_ITP_P3\")\n*** Extra variables on rhs: \"is_valid_w32\"\n*** The error(s) above occurred in definition:\n*** \"array_values s a xs \u2261\n***  \u2200i<length xs.\n***     is_valid_w32 s (PTR_COERCE(32 signed word \u2192 'a) (a +\u21e9p int i)) \u2227\n***     sint (heap_w32 s (PTR_COERCE(32 signed word \u2192 32 word) (a +\u21e9p int i))) =\n***     xs ! i\"\n*** At command \"definition\" (line 8 of \"/work/autocorres/p3/P3.thy\")\nUnfinished session(s): C_ITP_P3\n0:00:13 elapsed time, 0:00:06 cpu time, factor 0.51\n"
+}
