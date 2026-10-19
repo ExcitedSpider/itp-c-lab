@@ -1,5 +1,7 @@
 # C verification lab
 
+**[Live preview → itp-c-lab.qiuyif.org](https://itp-c-lab.qiuyif.org/)**
+
 An interactive comparison of four deductive C verification tools: **VST-Floyd**,
 **RefinedC**, **Frama-C/WP**, and **Isabelle/HOL with AutoCorres2**. The lab shows
 what each tool requires you to write, what it generates, and what its checker
