@@ -124,3 +124,9 @@ Tool setup is in `scripts/install.sh`; per-tool details are in their directories
 The installer records the installation procedure but has not had a clean-room
 end-to-end reproduction test. Installing these toolchains is unnecessary for
 building or hosting the static website.
+
+## License
+
+Original project code is available under the [MIT License](LICENSE).
+Third-party material retains its existing licenses and copyright notices,
+including the BSD-2-Clause attribution in `autocorres/p5/P5.thy`.

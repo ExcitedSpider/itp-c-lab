@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 repo=git@github.com:ExcitedSpider/itp-c-lab.git
 test -f dist/static/index.html
-git add .gitignore README.md programs vst refinedc wp autocorres results presentation scripts dist/static
+git add .gitignore README.md LICENSE programs vst refinedc wp autocorres results presentation scripts dist/static
 if ! git diff --cached --quiet; then
   git commit -m 'Update C verification lab sources and static site'
 fi
