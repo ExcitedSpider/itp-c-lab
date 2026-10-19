@@ -1,181 +1,126 @@
-# Deductive C verification experiment
+# C verification lab
 
-## Publish with Cloudflare Pages
+An interactive comparison of four deductive C verification tools: **VST-Floyd**,
+**RefinedC**, **Frama-C/WP**, and **Isabelle/HOL with AutoCorres2**. The lab shows
+what each tool requires you to write, what it generates, and what its checker
+actually proves.
 
-The GitHub repository is `ExcitedSpider/itp-c-lab`. Pages serves the committed
-`dist/static/index.html`; no prover installation or build runs on Cloudflare.
-The repository also includes the C sources, specifications, proofs, page source,
-build scripts, and recorded verification evidence. Cloudflare serves only `dist/static`.
+## Build the static website
 
-After changing the lab, rebuild and package using the existing container:
+The repository includes the proof sources, recorded proof states, and measured
+results needed to build the page. Building the website does **not** rerun the
+verifiers or require their toolchains. The builder uses Python 3's standard
+library; there are no npm dependencies or frontend compilation steps.
+
+From the repository root, build and package using Podman:
+
+```sh
+podman run --rm \
+  -v "$PWD":/work:z -w /work \
+  --entrypoint /bin/sh docker.io/framac/frama-c:32.0 \
+  -c 'python3 presentation/build.py && python3 presentation/package_site.py'
+```
+
+This reuses the experiment's container image; no verifier is invoked. If the
+project's `c-itp-wp` container is already running with this checkout mounted at
+`/work`, use:
 
 ```sh
 podman exec c-itp-wp python3 presentation/build.py
 podman exec c-itp-wp python3 presentation/package_site.py
-git add .gitignore README.md programs vst refinedc wp autocorres results presentation scripts dist/static
-git commit -m "Update verification lab"
-git push origin main
 ```
 
-Use the SSH remote `git@github.com:ExcitedSpider/itp-c-lab.git`.
-SSH authentication uses your configured SSH key.
-
-In Cloudflare **Workers & Pages**, create a **Pages** project connected to
-`ExcitedSpider/itp-c-lab`: production branch `main`, framework preset **None**,
-build command blank, build output directory `dist/static`, root directory default.
-Under the project's **Custom domains**, add `itp-c.qiuyif.org` and complete the
-Cloudflare DNS setup. Subsequent pushes to `main` deploy the committed output.
-
-## Explore the lab
-
-Open `presentation/index.html` directly: a self-contained offline verification
-lab with independent program and prover lists. Choose one of the 20 cases to
-inspect its real sources, proofs, metrics and checker outputs. Setup, comparison
-charts, notable projects, TCB and RLVR notes are expandable reference sections.
-There is no slide navigation; Previous/Next controls only step through proofs.
-VST and RefinedC tabs include offline proof steppers: actual Rocq responses and
-`Show.` goal inspections recorded command by command, with source highlighting.
-These are navigable recordings, not a live jsCoq checker; editing or checking
-new tactics is not supported. RefinedC generated proofs and the authored P3
-helper proof are labeled separately. AutoCorres2 also has recorded Isabelle
-states for all five programs, using the same controls and arrow keys. WP shows
-VC reports rather than an interactive proof script.
-The authoritative experiment is in `results/rework/`. Earlier records in
-`results/logs/` and JavaScript runners are historical and superseded.
-The earlier installation-blocked diagnosis was incorrect. Direct Podman commands
-worked without changing permissions. All four toolchains are installed.
-
-| Tool | P1 abs | P2 swap + alias | P3 sum | P4 search | P5 reverse |
-|---|---|---|---|---|---|
-| VST-Floyd | checked | checked | checked | checked | checked |
-| RefinedC | checked | checked | checked | checked | checked |
-| Frama-C/WP | checked | checked | checked | checked | **partial** |
-| AutoCorres2 | checked | checked | checked | checked | checked |
-
-These are function-level safety and correctness proofs under the displayed
-contracts. VST and RefinedC establish partial correctness; separate termination
-proofs were not supplied. AutoCorres2 proves total correctness. WP includes
-termination VCs. No compiler/linking theorem was instantiated. No admitted
-project proof is counted as success. WP P5 closes 7/15 console obligations;
-eight remain open after timeout. No interactive Rocq discharge is claimed.
-
-## Reproduce in Podman
-
-From this directory, with Podman available:
+Alternatively, with Python 3 already available:
 
 ```sh
-bash scripts/install.sh
-bash vst/run.sh
-bash refinedc/run.sh
-bash wp/run.sh
-bash autocorres/run.sh
-podman exec c-itp-wp python3 results/measure.py
-bash presentation/build.sh
+python3 presentation/build.py
+python3 presentation/package_site.py
 ```
 
-Proof-state recordings are embedded in the HTML and stored under
-`results/rework/proof-states/`, with exact commands, raw responses and source
-hashes. After changing proof sources, regenerate them with
-`bash presentation/record-proofs.sh` before building the page. This requires
-the generated Clight and RefinedC dependencies already built; after a full
-RefinedC check (which cleans between cases), restore all positive dependencies
-with `podman exec c-itp-refinedc python3 refinedc/audit.py`. The builder rejects
-stale recordings whose source hashes no longer match. Each compound tactic
-is a single recorded step; the replay does not expand its internal execution.
+The first command generates `presentation/index.html`. The second copies it to
+**`dist/static/index.html`**, the deployment artifact. It is one self-contained
+HTML file with embedded styles, JavaScript, code, metrics, and proof recordings.
+Open it directly in a browser; no server or network connection is needed.
 
-For Isabelle alone: `podman exec c-itp-autocorres python3 autocorres/record.py`.
-The capture sessions in `autocorres/recording/` load the unchanged original
-theories with `Thy_Info.use_theories` and `record_theories=true`, then export
-`Toplevel.pretty_state` after each parsed command. This includes actual Isar
-goals and focused subgoals, not reconstructed build-log summaries. Theories
-load under the capture namespace `Draft`; their source and proofs are unchanged.
-Session commands/output and raw XML are in `results/rework/autocorres-record-p*.txt`
-and `autocorres-p*-states.xml`. Empty state output means no open proof state;
-other command messages remain in the session log. Each original theory's oracle
-audit also executes, and skipped proofs are rejected by the recorder.
+For Cloudflare Pages, connect this GitHub repository and configure:
 
-Each checker runs every positive case three times and checks a deliberately
-broken P3 invariant. WP exits 2 while P5 remains partial; continue with the other
-commands. The install script reproduces recorded operations and reuses project
-containers; the script itself has not had a clean-room end-to-end test. Actual
-installations and checks are logged. No host packages were installed. Separate
-container-local switches isolate the Rocq/OCaml stacks.
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Framework preset | None |
+| Build command | Leave blank |
+| Build output directory | `dist/static` |
 
-Exact versions, image digests and logs are in `results/rework/setup.json`:
+Rebuild and commit `dist/static/index.html` when the site changes. Pages deploys
+that committed file. Configure `itp-c.qiuyif.org` under the project's custom domains.
 
-- VST 2.17, Rocq 9.1.0, stdlib 9.0.0, CompCert opam package 3.18.
-  Installed `clightgen` reports 3.17; both strings are retained.
-- RefinedC/Lithium commit `2e89846baeaa7f65cbe17e3ae7297a8ed5b4feca`,
-  Rocq 9.1.0, Iris `dev.2026-09-10.3.b3495ef9`, stdpp
-  `dev.2026-09-09.1.c3186aad`. Compatibility was checked before installation.
-  The executable reports `2e89846-dirty` despite a clean source checkout.
-- Frama-C 32.0 Germanium, Why3 1.8.2, Alt-Ergo 2.5.4, OCaml 4.14.2.
-  Ordinary WP/Why3 invocation works; no exported-VC fallback is used.
-- Isabelle2025-2, AFP 2026-10-16, Poly/ML 5.9.2. The image needed cpp;
-  the missing-preprocessor error and successful retry are retained.
+## What the lab does
 
-Recorded VST installation took about 17 minutes and RefinedC about 10 minutes.
-AutoCorres2's parent build failed after about 6 minutes; after installing cpp,
-the retry took about 8 minutes. These are observations, not clean-machine setup
-benchmarks. Exact commands, exit codes, times and outputs are in `results/rework/`.
+Choose a program and a prover to inspect the C code, specifications, proof scripts,
+and recorded checker output. The five examples cover progressively richer reasoning:
 
-## Host on your LAN
+| Program | Verification task |
+| --- | --- |
+| Absolute value | Integer bounds, excluding `INT_MIN` |
+| Pointer swap | Memory ownership and pointer aliasing |
+| Array sum | Loop invariants and signed-overflow bounds |
+| Binary search | Sorted arrays, matching indices, and absence of a key |
+| Linked-list reversal | Mutable pointers and inductive list predicates |
 
-```sh
-bash presentation/serve.sh
-```
+VST, RefinedC, and AutoCorres2 include step-by-step replays of real recorded
+Rocq or Isabelle proof states. Use the buttons or **← / →** to navigate. These
+are offline recordings, not live proof assistants: editing or checking new
+tactics in the browser is not supported. WP shows its verification-condition
+reports and solver outcomes.
 
-Open `http://HOST-LAN-IP:8000` on another device on the same network, or
-`http://localhost:8000` on this machine. Use the host address, not a container IP.
-If the host firewall blocks TCP 8000, allow it on your trusted LAN. Ctrl-C stops
-the disposable serving container. Only the presentation directory is served.
-Use `LAB_PORT=8080 bash presentation/serve.sh` to select another port.
+The comparison distinguishes authored specifications and proofs from generated
+code. It includes proof-size counts, manual-step counts, median check times over
+three runs, memory measurements, trust assumptions, and diagnostics from a
+deliberately broken loop invariant. It also assesses the tools as reward oracles
+for reinforcement learning with verifiable rewards (RLVR), particularly for
+loop-invariant generation.
 
-## Contracts and C differences
+### Verification results
 
-- P1 excludes INT_MIN and proves mathematical absolute value.
-- P2 permits identical or separate pointers. VST and RefinedC prove separate
-  specs for the two cases; WP and AutoCorres2 admit aliasing in one contract.
-- P3 bounds every prefix sum by signed-int limits, including intermediate sums.
-- P4 supports duplicates and empty arrays; proves a matching index or absence;
-  uses a half-open interval and `lo+(hi-lo)/2` to avoid overflow.
-- P5 uses finite inductive/recursive lists. VST and RefinedC prove reversed
-  values; AutoCorres2 and unfinished WP also preserve node identities and values.
-  Frame and ownership contracts are not identical.
+**19 of 20 tool/program cases are checked under their displayed contracts.**
+VST, RefinedC, and AutoCorres2 check all five programs. WP checks the first four;
+list reversal remains partial, with 7 of 15 console obligations closed and eight
+open after timeout. No interactive Rocq discharge is claimed for those goals.
 
-VST and RefinedC own initialized arrays; WP permits read-only initialized
-storage. Empty-array pointer domains can differ. AutoCorres2's default ARM model
-uses 32-bit pointers; the other tested environments use x86_64/i32. RefinedC adds
-attributes, a header and a node typedef. AutoCorres2 P1/P3 omit limits.h, used
-only in ACSL. Executable function bodies otherwise match. The AutoCorres2 P5
-proof adapts AFP ListRev and retains its BSD attribution. No VST-A run was made.
+The contracts and memory models differ in places; the lab documents those
+differences. VST and RefinedC establish functional partial correctness, without
+separate termination proofs. AutoCorres2 proves total correctness, and WP includes
+termination obligations. No binary/compiler-link theorem is instantiated.
+Unfinished proofs are not presented as successful checks.
 
-## Metrics and oracle boundaries
+## Source and evidence
 
-`results/rework/metrics.json` enumerates every counted physical line and every
-recognized manual tactic/method occurrence. These are syntactic counts, not
-executed tactics or equivalent units of cognitive effort. Generated RefinedC
-proof text is separate; human proof scaffolding is included. External loop
-assertions count as specifications.
+| Directory | Contents |
+| --- | --- |
+| `programs/` | Common C examples |
+| `vst/`, `refinedc/`, `wp/`, `autocorres/` | Tool-specific inputs, specifications, proofs, and check scripts |
+| `results/rework/` | Authoritative versions, commands, outputs, metrics, and proof-state recordings |
+| `presentation/` | HTML generator, styling, highlighting, player, and browser checks |
+| `dist/static/` | Compiled website served by Cloudflare Pages |
+| `scripts/` | Toolchain installation and publishing helpers |
 
-Times are medians of three fresh local checks, including front-end and startup,
-with installed libraries/AFP parent heaps retained. Tools ran sequentially.
-RefinedC P2 sums alias and separate-case checks. RSS is the largest process
-high-water mark, not total concurrent memory. Repeated Boolean outcomes agree;
-this is not a general determinism guarantee. WP P5 times a failed attempt.
-Recorded source hashes bind proof measurements to their inputs.
+Earlier results outside `results/rework/` are retained as development history.
+Exact tool versions and environment details are recorded in
+[`results/rework/setup.json`](results/rework/setup.json).
 
-All four reject the +1 accumulator invariant. WP exposes JSON VC outcomes;
-other runners retain process/session status and textual goals. An RL reward
-must freeze C, contracts and helpers; reject stale/skipped proofs; require all
-expected obligations; distinguish timeout, invalidity and infrastructure errors.
-WP was fastest for these successful array cases. RefinedC is a useful Rocq-backed
-pilot but P3/P4 need fixed pure-proof hooks. VST needs Floyd scaffolding;
-AutoCorres2 needs HOL proofs and measures. Isabelle becomes more compelling
-when integrating with seL4.
+### Changing proofs
 
-The presentation details the TCB and observed learning costs. VST's assumptions
-include classical/extensionality axioms. RefinedC's six generated function/case
-theorems audit closed under the global context. AutoCorres2 disables
-quick_and_dirty and rejects oracle dependencies. WP trusts the VC pipeline
-and SMT results without kernel certificate replay.
+Rebuilding HTML only republishes existing evidence. To change a proof, rerun the
+corresponding tool's `run.sh` in the installed experiment environment and regenerate
+the affected evidence. Proof recordings include source hashes; the page builder
+rejects recordings whose proof sources have changed.
+
+With the experiment containers and generated dependencies available, regenerate
+the recordings using `bash presentation/record-proofs.sh`, then rebuild and package
+the HTML. After a full RefinedC check, restore its positive dependencies first with
+`podman exec c-itp-refinedc python3 refinedc/audit.py`.
+
+Tool setup is in `scripts/install.sh`; per-tool details are in their directories.
+The installer records the installation procedure but has not had a clean-room
+end-to-end reproduction test. Installing these toolchains is unnecessary for
+building or hosting the static website.
